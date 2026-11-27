@@ -1,0 +1,57 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "INVENTEDCO.XY",
+  "provider_currency": "EUR",
+  "exchange": "GER",
+  "timezone_name": "Europe/Berlin",
+  "instrument_name": "Invented Company AG",
+  "instrument_type": "EQUITY",
+  "split_review_required": true,
+  "days": [
+   {
+    "trading_date": "2027-03-29",
+    "open_decimal": "10.5",
+    "high_decimal": "10.9",
+    "low_decimal": "10.1",
+    "close_decimal": "10.75",
+    "adjusted_close_decimal": "10.7",
+    "volume_decimal": "1200",
+    "day_status": "observed",
+    "corporate_action_status": "pending_review",
+    "observed_at_utc": "2027-03-29T07:00:00Z"
+   },
+   {
+    "trading_date": "2027-03-30",
+    "open_decimal": "11.25",
+    "high_decimal": "11.5",
+    "low_decimal": "11",
+    "close_decimal": "11.3",
+    "adjusted_close_decimal": "11.25",
+    "volume_decimal": "3400",
+    "day_status": "observed",
+    "corporate_action_status": "pending_review",
+    "observed_at_utc": "2027-03-30T07:00:00Z"
+   },
+   {
+    "trading_date": "2027-03-31",
+    "open_decimal": null,
+    "high_decimal": null,
+    "low_decimal": null,
+    "close_decimal": null,
+    "adjusted_close_decimal": null,
+    "volume_decimal": null,
+    "day_status": "source_gap",
+    "corporate_action_status": "pending_review",
+    "observed_at_utc": "2027-03-31T07:00:00Z"
+   }
+  ],
+  "live_session": {
+   "trading_date": "2027-04-01",
+   "close_decimal": "12.21",
+   "observed_at_utc": "2027-04-01T07:30:00Z",
+   "session_complete": false
+  },
+  "first_trade_date": "2008-01-01"
+ }
+}

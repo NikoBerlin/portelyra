@@ -1,0 +1,15 @@
+capability,read_model
+schema401_fact_read,true
+completed_schema3100_read,true
+browser_asset_ref,true
+duplicate_presentation_labels,true
+label_as_identity,false
+implicit_full_rebuild,false
+coupled_transaction_fifo,false
+asset_world_positions,true
+custody_positions,true
+exact_ratio,true
+canonical_write,false
+cash_posting,false
+provider_or_network,false
+path_or_internal_id_exposed,false

@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://portelyra.invalid/contracts/desktop-release/v1/catalog-preview.schema.json",
+  "type":"object","additionalProperties":false,
+  "required":["contract_version","status","preview_ref","action","entity_type","display_name","confirmation_required","canonical_write","context_exposed","internal_ids_exposed","paths_exposed"],
+  "properties":{
+    "contract_version":{"const":1},"status":{"const":"pending_confirmation"},
+    "preview_ref":{"type":"string","pattern":"^catp_[a-f0-9]{32}$"},"action":{"enum":["create","update","archive"]},
+    "entity_type":{"enum":["portfolio","account","asset"]},"display_name":{"type":"string","minLength":1,"maxLength":120},
+    "confirmation_required":{"const":true},"canonical_write":{"const":false},"context_exposed":{"const":false},
+    "internal_ids_exposed":{"const":false},"paths_exposed":{"const":false}
+  }
+}

@@ -1,0 +1,4 @@
+{
+ "host": "eodhd.com",
+ "target": "/api/search/Invented%20World%20ETF%2FAcc?limit=10&fmt=json"
+}

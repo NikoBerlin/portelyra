@@ -1,0 +1,16 @@
+legal_reference_code,citation,reference_status,effective_from,verified_at,assumption_code,exclusion_code
+de_estg_20,§ 20 EStG,reference_only,2026-01-01,2026-08-08,general_capital_income_scope,no_automatic_legal_update
+de_estg_20_1,§ 20 Abs. 1 EStG,reference_only,2026-01-01,2026-08-08,capital_income_categories,no_automatic_legal_update
+de_estg_20_1_7,§ 20 Abs. 1 Nr. 7 EStG,reference_only,2026-01-01,2026-08-08,cash_interest_scope,no_automatic_legal_update
+de_estg_20_2_20_6,§ 20 Abs. 2 und Abs. 6 EStG,reference_only,2026-01-01,2026-08-08,equity_gain_and_loss_bucket_scope,no_automatic_legal_update
+de_estg_20_6,§ 20 Abs. 6 EStG,reference_only,2026-01-01,2026-08-08,simplified_separate_loss_buckets,no_cross_bucket_optimization
+de_estg_20_9,§ 20 Abs. 9 EStG,reference_only,2026-01-01,2026-08-08,user_confirmed_allowance,no_automatic_allowance_value
+de_estg_22_3,§ 22 Nr. 3 EStG,reference_only,2026-01-01,2026-08-08,explicit_other_income_scope,no_complete_other_income_law
+de_estg_23_1_2,§ 23 Abs. 1 Satz 1 Nr. 2 EStG,reference_only,2026-01-01,2026-08-08,simplified_calendar_anniversary,no_extended_holding_period_cases
+de_estg_23_3_5,§ 23 Abs. 3 Satz 5 EStG,reference_only,2026-01-01,2026-08-08,user_confirmed_threshold,no_automatic_threshold_value
+de_estg_23_3_7,§ 23 Abs. 3 Satz 7 EStG,reference_only,2026-01-01,2026-08-08,supplied_prior_completed_state,no_cross_domain_loss_offset
+de_estg_32d_1,§ 32d Abs. 1 EStG,reference_only,2026-01-01,2026-08-08,user_confirmed_capital_rate,no_automatic_rate_value
+de_estg_32d_5,§ 32d Abs. 5 EStG,reference_only,2026-01-01,2026-08-08,user_confirmed_creditable_withholding,no_treaty_or_source_validation
+de_estg_personal_rate_projection,EStG personal income tax rate projection,model_assumption,2026-01-01,2026-08-08,user_confirmed_simplified_rate,no_progressive_tariff_calculation
+de_invstg_partial_exemption,InvStG partial exemption reference,reference_only,2026-01-01,2026-08-08,user_confirmed_effective_rate,no_automatic_fund_classification
+de_solzg_4,§ 4 SolzG,reference_only,2026-01-01,2026-08-08,user_confirmed_surcharge_rate,no_threshold_or_milderungszone

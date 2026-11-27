@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/cash-candidates-read-model.schema.json",
+  "title": "Portfolio CSV Cash reviewed candidates public read model v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_cash_candidates_version","status","staged_import_handle","candidates","path_exposed","context_exposed","internal_id_exposed","fingerprint_exposed"],
+  "properties": {
+    "portfolio_csv_cash_candidates_version": {"const": 1},
+    "status": {"const": "available"},
+    "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+    "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidate_ref","action_type","status","linked_candidate_required"],
+      "properties": {
+        "candidate_ref": {"type": "string", "pattern": "^portfolio_cash_candidate_[a-f0-9]{24}$"},
+        "action_type": {"enum": ["declare_coverage","record_cash_event","record_interest_income","record_reconciliation"]},
+        "status": {"enum": ["ready_for_cash_review","blocked_dependency","committed"]},
+        "linked_candidate_required": {"type": "boolean"}
+      }
+    }
+  }
+}

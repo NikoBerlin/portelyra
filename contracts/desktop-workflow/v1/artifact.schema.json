@@ -1,0 +1,1216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-workflow/v1/artifact.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "desktop_workflow_artifact_version",
+    "desktop_workflow_artifact_id",
+    "status",
+    "workflow_status",
+    "attempt_status",
+    "tenant_id",
+    "user_id",
+    "data_space_id",
+    "completed_at_utc",
+    "stage_states",
+    "source_bindings",
+    "browser_model",
+    "artifact_fingerprint"
+  ],
+  "properties": {
+    "desktop_workflow_artifact_version": {
+      "const": 1
+    },
+    "desktop_workflow_artifact_id": {
+      "type": "string",
+      "pattern": "^dwf_[a-f0-9]{32}$"
+    },
+    "status": {
+      "const": "completed"
+    },
+    "workflow_status": {
+      "enum": [
+        "completed",
+        "partial",
+        "stale",
+        "blocked"
+      ]
+    },
+    "attempt_status": {
+      "enum": [
+        "running",
+        "completed",
+        "blocked"
+      ]
+    },
+    "tenant_id": {
+      "type": "string",
+      "pattern": "^ten_[a-f0-9]{32}$"
+    },
+    "user_id": {
+      "type": "string",
+      "pattern": "^usr_[a-f0-9]{32}$"
+    },
+    "data_space_id": {
+      "type": "string",
+      "pattern": "^sbx_[a-f0-9]{32}$"
+    },
+    "completed_at_utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "stage_states": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stage_code",
+          "status",
+          "failure_code"
+        ],
+        "properties": {
+          "stage_code": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "completed",
+              "partial",
+              "stale",
+              "blocked",
+              "not_selected"
+            ]
+          },
+          "failure_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "source_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trade_run_id": {
+          "type": "string",
+          "pattern": "^run_[a-z0-9_]+$"
+        },
+        "market_run_id": {
+          "type": "string",
+          "pattern": "^run_[a-z0-9_]+$"
+        },
+        "calculation_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "semantic_binding_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "browser_model": {
+      "$ref": "#/$defs/browser"
+    },
+    "artifact_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "$defs": {
+    "browser": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "browser_model_version",
+        "status",
+        "attempt_status",
+        "portfolio_label",
+        "data_space_label",
+        "revision_label",
+        "as_of_date",
+        "completed_at_utc",
+        "freshness_status",
+        "stages",
+        "cockpit",
+        "tax",
+        "grouping",
+        "analysis",
+        "provenance"
+      ],
+      "properties": {
+        "asset_selection_snapshot": {
+          "type": "object",
+          "required": [
+            "version",
+            "status"
+          ],
+          "properties": {
+            "version": {
+              "const": 1
+            },
+            "status": {
+              "enum": [
+                "complete",
+                "unavailable"
+              ]
+            }
+          },
+          "description": "Completed portfolio-noncash selection evidence; unavailable is not an empty universe. See completed-asset-selection-snapshot/v1."
+        },
+        "exact_market_snapshot": {
+          "type": "object",
+          "required": [
+            "version",
+            "status",
+            "positions",
+            "selected_assets",
+            "portfolio_completion"
+          ],
+          "description": "Additional normative validation: contracts/desktop-completed-market-snapshot/v1/snapshot.schema.json"
+        },
+        "browser_model_version": {
+          "const": 1
+        },
+        "status": {
+          "$ref": "#/$defs/browser/$defs/state"
+        },
+        "attempt_status": {
+          "enum": [
+            "running",
+            "completed",
+            "blocked"
+          ]
+        },
+        "portfolio_label": {
+          "$ref": "#/$defs/browser/$defs/label"
+        },
+        "data_space_label": {
+          "$ref": "#/$defs/browser/$defs/label"
+        },
+        "revision_label": {
+          "$ref": "#/$defs/browser/$defs/label"
+        },
+        "as_of_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "completed_at_utc": {
+          "$ref": "#/$defs/browser/$defs/utc"
+        },
+        "freshness_status": {
+          "enum": [
+            "current",
+            "partial",
+            "stale",
+            "missing"
+          ]
+        },
+        "stages": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/$defs/browser/$defs/stage"
+          }
+        },
+        "cockpit": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/browser/$defs/cockpit"
+            }
+          ]
+        },
+        "tax": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/browser/$defs/tax"
+            }
+          ]
+        },
+        "grouping": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/browser/$defs/grouping"
+            }
+          ]
+        },
+        "analysis": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/browser/$defs/analysis"
+            }
+          ]
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "run_mode",
+            "ledger_schema_version",
+            "semantic_sources",
+            "market_source",
+            "fx_source",
+            "tax_source",
+            "provider_access",
+            "network_access",
+            "canonical_write"
+          ],
+          "properties": {
+            "run_mode": {
+              "enum": [
+                "full",
+                "incremental"
+              ]
+            },
+            "market_source": {
+              "const": "manual_user_input"
+            },
+            "fx_source": {
+              "const": "manual_reviewed_evidence"
+            },
+            "tax_source": {
+              "const": "explicit_optional_plugin"
+            },
+            "cash_source": {
+              "const": "canonical_internal_cash_postings"
+            },
+            "provider_access": {
+              "const": false
+            },
+            "network_access": {
+              "const": false
+            },
+            "canonical_write": {
+              "const": false
+            },
+            "ledger_schema_version": {
+              "enum": [
+                201,
+                401
+              ]
+            },
+            "semantic_sources": {
+              "$ref": "#/$defs/browser/$defs/semanticSources"
+            }
+          }
+        }
+      },
+      "$defs": {
+        "state": {
+          "enum": [
+            "completed",
+            "partial",
+            "stale",
+            "blocked"
+          ]
+        },
+        "utc": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "decimal": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]*[1-9])?$",
+          "maxLength": 80
+        },
+        "failure": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z][a-z0-9_]{2,80}$"
+        },
+        "stage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage_code",
+            "status",
+            "failure_code"
+          ],
+          "properties": {
+            "stage_code": {
+              "enum": [
+                "canonical",
+                "fifo",
+                "tax",
+                "grouping",
+                "market",
+                "fx",
+                "valuation",
+                "trade_analysis",
+                "market_analysis",
+                "publication"
+              ]
+            },
+            "status": {
+              "$ref": "#/$defs/browser/$defs/stage_state"
+            },
+            "failure_code": {
+              "$ref": "#/$defs/browser/$defs/failure"
+            }
+          }
+        },
+        "currencyRow": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "currency",
+            "realized_gross_proceeds_decimal",
+            "realized_fifo_cost_decimal",
+            "realized_gross_gain_decimal",
+            "gross_income_decimal",
+            "fee_total_decimal",
+            "cash_balance_decimal",
+            "cross_currency_aggregation"
+          ],
+          "properties": {
+            "currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "realized_gross_proceeds_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "realized_fifo_cost_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "realized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "gross_income_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fee_total_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "cash_balance_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "cross_currency_aggregation": {
+              "type": "string",
+              "maxLength": 60
+            }
+          }
+        },
+        "valuationSummary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "target_currency",
+            "position_count",
+            "completed_position_count",
+            "partial_position_count",
+            "blocked_position_count",
+            "aggregation_status",
+            "market_value_decimal",
+            "fifo_cost_decimal",
+            "unrealized_gross_gain_decimal",
+            "projected_tax_decimal",
+            "liquidation_fee_decimal",
+            "net_liquidation_decimal",
+            "valued_position_count",
+            "valued_market_value_decimal",
+            "valued_fifo_cost_decimal",
+            "valued_unrealized_gross_gain_decimal",
+            "valued_liquidation_fee_decimal",
+            "valued_projected_tax_decimal",
+            "valued_net_liquidation_decimal"
+          ],
+          "properties": {
+            "target_currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completed_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "partial_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "blocked_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "aggregation_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "market_value_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fifo_cost_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "unrealized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "liquidation_fee_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "net_liquidation_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "valued_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "valued_market_value_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "valued_fifo_cost_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "valued_unrealized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "valued_liquidation_fee_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "valued_projected_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "valued_net_liquidation_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            }
+          }
+        },
+        "position": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position_ordinal",
+            "account_ordinal",
+            "asset_ordinal",
+            "asset_label",
+            "position_status",
+            "price_status",
+            "tax_status",
+            "fx_status",
+            "market_currency",
+            "target_currency",
+            "listing_code",
+            "market_observed_at_utc",
+            "fx_direction",
+            "fx_base_currency",
+            "fx_quote_currency",
+            "fx_rate_decimal",
+            "fx_observed_at_utc",
+            "quantity_decimal",
+            "market_price_decimal",
+            "market_value_decimal",
+            "fifo_cost_decimal",
+            "unrealized_gross_gain_decimal",
+            "projected_tax_decimal",
+            "liquidation_fee_decimal",
+            "net_liquidation_decimal",
+            "failure_codes"
+          ],
+          "properties": {
+            "position_ordinal": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "account_ordinal": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "asset_ordinal": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "asset_label": {
+              "$ref": "#/$defs/browser/$defs/label"
+            },
+            "position_status": {
+              "enum": [
+                "completed",
+                "partial",
+                "blocked"
+              ]
+            },
+            "price_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "tax_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "fx_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "market_currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "target_currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "quantity_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "market_price_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "market_value_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fifo_cost_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "unrealized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "liquidation_fee_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "net_liquidation_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "failure_codes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{2,80}$"
+              }
+            },
+            "listing_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 80,
+              "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+            },
+            "market_observed_at_utc": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/browser/$defs/utc"
+                }
+              ]
+            },
+            "fx_direction": {
+              "enum": [
+                "none",
+                "direct",
+                "inverse"
+              ]
+            },
+            "fx_base_currency": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/browser/$defs/currency"
+                }
+              ]
+            },
+            "fx_quote_currency": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/browser/$defs/currency"
+                }
+              ]
+            },
+            "fx_rate_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fx_observed_at_utc": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/browser/$defs/utc"
+                }
+              ]
+            }
+          }
+        },
+        "cockpit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "currency_rows",
+            "valuation_status",
+            "valuation_currency",
+            "valuation_summary",
+            "positions"
+          ],
+          "properties": {
+            "currency_rows": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/currencyRow"
+              }
+            },
+            "valuation_status": {
+              "enum": [
+                "completed",
+                "partial",
+                "blocked"
+              ]
+            },
+            "valuation_currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "valuation_summary": {
+              "$ref": "#/$defs/browser/$defs/valuationSummary"
+            },
+            "positions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/position"
+              }
+            }
+          }
+        },
+        "eventTax": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "event_ordinal",
+            "local_date",
+            "event_type",
+            "asset_label",
+            "currency",
+            "realized_gross_gain_decimal",
+            "gross_income_decimal",
+            "projected_event_tax_decimal",
+            "projected_net_gain_decimal",
+            "projection_status",
+            "failure_code"
+          ],
+          "properties": {
+            "event_ordinal": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "local_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "event_type": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "asset_label": {
+              "$ref": "#/$defs/browser/$defs/label"
+            },
+            "currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "realized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "gross_income_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_event_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_net_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projection_status": {
+              "enum": [
+                "completed",
+                "blocked"
+              ]
+            },
+            "failure_code": {
+              "$ref": "#/$defs/browser/$defs/failure"
+            }
+          }
+        },
+        "annualTax": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tax_year",
+            "currency",
+            "net_contribution_decimal",
+            "projected_annual_tax_decimal",
+            "projected_net_gain_decimal",
+            "projection_status",
+            "failure_code"
+          ],
+          "properties": {
+            "tax_year": {
+              "type": "integer",
+              "minimum": 1900,
+              "maximum": 9999
+            },
+            "currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "net_contribution_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_annual_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_net_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projection_status": {
+              "enum": [
+                "completed",
+                "blocked"
+              ]
+            },
+            "failure_code": {
+              "$ref": "#/$defs/browser/$defs/failure"
+            }
+          }
+        },
+        "tax": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "readiness_status",
+            "plugin_label",
+            "semantic_sources",
+            "event_rows",
+            "annual_rows",
+            "disclaimer_code"
+          ],
+          "properties": {
+            "readiness_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "plugin_label": {
+              "$ref": "#/$defs/browser/$defs/label"
+            },
+            "event_rows": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/eventTax"
+              }
+            },
+            "annual_rows": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/annualTax"
+              }
+            },
+            "disclaimer_code": {
+              "const": "model_projection_not_legal_advice"
+            },
+            "semantic_sources": {
+              "$ref": "#/$defs/browser/$defs/semanticSources"
+            }
+          }
+        },
+        "groupRow": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "node_kind",
+            "display_name",
+            "scheme_type",
+            "currency",
+            "asset_count",
+            "position_count",
+            "remaining_fifo_cost_decimal",
+            "realized_gross_gain_decimal",
+            "gross_income_decimal",
+            "fee_total_decimal",
+            "cash_balance_decimal",
+            "event_tax_status",
+            "projected_event_tax_decimal",
+            "projected_net_gain_decimal",
+            "currency_aggregation_status",
+            "coverage_status"
+          ],
+          "properties": {
+            "node_kind": {
+              "const": "portfolio_root"
+            },
+            "display_name": {
+              "$ref": "#/$defs/browser/$defs/label"
+            },
+            "scheme_type": {
+              "const": "none"
+            },
+            "currency": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[A-Z]{3}$"
+            },
+            "asset_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "remaining_fifo_cost_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "realized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "gross_income_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fee_total_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "cash_balance_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "event_tax_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "projected_event_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_net_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "currency_aggregation_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "coverage_status": {
+              "type": "string",
+              "maxLength": 60
+            }
+          }
+        },
+        "grouping": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "status",
+            "coverage_status",
+            "currency_status",
+            "rows"
+          ],
+          "properties": {
+            "mode": {
+              "const": "none"
+            },
+            "status": {
+              "const": "completed"
+            },
+            "coverage_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "currency_status": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/groupRow"
+              }
+            }
+          }
+        },
+        "tradePeriod": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "period_start",
+            "period_end",
+            "currency",
+            "event_count",
+            "realized_gross_gain_decimal",
+            "gross_income_decimal",
+            "fee_total_decimal",
+            "deposit_decimal",
+            "withdrawal_decimal",
+            "projected_event_tax_decimal",
+            "projected_event_net_gain_decimal",
+            "event_tax_status"
+          ],
+          "properties": {
+            "period_start": {
+              "type": "string",
+              "format": "date"
+            },
+            "period_end": {
+              "type": "string",
+              "format": "date"
+            },
+            "currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "event_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "realized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "gross_income_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fee_total_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "deposit_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "withdrawal_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_event_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_event_net_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "event_tax_status": {
+              "type": "string",
+              "maxLength": 60
+            }
+          }
+        },
+        "marketHistory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "as_of_date",
+            "source_status",
+            "snapshot_status",
+            "target_currency",
+            "last_covered_market_date",
+            "max_price_age_days",
+            "position_count",
+            "completed_position_count",
+            "partial_position_count",
+            "blocked_position_count",
+            "market_value_decimal",
+            "fifo_cost_decimal",
+            "unrealized_gross_gain_decimal",
+            "projected_tax_decimal",
+            "liquidation_fee_decimal",
+            "net_liquidation_decimal"
+          ],
+          "properties": {
+            "as_of_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "source_status": {
+              "enum": [
+                "completed",
+                "stale"
+              ]
+            },
+            "snapshot_status": {
+              "enum": [
+                "completed",
+                "partial",
+                "blocked"
+              ]
+            },
+            "target_currency": {
+              "$ref": "#/$defs/browser/$defs/currency"
+            },
+            "last_covered_market_date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "max_price_age_days": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completed_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "partial_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "blocked_position_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "market_value_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "fifo_cost_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "unrealized_gross_gain_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "projected_tax_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "liquidation_fee_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            },
+            "net_liquidation_decimal": {
+              "$ref": "#/$defs/browser/$defs/decimal"
+            }
+          }
+        },
+        "analysis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "trade_status",
+            "market_status",
+            "semantic_sources",
+            "trade_periods",
+            "market_history",
+            "positions"
+          ],
+          "properties": {
+            "trade_status": {
+              "$ref": "#/$defs/browser/$defs/state"
+            },
+            "market_status": {
+              "$ref": "#/$defs/browser/$defs/state"
+            },
+            "trade_periods": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/tradePeriod"
+              }
+            },
+            "market_history": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/marketHistory"
+              }
+            },
+            "positions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/browser/$defs/position"
+              }
+            },
+            "semantic_sources": {
+              "$ref": "#/$defs/browser/$defs/semanticSources"
+            }
+          }
+        },
+        "semanticSources": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "semantic_contract",
+              "source_event_count",
+              "projected_event_count",
+              "coupled_transaction_fact",
+              "automatic_cash_posting_state"
+            ],
+            "properties": {
+              "semantic_contract": {
+                "enum": [
+                  "portfolio_ledger_v1_transaction_fact",
+                  "asset_activity_v1"
+                ]
+              },
+              "source_event_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "projected_event_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "coupled_transaction_fact": {
+                "type": "boolean"
+              },
+              "automatic_cash_posting_state": {
+                "enum": [
+                  "unknown",
+                  "none_created"
+                ]
+              }
+            }
+          }
+        },
+        "stage_state": {
+          "enum": [
+            "completed",
+            "partial",
+            "stale",
+            "blocked",
+            "not_selected"
+          ]
+        }
+      }
+    }
+  }
+}

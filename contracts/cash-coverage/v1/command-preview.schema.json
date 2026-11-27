@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:cash-coverage:v1:command-preview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "desktop_cash_coverage_preview_version", "status", "action_type", "fact_action_type",
+    "operation_type", "input_mode", "request_ref", "canonical_fingerprint",
+    "cash_coverage_state_fingerprint", "command", "projection_before", "projection",
+    "reconciliation", "confirmation_required", "one_attempt_only", "canonical_write",
+    "asset_activity_write", "provider_access", "network_access", "private_data_access",
+    "preview_fingerprint"
+  ],
+  "properties": {
+    "desktop_cash_coverage_preview_version": {"const": 2},
+    "status": {"const": "ready_for_confirmation"},
+    "action_type": {"enum": ["declare_coverage", "record_cash_event", "record_interest_income", "record_reconciliation", "correct", "supersede", "void"]},
+    "fact_action_type": {"enum": ["declare_coverage", "record_cash_event", "record_interest_income", "record_reconciliation", "revise_cash_coverage"]},
+    "operation_type": {"enum": ["create", "correct", "supersede", "void"]},
+    "input_mode": {"enum": ["manual_entry", "reviewed_import"]},
+    "request_ref": {"type": "string", "pattern": "^ccrq_[a-f0-9]{32}$"},
+    "canonical_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "cash_coverage_state_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "command": {"type": "object"},
+    "projection_before": {"type": "object"},
+    "projection": {"type": "object"},
+    "reconciliation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["before_state_fingerprint", "after_state_fingerprint", "before", "after", "predecessor_fact_count", "predecessor_preserved"],
+      "properties": {
+        "before_state_fingerprint": {"$ref": "#/$defs/fingerprint"},
+        "after_state_fingerprint": {"$ref": "#/$defs/fingerprint"},
+        "before": {"$ref": "#/$defs/summary"}, "after": {"$ref": "#/$defs/summary"},
+        "predecessor_fact_count": {"type": "integer", "minimum": 0},
+        "predecessor_preserved": {"const": true}
+      }
+    },
+    "confirmation_required": {"const": true}, "one_attempt_only": {"const": true},
+    "canonical_write": {"const": false}, "asset_activity_write": {"const": false},
+    "provider_access": {"const": false}, "network_access": {"const": false},
+    "private_data_access": {"const": false}, "preview_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["period_count", "cash_event_count", "income_event_count", "linked_income_event_count", "internal_transfer_count", "internal_transfer_portfolio_net_change_decimal"],
+      "properties": {
+        "period_count": {"type": "integer", "minimum": 0}, "cash_event_count": {"type": "integer", "minimum": 0},
+        "income_event_count": {"type": "integer", "minimum": 0}, "linked_income_event_count": {"type": "integer", "minimum": 0},
+        "internal_transfer_count": {"type": "integer", "minimum": 0},
+        "internal_transfer_portfolio_net_change_decimal": {"type": "string", "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"}
+      }
+    }
+  }
+}

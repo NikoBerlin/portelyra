@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-activity-correction/v3/public-preview.schema.json",
+  "title": "Single Asset Activity correction/void public preview v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["asset_activity_correction_public_preview_version", "status", "action_type", "predecessor", "replacement", "affected_fifo_world_count", "after_state", "predecessor_preserved", "confirmation_required", "schema201_canonical_write", "cash_posting_count", "provider_access", "network_access", "path_exposed", "internal_id_exposed"],
+  "properties": {
+    "asset_activity_correction_public_preview_version": {"const": 3},
+    "status": {"const": "ready_for_confirmation"},
+    "action_type": {"enum": ["correct", "void"]},
+    "predecessor": {"$ref": "#/$defs/effect"},
+    "replacement": {"anyOf": [{"$ref": "#/$defs/replacement"}, {"type": "null"}]},
+    "affected_fifo_world_count": {"type": "integer", "minimum": 1},
+    "after_state": {"enum": ["present", "no_remaining_events"]},
+    "predecessor_preserved": {"const": true},
+    "confirmation_required": {"const": true},
+    "schema201_canonical_write": {"const": false},
+    "cash_posting_count": {"const": 0},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "path_exposed": {"const": false},
+    "internal_id_exposed": {"const": false}
+  },
+  "$defs": {
+    "nullableDecimal": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+    "effect": {
+      "type": "object", "additionalProperties": false,
+      "required": ["event_type", "local_date", "quantity_decimal", "gross_amount_decimal", "fifo_basis_created_decimal", "net_trade_proceeds_decimal", "gross_income_decimal"],
+      "properties": {
+        "event_type": {"enum": ["buy", "sell", "dividend", "stock_dividend", "reward", "deposit", "withdrawal", "transfer"]},
+        "local_date": {"type": "string", "format": "date"},
+        "quantity_decimal": {"$ref": "#/$defs/nullableDecimal"},
+        "gross_amount_decimal": {"$ref": "#/$defs/nullableDecimal"},
+        "fifo_basis_created_decimal": {"$ref": "#/$defs/nullableDecimal"},
+        "net_trade_proceeds_decimal": {"$ref": "#/$defs/nullableDecimal"},
+        "gross_income_decimal": {"$ref": "#/$defs/nullableDecimal"}
+      }
+    },
+    "replacement": {
+      "type": "object", "additionalProperties": false,
+      "required": ["event_type", "inventory_effect_code", "fifo_effect_code", "portfolio_quantity_change_decimal", "fifo_basis_created_decimal", "net_trade_proceeds_decimal", "gross_income_decimal"],
+      "properties": {
+        "event_type": {"type": "string"}, "inventory_effect_code": {"type": "string"}, "fifo_effect_code": {"type": "string"},
+        "portfolio_quantity_change_decimal": {"type": "string"}, "fifo_basis_created_decimal": {"$ref": "#/$defs/nullableDecimal"},
+        "net_trade_proceeds_decimal": {"$ref": "#/$defs/nullableDecimal"}, "gross_income_decimal": {"$ref": "#/$defs/nullableDecimal"}
+      }
+    }
+  }
+}

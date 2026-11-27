@@ -1,0 +1,24 @@
+code,meaning
+desktop_market_fx_batch_input_invalid,Batch preview is malformed or not confirmation ready
+desktop_market_fx_batch_context_invalid,Runtime context is malformed
+desktop_market_fx_batch_time_invalid,UTC timestamp is malformed
+desktop_market_fx_batch_confirmation_invalid,Confirmation is mismatched or expired
+desktop_market_fx_batch_store_invalid,Owner-local persistent state is unsafe or malformed
+desktop_market_fx_batch_executor_invalid,Injected staging executor is unavailable
+desktop_market_fx_batch_provider_call_failed,Staging callback failed with potentially unknown provider outcome
+desktop_market_fx_batch_recovery_required,A started call has unknown outcome and must not be retried automatically
+desktop_market_fx_batch_busy,Another process holds the owner-local batch execution lock
+desktop_market_fx_batch_result_invalid,Injected executor did not return a staged JSON result
+desktop_market_fx_batch_selection_invalid,Fetch selection must contain sorted unique valid integer ordinals
+desktop_market_fx_batch_selection_blocked,Selected items are no longer pending or cannot start under the current native gates
+desktop_market_fx_batch_binding_invalid,Private adapter binding or current native evidence does not match
+desktop_market_fx_batch_binding_confirmation_required,Exact public binding review and explicit confirmation are required
+desktop_market_fx_batch_calendar_input_invalid,Sealed calendar handoff or derived batch does not match
+desktop_market_fx_batch_calendar_stale,Bound sources or calendar code evidence changed
+desktop_market_fx_batch_calendar_saved_profile_required,Native calendar handoff requires saved context verified profiles
+desktop_market_fx_batch_calendar_staged_not_published,Unpublished valuation stages cannot authorize replacement fetch batches
+desktop_market_fx_batch_publication_input_invalid,Publication selection is malformed
+desktop_market_fx_batch_publication_confirmation_required,Separate exact publication confirmation is missing or expired
+desktop_market_fx_batch_publication_stale,Review or current binding differs from the publication preview
+desktop_market_fx_batch_publication_store_invalid,Publication state or committed receipt is inconsistent
+desktop_market_fx_batch_publication_recovery_required,Publication outcome is unknown until a matching committed receipt is proven

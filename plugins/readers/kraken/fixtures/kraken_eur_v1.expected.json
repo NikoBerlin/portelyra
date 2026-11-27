@@ -1,0 +1,35 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "500",
+   "balance_after_decimal": "500",
+   "kind": "deposit",
+   "local_date": "2027-01-02",
+   "source_row_ordinal": 1,
+   "text": "deposit"
+  },
+  {
+   "amount_decimal": "301.2",
+   "balance_after_decimal": "198.8",
+   "kind": "withdrawal",
+   "local_date": "2027-01-03",
+   "source_row_ordinal": 3,
+   "text": "spend"
+  },
+  {
+   "amount_decimal": "198.8",
+   "balance_after_decimal": "0",
+   "kind": "withdrawal",
+   "local_date": "2027-02-01",
+   "source_row_ordinal": 4,
+   "text": "withdrawal"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": "0",
+  "opening_balance_decimal": "0",
+  "period_from": "2027-01-02",
+  "period_to": "2027-02-01"
+ }
+}

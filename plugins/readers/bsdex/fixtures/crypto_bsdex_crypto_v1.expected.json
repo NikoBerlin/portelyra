@@ -1,0 +1,31 @@
+{
+ "candidates": [
+  {
+   "address": "",
+   "at_last_execution": true,
+   "at_utc": "2027-04-18T10:00:00Z",
+   "eur": "150",
+   "eur_fee": "0.38",
+   "fee_quantity": null,
+   "file_name": "crypto_bsdex_crypto_v1.csv",
+   "group": "",
+   "hash": "",
+   "kind": "trade",
+   "profile": "crypto_row",
+   "quantity": "0.05",
+   "quote": "",
+   "row_key": "9d8ab835aa1d98e80497e021d5fa8ba09810129a79410f6f54c7829a14a36e3a",
+   "row_no": 1,
+   "source": "bsdex",
+   "ticker": "ETH",
+   "transaction_id": "",
+   "wallet": "main",
+   "window_from_utc": "2027-04-15T07:00:00Z",
+   "zone": "Europe/Berlin"
+  }
+ ],
+ "row_reasons": {
+  "crypto_order_partly_open": 1
+ },
+ "status": "multi"
+}

@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""CLI-Grenze fuer das Institut als Stammdatum: Art und Konten (JSON ueber stdin/stdout)."""
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(ROOT))
+
+from migrations.reference.institution_master_v1 import (  # noqa: E402
+    InstitutionMasterV1Error, read_institution_master_v1, record_institution_kinds_v1, rename_institution_master_v1,
+)
+
+
+def _expect(value, *names):
+    if not isinstance(value, dict) or set(value) != {"context", "data_space_path", *names}:
+        raise InstitutionMasterV1Error("institution_master_input_invalid")
+    return Path(value["data_space_path"]), value["context"]
+
+
+def main() -> int:
+    try:
+        command = sys.argv[1] if len(sys.argv) > 1 else ""
+        value = json.load(sys.stdin)
+        if command == "read":
+            space, context = _expect(value)
+            result = read_institution_master_v1(space, context)
+        elif command == "record":
+            space, context = _expect(value, "entries", "recorded_at_utc", "confirmed")
+            result = record_institution_kinds_v1(space, context, value["entries"], value["recorded_at_utc"], value["confirmed"])
+        elif command == "rename":
+            space, context = _expect(value, "old_label", "new_label", "recorded_at_utc", "confirmed")
+            result = rename_institution_master_v1(space, context, value["old_label"], value["new_label"], value["recorded_at_utc"], value["confirmed"])
+        else:
+            raise InstitutionMasterV1Error("institution_master_input_invalid")
+        print(json.dumps({"status": "completed", "result": result}, sort_keys=True, separators=(",", ":"), ensure_ascii=False))
+        return 0
+    except (InstitutionMasterV1Error, KeyError, TypeError, ValueError, json.JSONDecodeError) as error:
+        code = getattr(error, "code", "institution_master_input_invalid")
+        print(json.dumps({"status": "blocked", "code": code}, sort_keys=True, separators=(",", ":")))
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,13 @@
+ordinal,field,required,scope,rule
+1,row_ref,yes,all,user-authored usr_ reference unique within file
+2,entity_type,yes,all,portfolio account or asset
+3,portfolio_ref,conditional,account,explicit existing Exchange ref or earlier portfolio row_ref
+4,display_name,yes,all,trimmed human label never identity resolution
+5,base_currency,conditional,portfolio,explicit ISO 4217 uppercase
+6,account_type,conditional,account,explicit supported canonical enum
+7,institution_label,no,account,optional human label
+8,asset_type,conditional,asset,explicit supported canonical enum
+9,price_currency,conditional,asset,explicit ISO 4217 uppercase
+10,quantity_scale,conditional,asset,integer zero through twenty four
+11,valuation_method,conditional,asset,explicit supported canonical enum
+12,isin,no,asset,optional explicit ISIN

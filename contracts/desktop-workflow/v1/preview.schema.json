@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "status",
+    "preview_ref",
+    "portfolio_label",
+    "reporting_currency",
+    "data_space_label",
+    "run_mode",
+    "as_of_date",
+    "cutoff_at_utc",
+    "tax_mode",
+    "grouping_mode",
+    "asset_inputs",
+    "stages",
+    "semantic_ledger_status",
+    "confirmation_required",
+    "canonical_write",
+    "provider_access",
+    "network_access",
+    "context_exposed",
+    "internal_ids_exposed",
+    "paths_exposed",
+    "fee_source",
+    "fee_fixed_decimal",
+    "fee_percentage_rate_decimal"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": 1
+    },
+    "status": {
+      "const": "pending_confirmation"
+    },
+    "preview_ref": {
+      "type": "string",
+      "pattern": "^drp_[a-f0-9]{32}$"
+    },
+    "portfolio_label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "reporting_currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "data_space_label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "run_mode": {
+      "enum": [
+        "full",
+        "incremental"
+      ]
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "cutoff_at_utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "tax_mode": {
+      "enum": [
+        "disabled",
+        "de_reference_v1",
+        "de_reference_v2"
+      ]
+    },
+    "grouping_mode": {
+      "const": "none"
+    },
+    "market_snapshot_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "as_of_date",
+        "portfolio_completion"
+      ],
+      "properties": {
+        "kind": {
+          "const": "completed_valuation_projection"
+        },
+        "as_of_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "portfolio_completion": {
+          "const": false
+        }
+      }
+    },
+    "asset_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "display_name",
+          "asset_type",
+          "listing_code",
+          "market_currency",
+          "close_decimal",
+          "observed_at_utc",
+          "tax_classification",
+          "partial_exemption_rate_decimal",
+          "fixed_fee_decimal",
+          "percentage_fee_rate_decimal",
+          "fx_base_currency",
+          "fx_quote_currency",
+          "fx_direction",
+          "fx_rate_decimal",
+          "fx_observed_at_utc"
+        ],
+        "properties": {
+          "display_name": {
+            "type": "string"
+          },
+          "asset_type": {
+            "type": "string"
+          },
+          "listing_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "market_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "close_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at_utc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tax_classification": {
+            "type": "string"
+          },
+          "partial_exemption_rate_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fixed_fee_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "percentage_fee_rate_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fx_base_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fx_quote_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fx_direction": {
+            "enum": [
+              "none",
+              "direct",
+              "inverse"
+            ]
+          },
+          "fx_rate_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fx_observed_at_utc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "semantic_ledger_status": {
+      "enum": [
+        "schema_201_projection",
+        "schema_401"
+      ]
+    },
+    "confirmation_required": {
+      "const": true
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "context_exposed": {
+      "const": false
+    },
+    "internal_ids_exposed": {
+      "const": false
+    },
+    "paths_exposed": {
+      "const": false
+    },
+    "fee_source": {
+      "enum": [
+        "derived_from_transactions",
+        "fixed_per_trade",
+        "percentage_of_turnover"
+      ]
+    },
+    "fee_fixed_decimal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fee_percentage_rate_decimal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

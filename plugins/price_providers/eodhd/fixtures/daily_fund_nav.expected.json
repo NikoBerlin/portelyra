@@ -1,0 +1,52 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "INVFD.EUFUND",
+  "provider_currency": "EUR",
+  "exchange": "EUFUND",
+  "timezone_name": "Europe/Berlin",
+  "instrument_name": "",
+  "instrument_type": "",
+  "split_review_required": false,
+  "days": [
+   {
+    "trading_date": "2027-01-11",
+    "open_decimal": "104.37",
+    "high_decimal": "104.37",
+    "low_decimal": "104.37",
+    "close_decimal": "104.37",
+    "adjusted_close_decimal": "104.37",
+    "volume_decimal": "0",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-01-11T11:00:00Z"
+   },
+   {
+    "trading_date": "2027-01-12",
+    "open_decimal": "0",
+    "high_decimal": "0",
+    "low_decimal": "0",
+    "close_decimal": null,
+    "adjusted_close_decimal": null,
+    "volume_decimal": "0",
+    "day_status": "source_gap",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-01-12T11:00:00Z"
+   },
+   {
+    "trading_date": "2027-01-13",
+    "open_decimal": "104.9",
+    "high_decimal": "104.9",
+    "low_decimal": "104.9",
+    "close_decimal": "104.9",
+    "adjusted_close_decimal": "104.9",
+    "volume_decimal": "0",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-01-13T11:00:00Z"
+   }
+  ],
+  "live_session": null,
+  "first_trade_date": null
+ }
+}

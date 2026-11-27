@@ -1,0 +1,20 @@
+capability,supported,notes
+manual_multi_selection,yes,Browser-local public Asset refs only
+duplicate_presentation_labels,yes,Identity-bearing v3 refs plus visible disambiguator
+label_as_identity,no,Labels remain presentation only
+selected_mode,yes,Exact manual set including empty
+all_mode,yes,All compatible catalog Assets
+activity_fifo_table_filter,yes,Completed read-model rows only
+activity_custody_table_filter,yes,Completed read-model rows only
+activity_history_table_filter,yes,Effective read-model rows only
+asset_center_single_handoff,yes,One presentation Asset and one independent command target
+batch_activity_command,no,Presentation selection grants no write authority
+cash_noncash_filter,no,Additive later facet
+account_filter,no,Additive later facet
+time_holding_filter,no,Requires compatible interval projection
+lot_filter,no,Requires compatible Lot lifecycle projection
+fifo_basis_filter,no,Additive exact derived facet
+persisted_valuation_filter,no,Requires completed Market FX liquidation artifacts
+calculation_or_rebuild,no,Display interaction only
+provider_or_network,no,Display interaction only
+canonical_or_product_write,no,Display interaction only

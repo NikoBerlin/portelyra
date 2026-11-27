@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/desktop-product/v1/workspace.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "status", "data_space_label", "counts", "portfolios", "accounts", "assets", "transactions"],
+  "properties": {
+    "contract_version": {"const": 1},
+    "status": {"enum": ["uninitialized", "empty", "ready"]},
+    "data_space_label": {"type": "string", "minLength": 1, "maxLength": 100},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["portfolio_count", "account_count", "asset_count", "transaction_count"],
+      "properties": {
+        "portfolio_count": {"type": "integer", "minimum": 0},
+        "account_count": {"type": "integer", "minimum": 0},
+        "asset_count": {"type": "integer", "minimum": 0},
+        "transaction_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "portfolios": {"type": "array", "items": {"$ref": "#/$defs/portfolio"}},
+    "accounts": {"type": "array", "items": {"$ref": "#/$defs/account"}},
+    "assets": {"type": "array", "items": {"$ref": "#/$defs/asset"}},
+    "transactions": {"type": "array", "items": {"$ref": "#/$defs/transaction"}}
+  },
+  "$defs": {
+    "label": {"type": "string", "minLength": 1, "maxLength": 120},
+    "portfolio": {
+      "type": "object", "additionalProperties": false, "required": ["name", "currency", "status"],
+      "properties": {"name": {"$ref": "#/$defs/label"}, "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}, "status": {"enum": ["active", "archived"]}}
+    },
+    "account": {
+      "type": "object", "additionalProperties": false, "required": ["name", "type", "status"],
+      "properties": {"name": {"$ref": "#/$defs/label"}, "type": {"enum": ["securities", "cash", "bank", "crypto_wallet", "external", "other"]}, "status": {"enum": ["active", "archived"]}}
+    },
+    "asset": {
+      "type": "object", "additionalProperties": false, "required": ["name", "type", "currency", "status"],
+      "properties": {"name": {"$ref": "#/$defs/label"}, "type": {"enum": ["equity", "etf", "fund", "bond", "crypto", "commodity", "cash", "fx", "index", "derivative", "other"]}, "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}, "status": {"enum": ["active", "archived"]}}
+    },
+    "transaction": {
+      "type": "object", "additionalProperties": false, "required": ["date", "type", "state"],
+      "properties": {"date": {"type": "string", "format": "date"}, "type": {"enum": ["buy", "sell", "deposit", "withdrawal", "transfer", "reward"]}, "state": {"enum": ["current", "void"]}}
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:portelyra:desktop-product-derivative-capability:v1:preview",
+  "type":"object","additionalProperties":false,
+  "required":["contract_version","status","source_schema_version","target_schema_version","source_fingerprint","source_data_fingerprint","migration_source_fingerprint","counts","confirmation_required","product_write","activity_write","cash_write","provider_access","network_access","preview_fingerprint"],
+  "properties":{
+    "contract_version":{"const":1},
+    "status":{"enum":["ready_for_confirmation","already_enabled"]},
+    "source_schema_version":{"enum":[201,202]},"target_schema_version":{"const":202},
+    "source_fingerprint":{"$ref":"#/$defs/fp"},"source_data_fingerprint":{"$ref":"#/$defs/fp"},"migration_source_fingerprint":{"$ref":"#/$defs/fp"},"preview_fingerprint":{"$ref":"#/$defs/fp"},
+    "counts":{"type":"object","additionalProperties":false,"required":["portfolio_count","account_count","asset_count","transaction_count","posting_count","audit_count"],"properties":{"portfolio_count":{"type":"integer","minimum":0},"account_count":{"type":"integer","minimum":0},"asset_count":{"type":"integer","minimum":0},"transaction_count":{"type":"integer","minimum":0},"posting_count":{"type":"integer","minimum":0},"audit_count":{"type":"integer","minimum":0}}},
+    "confirmation_required":{"type":"boolean"},"product_write":{"const":false},"activity_write":{"const":false},"cash_write":{"const":false},"provider_access":{"const":false},"network_access":{"const":false}
+  },
+  "allOf":[{"if":{"properties":{"status":{"const":"ready_for_confirmation"}}},"then":{"properties":{"source_schema_version":{"const":201},"confirmation_required":{"const":true}}}},{"if":{"properties":{"status":{"const":"already_enabled"}}},"then":{"properties":{"source_schema_version":{"const":202},"confirmation_required":{"const":false}}}}],
+  "$defs":{"fp":{"type":"string","pattern":"^[a-f0-9]{64}$"}}
+}

@@ -1,0 +1,32 @@
+TRADE REPUBLIC BANK GMBH
+PAULA INVENTED
+
+KONTOÜBERSICHT
+PRODUKT       ANFANGSSALDO   ZAHLUNGSEINGANG   ZAHLUNGSAUSGANG   ENDSALDO
+Cashkonto     0,00 €         1.100,15 €        1.060,00 €        40,15 €
+
+UMSATZÜBERSICHT
+DATUM   TYP   BESCHREIBUNG   ZAHLUNGSEINGANG ZAHLUNGSAUSGANG   SALDO
+
+08 Juni
+Überweisung Einzahlung akzeptiert 100,00 €                    100,00 €
+2027
+12
+Buy trade US0000000000 INVENTED CORP, quantity: 1
+Juni Handel 110,00 €                    -10,00 €
+2027
+15 Juni
+Überweisung Einzahlung akzeptiert 1.000,00 €                    990,00 €
+2027
+01 Juli
+Zinsen Your interest payment 0,15 €                    990,15 €
+2027
+04
+*Invented Bank, ATM fee: 1,00 €
+Juli Kartentransaktion 950,00 €                    40,15 €
+2027
+
+GELDMARKTFONDS ISIN STK. / NOMINALE KURS PRO STÜCK KURSWERT IN EUR
+Invented Managed Euro Fund IE0000000000 0,00 1,00 € 0,00 €
+TRANSAKTIONSÜBERSICHT
+07 Aug. 2027 Kauf 132,40 1,00 € 132,40 €

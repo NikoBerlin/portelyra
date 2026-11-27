@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-recovery-public-preview.schema.json",
+  "title": "Cash Coverage Store Migration Recovery Public Preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_recovery_public_preview_version","status","recovery_ref","source_schema_version","target_schema_version","recovery_reason","confirmation_required","automatic_retry","target_write_required","path_exposed","identity_exposed","fingerprint_exposed","canonical_write","asset_activity_write","provider_access","network_access"],
+  "properties": {
+    "cash_coverage_store_migration_recovery_public_preview_version": {"const": 1},
+    "status": {"enum": ["ready_for_migration_recovery_confirmation","already_migrated"]},
+    "recovery_ref": {"type": "string", "pattern": "^ccmrec_[a-f0-9]{32}$"},
+    "source_schema_version": {"const": 2900},
+    "target_schema_version": {"const": 2901},
+    "recovery_reason": {"enum": ["confirmation_consumed_target_absent","target_receipt_already_matches"]},
+    "confirmation_required": {"type": "boolean"},
+    "automatic_retry": {"const": false},
+    "target_write_required": {"type": "boolean"},
+    "path_exposed": {"const": false},
+    "identity_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false},
+    "canonical_write": {"const": false},
+    "asset_activity_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false}
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "ready_for_migration_recovery_confirmation"}}}, "then": {"properties": {"confirmation_required": {"const": true}, "target_write_required": {"const": true}, "recovery_reason": {"const": "confirmation_consumed_target_absent"}}}},
+    {"if": {"properties": {"status": {"const": "already_migrated"}}}, "then": {"properties": {"confirmation_required": {"const": false}, "target_write_required": {"const": false}, "recovery_reason": {"const": "target_receipt_already_matches"}}}}
+  ]
+}

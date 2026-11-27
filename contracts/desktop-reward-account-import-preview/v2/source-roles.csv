@@ -1,0 +1,11 @@
+role,requirement
+source_row_id,required
+event_time_text,required
+source_type,required
+source_subtype,required
+asset_class,required
+source_asset_key,required
+source_account_key,required
+signed_quantity_decimal,required
+asset_fee_quantity_decimal,required
+balance_reconciliation_evidence,not_used_portelyra_recalculates

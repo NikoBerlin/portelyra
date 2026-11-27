@@ -1,0 +1,11 @@
+capability,supported,notes
+incremental_missing_only,yes,Targets not_requested only
+explicit_source_gap_retry,yes,Targets source_gap only
+explicit_full_refresh_plan,yes,Targets existing covered dates
+coalesce_ranges,yes,Contiguous calendar dates
+provider_access,no,Plan only
+market_history_write,no,Plan only
+canonical_tax_fx_activity_write,no,None
+automatic_retry,no,Execution is separate
+completed_day_only,yes,Ends at the latest day complete in the Listing time zone plus one hour
+provisional_day_refetch,yes,Incremental re-plans days retrieved before completion until a later request confirms them

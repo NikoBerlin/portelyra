@@ -1,0 +1,19 @@
+failure_code,phase,retry_policy,meaning
+activity_draft_attempt_conflict,attempt,explicit_review,Challenge already binds different draft or confirmation bytes.
+activity_draft_boundary_failed,boundary,none,Unexpected safe boundary failure.
+activity_draft_confirmation_expired,confirmation,new_validation,Confirmation expired before delegated write.
+activity_draft_confirmation_invalid,confirmation,new_confirmation,Confirmation does not bind the exact Context draft revision and validation.
+activity_draft_context_invalid,context,none,Runtime Context is invalid or unauthorized.
+activity_draft_domain_invalid,validation,correct_input_or_explicit_resume,Complete candidate is rejected by the existing native or correction domain boundary.
+activity_draft_input_invalid,input,correct_input,Draft field shape timestamp origin or action is invalid.
+activity_draft_not_found,read,refresh,Draft reference does not exist in the bound owner store.
+activity_draft_publication_failed,finalize,explicit_resume,Committed downstream result could not be bound back to the draft.
+activity_draft_revision_conflict,update,refresh,Optimistic revision or validation snapshot changed.
+activity_draft_source_binding_conflict,deduplicate,explicit_review,Exact source row already binds a conflicting Portfolio or Draft lineage.
+activity_draft_source_superseded,supersession,none,The exact source generation is permanently superseded and cannot be prepared validated or applied.
+activity_draft_state_conflict,state,refresh,Draft state does not allow the requested transition.
+activity_draft_storage_invalid,storage,explicit_review,Owner-only draft storage is missing unsafe or tampered.
+activity_draft_supersession_conflict,supersession,refresh,The complete source set replacement source active generation or pending recovery differs from the sealed plan.
+activity_draft_supersession_not_found,supersession_recovery,refresh,No exact durable supersession Attempt exists for explicit resume.
+synthetic_activity_draft_failpoint,test,explicit_resume,Invented interruption after durable draft Attempt.
+synthetic_activity_draft_supersession_failpoint,test,explicit_resume,Invented interruption after durable source-supersession Attempt generation or writer barrier.

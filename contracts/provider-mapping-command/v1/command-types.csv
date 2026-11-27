@@ -1,0 +1,5 @@
+action,required_state,result_state,canonical_write,provider_access,network_access
+create,active_asset_and_absent_tuple,unverified_disabled,yes,no,no
+revise,exact_revision,unverified_disabled,yes,no,no
+verify,exact_revision_and_probe_evidence,verified_policy_enabled,yes,no,no
+disable,exact_revision,disabled,yes,no,no

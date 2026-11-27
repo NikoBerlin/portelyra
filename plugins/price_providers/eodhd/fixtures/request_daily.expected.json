@@ -1,0 +1,4 @@
+{
+ "host": "eodhd.com",
+ "target": "/api/eod/INVCO.XETRA?from=2027-03-26&to=2027-04-01&period=d&fmt=json"
+}

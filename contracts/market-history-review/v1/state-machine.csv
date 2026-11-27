@@ -1,0 +1,17 @@
+state,event,next_state,provider_access,staging_write,market_history_write,automatic_retry,confirmation_required
+plan_ready,confirm_fetch,fetch_attempt_consumed,no,no,no,no,yes
+fetch_attempt_consumed,fetch_once,staged_review,yes,yes,no,no,no
+fetch_attempt_consumed,fetch_uncertain,recovery_required,possible,possible,no,no,no
+fetch_attempt_consumed,terminal_failure_evidence,fetch_failed,possible,no,no,no,no
+fetch_failed,explicit_recovery,fetch_failed_reconciled,no,yes,no,no,yes
+fetch_failed_reconciled,new_explicit_plan_and_confirmation,plan_ready,no,no,no,no,yes
+staged_review,reject,rejected,no,no,no,no,yes
+staged_review,confirm_publish,publish_attempt_consumed,no,no,no,no,yes
+publish_attempt_consumed,publish_exact_staged_candidate,published,no,no,yes,no,no
+publish_attempt_consumed,publish_uncertain,recovery_required,no,no,possible,no,no
+publish_attempt_consumed,retry_publish_or_reject,recovery_required,no,no,no,no,no
+recovery_required,reconcile_exact_fetch_failure,fetch_failed,no,no,no,no,yes
+recovery_required,reconcile_exact_staged_candidate,staged_review,no,no,no,no,yes
+recovery_required,reconcile_exact_published_receipt,published,no,no,no,no,yes
+recovery_required,reconcile_no_bound_effect,blocked,no,no,no,no,yes
+recovery_required,automatic_retry,blocked,no,no,no,no,no

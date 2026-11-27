@@ -1,0 +1,10 @@
+capability,supported,notes
+incremental_not_requested_fetch,yes,Covered dates excluded
+bounded_range_coalescing,yes,Maximum 100 calls and 3650 days per call
+persist_attempt_before_network,yes,One-use
+append_schema2300,yes,Market worker authority
+exact_completed_replay,yes,No provider call
+source_gap_retry,yes,Explicit plan plus CAS unchanged or correction
+full_refresh,yes,Explicit whole-range CAS comparison
+automatic_retry,no,Recovery required
+canonical_provider_mapping_tax_fx_activity_write,no,None

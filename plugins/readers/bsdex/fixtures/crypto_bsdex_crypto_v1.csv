@@ -1,0 +1,3 @@
+Transaktionstyp,Kryptowährung,Betrag,Seite,Ausgelöster Preis,Gefüllt,Ausgeführter Gesamtbetrag,Ausgeführte Menge,Status,Transaktionsentgelt,Bestellstatus,Erstellt,Finalisiert am,Stop-Preis,Ausgelöst am,Storniert,Sendeadresse,Zieladresse,Zieladressen-Tag,Sendeadressen-Tag,IBAN,Operation Type,Completed At
+Limit,Ether,"0,2 ETH",Kaufen,"–,–– €","150,00 €","0,05 ETH","0,00 €",Teilweise ausgeführt,"0,38 €",Storniert,"15.04.2027, 09:00",,,,"18.04.2027, 12:00",,,,,,,
+Limit,Solana,"10,00 SOL",Verkaufen,"–,–– €","200,00 €","4 SOL","0,00 €",Teilweise ausgeführt,"0,50 €",Offen,"16.04.2027, 09:00",,,,,,,,,,,

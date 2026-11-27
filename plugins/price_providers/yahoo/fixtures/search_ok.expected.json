@@ -1,0 +1,27 @@
+{
+ "outcome": "ok",
+ "candidates": [
+  {
+   "symbol": "INVENTEDCO.XY",
+   "display_name": "Invented Company AG",
+   "exchange": "XETRA",
+   "quote_type": "equity",
+   "quote_currency": "EUR",
+   "isin": "XA00INVENT09"
+  },
+  {
+   "symbol": "INVETF",
+   "display_name": "Invented World ETF",
+   "exchange": "London",
+   "quote_type": "etf",
+   "quote_currency": null
+  },
+  {
+   "symbol": "INVCOIN-EUR",
+   "display_name": "INVCOIN-EUR",
+   "exchange": "CCC",
+   "quote_type": "cryptocurrency",
+   "quote_currency": null
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "currency": "USD",
+ "end": [
+  "2027-07-31",
+  {
+   "decimal_text": "0.00"
+  }
+ ],
+ "lines": [],
+ "start": [
+  "2027-07-31",
+  {
+   "decimal_text": "0.00"
+  }
+ ],
+ "status": "statement"
+}

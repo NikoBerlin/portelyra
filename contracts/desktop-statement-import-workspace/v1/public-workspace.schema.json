@@ -1,0 +1,927 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-statement-import-workspace/v1/public-workspace.schema.json",
+  "title": "Desktop Statement Import Synthetic Mapping Workspace v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "desktop_statement_import_workspace_version",
+    "status",
+    "execution_purpose",
+    "scenario",
+    "source_profile",
+    "column_mappings",
+    "route_rules",
+    "identity_policy",
+    "catalog_review",
+    "valuation_review",
+    "provider_enrichment",
+    "reconciliation_summary",
+    "rows",
+    "source_is_public_invented_fixture",
+    "activation_authorized",
+    "activity_draft_write",
+    "automatic_retry",
+    "candidate_handoff_available",
+    "canonical_write",
+    "cash_handoff_available",
+    "cash_write",
+    "catalog_handoff_available",
+    "confirmation_available",
+    "context_exposed",
+    "correction_confirmation_available",
+    "fingerprint_exposed",
+    "lineage_confirmation_available",
+    "mapping_apply_available",
+    "network_access",
+    "normal_adapter_execution_available",
+    "path_exposed",
+    "private_owner_uat_completed",
+    "private_source_read",
+    "provider_access",
+    "sql_access",
+    "tax_write",
+    "temporary_output_persisted",
+    "valuation_confirmation_available",
+    "cash_completeness_claimed",
+    "owner_accepted_disabled_recorded",
+    "portfolio_completeness_claimed",
+    "source_profile_private_accepted"
+  ],
+  "properties": {
+    "desktop_statement_import_workspace_version": {
+      "const": 1
+    },
+    "status": {
+      "const": "synthetic_workspace_ready"
+    },
+    "execution_purpose": {
+      "const": "public_synthetic_mapping_reconciliation"
+    },
+    "scenario": {
+      "enum": [
+        "basis_missing",
+        "manual_fiat_total",
+        "manual_unit_price"
+      ]
+    },
+    "source_profile": {
+      "$ref": "#/$defs/source_profile"
+    },
+    "column_mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/column_mapping"
+      }
+    },
+    "route_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/route_rule"
+      }
+    },
+    "identity_policy": {
+      "$ref": "#/$defs/identity_policy"
+    },
+    "catalog_review": {
+      "$ref": "#/$defs/catalog_review"
+    },
+    "valuation_review": {
+      "$ref": "#/$defs/valuation_review"
+    },
+    "provider_enrichment": {
+      "$ref": "#/$defs/provider_enrichment"
+    },
+    "reconciliation_summary": {
+      "$ref": "#/$defs/reconciliation_summary"
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workspace_row"
+      }
+    },
+    "source_is_public_invented_fixture": {
+      "const": true
+    },
+    "activation_authorized": {
+      "const": false
+    },
+    "activity_draft_write": {
+      "const": false
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "candidate_handoff_available": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "cash_handoff_available": {
+      "const": false
+    },
+    "cash_write": {
+      "const": false
+    },
+    "catalog_handoff_available": {
+      "const": false
+    },
+    "confirmation_available": {
+      "const": false
+    },
+    "context_exposed": {
+      "const": false
+    },
+    "correction_confirmation_available": {
+      "const": false
+    },
+    "fingerprint_exposed": {
+      "const": false
+    },
+    "lineage_confirmation_available": {
+      "const": false
+    },
+    "mapping_apply_available": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "normal_adapter_execution_available": {
+      "const": false
+    },
+    "path_exposed": {
+      "const": false
+    },
+    "private_owner_uat_completed": {
+      "const": false
+    },
+    "private_source_read": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "sql_access": {
+      "const": false
+    },
+    "tax_write": {
+      "const": false
+    },
+    "temporary_output_persisted": {
+      "const": false
+    },
+    "valuation_confirmation_available": {
+      "const": false
+    },
+    "cash_completeness_claimed": {
+      "const": false
+    },
+    "owner_accepted_disabled_recorded": {
+      "const": false
+    },
+    "portfolio_completeness_claimed": {
+      "const": false
+    },
+    "source_profile_private_accepted": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "source_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "column_count",
+        "export_profile",
+        "format_version",
+        "header_change_policy",
+        "header_status",
+        "institution",
+        "locale",
+        "medium",
+        "private_owner_uat_status",
+        "source_profile_id",
+        "source_profile_revision",
+        "source_profile_status"
+      ],
+      "properties": {
+        "column_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "export_profile": {
+          "const": "ledger_csv"
+        },
+        "format_version": {
+          "const": "synthetic_contract_v1"
+        },
+        "header_change_policy": {
+          "const": "new_immutable_profile_revision_required"
+        },
+        "header_status": {
+          "const": "exact_match"
+        },
+        "institution": {
+          "const": "kraken"
+        },
+        "locale": {
+          "const": "en"
+        },
+        "medium": {
+          "const": "csv"
+        },
+        "private_owner_uat_status": {
+          "const": "not_completed"
+        },
+        "source_profile_id": {
+          "const": "kraken_ledger_csv_source_v1"
+        },
+        "source_profile_revision": {
+          "const": "r1"
+        },
+        "source_profile_status": {
+          "const": "synthetic_pending_private_owner_uat"
+        }
+      }
+    },
+    "column_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disposition",
+        "required",
+        "role",
+        "source_column"
+      ],
+      "properties": {
+        "disposition": {
+          "enum": [
+            "mapped",
+            "retained_not_imported"
+          ]
+        },
+        "required": {
+          "const": true
+        },
+        "role": {
+          "enum": [
+            "source_row_id",
+            "source_group_id",
+            "event_time_utc_text",
+            "source_type",
+            "source_subtype",
+            "asset_class",
+            "source_asset_key",
+            "signed_quantity_decimal",
+            "asset_fee_quantity_decimal",
+            "balance_reconciliation_evidence"
+          ]
+        },
+        "source_column": {
+          "enum": [
+            "txid",
+            "refid",
+            "time",
+            "type",
+            "subtype",
+            "aclass",
+            "asset",
+            "amount",
+            "fee",
+            "balance"
+          ]
+        }
+      }
+    },
+    "route_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter_id",
+        "domain",
+        "route",
+        "route_status",
+        "source_asset_class",
+        "source_subtype",
+        "source_type"
+      ],
+      "properties": {
+        "adapter_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]{2,100}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "domain": {
+          "enum": [
+            "asset_activity",
+            "cash"
+          ]
+        },
+        "route": {
+          "enum": [
+            "reward",
+            "trade",
+            "cash"
+          ]
+        },
+        "route_status": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,100}$"
+        },
+        "source_subtype": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,100}$"
+        },
+        "source_type": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,100}$"
+        },
+        "source_asset_class": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,100}$"
+        }
+      }
+    },
+    "identity_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "date_only_matching_allowed",
+        "duplicate_txid_disposition",
+        "missing_txid_disposition",
+        "source_group_identity_components",
+        "source_ordinal_role",
+        "source_row_identity_components"
+      ],
+      "properties": {
+        "date_only_matching_allowed": {
+          "const": false
+        },
+        "duplicate_txid_disposition": {
+          "const": "diagnostic"
+        },
+        "missing_txid_disposition": {
+          "const": "diagnostic"
+        },
+        "source_group_identity_components": {
+          "const": [
+            "source_profile_id",
+            "source_profile_revision",
+            "refid",
+            "sorted_member_txids"
+          ]
+        },
+        "source_ordinal_role": {
+          "const": "closed_row_ledger_only"
+        },
+        "source_row_identity_components": {
+          "const": [
+            "source_profile_id",
+            "source_profile_revision",
+            "txid"
+          ]
+        }
+      }
+    },
+    "portfolio_selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_status",
+        "target_label",
+        "target_option_key"
+      ],
+      "properties": {
+        "mapping_status": {
+          "const": "selected_existing"
+        },
+        "target_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "target_option_key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,80}$"
+        }
+      }
+    },
+    "account_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_status",
+        "source_account_scope",
+        "target_label",
+        "target_option_key"
+      ],
+      "properties": {
+        "mapping_status": {
+          "const": "matched_existing"
+        },
+        "source_account_scope": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,100}$"
+        },
+        "target_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "target_option_key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,80}$"
+        }
+      }
+    },
+    "asset_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_status",
+        "source_asset_key",
+        "target_label",
+        "target_option_key"
+      ],
+      "properties": {
+        "mapping_status": {
+          "enum": [
+            "matched_existing",
+            "separate_catalog_handoff_required",
+            "route_deferred",
+            "cash_domain_deferred",
+            "diagnostic_only"
+          ]
+        },
+        "source_asset_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+        },
+        "target_label": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "target_option_key": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]{2,80}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "catalog_creation_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_type",
+        "separate_confirmation_required",
+        "source_asset_key",
+        "synthetic_preview_status"
+      ],
+      "properties": {
+        "entity_type": {
+          "const": "asset"
+        },
+        "separate_confirmation_required": {
+          "const": true
+        },
+        "source_asset_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+        },
+        "synthetic_preview_status": {
+          "const": "ready"
+        }
+      }
+    },
+    "catalog_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "account_mappings",
+        "asset_mappings",
+        "catalog_creation_requests",
+        "catalog_write",
+        "portfolio_selection"
+      ],
+      "properties": {
+        "account_mappings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/account_mapping"
+          }
+        },
+        "asset_mappings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/asset_mapping"
+          }
+        },
+        "catalog_creation_requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/catalog_creation_request"
+          }
+        },
+        "catalog_write": {
+          "const": false
+        },
+        "portfolio_selection": {
+          "$ref": "#/$defs/portfolio_selection"
+        }
+      }
+    },
+    "manual_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount_input_mode",
+        "basis_evidence_mode",
+        "exact_local_date",
+        "exact_local_time",
+        "exact_local_zone",
+        "gross_income_decimal",
+        "observed_at_utc",
+        "price_currency",
+        "unit_price_decimal"
+      ],
+      "properties": {
+        "amount_input_mode": {
+          "enum": [
+            "quantity_gross_amount",
+            "quantity_unit_price"
+          ]
+        },
+        "basis_evidence_mode": {
+          "const": "valuation_confirmed_as_basis"
+        },
+        "exact_local_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "exact_local_time": {
+          "type": "string",
+          "pattern": "^[0-9]{2}:[0-9]{2}:[0-9]{2}$"
+        },
+        "exact_local_zone": {
+          "const": "UTC"
+        },
+        "gross_income_decimal": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "observed_at_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "price_currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "unit_price_decimal": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "valuation_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_decimal_arithmetic",
+        "manual_input",
+        "rounding_applied",
+        "scenario",
+        "target_source_row_key",
+        "valuation_status"
+      ],
+      "properties": {
+        "exact_decimal_arithmetic": {
+          "const": true
+        },
+        "manual_input": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/manual_input"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rounding_applied": {
+          "const": false
+        },
+        "scenario": {
+          "enum": [
+            "basis_missing",
+            "manual_fiat_total",
+            "manual_unit_price"
+          ]
+        },
+        "target_source_row_key": {
+          "const": "synthetic_row_03"
+        },
+        "valuation_status": {
+          "enum": [
+            "basis_missing",
+            "manual_fiat_total_exact",
+            "manual_unit_price_exact"
+          ]
+        }
+      }
+    },
+    "provider_enrichment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "automatic_retry",
+        "market_history_plan_available",
+        "network_access",
+        "provider_access",
+        "status"
+      ],
+      "properties": {
+        "automatic_retry": {
+          "const": false
+        },
+        "market_history_plan_available": {
+          "const": false
+        },
+        "network_access": {
+          "const": false
+        },
+        "provider_access": {
+          "const": false
+        },
+        "status": {
+          "const": "disabled_separate_market_history_plan_required"
+        }
+      }
+    },
+    "disposition_count": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "disposition"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "disposition": {
+          "enum": [
+            "new_candidate",
+            "exact_existing_noop",
+            "existing_link_required",
+            "correction_proposed",
+            "ambiguous_match_blocked",
+            "deferred",
+            "cash_domain_deferred",
+            "diagnostic"
+          ]
+        }
+      }
+    },
+    "reconciliation_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_projection_count",
+        "date_only_match_count",
+        "disposition_counts",
+        "handoff_ready_count",
+        "silent_drop_count",
+        "source_row_count"
+      ],
+      "properties": {
+        "candidate_projection_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "date_only_match_count": {
+          "const": 0
+        },
+        "disposition_counts": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/disposition_count"
+          }
+        },
+        "handoff_ready_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "silent_drop_count": {
+          "const": 0
+        },
+        "source_row_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "candidate_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "value"
+      ],
+      "properties": {
+        "field": {
+          "enum": [
+            "account_key",
+            "amount_input_mode",
+            "asset_fee_quantity_decimal",
+            "basis_evidence_mode",
+            "event_time_evidence",
+            "event_type",
+            "fee_role",
+            "gross_income_decimal",
+            "local_date",
+            "local_time",
+            "price_currency",
+            "quantity_decimal",
+            "source_asset_key",
+            "source_reference",
+            "time_zone",
+            "unit_price_decimal"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "workspace_row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_values",
+        "domain",
+        "existing_match_count",
+        "fifo_revalidation_required",
+        "handoff_eligibility",
+        "mapping_status",
+        "mapped_route",
+        "predecessor_supersession_required",
+        "reason_code",
+        "reconciliation_disposition",
+        "source_group_status",
+        "source_identity_status",
+        "source_row_key",
+        "source_row_ordinal",
+        "valuation_status"
+      ],
+      "properties": {
+        "candidate_values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/candidate_value"
+          }
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "enum": [
+                "asset_activity",
+                "cash"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "existing_match_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fifo_revalidation_required": {
+          "type": "boolean"
+        },
+        "handoff_eligibility": {
+          "enum": [
+            "ready_untrusted_candidate",
+            "blocked_basis_missing",
+            "excluded_exact_noop",
+            "separate_lineage_confirmation_required",
+            "separate_correction_confirmation_required",
+            "blocked_ambiguous_match",
+            "not_eligible"
+          ]
+        },
+        "mapping_status": {
+          "enum": [
+            "matched_existing",
+            "separate_catalog_handoff_required",
+            "route_deferred",
+            "cash_domain_deferred",
+            "diagnostic_only",
+            "not_evaluated"
+          ]
+        },
+        "mapped_route": {
+          "anyOf": [
+            {
+              "enum": [
+                "reward",
+                "trade",
+                "cash"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "predecessor_supersession_required": {
+          "type": "boolean"
+        },
+        "reason_code": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{2,100}$"
+        },
+        "reconciliation_disposition": {
+          "enum": [
+            "new_candidate",
+            "exact_existing_noop",
+            "existing_link_required",
+            "correction_proposed",
+            "ambiguous_match_blocked",
+            "deferred",
+            "cash_domain_deferred",
+            "diagnostic"
+          ]
+        },
+        "source_group_status": {
+          "const": "retained_for_grouping"
+        },
+        "source_identity_status": {
+          "enum": [
+            "stable_txid_bound",
+            "identity_invalid"
+          ]
+        },
+        "source_row_key": {
+          "type": "string",
+          "pattern": "^synthetic_row_[0-9]{2}$"
+        },
+        "source_row_ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "valuation_status": {
+          "enum": [
+            "basis_missing",
+            "manual_unit_price_exact",
+            "manual_fiat_total_exact",
+            "not_required_exact_noop",
+            "not_applicable"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+EUWAX Aktiengesellschaft                       IBAN: DE00 1000 0000 4118154571
+Musterweg 85                        BIC: DEUTDESSXXX
+43863 Musterstadt              Eröffnungsdatum: 10.01.2025
+                                        Rechnungsdatum: 01.04.2025
+Monatsübersicht                         Eröffnungsbilanz                       Abschlusssaldo
+01.03.2025 - 31.03.2025                      15.536,19€                         20.302,05€
+Transaktion                    Buchungsdatum          Valutadatum                          Wert
+Max Beispiel                  02.03.2025             02.03.2025                        -1.298,30€
+Referenz: P18467619
+Beschreibung: Einzahlung
+IBAN: DE00 2000 0000 8857781155| BIC: TESTDEFFXXX
+EUWAX Aktiengesellschaft                  03.03.2025             03.03.2025                        -2.101,87€
+Referenz: P24459130
+Beschreibung: Gutschrift aus Verkauf
+IBAN: DE00 2000 0000 3838299811| BIC: TESTDEFFXXX
+Max Beispiel                  05.03.2025             05.03.2025                        2.376,71€
+Referenz: P55424458
+Beschreibung: Einzahlung
+IBAN: DE00 2000 0000 5664570308| BIC: TESTDEFFXXX
+Erika Mustermann                  07.03.2025             07.03.2025                        2.112,22€
+Referenz: P97204125
+Beschreibung: Umbuchung
+IBAN: DE00 2000 0000 4472020225| BIC: TESTDEFFXXX
+EUWAX Aktiengesellschaft                  23.03.2025             23.03.2025                        3.677,10€
+Referenz: P91432113
+Beschreibung: Gutschrift aus Verkauf
+IBAN: DE00 2000 0000 9866416646| BIC: TESTDEFFXXX
+Sehr geehrte Kundin, sehr geehrter Kunde, bitte prüfen Sie die Buchungen, Berechnungen und den
+Abschlusssaldo in der beiliegenden Monatsübersicht.

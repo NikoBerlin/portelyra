@@ -1,0 +1,9 @@
+state,event,next_state,product_write,confirmation_consumed
+schema201,preview,ready_for_confirmation,0,0
+ready_for_confirmation,confirm,confirmation_bound,0,0
+confirmation_bound,apply,attempt_published,0,1
+attempt_published,migration_commit,schema202_enabled,1,1
+schema202_enabled,receipt_publish,completed,0,1
+attempt_published,failure,recovery_required,0,1
+schema202_enabled,failure,recovery_required,0,1
+schema202,preview,already_enabled,0,0

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "automatic_retry",
+    "canonical_write",
+    "cash_write",
+    "network_access",
+    "private_values_published",
+    "profile_revision_created",
+    "provider_access",
+    "route_rules_created",
+    "source_path_exposed",
+    "statement_source_profiler_owner_uat_public_failure_version",
+    "status",
+    "tax_write",
+    "time_zone_inferred"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "const": false
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "cash_write": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "private_values_published": {
+      "const": false
+    },
+    "profile_revision_created": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "route_rules_created": {
+      "const": false
+    },
+    "source_path_exposed": {
+      "const": false
+    },
+    "tax_write": {
+      "const": false
+    },
+    "time_zone_inferred": {
+      "const": false
+    },
+    "statement_source_profiler_owner_uat_public_failure_version": {
+      "const": 1
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-recovery-candidates.schema.json",
+  "title": "Portfolio CSV domain handoff recovery candidates v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_recovery_candidates_version","status","candidates","path_exposed","internal_id_exposed","fingerprint_exposed"],
+  "properties": {
+    "portfolio_csv_handoff_recovery_candidates_version": {"const": 1},
+    "status": {"enum": ["absent","available"]},
+    "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}},
+    "path_exposed": {"const": false},
+    "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recovery_ref","staged_import_handle","domain","attempted_at_utc","recovery_reason","automatic_retry"],
+      "properties": {
+        "recovery_ref": {"type": "string", "pattern": "^portfolio_handoff_recovery_[a-f0-9]{32}$"},
+        "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+        "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+        "attempted_at_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+        "recovery_reason": {"const": "confirmation_consumed_receipt_absent"},
+        "automatic_retry": {"const": false}
+      }
+    }
+  }
+}

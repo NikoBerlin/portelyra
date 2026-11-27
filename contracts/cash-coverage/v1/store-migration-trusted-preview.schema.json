@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-trusted-preview.schema.json",
+  "title": "Cash Coverage Store Migration Trusted Preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_preview_version","status","source_schema_version","target_schema_version","context_fingerprint","canonical_fingerprint","source_store_fingerprint","legacy_attempt_set_fingerprint","legacy_command_set_fingerprint","fact_projection_fingerprint","period_count","cash_event_count","income_event_count","reconciliation_count","legacy_event_time_evidence","source_read_only","target_create_only","confirmation_required","migration_plan_fingerprint"],
+  "properties": {
+    "cash_coverage_store_migration_preview_version": {"const": 1},
+    "status": {"const": "ready_for_migration_confirmation"},
+    "source_schema_version": {"const": 2900},
+    "target_schema_version": {"const": 2901},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "canonical_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "source_store_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "legacy_attempt_set_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "legacy_command_set_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "fact_projection_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "period_count": {"type": "integer", "minimum": 0},
+    "cash_event_count": {"type": "integer", "minimum": 0},
+    "income_event_count": {"type": "integer", "minimum": 0},
+    "reconciliation_count": {"type": "integer", "minimum": 0},
+    "legacy_event_time_evidence": {"const": "utc_only_legacy"},
+    "source_read_only": {"const": true},
+    "target_create_only": {"const": true},
+    "confirmation_required": {"const": true},
+    "migration_plan_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

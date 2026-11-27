@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-public-preview.schema.json",
+  "title": "Cash Coverage Store Migration Public Preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_public_preview_version","status","source_schema_version","target_schema_version","period_count","cash_event_count","income_event_count","reconciliation_count","legacy_event_time_evidence","source_read_only","target_create_only","confirmation_required","path_exposed","identity_exposed","fingerprint_exposed","canonical_write","asset_activity_write","provider_access","network_access"],
+  "properties": {
+    "cash_coverage_store_migration_public_preview_version": {"const": 1},
+    "status": {"const": "ready_for_migration_confirmation"},
+    "source_schema_version": {"const": 2900},
+    "target_schema_version": {"const": 2901},
+    "period_count": {"type": "integer", "minimum": 0},
+    "cash_event_count": {"type": "integer", "minimum": 0},
+    "income_event_count": {"type": "integer", "minimum": 0},
+    "reconciliation_count": {"type": "integer", "minimum": 0},
+    "legacy_event_time_evidence": {"const": "utc_only_legacy"},
+    "source_read_only": {"const": true},
+    "target_create_only": {"const": true},
+    "confirmation_required": {"const": true},
+    "path_exposed": {"const": false},
+    "identity_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false},
+    "canonical_write": {"const": false},
+    "asset_activity_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false}
+  }
+}

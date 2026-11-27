@@ -1,0 +1,10 @@
+{
+ "op": "build_request",
+ "operation": "daily_history",
+ "params": {
+  "provider_symbol": "INVCO.XETRA",
+  "start_date": "2027-03-29",
+  "end_date": "2027-04-01",
+  "request_start_date": "2027-03-26"
+ }
+}

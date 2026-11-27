@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/confirmation.schema.json",
+  "title": "Trusted one-use ActivityDraft confirmation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_confirmation_version", "challenge_ref", "context_fingerprint", "draft_ref", "draft_revision", "validation_fingerprint", "issued_at_utc", "confirmed_at_utc", "expires_at_utc", "confirmation_fingerprint"],
+  "properties": {
+    "activity_draft_confirmation_version": {"const": 1},
+    "challenge_ref": {"type": "string", "pattern": "^adc_[a-f0-9]{16,64}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "draft_ref": {"type": "string", "pattern": "^adt_[a-f0-9]{32}$"},
+    "draft_revision": {"type": "integer", "minimum": 1},
+    "validation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "issued_at_utc": {"type": "string", "format": "date-time"},
+    "confirmed_at_utc": {"type": "string", "format": "date-time"},
+    "expires_at_utc": {"type": "string", "format": "date-time"},
+    "confirmation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

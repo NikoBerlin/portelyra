@@ -1,0 +1,122 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "revolut",
+  "plugin_version": "1.1.0",
+  "publisher": "Portelyra",
+  "institution": "Revolut",
+  "label": "Revolut",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "9d5b2568895738924b069c530e804e286a34c06ff788090a80564a800fdf3110",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "6b60987c5f3eea295e4749abff7942361f07ee4217d243792b58f4e9a458b371"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "04bb287e7e39a48c636c6377967f0fdd712f314ff37e4869588e88f81751fb76"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "revolut_current_v1",
+      "domain": "cash",
+      "label": "Revolut Girokonto (CSV)",
+      "document_kind": "Kontoauszug Girokonto (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "type",
+            "product",
+            "completed date",
+            "amount",
+            "fee",
+            "balance"
+          ]
+        ]
+      },
+      "tested_formats": "CSV-Kontoauszug „All accounts“ mit Type, Product, Completed Date, Amount, Fee, Balance; Zeilen mit Product „Current“; Format Stand 10/2026.",
+      "known_limits": [
+        "Gebühren verlassen das Konto zusammen mit dem Betrag.",
+        "Der Anfangssaldo wird aus der ersten Zeile abgeleitet."
+      ],
+      "generator": true
+    },
+    {
+      "reader_id": "revolut_savings_v1",
+      "domain": "cash",
+      "label": "Revolut Sparkonto/Tagesgeld (CSV)",
+      "document_kind": "Kontoauszug Sparkonto (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "type",
+            "product",
+            "completed date",
+            "amount",
+            "fee",
+            "balance"
+          ]
+        ]
+      },
+      "tested_formats": "CSV-Kontoauszug „All accounts“ mit Type, Product, Completed Date, Amount, Fee, Balance; Zeilen mit Product „Deposit“; Format Stand 10/2026.",
+      "known_limits": [
+        "Zinsen, deren Steuer den Betrag ganz aufzehrt, werden gemeldet statt gebucht.",
+        "Der Anfangssaldo wird aus der ersten Zeile abgeleitet."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    }
+  ],
+  "intake": {
+    "key": "revolut",
+    "label": "Revolut",
+    "folders": [
+      "revolut"
+    ],
+    "downloads": [
+      "Kontoauszug „All accounts“ als CSV – eine Datei für Girokonto und Sparkonto (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "Girokonto und Sparkonto, beide in einer Datei",
+    "readers": [
+      [
+        "cash",
+        "revolut_current_v1"
+      ],
+      [
+        "cash",
+        "revolut_savings_v1"
+      ]
+    ],
+    "account_words": [
+      "revolut"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "revolut_current_v1",
+      "input": "fixtures/revolut_current_v1.csv",
+      "expected": "fixtures/revolut_current_v1.expected.json"
+    },
+    {
+      "domain": "cash",
+      "reader_id": "revolut_savings_v1",
+      "input": "fixtures/revolut_savings_v1.csv",
+      "expected": "fixtures/revolut_savings_v1.expected.json"
+    }
+  ]
+}

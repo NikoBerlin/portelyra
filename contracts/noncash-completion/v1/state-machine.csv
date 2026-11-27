@@ -1,0 +1,8 @@
+state,event,next_state,legacy_source_read,canonical_write,provider_access,network_access,automatic_retry
+facts_open,plan_closure,facts_open,no,no,no,no,no
+facts_open,separately_authorized_freeze_delta,closure_candidate,read_only,no,no,no,no
+closure_candidate,all_lineages_terminal_and_fifo_parity,facts_closed,no,no,no,no,no
+facts_closed,prepare_enrichment_interfaces,foundation_ready,no,no,no,no,no
+foundation_ready,complete_downstream_artifacts,analysis_data_ready,no,no,no,no,no
+foundation_ready,register_concrete_importer,foundation_ready,no,no,no,no,no
+analysis_data_ready,missing_or_changed_downstream_input,foundation_ready,no,no,no,no,no

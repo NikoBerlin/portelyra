@@ -1,0 +1,3 @@
+Transaction ID; Transaction type; Currency; Asset; Eur (amount); Asset (amount); Asset (market price); Fee; Date (UTC - Coordinated Universal Time)
+bison-invented-0001; Buy; Eur; Link; 200.00; 10.000000; 20.00; 1.50; 2027-05-10 09:00:00
+bison-invented-0002; Deposit; Eur; ; 500.00; ; ; 0; 2027-05-09 09:00:00

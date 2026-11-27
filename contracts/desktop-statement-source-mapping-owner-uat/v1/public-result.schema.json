@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "candidate_generation_authorized",
+    "owner_evidence_created",
+    "private_values_published",
+    "profile_revision_created",
+    "route_rules_active",
+    "source_read_attempt_count",
+    "statement_source_mapping_owner_uat_public_result_version",
+    "status"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "type": "boolean"
+    },
+    "candidate_generation_authorized": {
+      "type": "boolean"
+    },
+    "owner_evidence_created": {
+      "type": "boolean"
+    },
+    "private_values_published": {
+      "type": "boolean"
+    },
+    "profile_revision_created": {
+      "type": "boolean"
+    },
+    "route_rules_active": {
+      "type": "boolean"
+    },
+    "source_read_attempt_count": {
+      "type": "integer"
+    },
+    "statement_source_mapping_owner_uat_public_result_version": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

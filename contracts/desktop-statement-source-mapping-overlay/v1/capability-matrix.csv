@@ -1,0 +1,14 @@
+capability,status
+hash_only_mapping_overlay,allowed
+owner_column_decision,required
+owner_semantic_tuple_decision,required
+private_source_read,forbidden
+adapter_activation,forbidden
+candidate_generation,forbidden
+canonical_write,forbidden
+cash_write,forbidden
+tax_write,forbidden
+provider_access,forbidden
+network_access,forbidden
+automatic_retry,forbidden
+release_or_deployment,forbidden

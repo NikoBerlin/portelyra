@@ -1,0 +1,31 @@
+code,blocking,public_message
+desktop_market_history_review_boundary_failed,yes,Der gestufte Marktdatenprozess konnte nicht sicher abgeschlossen werden.
+desktop_market_history_review_confirmation_required,yes,Die Aktion benötigt eine neue ausdrückliche Bestätigung.
+desktop_market_history_review_context_invalid,yes,Der lokale Marktdatenkontext ist ungültig.
+desktop_market_history_review_discard_invalid,yes,Ein begonnener Schreibvorgang lässt sich nur verwerfen, wenn er nachweislich nie angekommen ist.
+desktop_market_history_review_fetch_attempt_consumed,yes,Der bestätigte Abrufversuch wurde bereits verbraucht.
+desktop_market_history_review_input_invalid,yes,Die Eingabe für den gestuften Marktdatenprozess ist ungültig.
+desktop_market_history_review_preview_invalid,yes,Die Abrufvorschau ist ungültig oder nicht mehr aktuell.
+desktop_market_history_review_publication_invalid,yes,Der Veröffentlichungsnachweis ist ungültig.
+desktop_market_history_review_publish_attempt_consumed,yes,Der bestätigte Veröffentlichungsversuch wurde bereits verbraucht.
+desktop_market_history_review_publish_write_failed,yes,Die Veröffentlichung konnte nicht sicher abgeschlossen werden.
+desktop_market_history_review_recovery_required,yes,Der mehrdeutige Versuch muss zuerst exakt abgeglichen werden.
+desktop_market_history_review_rejected,yes,Der geprüfte Kandidat wurde verworfen.
+desktop_market_history_review_response_currency_mismatch,yes,Die Antwort meldet eine andere Kurswaehrung als die gebundene Notierung.
+desktop_market_history_review_response_invalid,yes,Die normalisierte Antwort ist für die Prüfung ungültig.
+desktop_market_history_review_response_timezone_mismatch,yes,Die Antwort meldet eine andere Boersenzeitzone als die gebundene Notierung.
+desktop_market_history_review_source_not_listed,yes,Der Titel war in diesem Zeitraum noch nicht notiert; die Quelle fuehrt ihn erst ab einem spaeteren Tag.
+desktop_market_history_review_source_rejected,yes,Die Quelle hat den Abruf abgewiesen, etwa wegen zu vieler Abrufe kurz hintereinander.
+desktop_market_history_review_stage_invalid,yes,Der owner-lokale gestagte Kandidat ist ungültig.
+desktop_market_history_review_store_invalid,yes,Der owner-lokale Marktdatenbereich ist ungültig.
+desktop_market_history_review_transport_failed,yes,Der einmalige Abruf konnte nicht sicher abgeschlossen werden.
+desktop_market_history_review_fetch_interrupted,yes,Der Abruf wurde durch einen Neustart unterbrochen und ist als unterbrochen festgehalten.
+desktop_market_history_review_credential_unavailable,yes,Für den Kursanbieter dieser Zuordnung ist kein bereiter Zugang eingetragen.
+desktop_market_history_review_cost_limit,yes,Die Obergrenze an Abrufen dieses Kursanbieters ist erreicht oder er hat wegen zu vieler Abrufe abgewiesen.
+market_history_review_boundary_failed,yes,Die Marktdatenprüfung konnte nicht sicher abgeschlossen werden.
+market_history_review_calendar_invalid,yes,Der gebundene Handelskalender ist ungültig.
+market_history_review_candidate_invalid,yes,Der abgerufene Marktdatenkandidat ist ungültig.
+market_history_review_confirmation_required,yes,Die Veröffentlichung benötigt eine neue ausdrückliche Bestätigung.
+market_history_review_input_invalid,yes,Die Marktdatenprüfung ist ungültig.
+market_history_review_stale,yes,Die Marktdatenvorschau ist nicht mehr aktuell.
+desktop_market_history_review_scheduled_disabled,yes,Dieser Kursanbieter ist im täglichen Zeitlauf nicht freigegeben.

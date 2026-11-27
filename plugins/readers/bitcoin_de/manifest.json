@@ -1,0 +1,104 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "bitcoin_de",
+  "plugin_version": "1.1.1",
+  "publisher": "Portelyra",
+  "institution": "Bitcoin.de",
+  "label": "Bitcoin.de",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "29a6dffff202f9b2045d247c8b9f5107a5804ce037dcb824ba98a1604580a6ae",
+  "modules": [
+    {
+      "path": "reader_crypto.py",
+      "sha256": "bc9edcf1bf38d5a5433698f3eeb99fb95ce18d1c0b3927b3e92904fdeb6e4816"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "6d66101a7b9e4d3db46309c6476462084ece36865013f6279eb86a61fb5bf6bb"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "bitcoin_de_crypto_v1",
+      "domain": "crypto",
+      "label": "Bitcoin.de (Kontoauszug je Coin)",
+      "document_kind": "Kontoauszug je Coin (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "datum",
+            "typ",
+            "währung",
+            "referenz",
+            "zu- / abgang"
+          ]
+        ]
+      },
+      "tested_formats": "Kontoauszug je Coin mit Datum, Typ, Währung, Referenz, Zu- / Abgang; Zeiten in Europe/Berlin.",
+      "known_limits": [
+        "Je Coin eine Datei; den bezahlten Betrag am Bankauszug prüfen."
+      ],
+      "generator": true,
+      "source": {
+        "key": "bitcoin_de",
+        "label": "Bitcoin.de",
+        "format_label": "Bitcoin.de (Kontoauszug je Coin)",
+        "institution_names": [
+          "Bitcoin.de"
+        ],
+        "wallets": {
+          "main": {
+            "label": "Konto",
+            "account_name": {}
+          }
+        },
+        "default_wallet": {
+          "label_prefix": "",
+          "account_name": {}
+        },
+        "pairing": "none",
+        "internal_transfers": false
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    }
+  ],
+  "intake": {
+    "key": "bitcoin_de",
+    "label": "Bitcoin.de",
+    "folders": [
+      "bitcoinde",
+      "bitcoin.de"
+    ],
+    "downloads": [
+      "Kontoauszug je Coin als CSV (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "je Coin ein Kontoauszug",
+    "readers": [
+      [
+        "crypto",
+        "bitcoin_de_crypto_v1"
+      ]
+    ],
+    "account_words": [
+      "bitcoin.de"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "crypto",
+      "reader_id": "bitcoin_de_crypto_v1",
+      "input": "fixtures/crypto_bitcoin_de_crypto_v1.csv",
+      "expected": "fixtures/crypto_bitcoin_de_crypto_v1.expected.json"
+    }
+  ]
+}

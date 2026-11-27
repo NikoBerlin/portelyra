@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-recovery-attempt.schema.json",
+  "title": "Cash Coverage Store Migration Recovery Attempt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_recovery_attempt_version","recovery_confirmation_fingerprint","original_confirmation_fingerprint","migration_plan_fingerprint","recovery_plan_fingerprint","attempted_at_utc","attempt_status"],
+  "properties": {
+    "cash_coverage_store_migration_recovery_attempt_version": {"const": 1},
+    "recovery_confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "original_confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "migration_plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "recovery_plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "attempted_at_utc": {"$ref": "#/$defs/utc"},
+    "attempt_status": {"const": "attempted"}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "utc": {"type": "string", "format": "date-time", "pattern": "Z$"}}
+}

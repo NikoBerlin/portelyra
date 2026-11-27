@@ -1,0 +1,283 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "bsdex",
+  "plugin_version": "1.2.1",
+  "publisher": "Portelyra",
+  "institution": "BSDEX",
+  "label": "BSDEX (Börse Stuttgart Digital Exchange)",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "d8e86ca7de0e389b4e517b52858d1cdd3648d011ea3441fc02e73c69223315a9",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "26a360a9540bf02bd025d1499af0961b063081244376d0885e0f55ed09d3fe86"
+    },
+    {
+      "path": "reader_crypto.py",
+      "sha256": "1234d8d4b11bf4e20d51414d08b689e35a0faf1bda3cfabb92b9dd57bccf5535"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "cacbda0cb9b598ac4f45b974ea32bef467539f116da674ef48581ffe8953e641"
+    },
+    {
+      "path": "reader_reward.py",
+      "sha256": "a80b4ae7a1695337f111b62bf116fe3d0356fc3aecc68441edb5e08fe0caaa3c"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "bsdex_eur_v1",
+      "domain": "cash",
+      "label": "BSDEX Euro-Guthaben: Transaktionshistorie je Jahr mit Export „Transaktionen“ (CSV)",
+      "document_kind": "Export Transaktionen und Transaktionshistorie (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "transaktionstyp",
+            "kryptowährung",
+            "betrag",
+            "seite",
+            "gefüllt",
+            "ausgeführter gesamtbetrag",
+            "status",
+            "transaktionsentgelt",
+            "erstellt",
+            "finalisiert am"
+          ],
+          [
+            "id",
+            "typ",
+            "ausführung",
+            "eingehender betrag",
+            "eingehendes asset",
+            "ausgehender betrag",
+            "ausgehendes asset",
+            "transaktionsentgelt",
+            "entgeltwährung"
+          ]
+        ]
+      },
+      "tested_formats": "Export „Transaktionen“ zusammen mit den Jahreshistorien; je Order auf den Cent.",
+      "known_limits": [
+        "Kein Saldo im Export; die Vollständigkeit belegt erst ein Saldoabgleich.",
+        "Eine Order ohne Ausführungen in der Historie hält den Stapel an; die Vorschau nennt je Grund die erste betroffene Order."
+      ],
+      "combine": true,
+      "generator": true
+    },
+    {
+      "reader_id": "bsdex_history_v1",
+      "domain": "crypto",
+      "label": "BSDEX (Transaktionshistorie je Jahr)",
+      "document_kind": "Transaktionshistorie (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "id",
+            "typ",
+            "ausführung",
+            "eingehender betrag",
+            "eingehendes asset",
+            "ausgehender betrag",
+            "ausgehendes asset",
+            "transaktionsentgelt",
+            "entgeltwährung"
+          ]
+        ]
+      },
+      "tested_formats": "Transaktionshistorie je Jahr mit ID, Typ, Ausführung (UTC), ein- und ausgehendem Betrag und Asset, Transaktionsentgelt.",
+      "known_limits": [
+        "Bucht nichts; belegt die genauen Euro-Beträge der Orders des Exports."
+      ],
+      "generator": true
+    },
+    {
+      "reader_id": "bsdex_crypto_v1",
+      "domain": "crypto",
+      "label": "BSDEX (Export „Transaktionen“, Krypto)",
+      "document_kind": "Export Transaktionen (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "transaktionstyp",
+            "kryptowährung",
+            "betrag",
+            "erstellt",
+            "zieladresse",
+            "sendeadresse"
+          ]
+        ]
+      },
+      "tested_formats": "Export „Transaktionen“ mit Transaktionstyp, Kryptowährung, Betrag, Erstellt, Zieladresse, Sendeadresse; Limit-Orders mit Gefüllt und Transaktionsentgelt.",
+      "known_limits": [
+        "Den genauen Euro-Betrag je Order liefert erst die Jahreshistorie; ohne passende Ausführungen bleibt eine Order offen, mit dem genauen Grund (Historie fehlt oder zu alt, keine Ausführung im Zeitraum, Menge oder Betrag passen nicht).",
+        "Weicht der genaue Betrag einer Order um mehr als 5 Cent vom gerundeten des Exports ab, bleibt nur sie offen; weichen mehr als ein Viertel der Orders ab, verwirft der Kern das Ergebnis."
+      ],
+      "combine": true,
+      "generator": true,
+      "source": {
+        "key": "bsdex",
+        "label": "BSDEX",
+        "institution_names": [
+          "BSDEX",
+          "Börse Stuttgart Digital"
+        ],
+        "wallets": {
+          "main": {
+            "label": "Konto",
+            "account_name": {
+              "none": [
+                "staking"
+              ]
+            }
+          },
+          "staking": {
+            "label": "Staking",
+            "account_name": {
+              "any": [
+                "staking"
+              ]
+            }
+          }
+        },
+        "default_wallet": {
+          "label_prefix": "",
+          "account_name": {
+            "none": [
+              "staking"
+            ]
+          }
+        },
+        "pairing": "none",
+        "internal_transfers": true,
+        "order_window_days": 200,
+        "reason_texts": {
+          "direction_unknown": "BSDEX nennt die Richtung nicht – Export des Gegen-Wallets mitwählen",
+          "order_time": "BSDEX-Auftrag vom {date} ohne „Finalisiert am“ (älterer Export nennt nur die Anlage; laut Export {export_eur} Kurswert und {export_fee} Gebühr, je Order gerundet) – aktuellen Export ziehen oder von Hand mit den Beträgen der Transaktionshistorie buchen",
+          "history_missing": "BSDEX-Order vom {date}: Die Transaktionshistorie {year} fehlt – Historie {year} bei BSDEX laden und ablegen, dann erneut prüfen. Gebucht wird nur der genaue Betrag, nie der gerundete aus dem Export",
+          "history_outdated": "BSDEX-Order vom {date}: Die Transaktionshistorie reicht nur bis {until} – aktuelle Historie laden und ablegen (das laufende Jahr neu), dann erneut prüfen. Gebucht wird nur der genaue Betrag, nie der gerundete aus dem Export",
+          "executions_missing": "BSDEX-Order vom {date}: Die Transaktionshistorie deckt den Tag ab, nennt im Zeitraum der Order aber keine Ausführung in dieser Richtung – Export und Historie vom selben Tag laden, dann erneut prüfen. Gebucht wird nur der genaue Betrag, nie der gerundete aus dem Export",
+          "executions_quantity_differs": "BSDEX-Order vom {date}: Die Ausführungen im Zeitraum der Order ergeben nicht die {quantity} {ticker} aus dem Export – beide Belege prüfen und von Hand buchen, mit den Beträgen der Historie",
+          "executions_ambiguous": "BSDEX-Order vom {date}: Im Zeitraum der Order liegen zu viele Ausführungen, um sie eindeutig zuzuordnen – von Hand buchen, mit den Beträgen der Historie",
+          "export_amount_differs": "BSDEX-Order vom {date}: Die Ausführungen in der Transaktionshistorie ergeben {executions_eur} Kurswert und {executions_fee} Gebühr, der Export nennt {export_eur} und {export_fee} – beide Belege prüfen, dann von Hand buchen"
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    },
+    {
+      "reader_id": "bsdex_transactions_csv_v1",
+      "domain": "reward",
+      "label": "BSDEX (Export „Transaktionen“, Rewards)",
+      "document_kind": "Export Transaktionen (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "erstellt",
+            "transaktionstyp",
+            "kryptowährung",
+            "betrag",
+            "transaktionsentgelt"
+          ],
+          [
+            "erstellt",
+            "transaktionstyp",
+            "kryptowaehrung",
+            "betrag",
+            "transaktionsentgelt"
+          ]
+        ]
+      },
+      "tested_formats": "Export „Transaktionen“ mit Transaktionstyp, Kryptowährung, Betrag, Erstellt, Transaktionsentgelt; Staking-Rewards.",
+      "known_limits": [
+        "Keine Kennung je Zeile: Der Schlüssel bindet Datei und Zeile; in einem neuen Download erkennt der Kern gebuchte Rewards an Zeit, Coin und Menge.",
+        "Ohne Bewertung im Export; bewertet wird mit Marktdaten.",
+        "Die Zeiten des Exports gelten in Berliner Zeit.",
+        "Liest nur Rewards; Käufe, Verkäufe, Ein- und Auszahlungen liest der Krypto- bzw. Cash-Leser."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-23",
+        "checked_on": "2026-10-23"
+      }
+    }
+  ],
+  "intake": {
+    "key": "bsdex",
+    "label": "BSDEX",
+    "folders": [
+      "bsdex"
+    ],
+    "downloads": [
+      "zuerst die Transaktionshistorie des laufenden Jahres als CSV (jeden Monat neu; im Januar auch das Vorjahr)",
+      "am selben Tag die Transaktionen als CSV mit allen Typen (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "alle Coins, Staking und das Euro-Guthaben",
+    "readers": [
+      [
+        "crypto",
+        "bsdex_crypto_v1"
+      ],
+      [
+        "crypto",
+        "bsdex_history_v1"
+      ],
+      [
+        "reward",
+        "bsdex_transactions_csv_v1"
+      ],
+      [
+        "cash",
+        "bsdex_eur_v1"
+      ]
+    ],
+    "account_words": [
+      "bsdex"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "bsdex_eur_v1",
+      "input": "fixtures/cash_bsdex_eur_v1.csv",
+      "expected": "fixtures/cash_bsdex_eur_v1.expected.json"
+    },
+    {
+      "domain": "crypto",
+      "reader_id": "bsdex_crypto_v1",
+      "input": "fixtures/crypto_bsdex_crypto_v1.csv",
+      "expected": "fixtures/crypto_bsdex_crypto_v1.expected.json"
+    },
+    {
+      "domain": "crypto",
+      "reader_id": "bsdex_history_v1",
+      "input": "fixtures/crypto_bsdex_history_v1.csv",
+      "expected": "fixtures/crypto_bsdex_history_v1.expected.json"
+    },
+    {
+      "domain": "reward",
+      "reader_id": "bsdex_transactions_csv_v1",
+      "input": "fixtures/reward_bsdex_transactions_csv_v1.csv",
+      "expected": "fixtures/reward_bsdex_transactions_csv_v1.expected.json"
+    }
+  ]
+}

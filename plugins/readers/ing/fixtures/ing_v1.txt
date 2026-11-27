@@ -1,0 +1,16 @@
+ING-DiBa AG
+Invented Owner Alter Saldo 1.000,00 Euro
+12345 Musterstadt Neuer Saldo 3.109,52 Euro
+Girokonto Nummer 0000000000
+Kontoauszug Februar 2027
+Buchung Buchung / Verwendungszweck Betrag (EUR)
+Valuta
+01.02.2027   Lastschrift VERSICHERUNG INVENTED                                    -137,00
+01.02.2027   MNr. 11111 RNR 1111111111 Datum 06. 01.2027 Betrag 137,00
+01.02.2027   Lastschrift Bargeldauszahlung VISA Card INVENTED                     -45,001
+29.01.2027   DE
+09.02.2027   Gutschrift Invented Sender                                           120,00
+24.02.2027   Gehalt/Rente Invented Employer                                     2.140,35
+24.02.2027   Gehalt Februar
+28.02.2027   Zinsertrag                                                              31,17
+28.02.2027   Zinsen 01.01.2027 - 28.02.2027

@@ -1,0 +1,19 @@
+code,source,domain,meaning
+cash_statement_header_invalid,reader,cash,Der Beleg passt nicht zur Vorlage des Lesers (Kopfzeile oder Pflichtangaben fehlen).
+cash_statement_source_invalid,reader,cash,Die Datei ist beschädigt oder kein Beleg dieses Formats.
+cash_statement_multiple_accounts,reader,cash,Der Export nennt mehrere Konten; je Konto exportieren.
+securities_statement_source_invalid,reader,securities;fx,Eine Zahl im Beleg ist nicht lesbar.
+statement_exchange_adapter_header_invalid,reader,reward,Der Export passt nicht zum Profil des Lesers (Kopfzeile oder Pflichtspalten fehlen).
+statement_exchange_adapter_source_invalid,reader,reward,Die Datei ist beschädigt, zu groß oder kein Export dieses Formats.
+tax_document_source_invalid,reader,income_statement,Der Beleg ist keine Erträgnisaufstellung dieses Formats.
+statement_reader_pdf_text_missing,reader,any,Der PDF-Text fehlt (nur bei Aufruf ohne Kern).
+statement_reader_failed,core,any,Der Leser ist abgestürzt oder hat einen Code außerhalb der Liste gemeldet.
+statement_reader_output_invalid,core,any,Das Ergebnis verletzt das Schema oder die Plausibilität seines Bereichs.
+statement_reader_isolation_unavailable,core,any,Die Abschottung steht nicht zur Verfügung (Linux ab Kernel 6.2 mit Landlock 3 nötig); es gibt keinen Import.
+statement_reader_timeout,core,any,Der Leser hat die Zeitgrenze überschritten.
+statement_reader_unavailable,core,any,Der Leser ist nicht installiert oder seine Prüfsumme stimmt nicht.
+statement_reader_manifest_invalid,core,any,Das Manifest ist unvollständig oder ungültig; das Plugin wird nicht geladen.
+statement_reader_api_version_unsupported,core,any,Das Plugin nennt eine Schnittstellenversion, die dieser Kern nicht kennt.
+statement_reader_entry_mismatch,core,any,Die Prüfsumme der Leserdatei weicht vom Manifest ab.
+statement_reader_fixture_missing,core,any,Ein Leser hat keinen Testbeleg mit erwartetem Ergebnis.
+statement_reader_id_conflict,core,any,Eine Leserkennung ist schon von einem anderen Plugin belegt.

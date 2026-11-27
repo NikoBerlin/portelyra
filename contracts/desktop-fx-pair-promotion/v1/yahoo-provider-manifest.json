@@ -1,0 +1,9 @@
+{
+  "plugin_id": "yahoo_market_v1",
+  "plugin_version": "1.0.0",
+  "provider_id": "yahoo",
+  "capabilities": ["listing_search", "daily_history", "fx_daily_history"],
+  "network_default": "disabled",
+  "automatic_retry": false,
+  "redirects": false
+}

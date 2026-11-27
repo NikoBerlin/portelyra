@@ -1,0 +1,15 @@
+Scalable Capital Bank GmbH • Seitzstraße 8e • 80538 München • Deutschland
+Erika Musterfrau                                                                           Datum         22.03.2027
+Dividende
+Für 01.01.2027 - 31.12.2027
+Berechtigtes Wertpapier             Invented Equity Fund
+ISIN                                US0378331005
+Berechtigte Anzahl                  6
+Ex Tag                              03.03.2027
+Verrechnungskonto                   DE00INVENTED
+Kontobewegung
+Buchung         Wertstellung         Typ                                                           Betrag / Stk.       Berechtigte Anzahl           Gesamt
+22.03.2027 20.03.2027                Gutschrift                                                           1,93 USD                           6     4,95 EUR
+                                                                                                  USD / EUR 1,1500
+                                                                                                       Ausländische Quellensteuer               -0,75 EUR
+                                                                                                                        Gesamtbetrag             4,20 EUR

@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "attempt_fingerprint",
+    "automatic_retry_authorized",
+    "context_binding_sha256",
+    "created_at_utc",
+    "profiler_authorization_sha256",
+    "selection_binding_sha256",
+    "source_path_retained",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "type": "boolean"
+    },
+    "attempt_fingerprint": {
+      "type": "string"
+    },
+    "automatic_retry_authorized": {
+      "type": "boolean"
+    },
+    "context_binding_sha256": {
+      "type": "string"
+    },
+    "created_at_utc": {
+      "type": "string"
+    },
+    "profiler_authorization_sha256": {
+      "type": "string"
+    },
+    "selection_binding_sha256": {
+      "type": "string"
+    },
+    "source_path_retained": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

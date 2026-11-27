@@ -1,0 +1,5 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,
+  "required":["contract_version","challenge_ref","preview_ref","issued_at_utc","expires_at_utc","decision"],
+  "properties":{"contract_version":{"const":1},"challenge_ref":{"type":"string","pattern":"^drc_[a-f0-9]{32}$"},"preview_ref":{"type":"string","pattern":"^drp_[a-f0-9]{32}$"},"issued_at_utc":{"type":"string","pattern":"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},"expires_at_utc":{"type":"string","pattern":"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},"decision":{"const":"confirm_once"}}
+}

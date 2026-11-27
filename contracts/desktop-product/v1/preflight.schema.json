@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/desktop-product/v1/preflight.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["desktop_product_preflight_version", "status", "checks", "provider_access", "canonical_write"],
+  "properties": {
+    "desktop_product_preflight_version": {"const": 1},
+    "status": {"enum": ["ready_to_install", "ready_to_initialize", "ready_to_start", "upgrade_required", "upgrade_recovery_required"]},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["linux", "linux_x86_64", "r_runtime", "python_runtime", "sqlite_runtime", "required_r_packages", "project_sources", "home_boundary", "local_packages_installed", "release_source_current", "upgrade_recovery_required", "runtime_registry_initialized"],
+      "properties": {
+        "linux": {"const": true},
+        "linux_x86_64": {"const": true},
+        "r_runtime": {"const": true},
+        "python_runtime": {"const": true},
+        "sqlite_runtime": {"const": true},
+        "required_r_packages": {"const": true},
+        "project_sources": {"const": true},
+        "home_boundary": {"const": true},
+        "local_packages_installed": {"type": "boolean"},
+        "release_source_current": {"type": "boolean"},
+        "upgrade_recovery_required": {"type": "boolean"},
+        "runtime_registry_initialized": {"type": "boolean"}
+      }
+    },
+    "provider_access": {"const": false},
+    "canonical_write": {"const": false}
+  }
+}

@@ -1,0 +1,28 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "1.1",
+   "balance_after_decimal": null,
+   "kind": "interest",
+   "local_date": "2026-09-01",
+   "source_row_ordinal": 1,
+   "text": "Erhaltene Zinsen"
+  },
+  {
+   "amount_decimal": "20",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2026-09-15",
+   "source_row_ordinal": 2,
+   "text": "Überweisung"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_as_of_date": "2026-09-30",
+  "closing_balance_decimal": "521.1",
+  "opening_balance_decimal": "500",
+  "period_from": "2026-09-01",
+  "period_to": "2026-09-30"
+ }
+}

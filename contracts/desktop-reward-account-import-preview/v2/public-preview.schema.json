@@ -1,0 +1,114 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "candidate_generation_authorized",
+    "rows",
+    "row_count",
+    "selected_source_account_sha256",
+    "selected_source_asset_sha256",
+    "silent_drop_count",
+    "source_balance_disposition",
+    "status",
+    "target_account_option_key",
+    "target_asset_option_key",
+    "terminal_disposition_counts",
+    "version"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "type": "boolean"
+    },
+    "candidate_generation_authorized": {
+      "type": "boolean"
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "disposition",
+          "source_identity_sha256"
+        ],
+        "properties": {
+          "disposition": {
+            "type": "string"
+          },
+          "source_identity_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "candidate": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "row_count": {
+      "type": "integer"
+    },
+    "selected_source_account_sha256": {
+      "type": "string"
+    },
+    "selected_source_asset_sha256": {
+      "type": "string"
+    },
+    "silent_drop_count": {
+      "type": "integer"
+    },
+    "source_balance_disposition": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "target_account_option_key": {
+      "type": "string"
+    },
+    "target_asset_option_key": {
+      "type": "string"
+    },
+    "terminal_disposition_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reward_candidate_disabled",
+        "other_source_account_deferred",
+        "other_source_asset_deferred",
+        "nonreward_trade_deferred",
+        "manual_account_transfer_deferred",
+        "cash_domain_deferred",
+        "diagnostic"
+      ],
+      "properties": {
+        "reward_candidate_disabled": {
+          "type": "integer"
+        },
+        "other_source_account_deferred": {
+          "type": "integer"
+        },
+        "other_source_asset_deferred": {
+          "type": "integer"
+        },
+        "nonreward_trade_deferred": {
+          "type": "integer"
+        },
+        "manual_account_transfer_deferred": {
+          "type": "integer"
+        },
+        "cash_domain_deferred": {
+          "type": "integer"
+        },
+        "diagnostic": {
+          "type": "integer"
+        }
+      }
+    },
+    "version": {
+      "type": "integer"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

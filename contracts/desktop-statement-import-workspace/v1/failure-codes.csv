@@ -1,0 +1,10 @@
+failure_code,meaning
+desktop_statement_import_workspace_boundary_failed,CLI process or response framing was unavailable malformed or over-capable.
+desktop_statement_import_workspace_decimal_invalid,A required exact decimal text was malformed and no float fallback was used.
+desktop_statement_import_workspace_fixture_invalid,A hash-bound public invented fixture registry fixture or synthetic state was malformed.
+desktop_statement_import_workspace_header_drift,The ordered source header did not exactly match the immutable synthetic profile revision.
+desktop_statement_import_workspace_input_invalid,The command or synthetic scenario was not exactly allowed.
+desktop_statement_import_workspace_profile_invalid,The source profile semantics did not match the registered immutable synthetic revision.
+desktop_statement_import_workspace_projection_invalid,The browser-safe closed-row projection was malformed or exposed forbidden authority.
+desktop_statement_import_workspace_reconciliation_invalid,The terminal disposition balance did not cover every source row exactly once.
+desktop_statement_import_workspace_row_invalid,A synthetic source row could not be mapped without guessing or silent repair.

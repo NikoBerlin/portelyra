@@ -1,0 +1,4 @@
+{
+ "host": "query1.finance.yahoo.com",
+ "target": "/v8/finance/chart/INVENTEDCO.XY?period1=1806105600&period2=1806537600&interval=1d&events=div%2Csplits&includeAdjustedClose=true"
+}

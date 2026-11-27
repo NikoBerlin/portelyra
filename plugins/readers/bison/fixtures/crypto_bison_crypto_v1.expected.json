@@ -1,0 +1,29 @@
+{
+ "candidates": [
+  {
+   "address": "",
+   "at_utc": "2027-05-10T09:00:00Z",
+   "eur": "200",
+   "eur_fee": "1.5",
+   "fee_quantity": null,
+   "file_name": "crypto_bison_crypto_v1.csv",
+   "group": "",
+   "hash": "",
+   "kind": "trade",
+   "profile": "crypto_row",
+   "quantity": "10",
+   "quote": "",
+   "row_key": "da6a3362b891ec38b3e983a810571956dc3878f3b877e25734cc318d65503bf9",
+   "row_no": 1,
+   "source": "bison",
+   "ticker": "LINK",
+   "transaction_id": "bison-invented-0001",
+   "wallet": "main",
+   "zone": "UTC"
+  }
+ ],
+ "row_reasons": {
+  "crypto_fiat": 1
+ },
+ "status": "multi"
+}

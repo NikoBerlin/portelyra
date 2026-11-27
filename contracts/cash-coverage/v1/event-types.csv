@@ -1,0 +1,6 @@
+event_type,balance_effect,related_account,flow_classification,guv_effect,external_counter_account
+opening_balance,sets_period_opening,forbidden,not_applicable,none,no
+deposit,positive,forbidden,explicit_or_unclassified,none,no
+withdrawal,negative,forbidden,explicit_or_unclassified,none,no
+transfer,source_negative_destination_positive,required,not_applicable,none,no
+interest_income,none,forbidden,not_applicable,recognized_income,no

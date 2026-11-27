@@ -1,0 +1,5 @@
+state,event,next_state
+private_review_in_memory,submit_complete_decision,validated_mapping
+validated_mapping,hash_private_values,owner_mapping_overlay_disabled
+private_review_in_memory,incomplete_or_ambiguous,blocked
+owner_mapping_overlay_disabled,activate,forbidden

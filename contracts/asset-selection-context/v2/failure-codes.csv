@@ -1,0 +1,6 @@
+code,blocking,public_message
+asset_selection_context_state_invalid,1,Der Auswahlzustand ist nicht verfügbar.
+asset_selection_context_catalog_invalid,1,Der Browserkatalog enthält keine eindeutigen Asset- oder Account-Referenzen.
+asset_selection_context_input_invalid,1,Auswahlalgebra oder Facettenwerte sind ungültig.
+asset_selection_context_selection_invalid,1,Mindestens eine ausgewählte Referenz ist nicht mehr verfügbar.
+asset_selection_context_read_model_invalid,1,Die identity-bearing Activity-Ansicht ist nicht kompatibel.

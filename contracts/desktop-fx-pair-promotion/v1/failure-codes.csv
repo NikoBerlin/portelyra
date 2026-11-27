@@ -1,0 +1,9 @@
+failure_code,meaning
+desktop_fx_pair_promotion_context_invalid,Writer context is invalid.
+desktop_fx_pair_promotion_input_invalid,Staged probe evidence is invalid.
+desktop_fx_pair_promotion_preview_invalid,Promotion preview changed.
+desktop_fx_pair_promotion_confirmation_required,Separate publication confirmation is absent.
+desktop_fx_pair_promotion_store_invalid,Owner-only schema-2600 store is invalid.
+desktop_fx_pair_promotion_conflict,An incompatible Pair binding exists.
+desktop_fx_pair_promotion_write_failed,Pair or append-only candidate publication failed.
+data_fx_pair_promotion_boundary_failed,Desktop service failed closed.

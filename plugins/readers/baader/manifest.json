@@ -1,0 +1,117 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "baader",
+  "plugin_version": "1.2.1",
+  "publisher": "Portelyra",
+  "institution": "Baader Bank",
+  "label": "Baader Bank (auch Smartbroker)",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "92fa5527155a7365975c2c0297e26f487f575c916a36023f14afd981224278e7",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "db9f41f7ebdf779af0cc437246938f282c34339722e1e4abd836ad719ee4f2c1"
+    },
+    {
+      "path": "reader_income.py",
+      "sha256": "b5762c77f4807ceb85f0c71f47626ba5c784d655c08909561f2d337d83cf9d2c"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "3c538874bbbc7695dd64faee520b2db4c50912c6c3a06fee6a5710bf39d9cf90"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "baader_perioden_v1",
+      "domain": "cash",
+      "label": "Baader Bank Perioden-Kontoauszug, auch Smartbroker (PDF oder Text)",
+      "document_kind": "Perioden-Kontoauszug (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": []
+      },
+      "tested_formats": "Perioden-Kontoauszüge der Baader Bank, auch über Smartbroker+ und für Scalable-Depots aus der Baader-Zeit.",
+      "known_limits": [
+        "Ein nachgestelltes „-“ kennzeichnet die Belastung; die erste Saldozeile datiert auf den Tag vor dem Zeitraum.",
+        "Erkennung nur über die Dateiendung; ob der Inhalt passt, entscheidet erst das Lesen."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "baader_income_statement_v1",
+      "domain": "income_statement",
+      "label": "Baader Erträgnisaufstellung",
+      "document_kind": "Erträgnisaufstellung (PDF)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "erträgnisaufstellung",
+            "einzelnachweis der kapitalerträge"
+          ]
+        ]
+      },
+      "tested_formats": "Jährliche Erträgnisaufstellung der Baader Bank mit Summennachweis (Zeile 7) und Einzelnachweis der Kapitalerträge.",
+      "known_limits": [
+        "Übernimmt einen Posten nur, wenn sein Kapitalertrag eindeutig seinem Anteil an Zeile 7 entspricht; sonst „unklar“.",
+        "Kreditzinsen und Verwahrentgelt werden nicht übernommen."
+      ],
+      "generator": true
+    }
+  ],
+  "intake": {
+    "key": "baader",
+    "label": "Baader Bank (Scalable-Depots aus der Baader-Zeit)",
+    "status": "historical",
+    "folders": [
+      "baader",
+      "baaderbank"
+    ],
+    "downloads": [
+      "Perioden-Kontoauszüge und Abrechnungen als PDF"
+    ],
+    "period": "none",
+    "covers": "Depot und Verrechnungskonto bei Baader",
+    "readers": [
+      [
+        "securities",
+        "scalable_capital_v1"
+      ],
+      [
+        "cash",
+        "baader_perioden_v1"
+      ]
+    ],
+    "account_words": [
+      "baader"
+    ],
+    "tax_all_accounts": false
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "baader_perioden_v1",
+      "input": "fixtures/baader_perioden_v1.txt",
+      "expected": "fixtures/baader_perioden_v1.expected.json"
+    },
+    {
+      "domain": "income_statement",
+      "reader_id": "baader_income_statement_v1",
+      "input": "fixtures/income_baader_income_statement_v1.txt",
+      "expected": "fixtures/income_baader_income_statement_v1.expected.json"
+    }
+  ]
+}

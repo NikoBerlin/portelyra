@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-activity/v2/read-model.schema.json",
+  "title": "Desktop Product Asset Activity FIFO v2 read model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["product_asset_activity_read_model_version", "status", "ledger_schema_version", "fifo_version", "fifo_world_dimension", "custody_dimension", "fifo_state", "full_rebuild_verified", "portfolio_count", "event_count", "position_count", "custody_position_count", "semantic_sources", "portfolios", "coupled_transaction_facts_included", "calculation_started", "provider_access", "network_access", "canonical_write", "path_exposed", "internal_id_exposed"],
+  "properties": {
+    "product_asset_activity_read_model_version": {"const": 2},
+    "status": {"enum": ["absent", "available"]},
+    "ledger_schema_version": {"type": ["integer", "null"], "enum": [null, 401]},
+    "fifo_version": {"const": 2},
+    "fifo_world_dimension": {"const": "portfolio_asset"},
+    "custody_dimension": {"const": "portfolio_account_asset"},
+    "fifo_state": {"enum": ["unavailable", "stale", "stale_pending", "stale_failed", "fresh"]},
+    "full_rebuild_verified": {"type": "boolean"},
+    "portfolio_count": {"type": "integer", "minimum": 0},
+    "event_count": {"type": "integer", "minimum": 0},
+    "position_count": {"type": "integer", "minimum": 0},
+    "custody_position_count": {"type": "integer", "minimum": 0},
+    "semantic_sources": {"type": "array", "items": {"$ref": "#/$defs/semantic_source"}},
+    "portfolios": {"type": "array", "items": {"$ref": "#/$defs/portfolio"}},
+    "coupled_transaction_facts_included": {"const": false},
+    "calculation_started": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "canonical_write": {"const": false},
+    "path_exposed": {"const": false},
+    "internal_id_exposed": {"const": false}
+  },
+  "$defs": {
+    "decimal": {"type": "string", "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$", "not": {"const": "-0"}, "maxLength": 80},
+    "exact_display": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}, {"type": "string", "pattern": "^-?[0-9]+/[1-9][0-9]*$", "maxLength": 170}]},
+    "nullable_label": {"type": ["string", "null"], "maxLength": 160},
+    "semantic_source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["semantic_contract", "source_event_count", "projected_event_count", "coupled_transaction_fact", "automatic_cash_posting_state", "fifo_authority"],
+      "properties": {
+        "semantic_contract": {"const": "asset_activity_v1"},
+        "source_event_count": {"type": "integer", "minimum": 0},
+        "projected_event_count": {"type": "integer", "minimum": 0},
+        "coupled_transaction_fact": {"const": false},
+        "automatic_cash_posting_state": {"const": "none_created"},
+        "fifo_authority": {"const": "semantic_realized_fifo_v2"}
+      }
+    },
+    "position": {
+      "type": "object", "additionalProperties": false,
+      "required": ["asset_label", "asset_type", "currency", "remaining_quantity_decimal", "remaining_fifo_basis", "cost_average", "realized_gross_proceeds", "realized_fifo_basis", "realized_gain_before_tax", "gross_income", "monetary_fees", "fifo_world"],
+      "properties": {
+        "asset_label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "asset_type": {"type": "string"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "remaining_quantity_decimal": {"$ref": "#/$defs/decimal"},
+        "remaining_fifo_basis": {"$ref": "#/$defs/exact_display"},
+        "cost_average": {"$ref": "#/$defs/exact_display"},
+        "realized_gross_proceeds": {"$ref": "#/$defs/exact_display"},
+        "realized_fifo_basis": {"$ref": "#/$defs/exact_display"},
+        "realized_gain_before_tax": {"$ref": "#/$defs/exact_display"},
+        "gross_income": {"$ref": "#/$defs/exact_display"},
+        "monetary_fees": {"$ref": "#/$defs/exact_display"},
+        "fifo_world": {"const": "portfolio_asset"}
+      }
+    },
+    "custody_position": {
+      "type": "object", "additionalProperties": false,
+      "required": ["account_label", "asset_label", "asset_type", "remaining_quantity_decimal", "custody_dimension"],
+      "properties": {
+        "account_label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "asset_label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "asset_type": {"type": "string"},
+        "remaining_quantity_decimal": {"$ref": "#/$defs/decimal"},
+        "custody_dimension": {"const": "portfolio_account_asset"}
+      }
+    },
+    "event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["local_date", "effective_at_utc", "event_time_evidence", "event_type", "account_label", "related_account_label", "asset_label", "asset_type", "currency", "quantity_decimal", "amount_decimal", "fee_decimal", "asset_fee_quantity_decimal", "basis_added", "basis_consumed", "gross_proceeds_decimal", "realized_gain", "gross_income_decimal", "distribution_value_decimal", "cash_balance_delta_decimal", "semantic_contract", "automatic_cash_posting_state", "fifo_authority", "calculation_status"],
+      "properties": {
+        "local_date": {"type": "string", "format": "date"},
+        "effective_at_utc": {"type": ["string", "null"]},
+        "event_time_evidence": {"enum": ["exact", "date_only"]},
+        "event_type": {"type": "string"},
+        "account_label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "related_account_label": {"$ref": "#/$defs/nullable_label"},
+        "asset_label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "asset_type": {"type": "string"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "quantity_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "amount_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "fee_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "asset_fee_quantity_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "basis_added": {"$ref": "#/$defs/exact_display"},
+        "basis_consumed": {"$ref": "#/$defs/exact_display"},
+        "gross_proceeds_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "realized_gain": {"$ref": "#/$defs/exact_display"},
+        "gross_income_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "distribution_value_decimal": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/decimal"}]},
+        "cash_balance_delta_decimal": {"const": "0"},
+        "semantic_contract": {"const": "asset_activity_v1"},
+        "automatic_cash_posting_state": {"const": "none_created"},
+        "fifo_authority": {"const": "semantic_realized_fifo_v2"},
+        "calculation_status": {"enum": ["fresh_completed", "unavailable", "stale", "stale_pending", "stale_failed"]}
+      }
+    },
+    "portfolio": {
+      "type": "object", "additionalProperties": false,
+      "required": ["portfolio_ordinal", "portfolio_label", "positions", "custody_positions", "events_newest_first"],
+      "properties": {
+        "portfolio_ordinal": {"type": "integer", "minimum": 1},
+        "portfolio_label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "positions": {"type": "array", "items": {"$ref": "#/$defs/position"}},
+        "custody_positions": {"type": "array", "items": {"$ref": "#/$defs/custody_position"}},
+        "events_newest_first": {"type": "array", "items": {"$ref": "#/$defs/event"}}
+      }
+    }
+  }
+}

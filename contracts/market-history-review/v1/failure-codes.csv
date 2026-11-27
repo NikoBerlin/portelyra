@@ -1,0 +1,7 @@
+code,blocking,public_message
+market_history_review_boundary_failed,yes,Die Marktdatenprüfung konnte nicht sicher abgeschlossen werden.
+market_history_review_calendar_invalid,yes,Der gebundene Handelskalender ist ungültig.
+market_history_review_candidate_invalid,yes,Der abgerufene Marktdatenkandidat ist ungültig.
+market_history_review_confirmation_required,yes,Die Veröffentlichung benötigt eine neue ausdrückliche Bestätigung.
+market_history_review_input_invalid,yes,Die Marktdatenprüfung ist ungültig.
+market_history_review_stale,yes,Die Marktdatenvorschau ist nicht mehr aktuell.

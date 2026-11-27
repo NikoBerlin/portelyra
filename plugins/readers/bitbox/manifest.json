@@ -1,0 +1,102 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "bitbox",
+  "plugin_version": "1.1.0",
+  "publisher": "Portelyra",
+  "institution": "BitBox",
+  "label": "BitBox",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "cefecace7de194c6b1529862e6c9ae24d3baa4fe2f9ae91ac3805e0f3e191f12",
+  "modules": [
+    {
+      "path": "reader_crypto.py",
+      "sha256": "f76f1e2fc386baca20321c4ea7873b9ba49858917394cb064227103eba5ffdc0"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "85d2ca0b4bc438e3e989ca534555a577e2b968de6aa52e102b7c5d4ba55f2b95"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "bitbox_crypto_v1",
+      "domain": "crypto",
+      "label": "BitBox (Export je Konto)",
+      "document_kind": "Export je Konto (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "time",
+            "type",
+            "amount",
+            "unit",
+            "fee",
+            "fee unit",
+            "address",
+            "transaction id"
+          ]
+        ]
+      },
+      "tested_formats": "Export der BitBoxApp je Konto mit Time, Type, Amount, Unit, Fee, Fee Unit, Address, Transaction ID; Einheiten wie Satoshi werden umgerechnet.",
+      "known_limits": [
+        "Nur Ein- und Ausgänge; Transfers paart der Kern mit der Gegenseite."
+      ],
+      "generator": true,
+      "source": {
+        "key": "bitbox",
+        "label": "BitBox",
+        "format_label": "BitBox (Export je Konto)",
+        "institution_names": [
+          "BitBox"
+        ],
+        "wallets": {},
+        "default_wallet": {
+          "label_prefix": "Konto ",
+          "account_name": {}
+        },
+        "pairing": "none",
+        "internal_transfers": false
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    }
+  ],
+  "intake": {
+    "key": "bitbox",
+    "label": "BitBox",
+    "folders": [
+      "bitbox",
+      "bitbox02"
+    ],
+    "downloads": [
+      "Export je Konto aus der BitBoxApp als CSV (gesamte Historie)"
+    ],
+    "period": "since_start",
+    "covers": "je Konto (Coin) ein Export",
+    "readers": [
+      [
+        "crypto",
+        "bitbox_crypto_v1"
+      ]
+    ],
+    "account_words": [
+      "bitbox"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "crypto",
+      "reader_id": "bitbox_crypto_v1",
+      "input": "fixtures/crypto_bitbox_crypto_v1.csv",
+      "expected": "fixtures/crypto_bitbox_crypto_v1.expected.json"
+    }
+  ]
+}

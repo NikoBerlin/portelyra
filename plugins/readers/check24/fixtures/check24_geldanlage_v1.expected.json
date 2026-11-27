@@ -1,0 +1,43 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "96.4",
+   "balance_after_decimal": null,
+   "kind": "interest",
+   "local_date": "2027-12-30",
+   "source_row_ordinal": 1,
+   "text": "Zinsbuchung"
+  },
+  {
+   "amount_decimal": "1.32",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-12-30",
+   "source_row_ordinal": 2,
+   "text": "Steuerabzug - Solidaritätszuschlag"
+  },
+  {
+   "amount_decimal": "4200.75",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-11-20",
+   "source_row_ordinal": 3,
+   "text": "Auszahlung von Invented Bank auf Ihr CHECK24 Anlagekonto"
+  },
+  {
+   "amount_decimal": "6000",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-08-06",
+   "source_row_ordinal": 4,
+   "text": "Veranlagung"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": null,
+  "opening_balance_decimal": null,
+  "period_from": "2027-08-06",
+  "period_to": "2027-12-30"
+ }
+}

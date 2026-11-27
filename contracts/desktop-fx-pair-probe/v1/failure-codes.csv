@@ -1,0 +1,17 @@
+failure_code,meaning
+desktop_fx_pair_probe_context_invalid,Verified Desktop market-worker context is invalid.
+desktop_fx_pair_probe_input_invalid,Candidate pair direction currency or date input is invalid.
+desktop_fx_pair_probe_preview_invalid,Preview identity or content changed.
+desktop_fx_pair_probe_confirmation_required,One explicit Provider confirmation is absent.
+desktop_fx_pair_probe_attempt_consumed,The exact attempt was already consumed.
+desktop_fx_pair_probe_store_invalid,Owner-local staging is invalid.
+desktop_fx_pair_probe_transport_failed,The sole Yahoo request failed.
+desktop_fx_pair_probe_http_failed,Yahoo returned a non-success HTTP response for the sole confirmed request.
+desktop_fx_pair_probe_response_invalid,Yahoo response violates a remaining strict Pair rule.
+desktop_fx_pair_probe_response_json_invalid,Yahoo response is not valid bounded JSON.
+desktop_fx_pair_probe_response_shape_invalid,Yahoo chart envelope or result shape is invalid.
+desktop_fx_pair_probe_response_identity_invalid,Yahoo symbol currency or timezone identity is invalid.
+desktop_fx_pair_probe_response_series_invalid,Yahoo timestamp or required close series is invalid.
+desktop_fx_pair_probe_response_currency_mismatch,Yahoo response currency contradicts the selected Pair direction.
+data_fx_pair_probe_service_invalid,Desktop service binding is invalid.
+data_fx_pair_probe_boundary_failed,The isolated service failed closed.

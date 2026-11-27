@@ -1,0 +1,47 @@
+{
+ "candidates": [],
+ "evidence": {
+  "bsdex_executions": [
+   {
+    "asset": "ETH",
+    "at": {
+     "datetime_text": "2027-04-15T08:00:00+00:00"
+    },
+    "eur": {
+     "decimal_text": "150.01"
+    },
+    "fee": {
+     "decimal_text": "0.38"
+    },
+    "file_name": "crypto_bsdex_history_v1.csv",
+    "id": "inv-e1",
+    "ordinal": 1,
+    "quantity": {
+     "decimal_text": "0.05"
+    },
+    "side": "buy"
+   },
+   {
+    "asset": "SOL",
+    "at": {
+     "datetime_text": "2027-04-17T08:00:00+00:00"
+    },
+    "eur": {
+     "decimal_text": "200.00"
+    },
+    "fee": {
+     "decimal_text": "0.50"
+    },
+    "file_name": "crypto_bsdex_history_v1.csv",
+    "id": "inv-s1",
+    "ordinal": 2,
+    "quantity": {
+     "decimal_text": "4"
+    },
+    "side": "sell"
+   }
+  ]
+ },
+ "row_reasons": {},
+ "status": "multi"
+}

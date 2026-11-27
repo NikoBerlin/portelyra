@@ -1,0 +1,14 @@
+dependency,minimum,source,network_installation
+linux,current_supported_desktop,local_os,no
+architecture,x86_64,local_os,no
+R,4.2.0,local_runtime,no
+python3,3.10.0,local_runtime,no
+SQLite,RSQLite_supported,local_runtime,no
+DBI,1.2.0,R_library,no
+digest,0.6.30,R_library,no
+jsonlite,1.8.0,R_library,no
+openssl,2.0.0,R_library,no
+RSQLite,2.3.0,R_library,no
+shiny,1.8.0,R_library,no
+spotcore,exact_tracked_source,local_repository,no
+spotdisplay,exact_tracked_source,local_repository,no

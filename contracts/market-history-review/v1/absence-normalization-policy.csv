@@ -1,0 +1,4 @@
+normalization_kind,calendar_kind,calendar_day_status,normalized_candidate_status,severity,blocking,observed_price_created
+omitted,exchange_calendar,non_trading_day,non_trading_day,warning,no,no
+null_marker,exchange_calendar,non_trading_day,non_trading_day,warning,no,no
+manifest_zero_as_absence,exchange_calendar,non_trading_day,non_trading_day,warning,no,no

@@ -1,0 +1,12 @@
+{
+ "op": "parse_response",
+ "operation": "fx_daily_history",
+ "params": {
+  "provider_symbol": "USDEUR=X",
+  "start_date": "2027-03-29",
+  "end_date": "2027-03-30"
+ },
+ "status": 200,
+ "content_type": "application/json",
+ "body_text": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"EUR\",\"symbol\":\"EUR=X\",\"exchangeName\":\"CCY\",\"exchangeTimezoneName\":\"Europe/London\",\"regularMarketTime\":1806564600},\"indicators\":{\"quote\":[{\"open\":[0.9123,0.9134,0.91],\"high\":[0.92,0.9201,0.915],\"low\":[0.91,0.911,0.909],\"close\":[0.915,0.91789,0.9123],\"volume\":[0,0,0]}],\"adjclose\":[{\"adjclose\":[0.915,0.91789,0.9123]}]},\"timestamp\":[1806051600,1806138000,1806310800]}],\"error\":null}}"
+}

@@ -1,0 +1,20 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "100",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-07-06",
+   "source_row_ordinal": 1,
+   "text": "Kauf"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_as_of_date": "2027-07-31",
+  "closing_balance_decimal": "400",
+  "opening_balance_decimal": "500",
+  "period_from": "2027-07-01",
+  "period_to": "2027-07-31"
+ }
+}

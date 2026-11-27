@@ -1,0 +1,64 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "INVCO.XETRA",
+  "provider_currency": "EUR",
+  "exchange": "XETRA",
+  "timezone_name": "Europe/Berlin",
+  "instrument_name": "",
+  "instrument_type": "",
+  "split_review_required": false,
+  "days": [
+   {
+    "trading_date": "2027-03-29",
+    "open_decimal": "10.12",
+    "high_decimal": "10.48",
+    "low_decimal": "10.05",
+    "close_decimal": "10.36",
+    "adjusted_close_decimal": "10.004",
+    "volume_decimal": "23150",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-03-29T10:00:00Z"
+   },
+   {
+    "trading_date": "2027-03-30",
+    "open_decimal": "10.36",
+    "high_decimal": "10.4",
+    "low_decimal": "10.11",
+    "close_decimal": "10.2",
+    "adjusted_close_decimal": "9.85",
+    "volume_decimal": "9875",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-03-30T10:00:00Z"
+   },
+   {
+    "trading_date": "2027-03-31",
+    "open_decimal": null,
+    "high_decimal": null,
+    "low_decimal": null,
+    "close_decimal": null,
+    "adjusted_close_decimal": null,
+    "volume_decimal": null,
+    "day_status": "source_gap",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-03-31T10:00:00Z"
+   },
+   {
+    "trading_date": "2027-04-01",
+    "open_decimal": "10.25",
+    "high_decimal": "10.77",
+    "low_decimal": "10.25",
+    "close_decimal": "10.71",
+    "adjusted_close_decimal": "10.71",
+    "volume_decimal": "31002",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-04-01T10:00:00Z"
+   }
+  ],
+  "live_session": null,
+  "first_trade_date": null
+ }
+}

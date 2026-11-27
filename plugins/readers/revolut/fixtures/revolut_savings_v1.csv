@@ -1,0 +1,7 @@
+Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance
+Deposit,Current,2027-04-07 13:12:05,2027-04-07 13:13:28,Top-up by *4711,500.00,0.00,EUR,COMPLETED,500.00
+Transfer,Current,2027-04-14 19:08:17,2027-04-14 19:08:17,Savings Vault topup,-400.00,0.00,EUR,COMPLETED,100.00
+Transfer,Deposit,2027-04-14 19:08:18,2027-04-14 19:08:18,Savings Vault topup,400.00,0.00,EUR,COMPLETED,400.00
+Interest,Deposit,2027-04-15 03:27:51,2027-04-15 03:27:51,"Net interest paid to ""Tagesgeld"" for Apr 15, 2027",0.04,0.01,EUR,COMPLETED,400.03
+Interest,Deposit,2027-04-16 03:27:51,2027-04-16 03:27:51,"Net interest paid to ""Tagesgeld"" for Apr 16, 2027",0.01,0.01,EUR,COMPLETED,400.03
+Card Payment,Current,2027-04-20 10:00:00,2027-04-20 10:00:00,Invented Shop,-25.00,0.50,EUR,COMPLETED,74.50

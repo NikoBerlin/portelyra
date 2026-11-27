@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:portfolio-csv-exchange:v1:import-receipt",
+  "title": "Portfolio CSV Exchange v1 Staged Import Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "status", "bundle_fingerprint", "domain_fingerprint", "target_context_fingerprint", "record_count", "catalog_apply", "coupled_transaction_apply", "asset_activity_apply", "cash_coverage_apply", "product_write", "provider_access", "network_access", "automatic_retry"],
+  "properties": {
+    "contract_version": {"const": 1},
+    "status": {"const": "staged_lossless_ready_for_domain_handoffs"},
+    "bundle_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "domain_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "target_context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "record_count": {"type": "integer", "minimum": 1},
+    "catalog_apply": {"const": "separate_confirmation_required"},
+    "coupled_transaction_apply": {"const": "separate_confirmation_required"},
+    "asset_activity_apply": {"const": "separate_per_draft_confirmation_required"},
+    "cash_coverage_apply": {"const": "separate_reviewed_candidate_confirmation_required"},
+    "product_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "automatic_retry": {"const": false}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

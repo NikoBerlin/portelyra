@@ -1,0 +1,13 @@
+capability,status
+private_one_read,explicit_owner_authorization_only
+local_mapping_review,allowed
+hash_only_overlay,allowed
+adapter_activation,forbidden
+candidate_generation,forbidden
+canonical_write,forbidden
+cash_write,forbidden
+tax_write,forbidden
+provider_access,forbidden
+network_access,forbidden
+automatic_retry,forbidden
+release_or_deployment,forbidden

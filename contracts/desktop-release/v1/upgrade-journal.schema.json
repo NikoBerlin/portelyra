@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://portelyra.invalid/contracts/desktop-release/v1/upgrade-journal.schema.json",
+  "type":"object","additionalProperties":false,
+  "required":["contract_version","operation","old_source_fingerprint","new_source_fingerprint","old_product_version","new_product_version"],
+  "properties":{
+    "contract_version":{"const":1},"operation":{"enum":["upgrade","rollback"]},
+    "old_source_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "new_source_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "old_product_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+(?:-rc\\.[0-9]+)?$"},
+    "new_product_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+(?:-rc\\.[0-9]+)?$"}
+  }
+}

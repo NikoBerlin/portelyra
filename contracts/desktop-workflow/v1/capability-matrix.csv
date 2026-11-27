@@ -1,0 +1,8 @@
+actor,read_canonical,write_canonical,prepare_plan,confirm_run,start_worker,read_completed_workflow,provider_access,network_access,context_from_browser
+Data_App,yes,yes,yes,yes,yes,yes,no,no,no
+Cockpit_App,no,no,no,no,no,yes,no,no,no
+Tax_App,no,no,no,no,no,yes,no,no,no
+Analysis_App,no,no,no,no,no,yes,no,no,no
+Desktop_Workflow_Worker,read_only,no,no,no,fixed_job_only,no,no,no,no
+Tax_Plugin,bound_input_only,no,no,no,no,no,no,no,no
+Browser,redacted_model_only,no,business_values_only,decision_only,no,redacted_model_only,no,no,no

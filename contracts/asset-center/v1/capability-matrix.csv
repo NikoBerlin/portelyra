@@ -1,0 +1,23 @@
+capability,supported,notes
+select_existing_asset,yes,Browser-local ref
+create_asset,yes,Existing Catalog preview and confirmation
+revise_asset_business_price_currency,yes,Separate revision-bound Catalog preview and one-use confirmation; no FX or Provider write
+create_unverified_provider_mapping,yes,Separate canonical command
+revise_or_disable_provider_mapping,yes,Separate canonical command
+provider_search,yes,Preview is offline; each one-attempt execution requires explicit confirmation
+provider_probe,yes,Explicit one-attempt Daily probe persists normalized staging evidence
+verify_provider_mapping,yes,Only after separately confirmed probe promotion
+tax_product_catalog,yes,Canonical Product assets projected into schema401 semantic refs
+tax_classification,yes,Separate Tax preview and confirmation
+daily_history_probe_promotion,yes,Append of already persisted test evidence without external data retrieval
+daily_history_plan,yes,Read-only incremental source-gap and full-refresh ranges
+daily_history_select_one_range,yes,Exactly one contiguous current Plan range per fetch confirmation
+daily_history_fetch_to_stage,yes,One confirmed fetch writes only owner-local sealed staging
+daily_history_exact_review,yes,Current Candidate and effective Close table plus deterministic plot
+daily_history_publish,yes,Second exact confirmation; market_worker append without refetch
+daily_history_reject,yes,Terminal rejection without schema-2300 write
+daily_history_recovery,yes,Exact stage or receipt reconciliation before retry
+activity_handoff,yes,Opens and focuses the single-target Activity form; no automatic Activity or Cash write
+browser_local_activity_read_scope,yes,Manual multi-selection with explicit selected/all mode; no calculation or batch command
+distributed_atomic_write,no,Each domain remains independently committed
+automatic_retry,no,Explicit resume only

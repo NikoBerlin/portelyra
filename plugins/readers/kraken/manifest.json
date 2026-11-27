@@ -1,0 +1,228 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 6,
+  "plugin_id": "kraken",
+  "plugin_version": "1.3.2",
+  "publisher": "Portelyra",
+  "institution": "Kraken",
+  "label": "Kraken",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "92a6435a37e884ced018963e749151a65836e209a82f5e6c1a43ce9df69d1576",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "90f5a14380077cb92f4b2d5ad52dfcdbf0705272d0d4738a94009bca0cb19c4b"
+    },
+    {
+      "path": "reader_crypto.py",
+      "sha256": "347a8e7a6a8829ff0f65a218744bdd80eeed3c46e421fa403a4723c71ad87375"
+    },
+    {
+      "path": "reader_reward.py",
+      "sha256": "2e56c08e7a033ed4d3e005962abd968e31bfe18479b6d972780de7497699cd2d"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "a3fe48ae81170ac97ab9146987b9ac484e05f238fa1312653cdaeefb9200af3b"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "kraken_eur_v1",
+      "domain": "cash",
+      "label": "Kraken Ledger, nur Euro-Guthaben (CSV)",
+      "document_kind": "Ledger-Export (CSV), nur Euro",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "time",
+            "type",
+            "asset",
+            "amount",
+            "fee",
+            "balance"
+          ]
+        ]
+      },
+      "tested_formats": "Ledger-Export mit time, type, asset, amount, fee, balance; Euro-Zeilen (EUR, ZEUR).",
+      "known_limits": [
+        "Liest nur das Euro-Guthaben; Coins liest der Krypto-Import.",
+        "Der Buchungstag zählt in Europe/Berlin, die Zeitstempel stehen in UTC."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "kraken_crypto_v1",
+      "domain": "crypto",
+      "label": "Kraken (Ledger-Export, Krypto)",
+      "document_kind": "Ledger-Export (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "txid",
+            "refid",
+            "time",
+            "type",
+            "asset",
+            "amount",
+            "fee"
+          ]
+        ]
+      },
+      "tested_formats": "Ledger-Export aller Konten (Spot, Earn) mit txid, refid, time, type, asset, amount, fee.",
+      "known_limits": [
+        "Rewards liest der Reward-Import, Euro-Bewegungen der Cash-Leser.",
+        "Transfers zwischen eigenen Konten paart der Kern über Börsen hinweg."
+      ],
+      "generator": true,
+      "source": {
+        "key": "kraken",
+        "label": "Kraken",
+        "format_label": "Kraken (Ledger-Export)",
+        "institution_names": [
+          "Kraken"
+        ],
+        "wallets": {
+          "spot / main": {
+            "label": "Spot",
+            "account_name": {
+              "none": [
+                "staking",
+                "earn"
+              ]
+            }
+          },
+          "earn / bonded": {
+            "label": "Earn (gebunden)",
+            "account_name": {
+              "any": [
+                "staking",
+                "earn"
+              ],
+              "none": [
+                "liquid",
+                "flex"
+              ]
+            }
+          },
+          "earn / liquid": {
+            "label": "Earn (flexibel)",
+            "account_name": {
+              "any": [
+                "liquid",
+                "flex"
+              ]
+            }
+          }
+        },
+        "default_wallet": {
+          "label_prefix": "",
+          "account_name": {
+            "none": [
+              "staking",
+              "earn"
+            ]
+          }
+        },
+        "pairing": "group",
+        "internal_transfers": true
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    },
+    {
+      "reader_id": "kraken_ledger_csv_v1",
+      "domain": "reward",
+      "label": "Kraken (Ledger-Export, Rewards)",
+      "document_kind": "Ledger-Export (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "type",
+            "fee",
+            "amountusd",
+            "feeusd"
+          ]
+        ]
+      },
+      "tested_formats": "Ledger-Export aller Konten (Spot, Earn) mit txid, time, type, subtype, asset, wallet, amount, fee, amountusd, feeusd.",
+      "known_limits": [
+        "Bewertung mit dem USD-Betrag des Exports abzüglich der USD-Gebühr; in Euro rechnet Portelyra mit Devisenkursen um.",
+        "Liest nur Rewards; Käufe, Verkäufe und Transfers liest der Krypto-Leser, Euro-Bewegungen der Cash-Leser."
+      ],
+      "generator": true,
+      "row_ids": true,
+      "format_checked": {
+        "through": "2026-10-23",
+        "checked_on": "2026-10-23"
+      },
+      "subaccount_fallback": "Kraken"
+    }
+  ],
+  "intake": {
+    "key": "kraken",
+    "label": "Kraken",
+    "folders": [
+      "kraken"
+    ],
+    "downloads": [
+      "Ledger-Export als CSV (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "alle Unterkonten (Spot, Earn) und das Euro-Guthaben in einem Export",
+    "readers": [
+      [
+        "crypto",
+        "kraken_crypto_v1"
+      ],
+      [
+        "reward",
+        "kraken_ledger_csv_v1"
+      ],
+      [
+        "cash",
+        "kraken_eur_v1"
+      ]
+    ],
+    "account_words": [
+      "kraken"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "kraken_eur_v1",
+      "input": "fixtures/kraken_eur_v1.csv",
+      "expected": "fixtures/kraken_eur_v1.expected.json"
+    },
+    {
+      "domain": "crypto",
+      "reader_id": "kraken_crypto_v1",
+      "input": "fixtures/crypto_kraken_crypto_v1.csv",
+      "expected": "fixtures/crypto_kraken_crypto_v1.expected.json"
+    },
+    {
+      "domain": "reward",
+      "reader_id": "kraken_ledger_csv_v1",
+      "input": "fixtures/reward_kraken_ledger_csv_v1.csv",
+      "expected": "fixtures/reward_kraken_ledger_csv_v1.expected.json"
+    }
+  ]
+}

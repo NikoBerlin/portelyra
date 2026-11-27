@@ -1,0 +1,15 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "THINCO.XY",
+  "provider_currency": "EUR",
+  "exchange": "MIL",
+  "timezone_name": "Europe/Rome",
+  "instrument_name": "",
+  "instrument_type": "",
+  "split_review_required": false,
+  "days": [],
+  "live_session": null,
+  "first_trade_date": null
+ }
+}

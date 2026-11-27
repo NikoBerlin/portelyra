@@ -1,0 +1,10 @@
+Package: spotcore
+Type: Package
+Title: Portelyra Runtime and Canonical Repository Core
+Version: 0.3.5
+Authors@R: person("Portelyra", "Maintainers", email = "maintainer@portelyra.invalid", role = c("aut", "cre"))
+Description: Explicit Demo, owner-only local Product Desktop and verified Server runtime context, a tracked-source Linux Desktop preflight/install/upgrade/rollback boundary, restart-safe first-user and CSV onboarding, confirmed provider-free four-app Desktop Run Center, owner-only Backup/Restore and reproducible release operations, an owner-only OIDC-fingerprint Principal and Session registry, Ed25519-bound one-use background jobs, fail-closed RSQLite repositories, capability-limited synthetic native, Legacy-transaction and master-import commands, provider-free exact realized-FIFO, FX-conversion and unrealized-valuation boundaries, and deterministic calculation evidence.
+License: AGPL (>= 3)
+Encoding: UTF-8
+Depends: R (>= 4.2.0)
+Imports: DBI, digest, jsonlite, openssl, RSQLite

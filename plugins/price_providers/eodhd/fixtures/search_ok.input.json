@@ -1,0 +1,11 @@
+{
+ "op": "parse_response",
+ "operation": "search",
+ "params": {
+  "query": "Invented",
+  "limit": 10
+ },
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "body_text": "[{\"Code\": \"INVCO\", \"Exchange\": \"XETRA\", \"Name\": \"Invented Company AG\", \"Type\": \"Common Stock\", \"Country\": \"Germany\", \"Currency\": \"EUR\", \"ISIN\": \"XA00INVENT09\", \"isPrimary\": true, \"previousClose\": 12.34, \"previousCloseDate\": \"2027-03-31\"}, {\"Code\": \"INVCO\", \"Exchange\": \"F\", \"Name\": \"Invented Company AG\", \"Type\": \"Common Stock\", \"Country\": \"Germany\", \"Currency\": \"EUR\", \"ISIN\": \"XA00INVENT09\", \"isPrimary\": false, \"previousClose\": 12.3, \"previousCloseDate\": \"2027-03-31\"}, {\"Code\": \"INVW\", \"Exchange\": \"EUFUND\", \"Name\": \"Invented World Fund  Acc\", \"Type\": \"FUND\", \"Country\": \"Unknown\", \"Currency\": \"EUR\", \"ISIN\": \"XA00INVENT00\", \"isPrimary\": true, \"previousClose\": 101.5, \"previousCloseDate\": \"2027-03-30\"}, {\"Code\": \"INVETF\", \"Exchange\": \"XETRA\", \"Name\": \"Invented World UCITS ETF\", \"Type\": \"ETF\", \"Country\": \"Germany\", \"Currency\": \"EUR\", \"ISIN\": null, \"isPrimary\": true, \"previousClose\": 55, \"previousCloseDate\": \"2027-03-31\"}]"
+}

@@ -1,0 +1,12 @@
+{
+ "op": "parse_response",
+ "operation": "daily_history",
+ "params": {
+  "provider_symbol": "INVCO.XETRA",
+  "start_date": "2027-03-29",
+  "end_date": "2027-04-01"
+ },
+ "status": 200,
+ "content_type": "application/json",
+ "body_text": "[{\"date\":\"2027-03-29\",\"open\":10.12,\"high\":10.48,\"low\":10.05,\"close\":10.36,\"adjusted_close\":10.004,\"volume\":23150},{\"date\":\"2027-03-29\",\"open\":10.12,\"high\":10.48,\"low\":10.05,\"close\":10.4,\"adjusted_close\":10.004,\"volume\":23150}]"
+}

@@ -1,0 +1,7 @@
+Datum;Typ;Währung;Referenz;BTC-Adresse;Kurs;Einheit (Kurs);BTC vor Gebühr;Menge vor Gebühr;Einheit (Menge vor Gebühr);BTC nach Bitcoin.de-Gebühr;Menge nach Bitcoin.de-Gebühr;Einheit (Menge nach Bitcoin.de-Gebühr);Zu- / Abgang;Kontostand
+2027-01-01 09:00:00;Registrierung;BTC;;;;;;;;;;;0;0
+2027-04-01 10:30:00;Einzahlung;BTC;REFIN0001;bc1qinventedbitcoinde00000000000000000;;;;;;;;;0,01;0,01
+2027-04-02 14:00:00;Kauf;BTC;REFBUY0001;;50000,00;BTC / EUR;0,02000000;1000,00;EUR;0,01990000;995,00;EUR;0,01990000;0,0299
+2027-04-03 15:00:00;Verkauf;BTC;REFSELL001;;52000,00;BTC / EUR;0,00500000;260,00;EUR;0,00500000;258,70;EUR;-0,00500000;0,0249
+2027-04-04 16:00:00;Auszahlung;BTC;REFOUT0001;bc1qinventedexternal00000000000000000;;;;;;;;;-0,0100000;0,0149
+2027-04-04 16:00:00;Netzwerk-Gebühr;BTC;REFOUT0001;;;;;;;;;;-0,00010000;0,0148

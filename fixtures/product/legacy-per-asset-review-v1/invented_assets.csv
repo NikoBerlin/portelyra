@@ -1,0 +1,3 @@
+Asset_ID;Wertpapierbezeichnung;ISIN;WKN;Notiz;Kategorie;Ist_Cash;Steuertyp;Kurs_Provider;Default_Depot;Steuersatz
+SYN_ASSET_ALPHA;Invented Alpha Asset;ZZ0000000001;ZZ0001;invented companion note;Invented category;0;Invented tax hint;forbidden-provider;forbidden-account;99
+SYN_OTHER_BETA;Invented Other Asset;;;;;;;other-forbidden;;

@@ -1,0 +1,12 @@
+{
+ "op": "parse_response",
+ "operation": "daily_history",
+ "params": {
+  "provider_symbol": "THINCO.XY",
+  "start_date": "2027-03-29",
+  "end_date": "2027-03-31"
+ },
+ "status": 200,
+ "content_type": "application/json",
+ "body_text": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"EUR\",\"symbol\":\"THINCO.XY\",\"exchangeName\":\"MIL\",\"exchangeTimezoneName\":\"Europe/Rome\"},\"indicators\":{\"quote\":[{}]}}],\"error\":null}}"
+}

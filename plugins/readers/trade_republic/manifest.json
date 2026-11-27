@@ -1,0 +1,182 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "trade_republic",
+  "plugin_version": "1.2.2",
+  "publisher": "Portelyra",
+  "institution": "Trade Republic",
+  "label": "Trade Republic",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "fa2c5508b5d5e2b74e198a9e3d646279fe01396d727c9882b0691cb916091df9",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "1039859fc330c993347cb20ee3d5b2c5d06ae31b1901f2af5aa21dc60654e2dc"
+    },
+    {
+      "path": "reader_securities.py",
+      "sha256": "8f69f18175f6630534c98a22405fac02c8dea24678d760c64b7fd85010912585"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "fe0ae87bfc53c83190191781e56dc8206b5eb8c6762cd46a524331c18b4e0ed3"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "trade_republic_v1",
+      "domain": "cash",
+      "label": "Trade Republic Kontoauszug (PDF oder Text)",
+      "document_kind": "Kontoauszug über die ganze Historie (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "€"
+          ]
+        ]
+      },
+      "tested_formats": "Ein PDF über die gesamte Kontohistorie mit Abschnitt „UMSATZÜBERSICHT“.",
+      "known_limits": [
+        "Das Vorzeichen folgt aus der Änderung des laufenden Saldos; eine Zeile mit unpassendem Saldoschritt wird gemeldet.",
+        "Tabellen hinter der Umsatzübersicht (Geldmarktfonds, Depot) werden nicht gelesen.",
+        "Die einbehaltene Steuer je Zinszeile nennt nur der Transaktionsexport."
+      ],
+      "generator": true
+    },
+    {
+      "reader_id": "trade_republic_transactions_v1",
+      "domain": "cash",
+      "label": "Trade Republic Transaktionsexport (CSV)",
+      "document_kind": "Transaktionsexport (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "date",
+            "type",
+            "amount",
+            "fee",
+            "tax",
+            "currency",
+            "description"
+          ]
+        ]
+      },
+      "tested_formats": "CSV-Export der Transaktionen mit den Spalten date, type, amount, fee, tax, currency, description.",
+      "known_limits": [
+        "Der Export nennt keinen Saldo; die Vollständigkeit belegt erst ein Saldoabgleich.",
+        "Zinsen, deren Steuer den Betrag ganz aufzehrt, werden gemeldet statt gebucht."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "trade_republic_v1",
+      "domain": "securities",
+      "label": "Trade Republic (CSV-Export)",
+      "document_kind": "Transaktionsexport (CSV)",
+      "extensions": [
+        ".pdf",
+        ".txt",
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "datetime",
+            "date",
+            "category",
+            "type",
+            "name",
+            "symbol",
+            "shares",
+            "price",
+            "amount",
+            "fee",
+            "tax",
+            "currency",
+            "transaction_id"
+          ],
+          [
+            "trade republic bank"
+          ]
+        ]
+      },
+      "tested_formats": "CSV-Export „Transaktionen“ aus der Trade-Republic-App: Käufe und Verkäufe (Teilausführungen aus ganzen Stücken und Bruchteil getrennt, in der Reihenfolge der Bank; Zeiten in UTC, umgerechnet), Dividenden brutto in EUR; Vorabpauschale (EARNINGS) als Hinweis gegen den eingetragenen Wert.",
+      "known_limits": [
+        "Betrag der Vorabpauschale (der Export nennt nur die Steuer), Steueroptimierung, Zeichnungen (IPO), Dividenden mit Rückbuchung, Ein- und Auszahlungen, Zinsen und andere Kontobewegungen."
+      ],
+      "generator": true,
+      "profiles": {
+        "trade_republic": {
+          "label": "Trade Republic",
+          "institution_names": [
+            "Trade Republic"
+          ]
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-15",
+        "checked_on": "2026-10-15"
+      }
+    }
+  ],
+  "intake": {
+    "key": "trade_republic",
+    "label": "Trade Republic",
+    "folders": [
+      "traderepublic",
+      "traderepublik",
+      "tr"
+    ],
+    "downloads": [
+      "CSV-Export „Transaktionen“ aus der App (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "Depot und Verrechnungskonto in einem Export",
+    "readers": [
+      [
+        "securities",
+        "trade_republic_v1"
+      ],
+      [
+        "cash",
+        "trade_republic_transactions_v1"
+      ]
+    ],
+    "account_words": [
+      "trade republic"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "trade_republic_v1",
+      "input": "fixtures/trade_republic_v1.txt",
+      "expected": "fixtures/trade_republic_v1.expected.json"
+    },
+    {
+      "domain": "cash",
+      "reader_id": "trade_republic_transactions_v1",
+      "input": "fixtures/trade_republic_transactions_v1.csv",
+      "expected": "fixtures/trade_republic_transactions_v1.expected.json"
+    },
+    {
+      "domain": "securities",
+      "reader_id": "trade_republic_v1",
+      "input": "fixtures/securities_trade_republic_v1.txt",
+      "expected": "fixtures/securities_trade_republic_v1.expected.json"
+    }
+  ]
+}

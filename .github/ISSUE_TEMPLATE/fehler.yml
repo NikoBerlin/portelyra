@@ -1,0 +1,44 @@
+name: Fehler melden
+description: Etwas funktioniert nicht wie beschrieben.
+labels: ["fehler"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Bitte keine privaten Daten anhängen**: keine Belege, Auszüge, Kontonummern, Beträge aus dem eigenen Depot, Datenräume,
+        Screenshots mit solchen Angaben oder Protokolle daraus. Ein Beispiel mit erfundenen Zahlen reicht fast immer.
+        Sicherheitslücken bitte privat melden (siehe SECURITY.md).
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Steht in der Datei VERSION oder im Starter.
+      placeholder: 0.3.5
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Betriebssystem
+      placeholder: Ubuntu 24.04
+  - type: textarea
+    id: schritte
+    attributes:
+      label: Was haben Sie getan?
+      description: Schritt für Schritt, mit erfundenen Werten.
+    validations:
+      required: true
+  - type: textarea
+    id: erwartet
+    attributes:
+      label: Was haben Sie erwartet, was ist passiert?
+      description: Fehlermeldungen bitte im Wortlaut; vorher private Angaben darin unkenntlich machen.
+    validations:
+      required: true
+  - type: checkboxes
+    id: datenschutz
+    attributes:
+      label: Datenschutz
+      options:
+        - label: Die Meldung enthält keine echten Belege, Kontonummern, Beträge oder Namen.
+          required: true

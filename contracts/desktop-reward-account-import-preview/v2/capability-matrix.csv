@@ -1,0 +1,9 @@
+capability,status
+reward_account_preview,allowed
+private_source_read,forbidden
+candidate_generation,forbidden
+canonical_write,forbidden
+cash_write,forbidden
+tax_write,forbidden
+provider_access,forbidden
+network_access,forbidden

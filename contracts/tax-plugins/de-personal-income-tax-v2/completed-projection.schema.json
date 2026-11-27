@@ -1,0 +1,24 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:portelyra:tax-plugins:de-personal-income-tax-v2:completed-projection",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["contract_version","status","projection_mode","plugin_id","plugin_version","model_fingerprint","rules_fingerprint","parameter_fingerprint","rows","reconciliation","disclaimer_codes","provider_access","network_access","filing_evidence"],
+  "properties":{
+    "contract_version":{"const":"de_personal_income_tax_completed_projection_v2"},
+    "status":{"const":"completed"},
+    "projection_mode":{"enum":["realized_event","realized_annual"]},
+    "plugin_id":{"const":"tax_de_personal_income_tax_projection_v2"},
+    "plugin_version":{"const":"2.0.0"},
+    "model_fingerprint":{"$ref":"#/$defs/fingerprint"},
+    "rules_fingerprint":{"$ref":"#/$defs/fingerprint"},
+    "parameter_fingerprint":{"$ref":"#/$defs/fingerprint"},
+    "rows":{"type":"array","items":{"type":"object","required":["model_fingerprint","rules_fingerprint","parameter_fingerprint","disclaimer_code"],"properties":{"model_fingerprint":{"$ref":"#/$defs/fingerprint"},"rules_fingerprint":{"$ref":"#/$defs/fingerprint"},"parameter_fingerprint":{"$ref":"#/$defs/fingerprint"},"disclaimer_code":{"const":"model_projection_not_legal_advice"}}}},
+    "reconciliation":{"type":"object","required":["event_tax_is_annual_tax","church_tax_basis","church_tax_identity_inference"],"properties":{"event_tax_is_annual_tax":{"const":false},"church_tax_basis":{"const":"projected_income_tax"},"church_tax_identity_inference":{"const":false}}},
+    "disclaimer_codes":{"type":"array","minItems":3,"uniqueItems":true,"allOf":[{"contains":{"const":"model_projection_not_legal_advice"}},{"contains":{"const":"reference_model_no_automatic_legal_update"}},{"contains":{"const":"church_tax_user_confirmation_only"}}]},
+    "provider_access":{"const":false},
+    "network_access":{"const":false},
+    "filing_evidence":{"const":false}
+  },
+  "$defs":{"fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"}}
+}

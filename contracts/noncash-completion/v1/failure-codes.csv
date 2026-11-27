@@ -1,0 +1,6 @@
+code,blocking,public_message
+noncash_completion_boundary_failed,yes,Die Non-Cash-Abschlussgrenze konnte nicht sicher ausgewertet werden.
+noncash_completion_closure_receipt_invalid,yes,Der Non-Cash-Abschlussbeleg ist ungültig.
+noncash_completion_dimension_invalid,yes,Eine Non-Cash-Bereitschaftsdimension ist ungültig.
+noncash_completion_importer_registry_invalid,yes,Der vorbereitete Importer-Katalog ist ungültig.
+noncash_completion_input_invalid,yes,Die Non-Cash-Abschlussanforderung ist ungültig.

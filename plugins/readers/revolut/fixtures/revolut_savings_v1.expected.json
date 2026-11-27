@@ -1,0 +1,34 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "400",
+   "balance_after_decimal": "400",
+   "kind": "deposit",
+   "local_date": "2027-04-14",
+   "source_row_ordinal": 3,
+   "text": "Transfer Savings Vault topup"
+  },
+  {
+   "amount_decimal": "0.03",
+   "balance_after_decimal": "400.03",
+   "gross_income_decimal": "0.04",
+   "kind": "interest",
+   "local_date": "2027-04-15",
+   "source_row_ordinal": 4,
+   "text": "Interest Net interest paid to \"Tagesgeld\" for Apr 15, 2027"
+  }
+ ],
+ "diagnostics": [
+  {
+   "gross_income_decimal": "0.01",
+   "reason_code": "interest_fully_taxed",
+   "source_row_ordinal": 5
+  }
+ ],
+ "summary": {
+  "closing_balance_decimal": "400.03",
+  "opening_balance_decimal": "0",
+  "period_from": "2027-04-14",
+  "period_to": "2027-04-15"
+ }
+}

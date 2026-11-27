@@ -1,0 +1,11 @@
+failure_code,meaning
+desktop_fx_history_review_input_invalid,Requested pair or range is invalid or not wholly missing.
+desktop_fx_history_review_pair_missing,No unique reviewed Pair exists.
+desktop_fx_history_review_preview_invalid,Preview changed.
+desktop_fx_history_review_confirmation_required,Fetch or publication confirmation is absent.
+desktop_fx_history_review_attempt_consumed,The exact fetch attempt was consumed.
+desktop_fx_history_review_transport_failed,The sole Yahoo request failed.
+desktop_fx_history_review_response_invalid,Response does not match the Pair binding.
+desktop_fx_history_review_store_invalid,Owner store staging or Provider binding is invalid.
+desktop_fx_history_review_write_failed,Append-only schema-2600 publication failed.
+data_fx_history_review_boundary_failed,Desktop service failed closed.

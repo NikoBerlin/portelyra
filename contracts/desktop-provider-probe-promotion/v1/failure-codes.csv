@@ -1,0 +1,11 @@
+code,blocking,public_message
+desktop_provider_promotion_boundary_failed,1,Die Markthistorien-Übernahme ist sicher fehlgeschlagen.
+desktop_provider_promotion_confirmation_required,1,Die Markthistorien-Übernahme wurde nicht bestätigt.
+desktop_provider_promotion_context_invalid,1,Der lokale Übernahmekontext ist ungültig.
+desktop_provider_promotion_input_invalid,1,Die Listing- oder Kalenderangaben sind ungültig.
+desktop_provider_promotion_preview_invalid,1,Die Übernahmevorschau ist nicht mehr gültig.
+desktop_provider_promotion_attempt_consumed,1,Dieser Übernahmeversuch wurde bereits verbraucht.
+desktop_provider_promotion_probe_invalid,1,Die gespeicherte Provider-Testevidenz passt nicht zur Zuordnung.
+desktop_provider_promotion_store_invalid,1,Der lokale Markthistorienbereich ist ungültig.
+desktop_provider_promotion_history_write_failed,1,Die Markthistorie wurde nicht vollständig übernommen.
+desktop_provider_promotion_result_invalid,1,Das gespeicherte Übernahmeergebnis ist ungültig.

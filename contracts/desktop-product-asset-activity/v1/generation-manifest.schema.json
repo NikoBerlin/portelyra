@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:desktop-product-asset-activity:v1:generation-manifest",
+  "title": "Desktop Product Asset Activity v1 Generation Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version", "authority_contract", "context_fingerprint",
+    "generation_ref", "canonical_schema_version", "canonical_fingerprint",
+    "prior_activity_set_fingerprint", "activity_set_fingerprint",
+    "ledger_schema_version", "ledger_fingerprint", "plan_fingerprint",
+    "command_id", "new_event_count", "total_asset_activity_event_count",
+    "committed_at_utc", "semantic_contracts", "boundaries"
+  ],
+  "properties": {
+    "contract_version": {"const": 1},
+    "authority_contract": {"const": "schema201_derived_base_plus_asset_activity_v1"},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "generation_ref": {"type": "string", "pattern": "^gen_[a-f0-9]{32}$"},
+    "canonical_schema_version": {"enum": [201, 202]},
+    "canonical_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "prior_activity_set_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "activity_set_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "ledger_schema_version": {"const": 401},
+    "ledger_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "command_id": {"type": "string", "pattern": "^cmd_asset_[a-f0-9]{48}$"},
+    "new_event_count": {"type": "integer", "minimum": 1},
+    "total_asset_activity_event_count": {"type": "integer", "minimum": 1},
+    "committed_at_utc": {"$ref": "#/$defs/utc"},
+    "semantic_contracts": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "portfolio_ledger_v1_transaction_fact"},
+        {"const": "asset_activity_v1"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema201_catalog_authority", "schema201_transaction_authority",
+        "asset_activity_authority", "automatic_cash_posting_count",
+        "provider_access", "network_access"
+      ],
+      "properties": {
+        "schema201_catalog_authority": {"const": "derived_read_only"},
+        "schema201_transaction_authority": {"const": "derived_read_only"},
+        "asset_activity_authority": {"const": "data_app_append_only"},
+        "automatic_cash_posting_count": {"const": 0},
+        "provider_access": {"const": false},
+        "network_access": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

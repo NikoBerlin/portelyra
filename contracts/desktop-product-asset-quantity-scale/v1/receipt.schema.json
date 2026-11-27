@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-quantity-scale/v1/receipt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["asset_quantity_scale_receipt_version", "context_fingerprint", "plan_fingerprint", "confirmation_fingerprint", "catalog_command_id", "prior_generation_ref", "generation_ref", "current_quantity_scale", "proposed_quantity_scale", "catalog_revision", "affected_fifo_world_count", "fifo_world_result_fingerprints", "activity_set_fingerprint", "committed_at_utc", "catalog_write", "activity_fact_write", "rounding_performed", "provider_access", "network_access", "receipt_fingerprint"],
+  "properties": {
+    "asset_quantity_scale_receipt_version": {"const": 1},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "catalog_command_id": {"type": "string", "pattern": "^cmd_catalog_[a-f0-9]{52}$"},
+    "prior_generation_ref": {"anyOf": [{"$ref": "#/$defs/generation"}, {"type": "null"}]},
+    "generation_ref": {"anyOf": [{"$ref": "#/$defs/generation"}, {"type": "null"}]},
+    "current_quantity_scale": {"type": "integer", "minimum": 0, "maximum": 23},
+    "proposed_quantity_scale": {"type": "integer", "minimum": 1, "maximum": 24},
+    "catalog_revision": {"type": "integer", "minimum": 2},
+    "affected_fifo_world_count": {"type": "integer", "minimum": 0},
+    "fifo_world_result_fingerprints": {"type": "object", "propertyNames": {"pattern": "^[a-f0-9]{64}$"}, "additionalProperties": {"$ref": "#/$defs/fingerprint"}},
+    "activity_set_fingerprint": {"anyOf": [{"$ref": "#/$defs/fingerprint"}, {"type": "null"}]},
+    "committed_at_utc": {"type": "string", "format": "date-time"},
+    "catalog_write": {"const": true},
+    "activity_fact_write": {"const": false},
+    "rounding_performed": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "receipt_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "generation": {"type": "string", "pattern": "^gen_[a-f0-9]{32}$"}
+  }
+}

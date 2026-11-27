@@ -1,0 +1,4 @@
+Operation Date,Status,Currency Ticker,Operation Type,Operation Amount,Operation Fees,Operation Hash,Account Name,Account xpub,Countervalue Ticker,Countervalue at Operation Date,Countervalue at CSV Export
+2027-03-05T12:20:00.000Z,Confirmed,SOL,IN,0.5,,5Solxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,Solana 1,xpubINVENTED1,EUR,0,0
+2027-04-10T08:00:00.000Z,Confirmed,XRP,OUT,100.1,0.1,C0FFEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE,XRP 1,xpubINVENTED2,EUR,0,0
+2027-04-11T08:00:00.000Z,Confirmed,ETH,FEES,0.0003,0.0003,0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,Ethereum 1,xpubINVENTED3,EUR,0,0

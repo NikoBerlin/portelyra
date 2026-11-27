@@ -1,0 +1,4 @@
+﻿Transaktionstyp;Buchungsdatum;Karteneinsatz;Betrag;Zahlungsempfänger;IBAN;BIC;Verwendungszweck;Beschreibung;Kontonummer;Kontoname;Kategorie;Unterkategorie;Bargeldabhebung
+Zinszahlung;31.10.2027;;0,73 €;C24 Bank;;;;;9900000011;Tagesgeld;Einkommen;Kapitalerträge
+Pocket-Umbuchung;28.10.2027;;-1.200,43 €;C24 Smartkonto;;;Umbuchung;;9900000011;Tagesgeld;Umbuchung;Umbuchung
+Pocket-Umbuchung;29.09.2027;;1.200,35 €;C24 Smartkonto;;;Umbuchung;Invented Owner;9900000011;Tagesgeld;Umbuchung;Umbuchung

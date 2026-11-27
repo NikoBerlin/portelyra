@@ -1,0 +1,8 @@
+consumer_scope,imputed_close_allowed,authority,provenance_required,notes
+source_market_history,no,market_worker,yes,Non-Trading source OHLCV remains null
+portfolio_valuation,yes,portfolio_worker,yes,Previous eligible Close with source date and age
+market_plot,yes,analysis_worker,yes,Dashed presentation and exact source date
+reward_valuation,no,activity_writer,yes,Requires separate explicit observed valuation evidence
+fifo_basis,no,activity_writer,yes,Market carry-forward cannot create basis
+tax_fact,no,tax_writer,yes,Tax model consumes separately bound facts
+fx_evidence,no,market_worker,yes,Requires explicit FX History evidence

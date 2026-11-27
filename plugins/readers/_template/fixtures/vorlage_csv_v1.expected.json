@@ -1,0 +1,9 @@
+{
+ "candidates": [
+  {"source_row_ordinal": 1, "local_date": "2024-03-31", "kind": "interest", "amount_decimal": "1.25", "balance_after_decimal": null, "text": "Zinsgutschrift"},
+  {"source_row_ordinal": 2, "local_date": "2024-04-02", "kind": "withdrawal", "amount_decimal": "150", "balance_after_decimal": null, "text": "Auszahlung Erfunden"},
+  {"source_row_ordinal": 3, "local_date": "2024-04-15", "kind": "deposit", "amount_decimal": "2000", "balance_after_decimal": null, "text": "Einzahlung Erfunden"}
+ ],
+ "diagnostics": [{"source_row_ordinal": 4, "reason_code": "date_invalid"}],
+ "summary": {"opening_balance_decimal": null, "closing_balance_decimal": null, "period_from": "2024-03-31", "period_to": "2024-04-15"}
+}

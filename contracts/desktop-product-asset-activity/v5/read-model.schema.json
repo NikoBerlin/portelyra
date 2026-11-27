@@ -1,0 +1,751 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-activity/v5/read-model.schema.json",
+  "title": "Desktop Product Asset Activity identity-bearing interval FIFO v5 read model",
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "absent"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "ledger_schema_version": {
+            "const": null
+          },
+          "fifo_state": {
+            "const": "unavailable"
+          },
+          "interval_holding_evidence": {
+            "const": "unavailable"
+          },
+          "full_rebuild_verified": {
+            "const": false
+          },
+          "portfolio_count": {
+            "const": 0
+          },
+          "event_count": {
+            "const": 0
+          },
+          "position_count": {
+            "const": 0
+          },
+          "custody_position_count": {
+            "const": 0
+          },
+          "semantic_sources": {
+            "const": []
+          },
+          "portfolios": {
+            "const": []
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "ledger_schema_version": {
+            "const": 401
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "fifo_state": {
+            "const": "fresh"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "interval_holding_evidence": {
+            "const": "fresh_completed_fifo_event_quantities"
+          },
+          "portfolios": {
+            "items": {
+              "properties": {
+                "events_newest_first": {
+                  "items": {
+                    "properties": {
+                      "calculation_status": {
+                        "const": "fresh_completed"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "interval_holding_evidence": {
+            "const": "unavailable"
+          },
+          "position_count": {
+            "const": 0
+          },
+          "custody_position_count": {
+            "const": 0
+          },
+          "portfolios": {
+            "items": {
+              "properties": {
+                "positions": {
+                  "const": []
+                },
+                "custody_positions": {
+                  "const": []
+                },
+                "events_newest_first": {
+                  "items": {
+                    "properties": {
+                      "calculation_status": {
+                        "not": {
+                          "const": "fresh_completed"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "product_asset_activity_read_model_version",
+    "status",
+    "ledger_schema_version",
+    "fifo_version",
+    "fifo_world_dimension",
+    "custody_dimension",
+    "asset_ref_scheme",
+    "asset_identity_bridge",
+    "duplicate_labels_supported",
+    "account_ref_scheme",
+    "account_identity_bridge",
+    "duplicate_account_labels_supported",
+    "supported_asset_domains",
+    "interval_holding_evidence",
+    "fifo_state",
+    "full_rebuild_verified",
+    "portfolio_count",
+    "event_count",
+    "position_count",
+    "custody_position_count",
+    "semantic_sources",
+    "portfolios",
+    "coupled_transaction_facts_included",
+    "calculation_started",
+    "provider_access",
+    "network_access",
+    "canonical_write",
+    "path_exposed",
+    "internal_id_exposed"
+  ],
+  "properties": {
+    "product_asset_activity_read_model_version": {
+      "const": 5
+    },
+    "status": {
+      "enum": [
+        "absent",
+        "available"
+      ]
+    },
+    "ledger_schema_version": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        null,
+        401
+      ]
+    },
+    "fifo_version": {
+      "const": 2
+    },
+    "fifo_world_dimension": {
+      "const": "portfolio_asset"
+    },
+    "custody_dimension": {
+      "const": "portfolio_account_asset"
+    },
+    "asset_ref_scheme": {
+      "const": "activity_catalog_ephemeral_v1"
+    },
+    "asset_identity_bridge": {
+      "const": "server_bound_not_label"
+    },
+    "duplicate_labels_supported": {
+      "const": true
+    },
+    "account_ref_scheme": {
+      "const": "activity_account_ephemeral_v1"
+    },
+    "account_identity_bridge": {
+      "const": "server_bound_not_label"
+    },
+    "duplicate_account_labels_supported": {
+      "const": true
+    },
+    "supported_asset_domains": {
+      "const": [
+        "noncash"
+      ]
+    },
+    "interval_holding_evidence": {
+      "enum": [
+        "unavailable",
+        "fresh_completed_fifo_event_quantities"
+      ]
+    },
+    "fifo_state": {
+      "enum": [
+        "unavailable",
+        "stale",
+        "stale_pending",
+        "stale_failed",
+        "fresh"
+      ]
+    },
+    "full_rebuild_verified": {
+      "type": "boolean"
+    },
+    "portfolio_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "event_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "position_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "custody_position_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "semantic_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/semantic_source"
+      }
+    },
+    "portfolios": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/portfolio"
+      }
+    },
+    "coupled_transaction_facts_included": {
+      "const": false
+    },
+    "calculation_started": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "path_exposed": {
+      "const": false
+    },
+    "internal_id_exposed": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "decimal": {
+      "type": "string",
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+      "not": {
+        "const": "-0"
+      },
+      "maxLength": 80
+    },
+    "nonnegative_decimal": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+      "maxLength": 80
+    },
+    "exact_display": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/decimal"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+/[1-9][0-9]*$",
+          "maxLength": 170
+        }
+      ]
+    },
+    "nullable_label": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 160
+    },
+    "semantic_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic_contract",
+        "source_event_count",
+        "projected_event_count",
+        "coupled_transaction_fact",
+        "automatic_cash_posting_state",
+        "fifo_authority"
+      ],
+      "properties": {
+        "semantic_contract": {
+          "const": "asset_activity_v1"
+        },
+        "source_event_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "projected_event_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coupled_transaction_fact": {
+          "const": false
+        },
+        "automatic_cash_posting_state": {
+          "const": "none_created"
+        },
+        "fifo_authority": {
+          "const": "semantic_realized_fifo_v2"
+        }
+      }
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_ref",
+        "asset_label",
+        "asset_type",
+        "currency",
+        "remaining_quantity_decimal",
+        "remaining_fifo_basis",
+        "cost_average",
+        "realized_gross_proceeds",
+        "realized_fifo_basis",
+        "realized_gain_before_tax",
+        "gross_income",
+        "monetary_fees",
+        "fifo_world"
+      ],
+      "properties": {
+        "asset_ref": {
+          "$ref": "#/$defs/asset_ref"
+        },
+        "asset_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "asset_type": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "remaining_quantity_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "remaining_fifo_basis": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "cost_average": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "realized_gross_proceeds": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "realized_fifo_basis": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "realized_gain_before_tax": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "gross_income": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "monetary_fees": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "fifo_world": {
+          "const": "portfolio_asset"
+        }
+      }
+    },
+    "custody_position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "account_ref",
+        "account_label",
+        "asset_ref",
+        "asset_label",
+        "asset_type",
+        "remaining_quantity_decimal",
+        "custody_dimension"
+      ],
+      "properties": {
+        "account_ref": {
+          "$ref": "#/$defs/account_ref"
+        },
+        "account_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "asset_ref": {
+          "$ref": "#/$defs/asset_ref"
+        },
+        "asset_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "asset_type": {
+          "type": "string"
+        },
+        "remaining_quantity_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "custody_dimension": {
+          "const": "portfolio_account_asset"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "related_account_ref": {
+                  "type": "null"
+                },
+                "related_account_label": {
+                  "type": "null"
+                }
+              }
+            },
+            {
+              "properties": {
+                "related_account_ref": {
+                  "$ref": "#/$defs/account_ref"
+                },
+                "related_account_label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                }
+              }
+            }
+          ]
+        },
+        {
+          "if": {"properties": {"calculation_status": {"const": "fresh_completed"}}},
+          "then": {
+            "properties": {
+              "fifo_event_sequence": {"type": "string", "pattern": "^[1-9][0-9]{0,8}$", "maxLength": 9},
+              "asset_quantity_before_decimal": {"$ref": "#/$defs/nonnegative_decimal"},
+              "asset_quantity_after_decimal": {"$ref": "#/$defs/nonnegative_decimal"}
+            }
+          },
+          "else": {
+            "properties": {
+              "fifo_event_sequence": {"type": "null"},
+              "asset_quantity_before_decimal": {"type": "null"},
+              "asset_quantity_after_decimal": {"type": "null"}
+            }
+          }
+        }
+      ],
+      "required": [
+        "fifo_event_sequence",
+        "asset_quantity_before_decimal",
+        "asset_quantity_after_decimal",
+        "local_date",
+        "effective_at_utc",
+        "event_time_evidence",
+        "event_type",
+        "account_ref",
+        "account_label",
+        "related_account_ref",
+        "related_account_label",
+        "asset_ref",
+        "asset_label",
+        "asset_type",
+        "currency",
+        "quantity_decimal",
+        "amount_decimal",
+        "fee_decimal",
+        "asset_fee_quantity_decimal",
+        "basis_added",
+        "basis_consumed",
+        "gross_proceeds_decimal",
+        "realized_gain",
+        "gross_income_decimal",
+        "distribution_value_decimal",
+        "cash_balance_delta_decimal",
+        "semantic_contract",
+        "automatic_cash_posting_state",
+        "fifo_authority",
+        "calculation_status"
+      ],
+      "properties": {
+        "fifo_event_sequence": {
+          "type": ["string", "null"]
+        },
+        "asset_quantity_before_decimal": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/nonnegative_decimal"}]
+        },
+        "asset_quantity_after_decimal": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/nonnegative_decimal"}]
+        },
+        "local_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "effective_at_utc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_time_evidence": {
+          "enum": [
+            "exact",
+            "date_only"
+          ]
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/account_ref"
+        },
+        "account_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "related_account_ref": {
+          "$ref": "#/$defs/nullable_account_ref"
+        },
+        "related_account_label": {
+          "$ref": "#/$defs/nullable_label"
+        },
+        "asset_ref": {
+          "$ref": "#/$defs/asset_ref"
+        },
+        "asset_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "asset_type": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "quantity_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "amount_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "fee_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "asset_fee_quantity_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "basis_added": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "basis_consumed": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "gross_proceeds_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "realized_gain": {
+          "$ref": "#/$defs/exact_display"
+        },
+        "gross_income_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "distribution_value_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "cash_balance_delta_decimal": {
+          "const": "0"
+        },
+        "semantic_contract": {
+          "const": "asset_activity_v1"
+        },
+        "automatic_cash_posting_state": {
+          "const": "none_created"
+        },
+        "fifo_authority": {
+          "const": "semantic_realized_fifo_v2"
+        },
+        "calculation_status": {
+          "enum": [
+            "fresh_completed",
+            "unavailable",
+            "stale",
+            "stale_pending",
+            "stale_failed"
+          ]
+        }
+      }
+    },
+    "portfolio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "portfolio_ordinal",
+        "portfolio_label",
+        "positions",
+        "custody_positions",
+        "events_newest_first"
+      ],
+      "properties": {
+        "portfolio_ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "portfolio_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "positions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/position"
+          }
+        },
+        "custody_positions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/custody_position"
+          }
+        },
+        "events_newest_first": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        }
+      }
+    },
+    "asset_ref": {
+      "type": "string",
+      "pattern": "^activity_asset_[0-9]{4,10}$",
+      "maxLength": 80
+    },
+    "account_ref": {
+      "type": "string",
+      "pattern": "^activity_account_[0-9]{4,10}$",
+      "maxLength": 80
+    },
+    "nullable_account_ref": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/account_ref"
+        }
+      ]
+    }
+  }
+}

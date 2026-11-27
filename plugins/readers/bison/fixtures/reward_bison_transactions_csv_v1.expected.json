@@ -1,0 +1,66 @@
+{
+ "time_zone": "UTC",
+ "fee_role": "monetary",
+ "rows": [
+  {
+   "cells": [
+    "B1",
+    " Staking Reward",
+    " EUR",
+    " SOL",
+    " 2.6",
+    " 0.1",
+    " 26.0",
+    " 0",
+    " 2026-03-01 12:13:14"
+   ],
+   "row_id": "B1",
+   "signature": [
+    "2026-03-01 12:13:14",
+    "staking reward",
+    "",
+    "sol",
+    "0.1",
+    "0",
+    ""
+   ],
+   "kind": "reward",
+   "asset": "SOL",
+   "quantity": "0.1",
+   "local_date": "2026-03-01",
+   "local_time": "12:13:14",
+   "fee": null,
+   "account": "Bison",
+   "valuation": {
+    "source_value_mode": "unit_price",
+    "price_currency": "EUR",
+    "source_unit_price_decimal": "26",
+    "source_fiat_total_decimal": null
+   }
+  },
+  {
+   "cells": [
+    "B2",
+    " Buy",
+    " EUR",
+    " SOL",
+    " 26",
+    " 1",
+    " 26",
+    " 0.1",
+    " 2026-03-02 12:13:14"
+   ],
+   "row_id": "B2",
+   "signature": [
+    "2026-03-02 12:13:14",
+    "buy",
+    "",
+    "sol",
+    "1",
+    "0.1",
+    ""
+   ],
+   "kind": "other"
+  }
+ ]
+}

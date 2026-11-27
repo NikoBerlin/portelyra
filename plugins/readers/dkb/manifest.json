@@ -1,0 +1,121 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "dkb",
+  "plugin_version": "1.1.1",
+  "publisher": "Portelyra",
+  "institution": "DKB",
+  "label": "DKB",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "7d7447447cd8072af80c0b9a0c6cad97295c5ad8cb737a2f644c0eccb95ee6d4",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "a1ca8ca0819bd14a99f036fc4d99e79d05581fbde02a4525e1ae3334b49b511a"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "54cea90fc4d396f4386b161f6f133cd73354135d01abfe352781c0ce701c6034"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "dkb_kontoauszug_v1",
+      "domain": "cash",
+      "label": "DKB Girokonto-Kontoauszug (PDF oder Text)",
+      "document_kind": "Kontoauszug Girokonto (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "belastung in eur"
+          ],
+          [
+            "betrag haben eur"
+          ]
+        ]
+      },
+      "tested_formats": "Zwei Vorlagen: ältere (Spalten Belastung und Gutschrift, Datum ohne Jahr) und neuere (volles Datum, Soll mit Minus).",
+      "known_limits": [
+        "Bei der alten Vorlage entscheidet allein die Spalte über das Vorzeichen; das Jahr folgt aus dem Auszugszeitraum."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "dkb_umsatzliste_v1",
+      "domain": "cash",
+      "label": "DKB Umsatzliste, Giro und Tagesgeld (CSV)",
+      "document_kind": "Umsatzliste Giro und Tagesgeld (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "\"buchungsdatum\"",
+            "betrag (€)"
+          ]
+        ]
+      },
+      "tested_formats": "CSV-Umsatzliste mit „Buchungsdatum“ und „Betrag (€)“, deutsche Beträge.",
+      "known_limits": [
+        "„-2.000“ sind zweitausend, nicht zwei (deutsches Format).",
+        "Zinsen des Tagesgelds sind netto; den Bruttozins nennt der Text der Abrechnung."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    }
+  ],
+  "intake": {
+    "key": "dkb",
+    "label": "DKB",
+    "folders": [
+      "dkb"
+    ],
+    "downloads": [
+      "Umsatzliste als CSV je Konto, Giro und Tagesgeld (vom Kontobeginn bis heute)",
+      "oder die Kontoauszüge des Girokontos als PDF"
+    ],
+    "period": "since_start",
+    "covers": "Girokonto und Tagesgeld",
+    "readers": [
+      [
+        "cash",
+        "dkb_umsatzliste_v1"
+      ],
+      [
+        "cash",
+        "dkb_kontoauszug_v1"
+      ]
+    ],
+    "account_words": [
+      "dkb"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "dkb_kontoauszug_v1",
+      "input": "fixtures/dkb_kontoauszug_v1.txt",
+      "expected": "fixtures/dkb_kontoauszug_v1.expected.json"
+    },
+    {
+      "domain": "cash",
+      "reader_id": "dkb_umsatzliste_v1",
+      "input": "fixtures/dkb_umsatzliste_v1.csv",
+      "expected": "fixtures/dkb_umsatzliste_v1.expected.json"
+    }
+  ]
+}

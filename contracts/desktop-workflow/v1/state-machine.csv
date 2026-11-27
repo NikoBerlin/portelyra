@@ -1,0 +1,14 @@
+state,event,next_state,visible_data,retry_policy
+empty,confirmed_full_start,blocked,none,confirmed_job_resume
+completed,confirmed_run_start,stale,prior_completed,confirmed_job_resume
+partial,confirmed_run_start,stale,prior_partial,confirmed_job_resume
+blocked,worker_checkpoint,blocked,none,confirmed_job_resume
+stale,worker_checkpoint,stale,prior_usable,confirmed_job_resume
+stale,worker_success,completed,new_completed,new_plan_required
+stale,worker_partial,partial,new_partial,new_plan_required
+stale,worker_failure,stale,prior_usable,new_plan_required
+blocked,worker_success,completed,new_completed,new_plan_required
+blocked,worker_partial,partial,new_partial,new_plan_required
+blocked,worker_failure,blocked,none,new_plan_required
+completed,exact_job_replay,completed,same_completed,no_duplicate
+partial,exact_job_replay,partial,same_partial,no_duplicate

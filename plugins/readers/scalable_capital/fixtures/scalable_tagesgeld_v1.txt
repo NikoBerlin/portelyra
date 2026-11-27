@@ -1,0 +1,20 @@
+Scalable Capital Bank GmbH
+
+Kontoauszug
+Zeitraum 01.07.2027 - 31.07.2027
+
+Auszug Nr.                               7
+Verrechnungskonto                        DE00 0000 (TESTDEFFXXX)
+Kontostand am 01.07.2027            1.779,47 EUR
+Kontostand am 31.07.2027            1.799,47 EUR
+
+Buchung            Wertstellung          Beschreibung                       Betrag
+
+14.07.2027        14.07.2027            Überweisung            +20,00 EUR
+
+Kontoauszug
+Zeitraum 01.07.2027 - 31.07.2027
+
+Verteilung Ihrer Einlagen
+JPM EUR Liquidity LVNAV Select (dist.)        1.799,47 EUR
+                              Kontostand        1.799,47 EUR

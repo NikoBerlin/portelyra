@@ -1,0 +1,5 @@
+{
+ "op": "fx_symbol",
+ "base_currency": "USD",
+ "quote_currency": "EUR"
+}

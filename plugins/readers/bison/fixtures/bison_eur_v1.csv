@@ -1,0 +1,5 @@
+Transaction ID; Transaction type; Currency; Asset; Eur (amount); Asset (amount); Asset (market price); Fee; Date (UTC - Coordinated Universal Time)
+A1; Deposit; Eur; ; 500.00; ; ; 0.0000000000; 2027-03-17 10:27:14
+A2; Buy; Eur; Btc; 400.00; 0.005; 80000; 0.0000000000; 2027-03-18 10:00:00
+A3; Staking Reward; ; Eth; ; 0.0001; ; 0.0000000000; 2027-03-19 10:00:00
+A4; Withdraw; Eur; ; 100.00; ; ; 0.0000000000; 2027-03-31 09:42:51

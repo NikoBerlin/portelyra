@@ -1,0 +1,28 @@
+code,boundary,blocking,public_message
+desktop_catalog_state_invalid,catalog,yes,The Catalog editor state is invalid
+desktop_catalog_context_invalid,catalog,yes,The Catalog Context is invalid
+desktop_catalog_input_invalid,catalog,yes,The Catalog input is invalid
+desktop_catalog_catalog_unavailable,catalog,yes,The current Catalog is unavailable
+desktop_catalog_preview_required,catalog,yes,A current Catalog Preview is required
+desktop_catalog_confirmation_required,catalog,yes,Explicit Catalog confirmation is required
+desktop_catalog_confirmation_consumed,catalog,yes,The Catalog confirmation was consumed
+desktop_catalog_catalog_changed,catalog,yes,The Catalog changed after Preview
+desktop_catalog_command_failed,catalog,yes,The Catalog Command failed safely
+desktop_catalog_boundary_failed,catalog,yes,The Catalog boundary failed safely
+desktop_catalog_isin_invalid,catalog,yes,The ISIN check digit is invalid
+desktop_catalog_isin_taken,catalog,yes,The ISIN already belongs to another Asset
+desktop_csv_context_invalid,csv,yes,The CSV Context is invalid
+desktop_csv_source_invalid,csv,yes,The CSV source is invalid
+desktop_csv_header_invalid,csv,yes,The CSV header is invalid
+desktop_csv_input_invalid,csv,yes,The CSV row input is invalid
+desktop_csv_catalog_unavailable,csv,yes,The CSV Catalog is unavailable
+desktop_csv_plan_conflict,csv,yes,The CSV Plan conflicts
+desktop_csv_preview_required,csv,yes,A current CSV Preview is required
+desktop_csv_confirmation_required,csv,yes,Explicit CSV confirmation is required
+desktop_csv_confirmation_consumed,csv,yes,The CSV confirmation was consumed
+desktop_csv_catalog_changed,csv,yes,The Catalog changed after CSV Preview
+desktop_csv_restart_unavailable,csv,yes,No exact CSV Plan can be resumed
+desktop_csv_storage_invalid,csv,yes,The CSV Plan storage is invalid
+desktop_csv_command_failed,csv,yes,A CSV Catalog Command failed safely
+desktop_csv_simulated_interruption,test_only,yes,The invented CSV failpoint interrupted execution
+desktop_csv_boundary_failed,csv,yes,The CSV boundary failed safely

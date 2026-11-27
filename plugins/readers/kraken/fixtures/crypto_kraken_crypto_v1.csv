@@ -1,0 +1,3 @@
+"txid","refid","time","type","subtype","aclass","subclass","asset","wallet","amount","fee","balance","amountusd","feeusd","balanceusd","feecurrency"
+"LGAAAA-AAAAA-AAAAA1","FTGAAAA-AAAAA-AAAAA1","2027-06-01 10:20:00","deposit","","currency","crypto","ETH","spot / main",0.4999123456,0,0.4999123456,0,0,0,""
+"LGAAAA-AAAAA-AAAAA2","FWGAAAA-AAAAA-AAAAA1","2027-06-06 09:00:00","withdrawal","","currency","crypto","SOL","spot / main",-1.0000000000,0,0,0,0,0,"SOL"

@@ -1,0 +1,559 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "statement-reader-plugin/v1/manifest.schema.json",
+  "title": "Manifest eines Leser-Plugins (statement_reader_v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "api_version",
+    "api_minor",
+    "plugin_id",
+    "plugin_version",
+    "publisher",
+    "institution",
+    "label",
+    "entry_point",
+    "entry_point_sha256",
+    "modules",
+    "handbook",
+    "readers",
+    "fixtures"
+  ],
+  "properties": {
+    "api_version": {
+      "const": "statement_reader_v1"
+    },
+    "api_minor": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Stufe der Schnittstelle innerhalb von v1, die das Plugin braucht (0 cash; 1 securities, fx; 2 crypto, combine; 3 reward, income_statement; 4 Erzeuger; 5 Quellangaben eines Krypto-Lesers)"
+    },
+    "plugin_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,40}$"
+    },
+    "plugin_version": {
+      "type": "string",
+      "pattern": "^[0-9]{1,4}\\.[0-9]{1,4}\\.[0-9]{1,4}$"
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "institution": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "entry_point": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]{1,80}\\.py$"
+    },
+    "entry_point_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "handbook": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reader_id",
+          "domain",
+          "label",
+          "document_kind",
+          "extensions",
+          "detection",
+          "tested_formats",
+          "known_limits"
+        ],
+        "properties": {
+          "reader_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{2,60}_v[0-9]+$"
+          },
+          "domain": {
+            "enum": [
+              "cash",
+              "securities",
+              "fx",
+              "crypto",
+              "reward",
+              "income_statement"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "document_kind": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "extensions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^\\.[a-z0-9]{1,8}$"
+            }
+          },
+          "detection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "match_any"
+            ],
+            "properties": {
+              "match_any": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  }
+                }
+              }
+            }
+          },
+          "tested_formats": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 600
+          },
+          "known_limits": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          },
+          "combine": {
+            "type": "boolean"
+          },
+          "generator": {
+            "type": "boolean",
+            "description": "bringt einen Erzeuger erfundener Belege fuer den Selbsttest mit (generate, Stufe 4)"
+          },
+          "source": {
+            "type": "object",
+            "description": "Stufe 5, nur Bereich crypto: Quellangaben, die der Kern bisher je Börse fest kannte",
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "label",
+              "institution_names",
+              "wallets",
+              "default_wallet",
+              "pairing",
+              "internal_transfers"
+            ],
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{1,30}$",
+                "description": "Quelle der Zeilen (gleich ihrem Feld source); nicht generic"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "institution_names": {
+                "type": "array",
+                "maxItems": 10,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                }
+              },
+              "wallets": {
+                "type": "object",
+                "maxProperties": 20,
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label"
+                  ],
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 60
+                    },
+                    "account_name": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "any": {
+                          "type": "array",
+                          "maxItems": 10,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 40
+                          }
+                        },
+                        "none": {
+                          "type": "array",
+                          "maxItems": 10,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 40
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "default_wallet": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label_prefix",
+                  "account_name"
+                ],
+                "properties": {
+                  "label_prefix": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "account_name": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "any": {
+                        "type": "array",
+                        "maxItems": 10,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        }
+                      },
+                      "none": {
+                        "type": "array",
+                        "maxItems": 10,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "pairing": {
+                "enum": [
+                  "none",
+                  "group",
+                  "time"
+                ]
+              },
+              "pair_window_minutes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1440
+              },
+              "pair_related_wallet": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "internal_transfers": {
+                "type": "boolean"
+              },
+              "order_window_days": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3650
+              },
+              "unpaired_reason_by_ticker": {
+                "type": "object",
+                "maxProperties": 40,
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]{2,79}$"
+                }
+              },
+              "reason_texts": {
+                "type": "object",
+                "maxProperties": 40,
+                "additionalProperties": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              },
+              "format_label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "description": "Name des Formats in der Liste der lesbaren Exporte (ohne Angabe label)"
+              }
+            }
+          },
+          "profiles": {
+            "type": "object",
+            "description": "Stufe 5, nur Bereiche securities und fx: je Profil der Zeilen (Feld profile) Anzeige, Institutsnamen fuer den Kontovorschlag, Kontohinweis und Depotfamilie",
+            "minProperties": 1,
+            "maxProperties": 20,
+            "propertyNames": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]{1,40}$"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "institution_names"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "institution_names": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 10,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  }
+                },
+                "account_hint": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "depot_family": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]{1,40}$"
+                }
+              }
+            }
+          },
+          "format_checked": {
+            "type": "object",
+            "description": "Stufe 5, jeder Bereich: Tag der letzten Formatpruefung an echten Belegen (checked_on); through ist derselbe Tag (seit 0.3.2 kein Enddatum der Belege mehr), juengere Vorgaenge werden gelesen und gekennzeichnet",
+            "additionalProperties": false,
+            "required": [
+              "through",
+              "checked_on"
+            ],
+            "properties": {
+              "through": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "checked_on": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              }
+            }
+          },
+          "row_ids": {
+            "type": "boolean",
+            "description": "Stufe 5, nur Bereich reward: jede Zeile traegt eine eigene Kennung der Boerse; der Zeilenschluessel bindet nur Leser und Kennung"
+          },
+          "subaccount_fallback": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "description": "Stufe 6, nur Bereich reward: der Export nennt ein Unterkonto (Spot, Earn); dies ist der Name, den der Leser ohne Angabe setzt. Nur dann heisst gleiches Boersenkonto auch gleiches Wallet."
+          }
+        }
+      }
+    },
+    "intake": {
+      "type": "object",
+      "description": "Stufe 5: Rezept des Eingangs fuer das Institut des Plugins (Unterordner, Downloads, Zeitraumregel, Leser in Buchungsfolge, Woerter der Institutsangabe der Konten)",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "label",
+        "folders",
+        "downloads",
+        "period",
+        "covers",
+        "readers",
+        "account_words",
+        "tax_all_accounts"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{1,40}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "status": {
+          "enum": [
+            "active",
+            "historical"
+          ]
+        },
+        "folders": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          }
+        },
+        "downloads": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "period": {
+          "enum": [
+            "since_start",
+            "monthly",
+            "per_document",
+            "none"
+          ]
+        },
+        "covers": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "readers": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "prefixItems": [
+              {
+                "enum": [
+                  "cash",
+                  "securities",
+                  "fx",
+                  "crypto",
+                  "reward"
+                ]
+              },
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{2,60}_v[0-9]+$"
+              }
+            ]
+          }
+        },
+        "account_words": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "pattern": "^[^A-ZÄÖÜ]+$"
+          }
+        },
+        "tax_all_accounts": {
+          "type": "boolean"
+        }
+      }
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "domain",
+          "reader_id",
+          "input",
+          "expected"
+        ],
+        "properties": {
+          "reader_id": {
+            "type": "string"
+          },
+          "input": {
+            "type": "string",
+            "pattern": "^fixtures/"
+          },
+          "expected": {
+            "type": "string",
+            "pattern": "^fixtures/"
+          },
+          "domain": {
+            "enum": [
+              "cash",
+              "securities",
+              "fx",
+              "crypto",
+              "reward",
+              "income_statement"
+            ]
+          }
+        }
+      }
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_]{1,60}\\.py$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

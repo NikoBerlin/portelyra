@@ -1,0 +1,11 @@
+capability,completion_reader,adapter_registry,concrete_importer,market_worker,tax_worker,display,notes
+read_private_source,no,no,bound_only,no,no,no,Concrete adapter requires separate private authorization
+execute_adapter,no,no,synthetic_fixture_only,no,no,no,Normal execution remains disabled pending private owner UAT
+create_activity_draft,no,no,candidate_only,no,no,no,Trusted Data boundary owns persistent Draft
+write_schema401,no,no,no,no,no,no,Existing Activity command remains sole writer
+write_schema2900,no,no,no,no,no,no,Cash remains separate
+provider_access,no,no,no,separate_confirmation,no,no,Not authorized by this contract
+write_market_history,no,no,no,sole_writer,no,no,Only exact confirmed staged candidate
+write_tax_policy,no,no,no,no,sole_writer,no,Tax App policy boundary remains separate
+start_worker,no,no,no,no,no,no,Display and completion reader start nothing
+complete_portfolio_claim,no,no,no,no,no,no,Cash is excluded

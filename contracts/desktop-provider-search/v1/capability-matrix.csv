@@ -1,0 +1,14 @@
+capability,supported,notes
+provider_preview,yes,No provider or filesystem access
+explicit_one_attempt_yahoo_search,yes,Only after exact confirmation
+persist_hash_only_attempt,yes,Before network access
+persist_normalized_candidates,yes,No query or raw response
+exact_completed_replay,yes,No second provider request
+automatic_retry,no,New preview and confirmation required
+automatic_candidate_selection,no,Owner chooses
+canonical_write,no,None
+provider_mapping_write,no,Separate command
+market_history_write,no,Separate probe and market worker
+tax_or_fx_authority,no,None
+fmp,no,Permanently excluded
+twelve_data,no,Not a search provider in v1

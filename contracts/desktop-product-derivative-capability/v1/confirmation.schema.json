@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:portelyra:desktop-product-derivative-capability:v1:confirmation",
+  "type":"object","additionalProperties":false,
+  "required":["contract_version","preview_fingerprint","source_fingerprint","source_data_fingerprint","migration_source_fingerprint","confirmation_code_fingerprint","confirmed_at_utc","expires_at_utc","confirmation_fingerprint"],
+  "properties":{
+    "contract_version":{"const":1},
+    "preview_fingerprint":{"$ref":"#/$defs/fp"},"source_fingerprint":{"$ref":"#/$defs/fp"},"source_data_fingerprint":{"$ref":"#/$defs/fp"},"migration_source_fingerprint":{"$ref":"#/$defs/fp"},"confirmation_code_fingerprint":{"$ref":"#/$defs/fp"},"confirmation_fingerprint":{"$ref":"#/$defs/fp"},
+    "confirmed_at_utc":{"$ref":"#/$defs/utc"},"expires_at_utc":{"$ref":"#/$defs/utc"}
+  },
+  "$defs":{"fp":{"type":"string","pattern":"^[a-f0-9]{64}$"},"utc":{"type":"string","pattern":"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}}
+}

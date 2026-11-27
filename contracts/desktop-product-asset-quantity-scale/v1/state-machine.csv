@@ -1,0 +1,10 @@
+state,event,next_state,catalog_write,generation_write,fifo_rebuild
+within_current_scale,continue_activity_preview,unchanged,0,0,0
+ready_for_confirmation,confirm,attempt_consumed,0,0,0
+attempt_consumed,catalog_rescale,pending_generation_finalize,1,0,0
+attempt_consumed,explicit_resume,pending_generation_finalize,1,0,0
+pending_generation_finalize,publish_generation,canonical_committed_stale,0,1,0
+pending_generation_finalize,explicit_resume,canonical_committed_stale,0,1,0
+canonical_committed_stale,materialize_affected_worlds,completed_fresh,0,0,1
+canonical_committed_stale,rebuild_failure,canonical_committed_stale,0,0,0
+completed_fresh,exact_replay,completed_fresh,0,0,0

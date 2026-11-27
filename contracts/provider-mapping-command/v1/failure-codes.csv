@@ -1,0 +1,15 @@
+code,blocking,public_message
+provider_mapping_context_invalid,1,Der lokale Laufzeitkontext ist ungültig.
+provider_mapping_role_not_authorized,1,Die Rolle darf Provider-Zuordnungen nicht ändern.
+provider_mapping_repository_invalid,1,Der lokale Datenbestand konnte nicht sicher geprüft werden.
+provider_mapping_input_invalid,1,Die Provider-Zuordnung ist ungültig oder unvollständig.
+provider_mapping_asset_invalid,1,Das gewählte Asset ist nicht für diese Zuordnung verfügbar.
+provider_mapping_not_found,1,Die Provider-Zuordnung ist nicht vorhanden.
+provider_mapping_state_invalid,1,Der aktuelle Zuordnungsstatus erlaubt diesen Schritt nicht.
+provider_mapping_revision_conflict,1,Die Provider-Zuordnung wurde zwischenzeitlich geändert.
+provider_mapping_duplicate_conflict,1,Diese Provider-Zuordnung ist bereits vorhanden.
+provider_mapping_idempotency_conflict,1,Die Einmal-Autorisierung wurde mit anderem Inhalt verwendet.
+provider_mapping_integrity_invalid,1,Die Integrität der Provider-Zuordnung ist nicht nachweisbar.
+provider_mapping_lock_unavailable,1,Ein anderer lokaler Schreibvorgang ist aktiv.
+provider_mapping_transaction_failed,1,Die Provider-Zuordnung wurde nicht vollständig gespeichert.
+provider_mapping_boundary_failed,1,Der Provider-Zuordnungsdienst ist sicher fehlgeschlagen.

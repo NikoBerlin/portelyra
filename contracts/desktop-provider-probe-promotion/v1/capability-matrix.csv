@@ -1,0 +1,11 @@
+capability,supported,notes
+read_probe_evidence,yes,Exact mapping and evidence binding
+preview_listing_and_days,yes,No write
+bootstrap_daily_history,yes,Only inside confirmed apply
+bind_immutable_listing,yes,Owner-confirmed market timezone calendar
+append_probe_days,yes,Observed non-trading or source-gap
+provider_access,no,No second request
+provider_mapping_verification,no,Separate following command
+canonical_tax_fx_activity_write,no,None
+automatic_holiday_inference,no,Absent weekdays remain source gaps
+automatic_retry,no,Explicit recovery required

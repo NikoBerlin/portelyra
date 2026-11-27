@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/noncash-completion/v1/completion-read-model.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "noncash_completion_version", "status", "scope_kind", "fact_scope_status",
+    "enrichment_capability_status", "analysis_data_status", "importer_preparation_status",
+    "concrete_importer_coverage_status", "dimensions", "noncash_fact_scope_complete",
+    "noncash_enrichment_capability_ready", "noncash_foundation_ready", "noncash_analysis_data_ready",
+    "future_importer_protocol_ready", "manual_provider_maintenance_supported",
+    "manual_tax_maintenance_supported", "cash_included", "complete_portfolio_claim_authorized",
+    "display_started_worker", "importer_started", "provider_access", "network_access",
+    "canonical_write", "tax_write", "path_exposed", "context_exposed", "internal_id_exposed"
+  ],
+  "properties": {
+    "noncash_completion_version": {"const": 1},
+    "status": {"const": "available"},
+    "scope_kind": {"const": "noncash"},
+    "fact_scope_status": {"enum": ["unavailable", "partial", "stale", "complete", "blocked"]},
+    "enrichment_capability_status": {"enum": ["unavailable", "partial", "stale", "prepared", "blocked"]},
+    "analysis_data_status": {"enum": ["unavailable", "partial", "stale", "complete", "blocked"]},
+    "importer_preparation_status": {"const": "synthetic_validated_disabled"},
+    "concrete_importer_coverage_status": {"const": "implemented_owner_uat_pending"},
+    "dimensions": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dimension_code", "status", "reason_code"],
+        "properties": {
+          "dimension_code": {"enum": [
+            "legacy_lineage_closure", "canonical_activity", "fifo_v2", "future_importer_protocol",
+            "manual_provider_policy", "staged_market_review", "explicit_fx_policy", "manual_tax_policy",
+            "incremental_invalidation", "daily_market_history", "fx_history", "realized_tax_projection",
+            "unrealized_valuation", "analysis_artifact"
+          ]},
+          "status": {"enum": ["unavailable", "partial", "stale", "complete", "blocked", "not_applicable"]},
+          "reason_code": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,79}$"}
+        }
+      }
+    },
+    "noncash_fact_scope_complete": {"type": "boolean"},
+    "noncash_enrichment_capability_ready": {"type": "boolean"},
+    "noncash_foundation_ready": {"type": "boolean"},
+    "noncash_analysis_data_ready": {"type": "boolean"},
+    "future_importer_protocol_ready": {"type": "boolean"},
+    "manual_provider_maintenance_supported": {"type": "boolean"},
+    "manual_tax_maintenance_supported": {"type": "boolean"},
+    "cash_included": {"const": false},
+    "complete_portfolio_claim_authorized": {"const": false},
+    "display_started_worker": {"const": false},
+    "importer_started": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "canonical_write": {"const": false},
+    "tax_write": {"const": false},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "internal_id_exposed": {"const": false}
+  }
+}

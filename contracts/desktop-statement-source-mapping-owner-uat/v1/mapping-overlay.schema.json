@@ -1,0 +1,169 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "alias_registry_sha256",
+    "automatic_retry_authorized",
+    "candidate_generation_authorized",
+    "canonical_write_authorized",
+    "cash_write_authorized",
+    "column_bindings",
+    "decimal_bindings",
+    "delimiter",
+    "encoding",
+    "exact_local_zone",
+    "header_vector_sha256",
+    "mapping_attempt_fingerprint",
+    "network_access_authorized",
+    "overlay_fingerprint",
+    "profile_revision_created",
+    "provider_access_authorized",
+    "route_bindings",
+    "row_count",
+    "silent_drop_count",
+    "statement_source_mapping_overlay_version",
+    "status",
+    "tax_write_authorized",
+    "time_format"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "type": "boolean"
+    },
+    "alias_registry_sha256": {
+      "type": "string"
+    },
+    "automatic_retry_authorized": {
+      "type": "boolean"
+    },
+    "candidate_generation_authorized": {
+      "type": "boolean"
+    },
+    "canonical_write_authorized": {
+      "type": "boolean"
+    },
+    "cash_write_authorized": {
+      "type": "boolean"
+    },
+    "column_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "column_ordinal",
+          "disposition",
+          "header_token_sha256",
+          "role"
+        ],
+        "properties": {
+          "column_ordinal": {
+            "type": "integer"
+          },
+          "disposition": {
+            "type": "string"
+          },
+          "header_token_sha256": {
+            "type": "string"
+          },
+          "role": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "decimal_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_fee_quantity_decimal",
+        "balance_reconciliation_evidence",
+        "signed_quantity_decimal"
+      ],
+      "properties": {
+        "asset_fee_quantity_decimal": {
+          "type": "string"
+        },
+        "balance_reconciliation_evidence": {
+          "type": "string"
+        },
+        "signed_quantity_decimal": {
+          "type": "string"
+        }
+      }
+    },
+    "delimiter": {
+      "type": "string"
+    },
+    "encoding": {
+      "type": "string"
+    },
+    "exact_local_zone": {
+      "type": "string"
+    },
+    "header_vector_sha256": {
+      "type": "string"
+    },
+    "mapping_attempt_fingerprint": {
+      "type": "string"
+    },
+    "network_access_authorized": {
+      "type": "boolean"
+    },
+    "overlay_fingerprint": {
+      "type": "string"
+    },
+    "profile_revision_created": {
+      "type": "boolean"
+    },
+    "provider_access_authorized": {
+      "type": "boolean"
+    },
+    "route_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "route",
+          "row_count",
+          "tuple_sha256"
+        ],
+        "properties": {
+          "route": {
+            "type": "string"
+          },
+          "row_count": {
+            "type": "integer"
+          },
+          "tuple_sha256": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "row_count": {
+      "type": "integer"
+    },
+    "silent_drop_count": {
+      "type": "integer"
+    },
+    "statement_source_mapping_overlay_version": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string"
+    },
+    "tax_write_authorized": {
+      "type": "boolean"
+    },
+    "time_format": {
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

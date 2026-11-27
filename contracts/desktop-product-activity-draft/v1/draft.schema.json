@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/draft.schema.json",
+  "title": "Owner-local persistent ActivityDraft v1",
+  "type": "object",
+  "additionalProperties": false,
+  "dependentRequired": {
+    "source_binding": ["source_auxiliary"],
+    "source_auxiliary": ["source_binding"]
+  },
+  "required": ["activity_draft_version", "draft_ref", "context_fingerprint", "portfolio_id", "origin_type", "action_type", "predecessor_event_ref", "event", "revision", "draft_state", "validation_status", "validation", "created_at_utc", "updated_at_utc", "validated_at_utc", "committed_at_utc", "domain_result", "draft_fingerprint"],
+  "properties": {
+    "activity_draft_version": {"const": 1},
+    "draft_ref": {"type": "string", "pattern": "^adt_[a-f0-9]{32}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "portfolio_id": {"type": "string", "pattern": "^ptf_[a-f0-9]{16,64}$"},
+    "origin_type": {"enum": ["manual_form", "tolerant_csv", "correction"]},
+    "action_type": {"enum": ["create", "correct", "void"]},
+    "predecessor_event_ref": {"type": ["string", "null"], "pattern": "^evt_[a-f0-9]{16,64}$"},
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_ref": {"type": ["string", "null"]},
+        "event_type": {"type": ["string", "null"]},
+        "account_ref": {"type": ["string", "null"]},
+        "related_account_ref": {"type": ["string", "null"]},
+        "asset_ref": {"type": ["string", "null"]},
+        "source_asset_ref": {"type": ["string", "null"]},
+        "event_time_evidence": {"type": ["string", "null"]},
+        "local_date": {"type": ["string", "null"]},
+        "local_time": {"type": ["string", "null"]},
+        "time_zone": {"type": ["string", "null"]},
+        "effective_at_utc": {"type": ["string", "null"]},
+        "original_acquired_time_evidence": {"type": ["string", "null"]},
+        "original_acquired_local_date": {"type": ["string", "null"]},
+        "original_acquired_local_time": {"type": ["string", "null"]},
+        "original_acquired_time_zone": {"type": ["string", "null"]},
+        "original_acquired_at_utc": {"type": ["string", "null"]},
+        "amount_input_mode": {"type": ["string", "null"]},
+        "basis_evidence_mode": {"type": ["string", "null"]},
+        "quantity_decimal": {"type": ["string", "null"]},
+        "eligible_quantity_decimal": {"type": ["string", "null"]},
+        "unit_price_decimal": {"type": ["string", "null"]},
+        "gross_amount_decimal": {"type": ["string", "null"]},
+        "monetary_fee_decimal": {"type": ["string", "null"]},
+        "asset_fee_quantity_decimal": {"type": ["string", "null"]},
+        "provided_basis_decimal": {"type": ["string", "null"]},
+        "movement_context_code": {"type": ["string", "null"]}
+      }
+    },
+    "revision": {"type": "integer", "minimum": 1},
+    "draft_state": {"enum": ["editing", "validated_ready", "validated_blocked", "applying", "committed"]},
+    "validation_status": {"enum": ["not_validated", "needs_input", "ready", "blocked"]},
+    "validation": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["activity_draft_validation_version", "validator_id", "draft_revision", "input_fingerprint", "validated_at_utc", "missing_fields", "issue_codes", "plan_kind", "expected_preview_fingerprint", "domain_public_preview", "trusted_preview", "status", "validation_fingerprint"],
+          "properties": {
+            "activity_draft_validation_version": {"const": 1},
+            "validator_id": {"const": "desktop_activity_draft_shared_v1"},
+            "draft_revision": {"type": "integer", "minimum": 1},
+            "input_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "validated_at_utc": {"type": "string", "format": "date-time"},
+            "missing_fields": {"type": "array", "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,79}$"}, "uniqueItems": true},
+            "issue_codes": {"type": "array", "items": {"enum": ["activity_draft_fields_missing", "activity_draft_domain_invalid"]}, "uniqueItems": true},
+            "plan_kind": {"type": ["string", "null"], "enum": ["native_create", "immutable_correction", null]},
+            "expected_preview_fingerprint": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+            "domain_public_preview": {"type": ["object", "null"]},
+            "trusted_preview": {"type": ["object", "null"]},
+            "status": {"enum": ["needs_input", "ready", "blocked"]},
+            "validation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          }
+        }
+      ]
+    },
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "updated_at_utc": {"type": "string", "format": "date-time"},
+    "validated_at_utc": {"type": ["string", "null"], "format": "date-time"},
+    "committed_at_utc": {"type": ["string", "null"], "format": "date-time"},
+    "domain_result": {"type": ["object", "null"]},
+    "source_binding": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["activity_draft_source_binding_version", "context_fingerprint", "source_fingerprint", "source_row_ordinal", "source_row_key", "mapping_fingerprint", "binding_fingerprint"],
+          "properties": {
+            "activity_draft_source_binding_version": {"const": 1},
+            "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "source_row_ordinal": {"type": "integer", "minimum": 1},
+            "source_row_key": {"type": "string", "minLength": 1, "maxLength": 200},
+            "mapping_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "binding_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          }
+        }
+      ]
+    },
+    "source_auxiliary": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["unclassified_fee_decimal", "unclassified_fee_resolution"],
+          "properties": {
+            "unclassified_fee_decimal": {"type": ["string", "null"]},
+            "unclassified_fee_resolution": {"enum": ["not_present", "unresolved", "monetary_fee", "asset_fee_quantity", "zero_no_fee"]},
+            "source_fee_evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fee_decimal", "fee_currency", "treatment"],
+              "properties": {
+                "fee_decimal": {"type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"},
+                "fee_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+                "treatment": {"const": "source_retained_not_reapplied"}
+              }
+            },
+            "valuation_evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["adapter_id", "adapter_version", "valuation_origin", "source_value_mode", "price_currency", "source_unit_price_decimal", "source_fiat_total_decimal"],
+              "properties": {
+                "adapter_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{7,80}$"},
+                "adapter_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+                "valuation_origin": {"enum": ["source_provided", "source_missing", "not_applicable"]},
+                "source_value_mode": {"enum": ["unit_price", "fiat_total", "none"]},
+                "price_currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+                "source_unit_price_decimal": {"type": ["string", "null"], "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"},
+                "source_fiat_total_decimal": {"type": ["string", "null"], "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"}
+              }
+            },
+            "confirmed_reward_valuation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["contract_version", "status", "valuation_method", "local_date", "unit_price_decimal", "fiat_total_decimal", "valuation_currency", "fx_route", "asset_evidence_fingerprint", "fx_evidence_fingerprint", "candidate_fingerprint", "provider_access", "activity_draft_write", "canonical_write"],
+              "properties": {
+                "contract_version": {"const": "reward_valuation_evidence_v1"},
+                "status": {"const": "confirmed"},
+                "valuation_method": {"enum": ["intraday_observation", "daily_close_fallback", "source_fiat_total_fx", "source_unit_price_fx"]},
+                "local_date": {"type": "string", "format": "date"},
+                "unit_price_decimal": {"type": ["string", "null"], "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"},
+                "fiat_total_decimal": {"type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"},
+                "valuation_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+                "fx_route": {"enum": ["identity", "direct", "inverse"]},
+                "fx_observation_date": {"type": ["string", "null"], "format": "date"},
+                "fx_rate_age_days": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+                "fx_selection_basis": {"type": ["string", "null"], "enum": ["identity", "exact_date", "prior_observation", null]},
+                "asset_evidence_fingerprint": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+                "source_valuation_evidence_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "fx_evidence_fingerprint": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+                "candidate_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "provider_access": {"const": false}, "activity_draft_write": {"const": false}, "canonical_write": {"const": false}
+              }
+            },
+            "fifo_order_evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["event_ref", "evidence_mode", "source_file_fingerprint", "source_row_ordinal", "owner_decision_fingerprint", "evidence_fingerprint"],
+              "properties": {
+                "event_ref": {"type": "string", "pattern": "^evt_[a-f0-9]{16,64}$"},
+                "evidence_mode": {"const": "owner_confirmed_source_row_order"},
+                "source_file_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "source_row_ordinal": {"type": "integer", "minimum": 1},
+                "owner_decision_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "evidence_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "draft_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

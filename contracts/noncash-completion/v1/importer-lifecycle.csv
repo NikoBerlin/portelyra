@@ -1,0 +1,9 @@
+state,event,next_state,executable,activation_allowed,private_owner_uat_required,automatic_transition
+placeholder_only,implement_concrete_version,implemented_disabled,yes,no,yes,no
+implemented_disabled,pass_public_synthetic_suite,synthetic_validated_disabled,yes,no,yes,no
+synthetic_validated_disabled,pass_private_owner_uat,owner_accepted_disabled,yes,no,yes,no
+owner_accepted_disabled,explicit_activation,enabled,yes,yes,yes,no
+implemented_disabled,change_version_bytes,implemented_disabled,yes,no,yes,no
+synthetic_validated_disabled,change_version_bytes,implemented_disabled,yes,no,yes,no
+owner_accepted_disabled,change_version_bytes,implemented_disabled,yes,no,yes,no
+enabled,change_version_bytes,implemented_disabled,yes,no,yes,no

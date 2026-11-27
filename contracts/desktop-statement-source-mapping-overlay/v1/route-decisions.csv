@@ -1,0 +1,6 @@
+route,status
+cash_domain_deferred,disabled_only
+diagnostic,disabled_only
+movement_candidate_disabled,disabled_only
+reward_candidate_disabled,disabled_only
+trade_candidate_disabled,disabled_only

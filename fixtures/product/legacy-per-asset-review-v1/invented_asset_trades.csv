@@ -1,0 +1,9 @@
+Asset_ID;Depot;Datum;Uhrzeit;Typ;Stückzahl;Stückpreis;Ordergebühr;Kommentar;Provider_Symbol;Steuersatz
+SYN_ASSET_ALPHA;Invented Depot A;2026-01-02;10:00:00;Buy;10;10;1;invented first lot;IGNORED;99
+SYN_ASSET_ALPHA;Invented Depot A;2026-01-03;10:00:00;Buy;5;20;0;;IGNORED;99
+SYN_ASSET_ALPHA;Invented Depot A;2026-01-04;11:00:00;Dividend;15;0.4;0;invented distribution;IGNORED;99
+SYN_ASSET_ALPHA;Invented Depot A;2026-01-05;12:00:00;Sell;4;15;1;;IGNORED;99
+SYN_ASSET_ALPHA;Invented Depot A;2026-01-06;13:00:00;Reward;2;3;0;invented reward;IGNORED;99
+SYN_ASSET_ALPHA;ASSET_ZUFLUSS: EXT -> Invented Depot A;2026-01-07;;Deposit;3;8;0;invented carried lot;IGNORED;99
+SYN_ASSET_ALPHA;ASSET_ABFLUSS: Invented Depot A -> EXT;2026-01-08;14:00:00;Withdrawal;1;0;0.1;invented custody exit;IGNORED;99
+SYN_ASSET_ALPHA;ASSET_WECHSEL: Invented Depot A -> Invented Depot B;2026-01-09;15:00:00;Transfer;2;0;0.2;invented custody move;IGNORED;99

@@ -1,0 +1,196 @@
+{
+ "tax_year": 2027,
+ "postings": [
+  {
+   "ordinal": 1,
+   "name": "2222222222",
+   "kind_text": "Zinszahlung Kontokorrent- / Sparkonten",
+   "section": "Zinserträge aus Kontoguthaben",
+   "amounts": {
+    "Zinserträge aus Kontoguthaben": {
+     "decimal_text": "4.00"
+    },
+    "Höhe der Kapitalerträge nach Verlustverrechnung": {
+     "decimal_text": "4.00"
+    },
+    "25,00% Kapitalertragsteuer": {
+     "decimal_text": "1.00"
+    },
+    "5,50% Solidaritätszuschlag": {
+     "decimal_text": "0.05"
+    }
+   },
+   "isin": null,
+   "quantity": null,
+   "value_date": "2027-03-31",
+   "inflow_date": "2027-03-31",
+   "depot": "1111111-001",
+   "fund": false,
+   "replacement_base": false,
+   "taxes": {
+    "decimal_text": "1.05"
+   },
+   "kind": "interest",
+   "taxable": {
+    "decimal_text": "4.00"
+   },
+   "line7": {
+    "decimal_text": "4.00"
+   }
+  },
+  {
+   "ordinal": 2,
+   "name": "Erfundene Dividenden Inc.",
+   "kind_text": "Dividendenzahlung",
+   "section": "Laufende Erträge aus Aktien und aktienähnlichen Wertpapieren Ausland",
+   "amounts": {
+    "Ausländische Dividenden und andere laufende Erträge aus Aktien": {
+     "decimal_text": "10.50"
+    },
+    "Höhe der Kapitalerträge nach Verlustverrechnung": {
+     "decimal_text": "10.50"
+    }
+   },
+   "isin": "US0000000001",
+   "quantity": "10",
+   "value_date": "2027-04-15",
+   "inflow_date": "2027-04-15",
+   "depot": "1111111-001",
+   "fund": false,
+   "replacement_base": false,
+   "taxes": {
+    "decimal_text": "0"
+   },
+   "kind": "dividend",
+   "taxable": {
+    "decimal_text": "10.50"
+   },
+   "line7": {
+    "decimal_text": "10.50"
+   }
+  },
+  {
+   "ordinal": 3,
+   "name": "Erfundene Aktie AG",
+   "kind_text": "Veräußerung",
+   "section": "Veräußerungen im Sinne des § 20 Abs. 2 EStG",
+   "amounts": {
+    "Gewinn / Verlust aus Aktienveräußerungen": {
+     "decimal_text": "120.34"
+    },
+    "Höhe der Kapitalerträge nach Verlustverrechnung": {
+     "decimal_text": "120.34"
+    }
+   },
+   "isin": "DE0000000002",
+   "quantity": "10",
+   "value_date": "2027-05-02",
+   "inflow_date": "2027-05-02",
+   "depot": "1111111-001",
+   "fund": false,
+   "replacement_base": false,
+   "taxes": {
+    "decimal_text": "0"
+   },
+   "kind": "sale",
+   "taxable": {
+    "decimal_text": "120.34"
+   },
+   "line7": {
+    "decimal_text": "120.34"
+   }
+  },
+  {
+   "ordinal": 4,
+   "name": "Erfundene Verlust AG",
+   "kind_text": "Veräußerung",
+   "section": "Veräußerungen im Sinne des § 20 Abs. 2 EStG",
+   "amounts": {
+    "Gewinn / Verlust aus Aktienveräußerungen": {
+     "decimal_text": "-20.00"
+    },
+    "Höhe der Kapitalerträge nach Verlustverrechnung": {
+     "decimal_text": "-20.00"
+    }
+   },
+   "isin": "DE0000000003",
+   "quantity": "10",
+   "value_date": "2027-05-03",
+   "inflow_date": "2027-05-03",
+   "depot": "1111111-001",
+   "fund": false,
+   "replacement_base": false,
+   "taxes": {
+    "decimal_text": "0"
+   },
+   "kind": "sale",
+   "taxable": {
+    "decimal_text": "-20.00"
+   },
+   "line7": {
+    "decimal_text": "-20.00"
+   }
+  },
+  {
+   "ordinal": 5,
+   "name": "Erfundener Welt-Fonds",
+   "kind_text": "Veräußerung",
+   "section": "Veräußerungen im Sinne des § 20 Abs. 2 EStG",
+   "amounts": {
+    "Veräußerung von Investmentfonds: Gewinn / Verlust seit Kauf bzw. letzter fiktiven Veräußerung": {
+     "decimal_text": "100.00"
+    },
+    "Abzüglich / zuzüglich Teilfreistellung 30%": {
+     "decimal_text": "-30.00"
+    },
+    "Höhe der Kapitalerträge nach Verlustverrechnung": {
+     "decimal_text": "70.00"
+    }
+   },
+   "isin": "IE0000000004",
+   "quantity": "10",
+   "value_date": "2027-05-04",
+   "inflow_date": "2027-05-04",
+   "depot": "1111111-001",
+   "fund": true,
+   "replacement_base": false,
+   "taxes": {
+    "decimal_text": "0"
+   },
+   "kind": "fund",
+   "taxable": {
+    "decimal_text": "70.00"
+   },
+   "line7": {
+    "decimal_text": "70.00"
+   }
+  },
+  {
+   "ordinal": 6,
+   "name": "2222222222",
+   "kind_text": "Sollzinsen / Verwahrentgelt",
+   "section": "Kreditzinsen und Kreditprovisionen",
+   "amounts": {
+    "Sollzinsen, Verwahrentgelt": {
+     "decimal_text": "-0.12"
+    }
+   },
+   "isin": null,
+   "quantity": null,
+   "value_date": "2027-06-30",
+   "inflow_date": "2027-06-30",
+   "depot": "1111111-001",
+   "fund": false,
+   "replacement_base": false,
+   "taxes": {
+    "decimal_text": "0"
+   },
+   "kind": "ignored",
+   "taxable": null,
+   "line7": null
+  }
+ ],
+ "summary_line7": {
+  "decimal_text": "184.84"
+ }
+}

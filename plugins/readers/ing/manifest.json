@@ -1,0 +1,129 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "ing",
+  "plugin_version": "1.2.1",
+  "publisher": "Portelyra",
+  "institution": "ING",
+  "label": "ING",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "d8e16071684f1740f19bb91da77b00abe7edfb2807330b98d0f5fd8c5b192851",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "0cfde5fb44df3c9ec1c95f4a7524496d6b4fe12ab4441189be55d0d4ffa012b8"
+    },
+    {
+      "path": "reader_securities.py",
+      "sha256": "34a322b0b35181e6d0e6f540690cfdb9199d52245e571fe9601f5a54e3d65997"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "b5cc54433a56956f4598ad0c97a8e0559bd55b2ef0a3fc4895045e6d15c60b1b"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "ing_v1",
+      "domain": "cash",
+      "label": "ING Kontoauszug, Giro und Extra-Konto (PDF oder Text)",
+      "document_kind": "Kontoauszug Giro und Extra-Konto (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": []
+      },
+      "tested_formats": "Monatliche Kontoauszüge als PDF mit „Alter Saldo“ und „Neuer Saldo“.",
+      "known_limits": [
+        "Eine Buchung wird an ihrer Buchungsart erkannt (Lastschrift, Gutschrift, Überweisung und weitere); eine unbekannte Buchungsart fällt in der Saldoprüfung auf.",
+        "Erkennung nur über die Dateiendung; ob der Inhalt passt, entscheidet erst das Lesen."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "ing_direkt_depot_v1",
+      "domain": "securities",
+      "label": "ING Direkt-Depot",
+      "document_kind": "Wertpapierabrechnungen, Dividenden, Splitmitteilungen, Vorabpauschalen (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt",
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "ing-diba",
+            "direkt-depot"
+          ]
+        ]
+      },
+      "tested_formats": "PDF-Belege des ING Direkt-Depots: Wertpapierabrechnung Kauf und Verkauf (gleichzeitige Teilausführungen gemeinsam), Dividenden- und Ausschüttungsgutschrift, Splitmitteilung (Wertpapier Eingang der Splitaktien, übernehmbar als Kapitalmaßnahme), Vorabpauschale je Fonds (Betrag vor Teilfreistellung; ab 2026 von der Rückseite, gegen Stück × Wert je Stück geprüft).",
+      "known_limits": [
+        "Überträge, thesaurierende Erträge, Steuerunterlagen, Sammelübersichten mehrerer Vorgänge."
+      ],
+      "generator": true,
+      "profiles": {
+        "ing": {
+          "label": "ING Direkt-Depot",
+          "institution_names": [
+            "ING"
+          ]
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-15",
+        "checked_on": "2026-10-15"
+      }
+    }
+  ],
+  "intake": {
+    "key": "ing",
+    "label": "ING",
+    "folders": [
+      "ing",
+      "ingdiba"
+    ],
+    "downloads": [
+      "Wertpapierabrechnungen, Dividenden- und Ausschüttungsgutschriften und Vorabpauschalen als PDF aus der Post-Box",
+      "Kontoauszüge von Girokonto und Extra-Konto als PDF"
+    ],
+    "period": "per_document",
+    "covers": "Direkt-Depot, Girokonto und Extra-Konto",
+    "readers": [
+      [
+        "securities",
+        "ing_direkt_depot_v1"
+      ],
+      [
+        "cash",
+        "ing_v1"
+      ]
+    ],
+    "account_words": [
+      "ing"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "ing_v1",
+      "input": "fixtures/ing_v1.txt",
+      "expected": "fixtures/ing_v1.expected.json"
+    },
+    {
+      "domain": "securities",
+      "reader_id": "ing_direkt_depot_v1",
+      "input": "fixtures/securities_ing_direkt_depot_v1.txt",
+      "expected": "fixtures/securities_ing_direkt_depot_v1.expected.json"
+    }
+  ]
+}

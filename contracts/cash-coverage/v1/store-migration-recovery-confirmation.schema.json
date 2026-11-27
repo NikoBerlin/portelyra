@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-recovery-confirmation.schema.json",
+  "title": "Cash Coverage Store Migration Recovery Confirmation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_recovery_confirmation_version","authorization_scope","confirmation_ref","recovery_ref","migration_plan_fingerprint","recovery_plan_fingerprint","original_confirmation_fingerprint","context_fingerprint","issued_at_utc","expires_at_utc","confirmed","automatic_retry_authorized","source_mutation_authorized","target_overwrite_authorized","recovery_confirmation_fingerprint"],
+  "properties": {
+    "cash_coverage_store_migration_recovery_confirmation_version": {"const": 1},
+    "authorization_scope": {"const": "cash_coverage_store_migration_recovery_once"},
+    "confirmation_ref": {"type": "string", "pattern": "^ccmr_[a-f0-9]{32}$"},
+    "recovery_ref": {"type": "string", "pattern": "^ccmrec_[a-f0-9]{32}$"},
+    "migration_plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "recovery_plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "original_confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "issued_at_utc": {"$ref": "#/$defs/utc"},
+    "expires_at_utc": {"$ref": "#/$defs/utc"},
+    "confirmed": {"const": true},
+    "automatic_retry_authorized": {"const": false},
+    "source_mutation_authorized": {"const": false},
+    "target_overwrite_authorized": {"const": false},
+    "recovery_confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "utc": {"type": "string", "format": "date-time", "pattern": "Z$"}}
+}

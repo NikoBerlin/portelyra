@@ -1,0 +1,233 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "display_settings_v1",
+ "title": "Veroeffentlichte Anzeige-Einstellungen (#500)",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "display_settings_version",
+  "display_settings_id",
+  "status",
+  "tenant_id",
+  "user_id",
+  "data_space_id",
+  "amount_decimals",
+  "tint",
+  "content_fingerprint",
+  "completed_at_utc",
+  "provider_access",
+  "network_access",
+  "canonical_write",
+  "artifact_fingerprint"
+ ],
+ "properties": {
+  "display_settings_version": {
+   "const": 1
+  },
+  "display_settings_id": {
+   "type": "string",
+   "pattern": "^dsp_[a-f0-9]{32}$"
+  },
+  "status": {
+   "const": "completed"
+  },
+  "tenant_id": {
+   "type": "string",
+   "minLength": 3,
+   "maxLength": 80
+  },
+  "user_id": {
+   "type": "string",
+   "minLength": 3,
+   "maxLength": 80
+  },
+  "data_space_id": {
+   "type": "string",
+   "minLength": 8,
+   "maxLength": 64
+  },
+  "amount_decimals": {
+   "enum": [
+    0,
+    2
+   ]
+  },
+  "tint": {
+   "type": "boolean"
+  },
+  "content_fingerprint": {
+   "type": "string",
+   "pattern": "^[a-f0-9]{64}$"
+  },
+  "completed_at_utc": {
+   "type": "string",
+   "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+  },
+  "provider_access": {
+   "const": false
+  },
+  "network_access": {
+   "const": false
+  },
+  "canonical_write": {
+   "const": false
+  },
+  "artifact_fingerprint": {
+   "type": "string",
+   "pattern": "^[a-f0-9]{64}$"
+  },
+  "drawdown_zones": {
+   "type": "array",
+   "maxItems": 3,
+   "items": {
+    "type": "integer",
+    "minimum": 5,
+    "maximum": 95
+   }
+  },
+  "expert_tools": {
+   "type": "boolean"
+  },
+  "analysis_period": {
+   "enum": [
+    "1m",
+    "3m",
+    "qtd",
+    "ytd",
+    "1y",
+    "3y",
+    "5y",
+    "all"
+   ]
+  },
+  "history_lines": {
+   "type": "array",
+   "minItems": 1,
+   "maxItems": 7,
+   "uniqueItems": true,
+   "items": {
+    "enum": [
+     "net_worth",
+     "market_value",
+     "cost_basis",
+     "cash_documented",
+     "cash",
+     "contributed",
+     "unrealised"
+    ]
+   }
+  },
+  "small_holdings_threshold_decimal": {
+   "type": "string",
+   "pattern": "^(0|[1-9][0-9]{0,3})(\\.[0-9]{1,2})?$",
+   "maxLength": 7
+  },
+  "portfolio_scope": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "effective_scope_text",
+    "modules",
+    "classes",
+    "valuation_without_market",
+    "portfolios"
+   ],
+   "properties": {
+    "effective_scope_text": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 400
+    },
+    "modules": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "cash",
+      "market_data",
+      "history_analysis",
+      "tax_report",
+      "tax_projection",
+      "documents"
+     ],
+     "properties": {
+      "cash": {
+       "type": "boolean"
+      },
+      "market_data": {
+       "type": "boolean"
+      },
+      "history_analysis": {
+       "type": "boolean"
+      },
+      "tax_report": {
+       "type": "boolean"
+      },
+      "tax_projection": {
+       "type": "boolean"
+      },
+      "documents": {
+       "type": "boolean"
+      }
+     }
+    },
+    "classes": {
+     "type": "array",
+     "maxItems": 7,
+     "uniqueItems": true,
+     "items": {
+      "enum": [
+       "equity_etf",
+       "fund",
+       "bond",
+       "crypto",
+       "commodity",
+       "derivative",
+       "other"
+      ]
+     }
+    },
+    "valuation_without_market": {
+     "enum": [
+      "manual",
+      "transaction_only"
+     ]
+    },
+    "portfolios": {
+     "type": "array",
+     "maxItems": 50,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "label",
+       "status",
+       "configured",
+       "scope_text"
+      ],
+      "properties": {
+       "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+       },
+       "status": {
+        "enum": [
+         "active",
+         "archived"
+        ]
+       },
+       "configured": {
+        "type": "boolean"
+       },
+       "scope_text": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

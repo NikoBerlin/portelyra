@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/cash-coverage/v1/input.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_version", "accounts", "coverage_periods", "cash_events", "income_events", "reconciliations"],
+  "properties": {
+    "cash_coverage_version": {"const": 1},
+    "accounts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/account"}},
+    "coverage_periods": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/coverage"}},
+    "cash_events": {"type": "array", "items": {"$ref": "#/$defs/cash_event"}},
+    "income_events": {"type": "array", "items": {"$ref": "#/$defs/income_event"}},
+    "reconciliations": {"type": "array", "items": {"$ref": "#/$defs/reconciliation"}}
+  },
+  "$defs": {
+    "ref": {"type": "string", "pattern": "^[a-z]{2,8}_[a-f0-9]{16,64}$"},
+    "nullable_ref": {"oneOf": [{"$ref": "#/$defs/ref"}, {"type": "null"}]},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "date": {"type": "string", "format": "date"},
+    "nullable_date": {"type": ["string", "null"], "format": "date"},
+    "utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "local_time": {"type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"},
+    "time_zone": {"type": "string", "pattern": "^[A-Za-z0-9._+/-]{1,80}$"},
+    "signed_decimal": {"type": "string", "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$", "not": {"const": "-0"}, "maxLength": 80},
+    "positive_decimal": {"type": "string", "pattern": "^(?:[1-9][0-9]*(?:\\.[0-9]*[1-9])?|0\\.[0-9]*[1-9])$", "maxLength": 80},
+    "account": {
+      "type": "object", "additionalProperties": false,
+      "required": ["account_ref", "cash_asset_ref", "currency"],
+      "properties": {"account_ref": {"$ref": "#/$defs/ref"}, "cash_asset_ref": {"$ref": "#/$defs/ref"}, "currency": {"$ref": "#/$defs/currency"}}
+    },
+    "coverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["coverage_ref", "account_ref", "effective_from", "effective_to", "coverage_mode"],
+      "properties": {
+        "coverage_ref": {"$ref": "#/$defs/ref"}, "account_ref": {"$ref": "#/$defs/ref"},
+        "effective_from": {"$ref": "#/$defs/date"}, "effective_to": {"$ref": "#/$defs/nullable_date"},
+        "coverage_mode": {"enum": ["not_tracked", "income_only", "partial", "complete_reconciled"]}
+      }
+    },
+    "cash_event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cash_event_ref", "event_type", "account_ref", "related_account_ref", "cash_asset_ref", "event_time_evidence", "local_date", "local_time", "time_zone", "effective_at_utc", "amount_decimal", "flow_classification"],
+      "properties": {
+        "cash_event_ref": {"$ref": "#/$defs/ref"},
+        "event_type": {"enum": ["opening_balance", "deposit", "withdrawal", "transfer"]},
+        "account_ref": {"$ref": "#/$defs/ref"}, "related_account_ref": {"$ref": "#/$defs/nullable_ref"}, "cash_asset_ref": {"$ref": "#/$defs/ref"},
+        "event_time_evidence": {"enum": ["exact_local_zone", "utc_only_legacy"]},
+        "local_date": {"$ref": "#/$defs/date"},
+        "local_time": {"oneOf": [{"$ref": "#/$defs/local_time"}, {"type": "null"}]},
+        "time_zone": {"oneOf": [{"$ref": "#/$defs/time_zone"}, {"type": "null"}]},
+        "effective_at_utc": {"$ref": "#/$defs/utc"},
+        "amount_decimal": {"$ref": "#/$defs/signed_decimal"},
+        "flow_classification": {"enum": ["not_applicable", "unclassified", "external_contribution", "external_withdrawal", "internal_unlinked", "investment_settlement", "income_receipt", "fee_or_tax_payment"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"event_time_evidence": {"const": "exact_local_zone"}}}, "then": {"properties": {"local_time": {"$ref": "#/$defs/local_time"}, "time_zone": {"$ref": "#/$defs/time_zone"}}}},
+        {"if": {"properties": {"event_time_evidence": {"const": "utc_only_legacy"}}}, "then": {"properties": {"local_time": {"type": "null"}, "time_zone": {"type": "null"}}}}
+      ]
+    },
+    "income_event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["income_event_ref", "income_type", "account_ref", "cash_asset_ref", "local_date", "gross_income_decimal", "linked_cash_event_ref"],
+      "properties": {
+        "income_event_ref": {"$ref": "#/$defs/ref"}, "income_type": {"const": "interest"},
+        "account_ref": {"$ref": "#/$defs/ref"}, "cash_asset_ref": {"$ref": "#/$defs/ref"}, "local_date": {"$ref": "#/$defs/date"},
+        "gross_income_decimal": {"$ref": "#/$defs/positive_decimal"}, "linked_cash_event_ref": {"$ref": "#/$defs/nullable_ref"}
+      }
+    },
+    "reconciliation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["reconciliation_ref", "account_ref", "cash_asset_ref", "as_of_date", "observed_balance_decimal", "evidence_ref"],
+      "properties": {
+        "reconciliation_ref": {"$ref": "#/$defs/ref"}, "account_ref": {"$ref": "#/$defs/ref"}, "cash_asset_ref": {"$ref": "#/$defs/ref"},
+        "as_of_date": {"$ref": "#/$defs/date"}, "observed_balance_decimal": {"$ref": "#/$defs/signed_decimal"}, "evidence_ref": {"$ref": "#/$defs/ref"}
+      }
+    }
+  }
+}

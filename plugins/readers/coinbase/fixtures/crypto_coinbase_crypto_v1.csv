@@ -1,0 +1,2 @@
+ID,Timestamp,Transaction Type,Asset,Quantity Transacted,Price Currency,Price at Transaction,Subtotal,Total (inclusive of fees and/or spread),Fees and/or Spread,Notes,Sender Address,Recipient Address
+CBSELL0000000000000001,2027-05-20 10:00:00 UTC,Sell,ETH,-0.1,EUR,€3100.00,€300.00,€294.00,-€2.00,Sold 0.1 ETH,,

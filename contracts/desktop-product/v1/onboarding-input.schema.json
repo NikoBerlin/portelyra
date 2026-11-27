@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/desktop-product/v1/onboarding-input.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "portfolio_name",
+    "base_currency",
+    "cash_account_name",
+    "securities_account_name",
+    "external_account_name",
+    "cash_asset_name",
+    "investment_asset_name",
+    "investment_asset_type",
+    "price_currency",
+    "quantity_scale",
+    "valuation_method",
+    "isin",
+    "deposit_effective_at_utc",
+    "deposit_local_date",
+    "deposit_amount_decimal",
+    "buy_effective_at_utc",
+    "buy_local_date",
+    "buy_quantity_decimal",
+    "buy_unit_price_decimal",
+    "buy_total_cash_amount_decimal",
+    "buy_fee_decimal"
+  ],
+  "properties": {
+    "portfolio_name": {
+      "$ref": "#/$defs/label"
+    },
+    "base_currency": {
+      "$ref": "#/$defs/currency"
+    },
+    "cash_account_name": {
+      "$ref": "#/$defs/label"
+    },
+    "securities_account_name": {
+      "$ref": "#/$defs/label"
+    },
+    "external_account_name": {
+      "$ref": "#/$defs/label"
+    },
+    "cash_asset_name": {
+      "$ref": "#/$defs/label"
+    },
+    "investment_asset_name": {
+      "$ref": "#/$defs/label"
+    },
+    "investment_asset_type": {
+      "enum": [
+        "equity",
+        "etf",
+        "fund",
+        "bond",
+        "crypto",
+        "commodity",
+        "other"
+      ]
+    },
+    "price_currency": {
+      "$ref": "#/$defs/currency"
+    },
+    "quantity_scale": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 24
+    },
+    "valuation_method": {
+      "enum": [
+        "external_market",
+        "manual",
+        "transaction_only"
+      ]
+    },
+    "isin": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Z0-9]{12}$"
+    },
+    "deposit_effective_at_utc": {
+      "$ref": "#/$defs/utc"
+    },
+    "deposit_local_date": {
+      "$ref": "#/$defs/date"
+    },
+    "deposit_amount_decimal": {
+      "$ref": "#/$defs/decimal"
+    },
+    "buy_effective_at_utc": {
+      "$ref": "#/$defs/utc"
+    },
+    "buy_local_date": {
+      "$ref": "#/$defs/date"
+    },
+    "buy_quantity_decimal": {
+      "$ref": "#/$defs/decimal"
+    },
+    "buy_unit_price_decimal": {
+      "$ref": "#/$defs/decimal"
+    },
+    "buy_total_cash_amount_decimal": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/decimal"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "buy_fee_decimal": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/decimal"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^(?:[1-9][0-9]*(?:\\.[0-9]+)?|0\\.[0-9]*[1-9][0-9]*)$",
+      "maxLength": 80
+    }
+  }
+}

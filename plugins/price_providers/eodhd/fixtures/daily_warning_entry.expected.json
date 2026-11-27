@@ -1,0 +1,28 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "INVCO.XETRA",
+  "provider_currency": "EUR",
+  "exchange": "XETRA",
+  "timezone_name": "Europe/Berlin",
+  "instrument_name": "",
+  "instrument_type": "",
+  "split_review_required": false,
+  "days": [
+   {
+    "trading_date": "2027-03-30",
+    "open_decimal": "10.36",
+    "high_decimal": "10.4",
+    "low_decimal": "10.11",
+    "close_decimal": "10.2",
+    "adjusted_close_decimal": "9.85",
+    "volume_decimal": "9875",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-03-30T10:00:00Z"
+   }
+  ],
+  "live_session": null,
+  "first_trade_date": null
+ }
+}

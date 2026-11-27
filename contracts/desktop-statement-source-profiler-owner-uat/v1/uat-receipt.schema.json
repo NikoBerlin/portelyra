@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "alias_registry_sha256",
+    "attempt_fingerprint",
+    "automatic_retry",
+    "canonical_write",
+    "cash_write",
+    "completed_at_utc",
+    "context_binding_sha256",
+    "header_sha256",
+    "network_access",
+    "private_review_sha256",
+    "private_source_read",
+    "private_values_published",
+    "profile_revision_created",
+    "profiler_binding_sha256",
+    "provider_access",
+    "receipt_fingerprint",
+    "route_rules_created",
+    "row_count",
+    "selection_binding_sha256",
+    "semantic_tuple_evidence",
+    "silent_drop_count",
+    "source_bytes_sha256",
+    "source_path_retained",
+    "source_read_attempt_count",
+    "status",
+    "structural_ready",
+    "tax_write",
+    "time_zone_inferred",
+    "version"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "const": false
+    },
+    "alias_registry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "attempt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "cash_write": {
+      "const": false
+    },
+    "completed_at_utc": {
+      "type": "string"
+    },
+    "context_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "header_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "network_access": {
+      "const": false
+    },
+    "private_review_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "private_source_read": {
+      "const": true
+    },
+    "private_values_published": {
+      "const": false
+    },
+    "profile_revision_created": {
+      "const": false
+    },
+    "profiler_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "provider_access": {
+      "const": false
+    },
+    "receipt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "route_rules_created": {
+      "const": false
+    },
+    "row_count": {
+      "type": "integer"
+    },
+    "selection_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "semantic_tuple_evidence": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "row_count",
+          "tuple_sha256"
+        ],
+        "properties": {
+          "row_count": {
+            "type": "integer"
+          },
+          "tuple_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "silent_drop_count": {
+      "const": 0
+    },
+    "source_bytes_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_path_retained": {
+      "const": false
+    },
+    "source_read_attempt_count": {
+      "const": 1
+    },
+    "status": {
+      "enum": [
+        "owner_profile_observed_disabled",
+        "owner_profile_rejected_disabled"
+      ]
+    },
+    "structural_ready": {
+      "type": "boolean"
+    },
+    "tax_write": {
+      "const": false
+    },
+    "time_zone_inferred": {
+      "const": false
+    },
+    "version": {
+      "const": 1
+    }
+  }
+}

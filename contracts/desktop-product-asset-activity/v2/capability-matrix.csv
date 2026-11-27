@@ -1,0 +1,13 @@
+capability,native_preview,read_model
+schema401_fact_read,true,true
+fifo_v2_full_world_projection,true,false
+completed_schema3100_read,false,true
+implicit_full_rebuild,false,false
+coupled_transaction_fifo,false,false
+asset_world_positions,true,true
+custody_positions,true,true
+exact_ratio,true,true
+canonical_write,false,false
+cash_posting,false,false
+provider_or_network,false,false
+path_or_internal_id_exposed,false,false

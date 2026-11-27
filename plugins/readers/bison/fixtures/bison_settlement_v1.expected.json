@@ -1,0 +1,52 @@
+{
+ "candidates": [
+  {
+   "source_row_ordinal": 1,
+   "local_date": "2025-03-02",
+   "kind": "withdrawal",
+   "amount_decimal": "1298.3",
+   "balance_after_decimal": null,
+   "text": "Max Beispiel: Einzahlung"
+  },
+  {
+   "source_row_ordinal": 2,
+   "local_date": "2025-03-03",
+   "kind": "withdrawal",
+   "amount_decimal": "2101.87",
+   "balance_after_decimal": null,
+   "text": "EUWAX Aktiengesellschaft: Gutschrift aus Verkauf"
+  },
+  {
+   "source_row_ordinal": 3,
+   "local_date": "2025-03-05",
+   "kind": "deposit",
+   "amount_decimal": "2376.71",
+   "balance_after_decimal": null,
+   "text": "Max Beispiel: Einzahlung"
+  },
+  {
+   "source_row_ordinal": 4,
+   "local_date": "2025-03-07",
+   "kind": "deposit",
+   "amount_decimal": "2112.22",
+   "balance_after_decimal": null,
+   "text": "Erika Mustermann: Umbuchung"
+  },
+  {
+   "source_row_ordinal": 5,
+   "local_date": "2025-03-23",
+   "kind": "deposit",
+   "amount_decimal": "3677.1",
+   "balance_after_decimal": null,
+   "text": "EUWAX Aktiengesellschaft: Gutschrift aus Verkauf"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "opening_balance_decimal": "15536.19",
+  "closing_balance_decimal": "20302.05",
+  "period_from": "2025-03-01",
+  "period_to": "2025-03-31",
+  "closing_as_of_date": "2025-03-31"
+ }
+}

@@ -1,0 +1,5 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://portelyra.local/contracts/desktop-product-asset-activity/v1/native-attempt.schema.json",
+  "type":"object","additionalProperties":false,"required":["native_asset_activity_attempt_version","attempt_status","context_fingerprint","command_fingerprint","preview_fingerprint","committed_at_utc","attempt_fingerprint"],
+  "properties":{"native_asset_activity_attempt_version":{"const":1},"attempt_status":{"const":"consumed_before_domain_write"},"context_fingerprint":{"$ref":"#/$defs/fp"},"command_fingerprint":{"$ref":"#/$defs/fp"},"preview_fingerprint":{"$ref":"#/$defs/fp"},"committed_at_utc":{"type":"string","format":"date-time"},"attempt_fingerprint":{"$ref":"#/$defs/fp"}},"$defs":{"fp":{"type":"string","pattern":"^[a-f0-9]{64}$"}}
+}

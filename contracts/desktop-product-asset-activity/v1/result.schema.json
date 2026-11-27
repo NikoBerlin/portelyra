@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:desktop-product-asset-activity:v1:result",
+  "title": "Desktop Product Asset Activity v1 Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status", "generation_ref", "event_count",
+    "total_asset_activity_event_count", "schema_version", "canonical_write",
+    "cash_posting_count", "semantic_contracts"
+  ],
+  "properties": {
+    "status": {"enum": ["committed", "already_committed", "recovered_committed"]},
+    "generation_ref": {"type": "string", "pattern": "^gen_[a-f0-9]{32}$"},
+    "event_count": {"type": "integer", "minimum": 1},
+    "total_asset_activity_event_count": {"type": "integer", "minimum": 1},
+    "schema_version": {"const": 401},
+    "canonical_write": {"type": "boolean"},
+    "cash_posting_count": {"const": 0},
+    "semantic_contracts": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "portfolio_ledger_v1_transaction_fact"},
+        {"const": "asset_activity_v1"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "committed"}}},
+      "then": {"properties": {"canonical_write": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"status": {"enum": ["already_committed", "recovered_committed"]}}},
+      "then": {"properties": {"canonical_write": {"const": false}}}
+    }
+  ]
+}

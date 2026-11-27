@@ -1,0 +1,4 @@
+code,blocking,public_message
+data_asset_center_catalog_invalid,1,Die Asset-Auswahl ist nicht verfügbar.
+data_asset_center_selection_invalid,1,Das ausgewählte Asset ist nicht mehr verfügbar.
+data_asset_center_state_invalid,1,Der Asset-Center-Zustand ist ungültig.

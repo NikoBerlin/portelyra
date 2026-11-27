@@ -1,0 +1,35 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "0.73",
+   "balance_after_decimal": null,
+   "kind": "interest",
+   "local_date": "2027-10-31",
+   "source_row_ordinal": 1,
+   "text": "Zinszahlung C24 Bank"
+  },
+  {
+   "amount_decimal": "1200.43",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-10-28",
+   "source_row_ordinal": 2,
+   "text": "Pocket-Umbuchung C24 Smartkonto Umbuchung"
+  },
+  {
+   "amount_decimal": "1200.35",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-09-29",
+   "source_row_ordinal": 3,
+   "text": "Pocket-Umbuchung C24 Smartkonto Umbuchung"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": null,
+  "opening_balance_decimal": null,
+  "period_from": "2027-09-29",
+  "period_to": "2027-10-31"
+ }
+}

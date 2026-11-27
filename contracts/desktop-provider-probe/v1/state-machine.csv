@@ -1,0 +1,8 @@
+state,event,next_state,provider_access,probe_write,market_history_write,automatic_retry
+absent,preview,pending_confirmation,no,no,no,no
+pending_confirmation,confirm,attempt_consumed,yes,yes,no,no
+attempt_consumed,valid_response,completed,yes,yes,no,no
+attempt_consumed,failure,failed,yes,yes,no,no
+completed,exact_replay,completed,no,no,no,no
+attempt_consumed,retry,blocked,no,no,no,no
+failed,retry,blocked,no,no,no,no

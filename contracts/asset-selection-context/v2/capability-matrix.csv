@@ -1,0 +1,21 @@
+capability,supported,notes
+all_scope,yes,Explicit reset to compatible catalog
+manual_scope,yes,Exact browser Asset-ref set including empty
+filter_scope,yes,Exact current filter result
+union_scope,yes,Manual OR filter
+intersection_scope,yes,Manual AND filter
+exclusion_set,yes,Applied last without fallback
+canonical_noncash_domain,yes,Every valid canonical asset_type other than cash
+canonical_cash_domain,no,Unavailable in Activity v4 consumer
+browser_account_ref,yes,Activity Account refs only
+duplicate_account_labels,yes,Unique browser-only selection labels
+account_match_any,yes,At least one selected Account
+account_match_all,yes,Every selected Account
+account_match_none,yes,No selected Account
+account_usage_current,yes,Fresh positive Custody only
+account_usage_historical,yes,Effective Activity source or related Account
+stale_current_custody,no,Unavailable and no rebuild
+single_activity_command_target,yes,Independent from presentation scope
+calculation_or_rebuild,no,Display interaction only
+provider_or_network,no,Display interaction only
+canonical_or_product_write,no,Display interaction only

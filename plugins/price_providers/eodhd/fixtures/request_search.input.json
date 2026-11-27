@@ -1,0 +1,8 @@
+{
+ "op": "build_request",
+ "operation": "search",
+ "params": {
+  "query": "Invented World ETF/Acc",
+  "limit": 10
+ }
+}

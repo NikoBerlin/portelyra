@@ -1,0 +1,10 @@
+capability,preview,confirmed_apply,release_upgrade,automatic
+read_native_schema201,allow,allow,deny,deny
+migrate_native_schema201_to_202,deny,allow,deny,deny
+create_derivative_catalog_asset,deny,deny,deny,deny
+enable_new_schema401_derivative_activity_generation,deny,allow,deny,deny
+rewrite_existing_activity,deny,deny,deny,deny
+derivative_coupled_transaction,deny,deny,deny,deny
+derivative_lifecycle_inference,deny,deny,deny,deny
+automatic_cash_posting,deny,deny,deny,deny
+provider_or_network,deny,deny,deny,deny

@@ -1,0 +1,148 @@
+{
+  "api_version": "price_provider_v1",
+  "api_minor": 1,
+  "plugin_id": "eodhd",
+  "plugin_version": "1.1.0",
+  "provider_id": "eodhd",
+  "label": "EODHD (Suche mit ISIN, Tageskurse)",
+  "publisher": "Portelyra",
+  "entry_point": "provider.py",
+  "entry_point_sha256": "c89a07d78d1028e77545ecabf27a6cc4d814a8d83b148b2bae159257b102d89f",
+  "modules": [],
+  "operations": [
+    "daily_history",
+    "search",
+    "credential_check"
+  ],
+  "hosts": [
+    "eodhd.com"
+  ],
+  "cost": "free_quota",
+  "credentials": [
+    {
+      "name": "api_token",
+      "label": "API-Schlüssel",
+      "secret": true,
+      "hint": "Kostenlos nach Anmeldung bei EODHD (im Konto unter „API-Token“). Kostenlos 20 Abrufe am Tag; jede Suche und jeder Kursabruf zählt einen. Kostenlos nur etwa ein Jahr Kurshistorie.",
+      "url": "https://eodhd.com/register",
+      "placement": {
+        "kind": "query",
+        "key": "api_token",
+        "prefix": ""
+      }
+    }
+  ],
+  "terms_url": "https://eodhd.com/financial-apis/terms-conditions",
+  "history_max_days": 365,
+  "generator": false,
+  "fixtures": [
+    {
+      "input": "fixtures/check_ok.input.json",
+      "expected": "fixtures/check_ok.expected.json"
+    },
+    {
+      "input": "fixtures/check_rejected.input.json",
+      "expected": "fixtures/check_rejected.expected.json"
+    },
+    {
+      "input": "fixtures/daily_duplicate_date.input.json",
+      "expected": "fixtures/daily_duplicate_date.expected.json"
+    },
+    {
+      "input": "fixtures/daily_empty.input.json",
+      "expected": "fixtures/daily_empty.expected.json"
+    },
+    {
+      "input": "fixtures/daily_forbidden_403.input.json",
+      "expected": "fixtures/daily_forbidden_403.expected.json"
+    },
+    {
+      "input": "fixtures/daily_fund_nav.input.json",
+      "expected": "fixtures/daily_fund_nav.expected.json"
+    },
+    {
+      "input": "fixtures/daily_integer_numbers.input.json",
+      "expected": "fixtures/daily_integer_numbers.expected.json"
+    },
+    {
+      "input": "fixtures/daily_negative_price.input.json",
+      "expected": "fixtures/daily_negative_price.expected.json"
+    },
+    {
+      "input": "fixtures/daily_not_found_404.input.json",
+      "expected": "fixtures/daily_not_found_404.expected.json"
+    },
+    {
+      "input": "fixtures/daily_not_json.input.json",
+      "expected": "fixtures/daily_not_json.expected.json"
+    },
+    {
+      "input": "fixtures/daily_number_as_text.input.json",
+      "expected": "fixtures/daily_number_as_text.expected.json"
+    },
+    {
+      "input": "fixtures/daily_ok.input.json",
+      "expected": "fixtures/daily_ok.expected.json"
+    },
+    {
+      "input": "fixtures/daily_quota_402.input.json",
+      "expected": "fixtures/daily_quota_402.expected.json"
+    },
+    {
+      "input": "fixtures/daily_quota_429.input.json",
+      "expected": "fixtures/daily_quota_429.expected.json"
+    },
+    {
+      "input": "fixtures/daily_server_error.input.json",
+      "expected": "fixtures/daily_server_error.expected.json"
+    },
+    {
+      "input": "fixtures/daily_unauthorized_401.input.json",
+      "expected": "fixtures/daily_unauthorized_401.expected.json"
+    },
+    {
+      "input": "fixtures/daily_unknown_exchange.input.json",
+      "expected": "fixtures/daily_unknown_exchange.expected.json"
+    },
+    {
+      "input": "fixtures/daily_warning_entry.input.json",
+      "expected": "fixtures/daily_warning_entry.expected.json"
+    },
+    {
+      "input": "fixtures/daily_wrong_shape.input.json",
+      "expected": "fixtures/daily_wrong_shape.expected.json"
+    },
+    {
+      "input": "fixtures/request_check.input.json",
+      "expected": "fixtures/request_check.expected.json"
+    },
+    {
+      "input": "fixtures/request_daily.input.json",
+      "expected": "fixtures/request_daily.expected.json"
+    },
+    {
+      "input": "fixtures/request_search.input.json",
+      "expected": "fixtures/request_search.expected.json"
+    },
+    {
+      "input": "fixtures/search_empty.input.json",
+      "expected": "fixtures/search_empty.expected.json"
+    },
+    {
+      "input": "fixtures/search_limit.input.json",
+      "expected": "fixtures/search_limit.expected.json"
+    },
+    {
+      "input": "fixtures/search_limit_reached.input.json",
+      "expected": "fixtures/search_limit_reached.expected.json"
+    },
+    {
+      "input": "fixtures/search_not_json.input.json",
+      "expected": "fixtures/search_not_json.expected.json"
+    },
+    {
+      "input": "fixtures/search_ok.input.json",
+      "expected": "fixtures/search_ok.expected.json"
+    }
+  ]
+}

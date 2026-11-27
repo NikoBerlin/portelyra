@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/source-supersession-boundaries.schema.json",
+  "title": "Exact-source ActivityDraft supersession write boundaries v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["draft_files_rewritten", "schema201_write", "schema401_write", "cash_posting_count", "provider_access", "network_access", "automatic_retry"],
+  "properties": {
+    "draft_files_rewritten": {"const": 0},
+    "schema201_write": {"const": false},
+    "schema401_write": {"const": false},
+    "cash_posting_count": {"const": 0},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "automatic_retry": {"const": false}
+  }
+}

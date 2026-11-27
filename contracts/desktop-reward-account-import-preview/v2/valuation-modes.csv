@@ -1,0 +1,5 @@
+mode,status
+basis_missing,explicit
+manual_fiat_total,explicit
+manual_unit_price,explicit
+provider_price_planned,explicit

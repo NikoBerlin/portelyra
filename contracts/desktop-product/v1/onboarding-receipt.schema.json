@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/desktop-product/v1/onboarding-receipt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "plan_id", "plan_fingerprint", "status", "completed_at_utc", "step_count"],
+  "properties": {
+    "contract_version": {"const": 1},
+    "plan_id": {"type": "string", "pattern": "^onb_[a-f0-9]{32}$"},
+    "plan_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "status": {"const": "completed"},
+    "completed_at_utc": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "step_count": {"const": 8}
+  }
+}

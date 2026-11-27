@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-confirmation.schema.json",
+  "title": "Portfolio CSV separate domain one-use confirmation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_confirmation_version","authorization_scope","confirmation_ref","domain","handoff_plan_fingerprint","context_fingerprint","issued_at_utc","expires_at_utc","confirmed","automatic_retry_authorized","other_domain_write_authorized","confirmation_fingerprint"],
+  "properties": {
+    "portfolio_csv_handoff_confirmation_version": {"const": 1},
+    "authorization_scope": {"const": "portfolio_csv_domain_handoff_once"},
+    "confirmation_ref": {"type": "string", "pattern": "^pchc_[a-f0-9]{32}$"},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "handoff_plan_fingerprint": {"$ref": "#/$defs/sha256"},
+    "context_fingerprint": {"$ref": "#/$defs/sha256"},
+    "issued_at_utc": {"$ref": "#/$defs/utc"},
+    "expires_at_utc": {"$ref": "#/$defs/utc"},
+    "confirmed": {"const": true},
+    "automatic_retry_authorized": {"const": false},
+    "other_domain_write_authorized": {"const": false},
+    "confirmation_fingerprint": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

@@ -1,0 +1,13 @@
+code,blocking,public_message
+desktop_provider_search_boundary_failed,1,Die Provider-Suche ist sicher fehlgeschlagen.
+desktop_provider_search_confirmation_required,1,Der einzelne Providerzugriff wurde nicht bestätigt.
+desktop_provider_search_context_invalid,1,Der lokale Provider-Kontext ist ungültig.
+desktop_provider_search_input_invalid,1,Die Suchangaben sind ungültig.
+desktop_provider_search_preview_invalid,1,Die Suchvorschau ist nicht mehr gültig.
+desktop_provider_search_attempt_consumed,1,Dieser einzelne Suchversuch wurde bereits verbraucht.
+desktop_provider_search_store_invalid,1,Die lokale Such-Evidenz kann nicht sicher verwendet werden.
+desktop_provider_search_transport_failed,1,Der einzelne Providerzugriff ist fehlgeschlagen.
+desktop_provider_search_response_invalid,1,Die Providerantwort ist nicht verwertbar.
+desktop_provider_search_result_invalid,1,Das gespeicherte Suchergebnis ist ungültig.
+desktop_provider_search_credential_unavailable,1,Für den gewählten Suchanbieter ist kein bereiter Zugang eingetragen (Einstellungen → Zugänge).
+desktop_provider_search_cost_limit,1,Die Obergrenze an Abrufen des Suchanbieters ist erreicht oder er hat wegen zu vieler Abrufe abgewiesen (HTTP 429).

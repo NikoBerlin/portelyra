@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://portelyra.invalid/contracts/desktop-release/v1/release-manifest.schema.json",
+  "type":"object","additionalProperties":false,
+  "required":["desktop_release_version","release_format","product_version","platform","entry_count","entries","network_installation","private_data_included","release_manifest_fingerprint"],
+  "properties":{
+    "desktop_release_version":{"const":1},"release_format":{"const":"portelyra_linux_source_release_v1"},
+    "product_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+(?:-rc\\.[0-9]+)?$"},
+    "platform":{"const":"linux_x86_64_source"},"entry_count":{"type":"integer","minimum":1},
+    "entries":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["relative_path","byte_count","bytes_fingerprint"],"properties":{
+      "relative_path":{"type":"string","pattern":"^[A-Za-z0-9_][A-Za-z0-9._-]*(?:/[A-Za-z0-9_][A-Za-z0-9._-]*)*$"},
+      "byte_count":{"type":"integer","minimum":0},"bytes_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+    }}},
+    "network_installation":{"const":false},"private_data_included":{"const":false},
+    "release_manifest_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+  }
+}

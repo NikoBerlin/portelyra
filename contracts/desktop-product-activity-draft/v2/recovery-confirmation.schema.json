@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v2/recovery-confirmation.schema.json",
+  "title": "Fresh one-use recovery authority for the original batch attempt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_confirmation_version", "challenge_ref", "context_fingerprint", "draft_ref", "draft_revision", "validation_fingerprint", "original_attempt_fingerprint", "issued_at_utc", "confirmed_at_utc", "expires_at_utc", "confirmation_fingerprint"],
+  "properties": {
+    "activity_draft_confirmation_version": {"const": 2},
+    "challenge_ref": {"type": "string", "pattern": "^adc_[a-f0-9]{16,64}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "draft_ref": {"type": "string", "pattern": "^adt_[a-f0-9]{32}$"},
+    "draft_revision": {"type": "integer", "minimum": 1},
+    "validation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "original_attempt_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "issued_at_utc": {"type": "string", "format": "date-time"},
+    "confirmed_at_utc": {"type": "string", "format": "date-time"},
+    "expires_at_utc": {"type": "string", "format": "date-time"},
+    "confirmation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

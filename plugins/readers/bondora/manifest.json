@@ -1,0 +1,87 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "bondora",
+  "plugin_version": "1.1.0",
+  "publisher": "Portelyra",
+  "institution": "Bondora",
+  "label": "Bondora Go & Grow",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "56906c1564f78c5d305618988b263e1b397b8fca667436a8d276dc58405aa707",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "2159e6a28021389041a14da580f737dee4b19564ef8dc08fb3e660d70028786e"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "90fa7e137a808c0f877dea4951f118e6511ea62b3f7fabc31f471cdc6a0ea66c"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "bondora_go_grow_v1",
+      "domain": "cash",
+      "label": "Bondora Go & Grow (xlsx oder CSV)",
+      "document_kind": "Kontoauszug (xlsx oder CSV)",
+      "extensions": [
+        ".xlsx",
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "datum",
+            "zahlungsart"
+          ],
+          [
+            "date",
+            "payment",
+            "type"
+          ]
+        ]
+      },
+      "tested_formats": "Kontoauszug von Go & Grow als xlsx oder CSV, Spalten deutsch (Datum, Zahlungsart, Eingänge, Ausgänge, Guthaben) oder englisch.",
+      "known_limits": [
+        "Zinsen werden an „Zins“ bzw. „interest“ in der Zahlungsart erkannt.",
+        "Anfangs- und Endsaldo nur, wenn der Export die Kopfzeilen „Zu Beginn“ und „Ergebnis“ trägt; sonst prüft der Saldo je Zeile."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    }
+  ],
+  "intake": {
+    "key": "bondora",
+    "label": "Bondora",
+    "folders": [
+      "bondora"
+    ],
+    "downloads": [
+      "Go & Grow-Kontoauszug als XLSX oder CSV (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "Go & Grow",
+    "readers": [
+      [
+        "cash",
+        "bondora_go_grow_v1"
+      ]
+    ],
+    "account_words": [
+      "bondora"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "bondora_go_grow_v1",
+      "input": "fixtures/bondora_go_grow_v1.xlsx",
+      "expected": "fixtures/bondora_go_grow_v1.expected.json"
+    }
+  ]
+}

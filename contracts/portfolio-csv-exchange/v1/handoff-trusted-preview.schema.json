@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-trusted-preview.schema.json",
+  "title": "Portfolio CSV domain handoff trusted preview envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_preview_version","status","domain","staged_import_handle","bundle_fingerprint","context_fingerprint","effect","confirmation_required","one_attempt_only","automatic_retry","handoff_plan_fingerprint"],
+  "properties": {
+    "portfolio_csv_handoff_preview_version": {"const": 1},
+    "status": {"const": "ready_for_confirmation"},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+    "bundle_fingerprint": {"$ref": "#/$defs/sha256"},
+    "context_fingerprint": {"$ref": "#/$defs/sha256"},
+    "effect": {"type": "object", "minProperties": 5},
+    "confirmation_required": {"const": true},
+    "one_attempt_only": {"const": true},
+    "automatic_retry": {"const": false},
+    "handoff_plan_fingerprint": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

@@ -1,0 +1,5 @@
+{
+ "op": "build_request",
+ "operation": "credential_check",
+ "params": {}
+}

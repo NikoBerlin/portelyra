@@ -1,0 +1,14 @@
+capability,supported,notes
+read_redacted_mappings,yes,Server projects browser-local refs separately
+create_unverified_mapping,yes,Always disabled
+revise_mapping,yes,Returns to unverified and disabled
+verify_from_probe_evidence,yes,Ordinary provider becomes enabled
+explicit_disable,yes,No delete
+fmp,no,Permanently excluded
+twelve_data_activation,no,Expert mapping may remain disabled
+provider_search,no,Separate capability
+provider_probe,no,Separate capability
+daily_history_write,no,Market worker only
+tax_write,no,Tax policy store only
+activity_write,no,Activity writer only
+automatic_retry,no,Consumed commands are not retried

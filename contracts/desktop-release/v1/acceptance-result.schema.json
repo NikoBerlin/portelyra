@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://portelyra.invalid/contracts/desktop-release/v1/acceptance-result.schema.json",
+  "oneOf":[
+    {"type":"object","additionalProperties":false,"required":["status"],"properties":{"status":{"const":"pass"}}},
+    {"type":"object","additionalProperties":false,"required":["status","code"],"properties":{"status":{"const":"fail"},"code":{"type":"string","pattern":"^desktop_release_[a-z0-9_]{3,70}$"}}}
+  ]
+}

@@ -1,0 +1,1355 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "portfolio_history_part_v1",
+ "title": "Teildatei der Tageshistorie (#503): die Tagesreihen eines Assets, einer Klasse, einer eigenen Gruppe oder eines beobachteten Assets",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "portfolio_history_part_version",
+  "tenant_id",
+  "user_id",
+  "data_space_id",
+  "kind",
+  "fields"
+ ],
+ "properties": {
+  "portfolio_history_part_version": {
+   "const": 1
+  },
+  "tenant_id": {
+   "type": "string",
+   "minLength": 3,
+   "maxLength": 80
+  },
+  "user_id": {
+   "type": "string",
+   "minLength": 3,
+   "maxLength": 80
+  },
+  "data_space_id": {
+   "type": "string",
+   "minLength": 8,
+   "maxLength": 64
+  },
+  "kind": {
+   "enum": [
+    "asset",
+    "class",
+    "group",
+    "watched"
+   ]
+  },
+  "fields": {
+   "type": "object"
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "kind": {
+      "const": "asset"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "fields": {
+      "$ref": "#/$defs/asset_fields"
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "kind": {
+      "const": "class"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "fields": {
+      "$ref": "#/$defs/class_fields"
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "kind": {
+      "const": "group"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "fields": {
+      "$ref": "#/$defs/group_fields"
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "kind": {
+      "const": "watched"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "fields": {
+      "$ref": "#/$defs/watched_fields"
+     }
+    }
+   }
+  }
+ ],
+ "$defs": {
+  "day": {
+   "type": "string",
+   "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  },
+  "days": {
+   "type": "array",
+   "maxItems": 40000,
+   "items": {
+    "type": "string",
+    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+   }
+  },
+  "amount": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "pattern": "^-?[0-9]+(\\.[0-9]+)?(/[1-9][0-9]*)?$"
+  },
+  "amounts": {
+   "type": "array",
+   "maxItems": 40000,
+   "items": {
+    "type": [
+     "string",
+     "null"
+    ],
+    "pattern": "^-?[0-9]+(\\.[0-9]+)?(/[1-9][0-9]*)?$"
+   }
+  },
+  "period_row": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "period",
+    "label",
+    "start_day",
+    "end_day",
+    "day_span",
+    "held_days",
+    "start_value",
+    "end_value",
+    "net_flow",
+    "gain",
+    "twr",
+    "twr_annualised",
+    "mwr",
+    "mwr_annualised",
+    "complete",
+    "valuation_flow",
+    "bridge"
+   ],
+   "properties": {
+    "period": {
+     "type": "string",
+     "pattern": "^(all|[0-9]+y|[0-9]{4}|[0-9]{4}-[0-9]{4})$"
+    },
+    "label": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 60
+    },
+    "start_day": {
+     "$ref": "#/$defs/day"
+    },
+    "end_day": {
+     "$ref": "#/$defs/day"
+    },
+    "day_span": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "held_days": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "start_value": {
+     "$ref": "#/$defs/amount"
+    },
+    "end_value": {
+     "$ref": "#/$defs/amount"
+    },
+    "net_flow": {
+     "$ref": "#/$defs/amount"
+    },
+    "gain": {
+     "$ref": "#/$defs/amount"
+    },
+    "twr": {
+     "$ref": "#/$defs/amount"
+    },
+    "twr_annualised": {
+     "$ref": "#/$defs/amount"
+    },
+    "mwr": {
+     "$ref": "#/$defs/amount"
+    },
+    "mwr_annualised": {
+     "$ref": "#/$defs/amount"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "valuation_flow": {
+     "$ref": "#/$defs/amount"
+    },
+    "bridge": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "realized",
+      "unrealised_change",
+      "income",
+      "disposal_change",
+      "delivery_change",
+      "fee_basis",
+      "rest"
+     ],
+     "properties": {
+      "realized": {
+       "$ref": "#/$defs/amount"
+      },
+      "unrealised_change": {
+       "$ref": "#/$defs/amount"
+      },
+      "income": {
+       "$ref": "#/$defs/amount"
+      },
+      "disposal_change": {
+       "$ref": "#/$defs/amount"
+      },
+      "delivery_change": {
+       "$ref": "#/$defs/amount"
+      },
+      "fee_basis": {
+       "$ref": "#/$defs/amount"
+      },
+      "interest": {
+       "$ref": "#/$defs/amount"
+      },
+      "rest": {
+       "$ref": "#/$defs/amount"
+      },
+      "net": {
+       "$ref": "#/$defs/net_bridge"
+      },
+      "net_pooled": {
+       "$ref": "#/$defs/net_bridge"
+      }
+     }
+    },
+    "benchmarks": {
+     "type": "array",
+     "maxItems": 10,
+     "items": {
+      "$ref": "#/$defs/benchmark_row"
+     }
+    }
+   }
+  },
+  "period_rows": {
+   "type": "array",
+   "maxItems": 5000,
+   "items": {
+    "$ref": "#/$defs/period_row"
+   }
+  },
+  "realized_steps": {
+   "type": "array",
+   "maxItems": 40000,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "day",
+     "realized_cumulative"
+    ],
+    "properties": {
+     "day": {
+      "$ref": "#/$defs/day"
+     },
+     "realized_cumulative": {
+      "$ref": "#/$defs/amount"
+     }
+    }
+   }
+  },
+  "net_bridge": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "tax_realized",
+    "tax_income",
+    "cost_change",
+    "gain",
+    "warning"
+   ],
+   "properties": {
+    "tax_realized": {
+     "$ref": "#/$defs/amount"
+    },
+    "tax_income": {
+     "$ref": "#/$defs/amount"
+    },
+    "cost_change": {
+     "$ref": "#/$defs/amount"
+    },
+    "gain": {
+     "$ref": "#/$defs/amount"
+    },
+    "warning": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[a-z][a-z0-9_]{0,79}$"
+    }
+   }
+  },
+  "benchmark_row": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "return",
+    "annualised",
+    "missing_days"
+   ],
+   "properties": {
+    "return": {
+     "$ref": "#/$defs/amount"
+    },
+    "annualised": {
+     "$ref": "#/$defs/amount"
+    },
+    "missing_days": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  },
+  "account_view": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "label",
+    "days",
+    "basis",
+    "trades",
+    "income",
+    "performance"
+   ],
+   "properties": {
+    "label": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 240
+    },
+    "days": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "day",
+      "quantity",
+      "unit_value",
+      "market_value"
+     ],
+     "properties": {
+      "day": {
+       "$ref": "#/$defs/days"
+      },
+      "quantity": {
+       "$ref": "#/$defs/amounts"
+      },
+      "unit_value": {
+       "$ref": "#/$defs/amounts"
+      },
+      "market_value": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    },
+    "basis": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "day",
+       "quantity",
+       "cost_basis"
+      ],
+      "properties": {
+       "day": {
+        "$ref": "#/$defs/day"
+       },
+       "quantity": {
+        "$ref": "#/$defs/amount"
+       },
+       "cost_basis": {
+        "$ref": "#/$defs/amount"
+       }
+      }
+     }
+    },
+    "trades": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "day",
+       "kind",
+       "quantity_change",
+       "events"
+      ],
+      "properties": {
+       "day": {
+        "$ref": "#/$defs/day"
+       },
+       "kind": {
+        "enum": [
+         "buy",
+         "sell",
+         "reward",
+         "deposit",
+         "withdrawal",
+         "stock_dividend",
+         "other_in",
+         "other_out",
+         "transfer_in",
+         "transfer_out"
+        ]
+       },
+       "quantity_change": {
+        "$ref": "#/$defs/amount"
+       },
+       "events": {
+        "type": "array",
+        "maxItems": 500,
+        "items": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+          "kind",
+          "quantity",
+          "unit_price",
+          "amount",
+          "fee",
+          "currency",
+          "account",
+          "lots"
+         ],
+         "properties": {
+          "kind": {
+           "enum": [
+            "buy",
+            "sell",
+            "reward",
+            "stock_dividend",
+            "deposit",
+            "withdrawal",
+            "transfer",
+            "other"
+           ]
+          },
+          "quantity": {
+           "$ref": "#/$defs/amount"
+          },
+          "unit_price": {
+           "$ref": "#/$defs/amount"
+          },
+          "amount": {
+           "$ref": "#/$defs/amount"
+          },
+          "fee": {
+           "$ref": "#/$defs/amount"
+          },
+          "currency": {
+           "type": [
+            "string",
+            "null"
+           ],
+           "pattern": "^[A-Z]{3}$"
+          },
+          "account": {
+           "type": [
+            "string",
+            "null"
+           ],
+           "maxLength": 240
+          },
+          "lots": {
+           "type": "array",
+           "maxItems": 2000,
+           "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+             "acquired",
+             "quantity",
+             "basis",
+             "proceeds",
+             "gain"
+            ],
+            "properties": {
+             "acquired": {
+              "anyOf": [
+               {
+                "$ref": "#/$defs/day"
+               },
+               {
+                "type": "null"
+               }
+              ]
+             },
+             "quantity": {
+              "$ref": "#/$defs/amount"
+             },
+             "basis": {
+              "$ref": "#/$defs/amount"
+             },
+             "proceeds": {
+              "$ref": "#/$defs/amount"
+             },
+             "gain": {
+              "$ref": "#/$defs/amount"
+             }
+            }
+           }
+          },
+          "tax": {
+           "$ref": "#/$defs/amount"
+          },
+          "tax_pooled": {
+           "$ref": "#/$defs/amount"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "income": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "day",
+       "kind",
+       "amount",
+       "currency",
+       "account"
+      ],
+      "properties": {
+       "day": {
+        "$ref": "#/$defs/day"
+       },
+       "kind": {
+        "enum": [
+         "dividend"
+        ]
+       },
+       "amount": {
+        "$ref": "#/$defs/amount"
+       },
+       "currency": {
+        "type": [
+         "string",
+         "null"
+        ],
+        "pattern": "^[A-Z]{3}$"
+       },
+       "account": {
+        "type": [
+         "string",
+         "null"
+        ],
+        "maxLength": 240
+       },
+       "tax": {
+        "$ref": "#/$defs/amount"
+       },
+       "tax_pooled": {
+        "$ref": "#/$defs/amount"
+       }
+      }
+     }
+    },
+    "performance": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "periods",
+      "realized_steps"
+     ],
+     "properties": {
+      "periods": {
+       "$ref": "#/$defs/period_rows"
+      },
+      "realized_steps": {
+       "$ref": "#/$defs/realized_steps"
+      }
+     }
+    },
+    "fifo_wallet": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "role",
+      "wallet_label",
+      "accounts"
+     ],
+     "properties": {
+      "role": {
+       "enum": [
+        "wallet",
+        "member"
+       ]
+      },
+      "wallet_label": {
+       "type": "string",
+       "minLength": 1,
+       "maxLength": 1000
+      },
+      "accounts": {
+       "type": "array",
+       "minItems": 2,
+       "maxItems": 100,
+       "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240
+       }
+      }
+     }
+    },
+    "net": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "cost",
+      "realized_net_steps",
+      "reason",
+      "blocked_days",
+      "fee_rate",
+      "fee_source",
+      "warned_days"
+     ],
+     "properties": {
+      "cost": {
+       "$ref": "#/$defs/amounts"
+      },
+      "realized_net_steps": {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "tax",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "tax": {
+          "$ref": "#/$defs/amount"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      "reason": {
+       "type": [
+        "string",
+        "null"
+       ],
+       "pattern": "^[a-z][a-z0-9_]{0,79}$"
+      },
+      "blocked_days": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "fee_rate": {
+       "$ref": "#/$defs/amount"
+      },
+      "fee_source": {
+       "enum": [
+        "asset",
+        "portfolio",
+        "none"
+       ]
+      },
+      "warned_days": {
+       "type": "integer",
+       "minimum": 0
+      }
+     }
+    }
+   }
+  },
+  "asset_fields": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "days",
+    "basis",
+    "trades",
+    "income",
+    "performance",
+    "twr"
+   ],
+   "properties": {
+    "days": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "day",
+      "quantity",
+      "unit_value",
+      "market_value"
+     ],
+     "properties": {
+      "day": {
+       "$ref": "#/$defs/days"
+      },
+      "quantity": {
+       "$ref": "#/$defs/amounts"
+      },
+      "unit_value": {
+       "$ref": "#/$defs/amounts"
+      },
+      "market_value": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    },
+    "basis": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "day",
+       "quantity",
+       "cost_basis"
+      ],
+      "properties": {
+       "day": {
+        "$ref": "#/$defs/day"
+       },
+       "quantity": {
+        "$ref": "#/$defs/amount"
+       },
+       "cost_basis": {
+        "$ref": "#/$defs/amount"
+       }
+      }
+     }
+    },
+    "trades": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "day",
+       "kind",
+       "quantity_change",
+       "events"
+      ],
+      "properties": {
+       "day": {
+        "$ref": "#/$defs/day"
+       },
+       "kind": {
+        "enum": [
+         "buy",
+         "sell",
+         "reward",
+         "deposit",
+         "withdrawal",
+         "stock_dividend",
+         "other_in",
+         "other_out",
+         "transfer_in",
+         "transfer_out",
+         "split"
+        ]
+       },
+       "quantity_change": {
+        "$ref": "#/$defs/amount"
+       },
+       "events": {
+        "type": "array",
+        "maxItems": 500,
+        "items": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+          "kind",
+          "quantity",
+          "unit_price",
+          "amount",
+          "fee",
+          "currency",
+          "account",
+          "lots"
+         ],
+         "properties": {
+          "kind": {
+           "enum": [
+            "buy",
+            "sell",
+            "reward",
+            "stock_dividend",
+            "deposit",
+            "withdrawal",
+            "transfer",
+            "other"
+           ]
+          },
+          "quantity": {
+           "$ref": "#/$defs/amount"
+          },
+          "unit_price": {
+           "$ref": "#/$defs/amount"
+          },
+          "amount": {
+           "$ref": "#/$defs/amount"
+          },
+          "fee": {
+           "$ref": "#/$defs/amount"
+          },
+          "currency": {
+           "type": [
+            "string",
+            "null"
+           ],
+           "pattern": "^[A-Z]{3}$"
+          },
+          "account": {
+           "type": [
+            "string",
+            "null"
+           ],
+           "maxLength": 240
+          },
+          "lots": {
+           "type": "array",
+           "maxItems": 2000,
+           "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+             "acquired",
+             "quantity",
+             "basis",
+             "proceeds",
+             "gain"
+            ],
+            "properties": {
+             "acquired": {
+              "anyOf": [
+               {
+                "$ref": "#/$defs/day"
+               },
+               {
+                "type": "null"
+               }
+              ]
+             },
+             "quantity": {
+              "$ref": "#/$defs/amount"
+             },
+             "basis": {
+              "$ref": "#/$defs/amount"
+             },
+             "proceeds": {
+              "$ref": "#/$defs/amount"
+             },
+             "gain": {
+              "$ref": "#/$defs/amount"
+             }
+            }
+           }
+          },
+          "tax": {
+           "$ref": "#/$defs/amount"
+          },
+          "tax_pooled": {
+           "$ref": "#/$defs/amount"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "income": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "day",
+       "kind",
+       "amount",
+       "currency",
+       "account"
+      ],
+      "properties": {
+       "day": {
+        "$ref": "#/$defs/day"
+       },
+       "kind": {
+        "enum": [
+         "dividend"
+        ]
+       },
+       "amount": {
+        "$ref": "#/$defs/amount"
+       },
+       "currency": {
+        "type": [
+         "string",
+         "null"
+        ],
+        "pattern": "^[A-Z]{3}$"
+       },
+       "account": {
+        "type": [
+         "string",
+         "null"
+        ],
+        "maxLength": 240
+       },
+       "tax": {
+        "$ref": "#/$defs/amount"
+       },
+       "tax_pooled": {
+        "$ref": "#/$defs/amount"
+       }
+      }
+     }
+    },
+    "net": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "cost",
+      "realized_net_steps",
+      "reason",
+      "blocked_days",
+      "fee_rate",
+      "fee_source",
+      "warned_days"
+     ],
+     "properties": {
+      "cost": {
+       "$ref": "#/$defs/amounts"
+      },
+      "realized_net_steps": {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "tax",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "tax": {
+          "$ref": "#/$defs/amount"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      "reason": {
+       "type": [
+        "string",
+        "null"
+       ],
+       "pattern": "^[a-z][a-z0-9_]{0,79}$"
+      },
+      "blocked_days": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "fee_rate": {
+       "$ref": "#/$defs/amount"
+      },
+      "fee_source": {
+       "enum": [
+        "asset",
+        "portfolio",
+        "none"
+       ]
+      },
+      "warned_days": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "cost_pooled": {
+       "$ref": "#/$defs/amounts"
+      },
+      "realized_net_steps_pooled": {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "tax",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "tax": {
+          "$ref": "#/$defs/amount"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      }
+     }
+    },
+    "accounts": {
+     "type": "array",
+     "maxItems": 1000,
+     "items": {
+      "$ref": "#/$defs/account_view"
+     }
+    },
+    "performance": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "realized_steps"
+     ],
+     "properties": {
+      "realized_steps": {
+       "$ref": "#/$defs/realized_steps"
+      }
+     }
+    },
+    "twr": {
+     "$ref": "#/$defs/twr_window"
+    },
+    "prices": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "day",
+      "unit_value"
+     ],
+     "description": "Kurs je Tag in Euro aus der Marktbewertung, auch ohne Bestand (#526); acht gueltige Stellen, nur fuer die Anzeige.",
+     "properties": {
+      "day": {
+       "$ref": "#/$defs/days"
+      },
+      "unit_value": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    }
+   }
+  },
+  "class_fields": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "basis",
+    "realized_steps",
+    "net_cost",
+    "net_realized_steps",
+    "twr",
+    "net_cost_pooled",
+    "net_realized_steps_pooled"
+   ],
+   "properties": {
+    "basis": {
+     "$ref": "#/$defs/amounts"
+    },
+    "realized_steps": {
+     "$ref": "#/$defs/realized_steps"
+    },
+    "net_cost": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/amounts"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "net_realized_steps": {
+     "anyOf": [
+      {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "twr": {
+     "$ref": "#/$defs/twr_window"
+    },
+    "net_cost_pooled": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/amounts"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "net_realized_steps_pooled": {
+     "anyOf": [
+      {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   }
+  },
+  "group_fields": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "value",
+    "basis",
+    "realized_steps",
+    "net_cost",
+    "net_realized_steps",
+    "twr",
+    "net_cost_pooled",
+    "net_realized_steps_pooled"
+   ],
+   "properties": {
+    "value": {
+     "$ref": "#/$defs/amounts"
+    },
+    "basis": {
+     "$ref": "#/$defs/amounts"
+    },
+    "realized_steps": {
+     "$ref": "#/$defs/realized_steps"
+    },
+    "net_cost": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/amounts"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "net_realized_steps": {
+     "anyOf": [
+      {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "twr": {
+     "$ref": "#/$defs/twr_window"
+    },
+    "net_cost_pooled": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/amounts"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "net_realized_steps_pooled": {
+     "anyOf": [
+      {
+       "type": "array",
+       "maxItems": 40000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "day",
+         "realized_net_cumulative"
+        ],
+        "properties": {
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "realized_net_cumulative": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   }
+  },
+  "twr_window": {
+   "anyOf": [
+    {
+     "type": "null"
+    },
+    {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "first_day",
+      "index"
+     ],
+     "properties": {
+      "first_day": {
+       "$ref": "#/$defs/day"
+      },
+      "index": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    }
+   ]
+  },
+  "watched_fields": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "prices"
+   ],
+   "properties": {
+    "prices": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "day",
+      "unit_value"
+     ],
+     "description": "Kurs je Tag in Euro aus der Marktbewertung, auch ohne Bestand (#526); acht gueltige Stellen, nur fuer die Anzeige.",
+     "properties": {
+      "day": {
+       "$ref": "#/$defs/days"
+      },
+      "unit_value": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    }
+   }
+  }
+ }
+}

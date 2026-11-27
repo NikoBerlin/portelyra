@@ -1,0 +1,17 @@
+capability,status
+private_one_read,explicit_owner_authorization_only
+structural_profiling,in_memory_only
+private_local_review,allowed
+adapter_activation,forbidden
+profile_revision_creation,forbidden
+route_rule_creation,forbidden
+candidate_handoff,forbidden
+catalog_write,forbidden
+activity_draft_write,forbidden
+cash_write,forbidden
+tax_write,forbidden
+sql_access,forbidden
+provider_access,forbidden
+network_access,forbidden
+automatic_retry,forbidden
+release_or_deployment,forbidden

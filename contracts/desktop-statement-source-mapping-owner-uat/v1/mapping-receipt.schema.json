@@ -1,0 +1,97 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "attempt_fingerprint",
+    "automatic_retry",
+    "candidate_generation_authorized",
+    "canonical_write",
+    "completed_at_utc",
+    "context_binding_sha256",
+    "overlay_fingerprint",
+    "private_values_published",
+    "profile_revision_created",
+    "profiler_receipt_fingerprint",
+    "profiler_review_binding_sha256",
+    "profiler_status",
+    "receipt_fingerprint",
+    "route_rules_active",
+    "source_path_retained",
+    "status",
+    "version",
+    "cash_write",
+    "network_access",
+    "provider_access",
+    "tax_write"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "type": "boolean"
+    },
+    "attempt_fingerprint": {
+      "type": "string"
+    },
+    "automatic_retry": {
+      "type": "boolean"
+    },
+    "candidate_generation_authorized": {
+      "type": "boolean"
+    },
+    "canonical_write": {
+      "type": "boolean"
+    },
+    "completed_at_utc": {
+      "type": "string"
+    },
+    "context_binding_sha256": {
+      "type": "string"
+    },
+    "overlay_fingerprint": {
+      "type": "string"
+    },
+    "private_values_published": {
+      "type": "boolean"
+    },
+    "profile_revision_created": {
+      "type": "boolean"
+    },
+    "profiler_receipt_fingerprint": {
+      "type": "string"
+    },
+    "profiler_review_binding_sha256": {
+      "type": "string"
+    },
+    "profiler_status": {
+      "type": "string"
+    },
+    "receipt_fingerprint": {
+      "type": "string"
+    },
+    "route_rules_active": {
+      "type": "boolean"
+    },
+    "source_path_retained": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "cash_write": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "tax_write": {
+      "const": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

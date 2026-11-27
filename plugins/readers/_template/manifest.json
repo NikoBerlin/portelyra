@@ -1,0 +1,55 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 4,
+  "plugin_id": "vorlage",
+  "plugin_version": "0.1.0",
+  "publisher": "Vorlage",
+  "institution": "Beispielbank",
+  "label": "Vorlage",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "99ec9e3c8b41acb7e55c05a314b1e0889f6df9c461fd5e3d9c045a30da20f2b3",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "23a0127545f11bca61de531e3eaeed59365fe99ed8b37add4538e011ed8d1a19"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "2744e9885ac9d9778bee9ba140c054d9f0a21a0b1aab7286d21e97ff7497d8de"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "vorlage_csv_v1",
+      "domain": "cash",
+      "label": "Vorlage (CSV)",
+      "document_kind": "Umsatzliste (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "datum",
+            "betrag",
+            "text"
+          ]
+        ]
+      },
+      "tested_formats": "Erfundene Beispieldateien „Datum;Betrag;Text“.",
+      "known_limits": [
+        "Nur ein Beispiel: kein Saldo, Zinsen am Wort „Zins“ erkannt."
+      ],
+      "generator": true
+    }
+  ],
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "vorlage_csv_v1",
+      "input": "fixtures/vorlage_csv_v1.csv",
+      "expected": "fixtures/vorlage_csv_v1.expected.json"
+    }
+  ]
+}

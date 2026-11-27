@@ -1,0 +1,17 @@
+capability,profiler_engine,public_projection,private_owner_uat
+utf8_bom_detection,true,true,false
+delimiter_detection,true,true,false
+header_order_independence,true,true,false
+explicit_alias_role_proposal,true,count_only,false
+unknown_column_retention,true,count_only,false
+semantic_token_inventory,private_memory_only,false,false
+time_zone_inference,false,false,false
+route_inference,false,false,false
+source_path_input,false,false,false
+private_source_read,false,false,false
+candidate_write,false,false,false
+activity_draft_write,false,false,false
+cash_write,false,false,false
+canonical_write,false,false,false
+provider_access,false,false,false
+network_access,false,false,false

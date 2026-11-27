@@ -1,0 +1,17 @@
+capability,synthetic_worker,data_app,later_private_boundary
+read_hash_bound_public_invented_fixture,true,false,false
+validate_exact_header_and_profile_revision,true,true,false
+map_columns_and_type_subtype_asset_class_explicitly,true,true,false
+project_browser_local_catalog_options,true,true,false
+preview_separate_catalog_requirement,true,true,false
+apply_exact_manual_reward_enrichment,true,true,false
+reconcile_complete_invented_event_facts,true,true,false
+show_all_closed_row_dispositions,true,true,false
+read_private_source,false,false,true
+accept_private_source_path,false,false,true
+write_catalog_entity,false,false,true
+write_activity_draft,false,false,true
+write_schema401_or_cash2901,false,false,false
+confirm_correction_or_lineage,false,false,true
+activate_adapter,false,false,true
+provider_or_network_access,false,false,false

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-recovery-trusted-preview.schema.json",
+  "title": "Portfolio CSV domain handoff recovery trusted preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_recovery_preview_version","status","recovery_ref","domain","staged_import_handle","context_fingerprint","attempt_fingerprint","handoff_plan_fingerprint","effect_state","confirmation_required","automatic_retry","recovery_plan_fingerprint"],
+  "properties": {
+    "portfolio_csv_handoff_recovery_preview_version": {"const": 1},
+    "status": {"const": "ready_for_recovery_confirmation"},
+    "recovery_ref": {"type": "string", "pattern": "^portfolio_handoff_recovery_[a-f0-9]{32}$"},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+    "context_fingerprint": {"$ref": "#/$defs/sha256"},
+    "attempt_fingerprint": {"$ref": "#/$defs/sha256"},
+    "handoff_plan_fingerprint": {"$ref": "#/$defs/sha256"},
+    "effect_state": {"enum": ["absent","partial","complete"]},
+    "confirmation_required": {"const": true},
+    "automatic_retry": {"const": false},
+    "recovery_plan_fingerprint": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

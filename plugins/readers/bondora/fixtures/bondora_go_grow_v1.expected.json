@@ -1,0 +1,499 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "1000",
+   "balance_after_decimal": "1000",
+   "kind": "deposit",
+   "local_date": "2027-01-01",
+   "source_row_ordinal": 1,
+   "text": "SEPA-Banküberweisung"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.1",
+   "kind": "interest",
+   "local_date": "2027-01-01",
+   "source_row_ordinal": 2,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.2",
+   "kind": "interest",
+   "local_date": "2027-01-02",
+   "source_row_ordinal": 3,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.3",
+   "kind": "interest",
+   "local_date": "2027-01-03",
+   "source_row_ordinal": 4,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.4",
+   "kind": "interest",
+   "local_date": "2027-01-04",
+   "source_row_ordinal": 5,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.5",
+   "kind": "interest",
+   "local_date": "2027-01-05",
+   "source_row_ordinal": 6,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.6",
+   "kind": "interest",
+   "local_date": "2027-01-06",
+   "source_row_ordinal": 7,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.7",
+   "kind": "interest",
+   "local_date": "2027-01-07",
+   "source_row_ordinal": 8,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.8",
+   "kind": "interest",
+   "local_date": "2027-01-08",
+   "source_row_ordinal": 9,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1000.9",
+   "kind": "interest",
+   "local_date": "2027-01-09",
+   "source_row_ordinal": 10,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001",
+   "kind": "interest",
+   "local_date": "2027-01-10",
+   "source_row_ordinal": 11,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.1",
+   "kind": "interest",
+   "local_date": "2027-01-11",
+   "source_row_ordinal": 12,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.2",
+   "kind": "interest",
+   "local_date": "2027-01-12",
+   "source_row_ordinal": 13,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.3",
+   "kind": "interest",
+   "local_date": "2027-01-13",
+   "source_row_ordinal": 14,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.4",
+   "kind": "interest",
+   "local_date": "2027-01-14",
+   "source_row_ordinal": 15,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.5",
+   "kind": "interest",
+   "local_date": "2027-01-15",
+   "source_row_ordinal": 16,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.6",
+   "kind": "interest",
+   "local_date": "2027-01-16",
+   "source_row_ordinal": 17,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.7",
+   "kind": "interest",
+   "local_date": "2027-01-17",
+   "source_row_ordinal": 18,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.8",
+   "kind": "interest",
+   "local_date": "2027-01-18",
+   "source_row_ordinal": 19,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1001.9",
+   "kind": "interest",
+   "local_date": "2027-01-19",
+   "source_row_ordinal": 20,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002",
+   "kind": "interest",
+   "local_date": "2027-01-20",
+   "source_row_ordinal": 21,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.1",
+   "kind": "interest",
+   "local_date": "2027-01-21",
+   "source_row_ordinal": 22,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.2",
+   "kind": "interest",
+   "local_date": "2027-01-22",
+   "source_row_ordinal": 23,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.3",
+   "kind": "interest",
+   "local_date": "2027-01-23",
+   "source_row_ordinal": 24,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.4",
+   "kind": "interest",
+   "local_date": "2027-01-24",
+   "source_row_ordinal": 25,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.5",
+   "kind": "interest",
+   "local_date": "2027-01-25",
+   "source_row_ordinal": 26,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.6",
+   "kind": "interest",
+   "local_date": "2027-01-26",
+   "source_row_ordinal": 27,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.7",
+   "kind": "interest",
+   "local_date": "2027-01-27",
+   "source_row_ordinal": 28,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.8",
+   "kind": "interest",
+   "local_date": "2027-01-28",
+   "source_row_ordinal": 29,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1002.9",
+   "kind": "interest",
+   "local_date": "2027-01-29",
+   "source_row_ordinal": 30,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003",
+   "kind": "interest",
+   "local_date": "2027-01-30",
+   "source_row_ordinal": 31,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.1",
+   "kind": "interest",
+   "local_date": "2027-01-31",
+   "source_row_ordinal": 32,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.2",
+   "kind": "interest",
+   "local_date": "2027-02-01",
+   "source_row_ordinal": 33,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.3",
+   "kind": "interest",
+   "local_date": "2027-02-02",
+   "source_row_ordinal": 34,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.4",
+   "kind": "interest",
+   "local_date": "2027-02-03",
+   "source_row_ordinal": 35,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.5",
+   "kind": "interest",
+   "local_date": "2027-02-04",
+   "source_row_ordinal": 36,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.6",
+   "kind": "interest",
+   "local_date": "2027-02-05",
+   "source_row_ordinal": 37,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.7",
+   "kind": "interest",
+   "local_date": "2027-02-06",
+   "source_row_ordinal": 38,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.8",
+   "kind": "interest",
+   "local_date": "2027-02-07",
+   "source_row_ordinal": 39,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1003.9",
+   "kind": "interest",
+   "local_date": "2027-02-08",
+   "source_row_ordinal": 40,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004",
+   "kind": "interest",
+   "local_date": "2027-02-09",
+   "source_row_ordinal": 41,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.1",
+   "kind": "interest",
+   "local_date": "2027-02-10",
+   "source_row_ordinal": 42,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.2",
+   "kind": "interest",
+   "local_date": "2027-02-11",
+   "source_row_ordinal": 43,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.3",
+   "kind": "interest",
+   "local_date": "2027-02-12",
+   "source_row_ordinal": 44,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.4",
+   "kind": "interest",
+   "local_date": "2027-02-13",
+   "source_row_ordinal": 45,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.5",
+   "kind": "interest",
+   "local_date": "2027-02-14",
+   "source_row_ordinal": 46,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.6",
+   "kind": "interest",
+   "local_date": "2027-02-15",
+   "source_row_ordinal": 47,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.7",
+   "kind": "interest",
+   "local_date": "2027-02-16",
+   "source_row_ordinal": 48,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.8",
+   "kind": "interest",
+   "local_date": "2027-02-17",
+   "source_row_ordinal": 49,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1004.9",
+   "kind": "interest",
+   "local_date": "2027-02-18",
+   "source_row_ordinal": 50,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005",
+   "kind": "interest",
+   "local_date": "2027-02-19",
+   "source_row_ordinal": 51,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.1",
+   "kind": "interest",
+   "local_date": "2027-02-20",
+   "source_row_ordinal": 52,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.2",
+   "kind": "interest",
+   "local_date": "2027-02-21",
+   "source_row_ordinal": 53,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.3",
+   "kind": "interest",
+   "local_date": "2027-02-22",
+   "source_row_ordinal": 54,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.4",
+   "kind": "interest",
+   "local_date": "2027-02-23",
+   "source_row_ordinal": 55,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.5",
+   "kind": "interest",
+   "local_date": "2027-02-24",
+   "source_row_ordinal": 56,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.6",
+   "kind": "interest",
+   "local_date": "2027-02-25",
+   "source_row_ordinal": 57,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.7",
+   "kind": "interest",
+   "local_date": "2027-02-26",
+   "source_row_ordinal": 58,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.8",
+   "kind": "interest",
+   "local_date": "2027-02-27",
+   "source_row_ordinal": 59,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1005.9",
+   "kind": "interest",
+   "local_date": "2027-02-28",
+   "source_row_ordinal": 60,
+   "text": "Go & Grow Zinsen"
+  },
+  {
+   "amount_decimal": "0.1",
+   "balance_after_decimal": "1006",
+   "kind": "interest",
+   "local_date": "2027-03-01",
+   "source_row_ordinal": 61,
+   "text": "Go & Grow Zinsen"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": "1006",
+  "opening_balance_decimal": "0",
+  "period_from": "2027-01-01",
+  "period_to": "2027-03-01"
+ }
+}

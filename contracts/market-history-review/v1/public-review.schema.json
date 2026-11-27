@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/market-history-review/v1/public-review.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "market_history_review_version", "status", "review_ref", "listing_browser_ref", "quote_currency",
+    "market_code", "calendar_kind", "scope_start_date", "scope_end_date", "plot_scale_min_decimal",
+    "plot_scale_max_decimal", "series", "summary", "warning_codes", "machine_validation_status",
+    "visual_review_required", "publish_confirmation_required", "fetch_attempt_consumed",
+    "staged_candidate_persisted", "candidate_fingerprint_exposed", "provider_access", "network_access",
+    "market_history_write", "canonical_write", "tax_write", "reward_valuation_write", "automatic_retry",
+    "path_exposed", "context_exposed", "internal_id_exposed"
+  ],
+  "properties": {
+    "market_history_review_version": {"const": 1},
+    "status": {"enum": ["ready", "ready_with_warnings"]},
+    "review_ref": {"type": "string", "pattern": "^mhr_[a-f0-9]{32}$"},
+    "listing_browser_ref": {"type": "string", "pattern": "^market_listing_[a-f0-9]{32}$"},
+    "quote_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "market_code": {"type": "string", "pattern": "^[A-Z0-9]{2,12}$"},
+    "calendar_kind": {"enum": ["exchange_calendar", "continuous_24_7"]},
+    "scope_start_date": {"type": "string", "format": "date"},
+    "scope_end_date": {"type": "string", "format": "date"},
+    "plot_scale_min_decimal": {"oneOf": [{"type": "string", "maxLength": 80, "pattern": "^(0\\.[0-9]*[1-9]|[1-9][0-9]*(\\.[0-9]*[1-9])?)$"}, {"type": "null"}]},
+    "plot_scale_max_decimal": {"oneOf": [{"type": "string", "maxLength": 80, "pattern": "^(0\\.[0-9]*[1-9]|[1-9][0-9]*(\\.[0-9]*[1-9])?)$"}, {"type": "null"}]},
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3650,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "trading_date", "x_ordinal", "calendar_day_status", "calendar_reason", "candidate_day_status",
+          "comparison_status", "current_close_decimal", "candidate_close_decimal", "effective_close_decimal",
+          "effective_close_status", "source_observation_date", "effective_close_age_days", "plot_style",
+          "current_plot_y", "candidate_plot_y", "effective_plot_y", "warning_codes"
+        ],
+        "properties": {
+          "trading_date": {"type": "string", "format": "date"},
+          "x_ordinal": {"type": "integer", "minimum": 0, "maximum": 3650},
+          "calendar_day_status": {"enum": ["trading_day", "non_trading_day"]},
+          "calendar_reason": {"enum": ["scheduled_session", "weekend", "exchange_holiday", "continuous_market"]},
+          "candidate_day_status": {"enum": ["observed", "non_trading_day", "source_gap"]},
+          "comparison_status": {"enum": ["new_observation", "gap_resolution_candidate", "correction_candidate", "unchanged_observation", "new_calendar_day", "unchanged_calendar_day", "current_observation_retained", "new_source_gap", "unchanged_source_gap"]},
+          "current_close_decimal": {"oneOf": [{"type": "string", "maxLength": 80, "pattern": "^(0\\.[0-9]*[1-9]|[1-9][0-9]*(\\.[0-9]*[1-9])?)$"}, {"type": "null"}]},
+          "candidate_close_decimal": {"oneOf": [{"type": "string", "maxLength": 80, "pattern": "^(0\\.[0-9]*[1-9]|[1-9][0-9]*(\\.[0-9]*[1-9])?)$"}, {"type": "null"}]},
+          "effective_close_decimal": {"oneOf": [{"type": "string", "maxLength": 80, "pattern": "^(0\\.[0-9]*[1-9]|[1-9][0-9]*(\\.[0-9]*[1-9])?)$"}, {"type": "null"}]},
+          "effective_close_status": {"enum": ["observed_candidate", "observed_current", "imputed_non_trading_day", "unavailable_source_gap", "unavailable_no_predecessor", "unavailable_corporate_action"]},
+          "source_observation_date": {"oneOf": [{"type": "string", "format": "date"}, {"type": "null"}]},
+          "effective_close_age_days": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 3650}, {"type": "null"}]},
+          "plot_style": {"enum": ["solid", "dashed", "gap"]},
+          "current_plot_y": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 10000}, {"type": "null"}]},
+          "candidate_plot_y": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 10000}, {"type": "null"}]},
+          "effective_plot_y": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 10000}, {"type": "null"}]},
+          "warning_codes": {"type": "array", "maxItems": 8, "uniqueItems": true, "items": {"type": "string", "enum": ["market_review_candidate_correction", "market_review_corporate_action_pending", "market_review_current_observation_retained", "market_review_non_trading_close_carried_forward", "market_review_non_trading_without_predecessor", "market_review_observation_on_non_trading_day", "market_review_provider_closed_day_absence_normalized", "market_review_source_gap"]}}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["calendar_day_count", "observed_candidate_count", "non_trading_day_count", "source_gap_count", "imputed_non_trading_day_count", "correction_candidate_count", "unavailable_effective_close_count", "warning_count"],
+      "properties": {
+        "calendar_day_count": {"type": "integer", "minimum": 1, "maximum": 3650},
+        "observed_candidate_count": {"type": "integer", "minimum": 0, "maximum": 3650},
+        "non_trading_day_count": {"type": "integer", "minimum": 0, "maximum": 3650},
+        "source_gap_count": {"type": "integer", "minimum": 0, "maximum": 3650},
+        "imputed_non_trading_day_count": {"type": "integer", "minimum": 0, "maximum": 3650},
+        "correction_candidate_count": {"type": "integer", "minimum": 0, "maximum": 3650},
+        "unavailable_effective_close_count": {"type": "integer", "minimum": 0, "maximum": 3650},
+        "warning_count": {"type": "integer", "minimum": 0, "maximum": 8}
+      }
+    },
+    "warning_codes": {"type": "array", "maxItems": 8, "uniqueItems": true, "items": {"type": "string", "enum": ["market_review_candidate_correction", "market_review_corporate_action_pending", "market_review_current_observation_retained", "market_review_non_trading_close_carried_forward", "market_review_non_trading_without_predecessor", "market_review_observation_on_non_trading_day", "market_review_provider_closed_day_absence_normalized", "market_review_source_gap"]}},
+    "machine_validation_status": {"const": "passed"},
+    "visual_review_required": {"const": true},
+    "publish_confirmation_required": {"const": true},
+    "fetch_attempt_consumed": {"const": true},
+    "staged_candidate_persisted": {"const": true},
+    "candidate_fingerprint_exposed": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "market_history_write": {"const": false},
+    "canonical_write": {"const": false},
+    "tax_write": {"const": false},
+    "reward_valuation_write": {"const": false},
+    "automatic_retry": {"const": false},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "internal_id_exposed": {"const": false}
+  }
+}

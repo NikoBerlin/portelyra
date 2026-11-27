@@ -1,0 +1,223 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "bison",
+  "plugin_version": "1.4.2",
+  "publisher": "Portelyra",
+  "institution": "Bison",
+  "label": "Bison",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "d091a5e4968510229d0a50c1788e763e61019d3cd5b3e9911701e141a04d7c19",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "579c25357f6dc368697a737abe1f53f557a54758fc85073fa66f1dfa8d2a6cab"
+    },
+    {
+      "path": "reader_crypto.py",
+      "sha256": "c65d8a82d48ecc666028228f5e7fe7dc5341d0301d2a07b9beea7f17a4be10bd"
+    },
+    {
+      "path": "reader_reward.py",
+      "sha256": "4842b66bbe8e9944297bd30b28f490ac3b2e18fbe37f587f521877bd96ecaec1"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "67bab09b2e41c64eb92a98eb67e5c84c0c75b49af278834938d0df32999f874d"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "bison_eur_v1",
+      "domain": "cash",
+      "label": "Bison Transaktionen, nur Euro-Guthaben (CSV)",
+      "document_kind": "Transaktionsexport (CSV), nur Euro",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "transaction type",
+            "eur (amount)",
+            "fee"
+          ]
+        ]
+      },
+      "tested_formats": "Export mit Transaction type, Eur (amount), Fee; Einzahlung, Auszahlung, Kauf und Verkauf.",
+      "known_limits": [
+        "Kein Saldo im Export.",
+        "Liest nur das Euro-Guthaben; Coins liest der Krypto-Import."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "bison_settlement_v1",
+      "domain": "cash",
+      "label": "Bison Verrechnungskonto, Monatsübersicht der EUWAX (PDF oder Text)",
+      "document_kind": "Monatsübersicht des Verrechnungskontos (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": []
+      },
+      "tested_formats": "Monatsübersichten der EUWAX für das Bison-Euro-Guthaben, mit Eröffnungsbilanz und Abschlusssaldo.",
+      "known_limits": [
+        "Eröffnung plus Buchungen muss den Abschlusssaldo ergeben, sonst wird der Beleg nicht übernommen.",
+        "Ein Monat ohne Buchung bestätigt nur den Saldo.",
+        "Dasselbe Euro-Konto liest auch der CSV-Leser (ohne Saldo); im Cash-Import je Konto eine Quelle wählen."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-11-18",
+        "checked_on": "2026-11-18"
+      }
+    },
+    {
+      "reader_id": "bison_crypto_v1",
+      "domain": "crypto",
+      "label": "Bison (Transaktionen, Krypto)",
+      "document_kind": "Transaktionsexport (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "transaction id",
+            "transaction type",
+            "asset",
+            "asset (amount)",
+            "date (utc - coordinated universal time)"
+          ]
+        ]
+      },
+      "tested_formats": "Export mit Transaction ID, Transaction type, Asset, Asset (amount), Date (UTC).",
+      "known_limits": [
+        "Euro-Bewegungen liest der Cash-Leser.",
+        "Zeitstempel in UTC."
+      ],
+      "generator": true,
+      "source": {
+        "key": "bison",
+        "label": "Bison",
+        "institution_names": [
+          "Bison"
+        ],
+        "wallets": {
+          "main": {
+            "label": "Konto",
+            "account_name": {}
+          }
+        },
+        "default_wallet": {
+          "label_prefix": "",
+          "account_name": {}
+        },
+        "pairing": "none",
+        "internal_transfers": false
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    },
+    {
+      "reader_id": "bison_transactions_csv_v1",
+      "domain": "reward",
+      "label": "Bison (Export, Rewards)",
+      "document_kind": "Export je Kalenderjahr (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "asset",
+            "price"
+          ]
+        ]
+      },
+      "tested_formats": "Export je Kalenderjahr (Semikolon) mit Transaction ID, Transaction type, Currency, Asset, Eur (amount), Asset (amount), Asset (market price), Fee, Date (UTC).",
+      "known_limits": [
+        "Bewertung mit dem Marktpreis des Coins zum Zeitpunkt des Rewards.",
+        "Mehrere Jahresdateien zählen als ein Lauf; was in mehreren steht, zählt einmal.",
+        "Liest nur Rewards; Käufe, Verkäufe, Ein- und Auszahlungen liest der Krypto- bzw. Cash-Leser."
+      ],
+      "generator": true,
+      "row_ids": true,
+      "format_checked": {
+        "through": "2026-10-23",
+        "checked_on": "2026-10-23"
+      }
+    }
+  ],
+  "intake": {
+    "key": "bison",
+    "label": "Bison",
+    "folders": [
+      "bison"
+    ],
+    "downloads": [
+      "„Transaction history (CSV)“ je Kalenderjahr – das laufende Jahr jeden Monat neu, im Januar auch das Vorjahr",
+      "„Monatsübersicht“ des Verrechnungskontos (PDF) je Monat, unter <Jahr>/Verrechnung/"
+    ],
+    "period": "since_start",
+    "covers": "alle Coins, das Euro-Guthaben und dessen Monatssalden",
+    "readers": [
+      [
+        "crypto",
+        "bison_crypto_v1"
+      ],
+      [
+        "reward",
+        "bison_transactions_csv_v1"
+      ],
+      [
+        "cash",
+        "bison_eur_v1"
+      ],
+      [
+        "cash",
+        "bison_settlement_v1"
+      ]
+    ],
+    "account_words": [
+      "bison"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "bison_eur_v1",
+      "input": "fixtures/bison_eur_v1.csv",
+      "expected": "fixtures/bison_eur_v1.expected.json"
+    },
+    {
+      "domain": "cash",
+      "reader_id": "bison_settlement_v1",
+      "input": "fixtures/bison_settlement_v1.txt",
+      "expected": "fixtures/bison_settlement_v1.expected.json"
+    },
+    {
+      "domain": "crypto",
+      "reader_id": "bison_crypto_v1",
+      "input": "fixtures/crypto_bison_crypto_v1.csv",
+      "expected": "fixtures/crypto_bison_crypto_v1.expected.json"
+    },
+    {
+      "domain": "reward",
+      "reader_id": "bison_transactions_csv_v1",
+      "input": "fixtures/reward_bison_transactions_csv_v1.csv",
+      "expected": "fixtures/reward_bison_transactions_csv_v1.expected.json"
+    }
+  ]
+}

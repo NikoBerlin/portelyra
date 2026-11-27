@@ -1,0 +1,13 @@
+{
+ "outcome": "ok",
+ "candidates": [
+  {
+   "symbol": "INVCO.XETRA",
+   "display_name": "Invented Company AG",
+   "exchange": "XETRA",
+   "quote_type": "equity",
+   "quote_currency": "EUR",
+   "isin": "XA00INVENT09"
+  }
+ ]
+}

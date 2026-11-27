@@ -1,0 +1,28 @@
+legal_reference_code,citation,reference_status,effective_from,verified_at,assumption_code,exclusion_code
+de_estg_20,§ 20 EStG,reference_only,2016-01-01,2026-08-08,general_capital_income_scope,no_automatic_legal_update
+de_estg_20_1,§ 20 Abs. 1 EStG,reference_only,2016-01-01,2026-08-08,capital_income_categories,no_automatic_legal_update
+de_estg_20_1_7,§ 20 Abs. 1 Nr. 7 EStG,reference_only,2016-01-01,2026-08-08,cash_interest_scope,no_automatic_legal_update
+de_estg_20_2_20_6,§ 20 Abs. 2 und Abs. 6 EStG,reference_only,2016-01-01,2026-08-08,equity_gain_and_loss_bucket_scope,no_automatic_legal_update
+de_estg_20_6,§ 20 Abs. 6 EStG,reference_only,2016-01-01,2026-08-08,simplified_separate_loss_buckets,no_cross_bucket_optimization
+de_estg_20_9,§ 20 Abs. 9 EStG (801/1.602 Euro bis 2022; 1.000/2.000 Euro ab 2023 - Art. 4 Nr. 6 JStG 2022 vom 16.12.2022 BGBl. I S. 2294),reference_only,2016-01-01,2026-10-13,user_confirmed_allowance,no_automatic_allowance_value
+de_estg_20_9_2016_2019,"§ 20 Abs. 9 EStG (801/1.602 Euro; unverändert bis zum JStG 2022 vom 16.12.2022, BGBl. I S. 2294) – Fassung 2016–2019; Wortlaut der damals geltenden Fassung geprüft an der konsolidierten Fassung (buzer.de) und am geltenden amtlichen Text (gesetze-im-internet.de), nicht am Original-Bundesgesetzblatt",reference_only,2016-01-01,2026-10-28,user_confirmed_allowance,no_automatic_allowance_value
+de_estg_22_3,§ 22 Nr. 3 EStG,reference_only,2016-01-01,2026-08-08,explicit_other_income_scope,no_complete_other_income_law
+de_estg_22_3_2,§ 22 Nr. 3 Satz 2 EStG (weniger als 256 Euro im Kalenderjahr),reference_only,2016-01-01,2026-10-13,module_year_value_user_override,no_complete_other_income_law
+de_estg_22_3_2_2016_2019,"§ 22 Nr. 3 Satz 2 EStG (weniger als 256 Euro im Kalenderjahr) – Fassung 2016–2019; Wortlaut der damals geltenden Fassung geprüft an der konsolidierten Fassung (buzer.de) und am geltenden amtlichen Text (gesetze-im-internet.de), nicht am Original-Bundesgesetzblatt",reference_only,2016-01-01,2026-10-28,module_year_value_user_override,no_complete_other_income_law
+de_estg_23_1_2,§ 23 Abs. 1 Satz 1 Nr. 2 EStG,reference_only,2016-01-01,2026-08-08,simplified_calendar_anniversary,no_extended_holding_period_cases
+de_estg_23_3_5,§ 23 Abs. 3 Satz 5 EStG (weniger als 600 Euro bis 2023; weniger als 1.000 Euro ab 2024 - Art. 2 Wachstumschancengesetz vom 27.03.2024 BGBl. 2024 I Nr. 108),reference_only,2016-01-01,2026-10-13,module_year_value_user_override,no_legal_update_beyond_listed_years
+de_estg_23_3_5_2016_2019,"§ 23 Abs. 3 Satz 5 EStG (weniger als 600 Euro; Satz 5 durch Art. 7 G. v. 20.12.2016, BGBl. I S. 3000, unverändert) – Fassung 2016–2019; Wortlaut der damals geltenden Fassung geprüft an der konsolidierten Fassung (buzer.de) und am geltenden amtlichen Text (gesetze-im-internet.de), nicht am Original-Bundesgesetzblatt",reference_only,2016-01-01,2026-10-28,module_year_value_user_override,no_legal_update_beyond_listed_years
+de_estg_23_3_7,§ 23 Abs. 3 Satz 7 EStG,reference_only,2016-01-01,2026-08-08,supplied_prior_completed_state,no_cross_domain_loss_offset
+de_estg_32d_1,§ 32d Abs. 1 Satz 1 EStG (25 Prozent),reference_only,2016-01-01,2026-10-13,module_year_value_user_override,no_church_tax_reduction_formula
+de_estg_32d_1_2016_2019,"§ 32d Abs. 1 Satz 1 EStG (25 Prozent) – Fassung 2016–2019; Wortlaut der damals geltenden Fassung geprüft an der konsolidierten Fassung (buzer.de) und am geltenden amtlichen Text (gesetze-im-internet.de), nicht am Original-Bundesgesetzblatt",reference_only,2016-01-01,2026-10-28,module_year_value_user_override,no_church_tax_reduction_formula
+de_estg_32d_5,§ 32d Abs. 5 EStG,reference_only,2016-01-01,2026-08-08,user_confirmed_creditable_withholding,no_treaty_or_source_validation
+de_estg_personal_rate_projection,EStG personal income tax rate projection,model_assumption,2016-01-01,2026-08-08,user_confirmed_simplified_rate,no_progressive_tariff_calculation
+de_invstg_partial_exemption,InvStG partial exemption reference,reference_only,2018-01-01,2026-08-08,user_confirmed_effective_rate,no_automatic_fund_classification
+de_solzg_4,"§ 4 Satz 1 SolzG (5,5 Prozent)",reference_only,2016-01-01,2026-10-13,module_year_value_user_override,no_threshold_or_milderungszone
+de_solzg_4_2016_2019,"§ 4 Satz 1 SolzG (5,5 Prozent) – Fassung 2016–2019; Wortlaut der damals geltenden Fassung geprüft an der konsolidierten Fassung (buzer.de) und am geltenden amtlichen Text (gesetze-im-internet.de), nicht am Original-Bundesgesetzblatt",reference_only,2016-01-01,2026-10-28,module_year_value_user_override,no_threshold_or_milderungszone
+de_church_tax_user_confirmation,German church-tax applicability,model_assumption,2016-01-01,2026-08-08,user_confirmed_applicability,no_identity_or_jurisdiction_inference
+de_church_tax_rate_projection,German church-tax surcharge projection,model_assumption,2016-01-01,2026-08-08,user_confirmed_rate,surcharge_on_projected_income_tax_not_filing_value
+de_estg_20_2,§ 20 Abs. 2 EStG,reference_only,2016-01-01,2026-08-08,hypothetical_sale_of_capital_asset,no_automatic_legal_update
+de_investstg_20,§ 20 InvStG,reference_only,2018-01-01,2026-08-08,user_confirmed_effective_rate,no_automatic_fund_classification
+de_kistg_projection,German church-tax surcharge on a hypothetical liquidation,model_assumption,2016-01-01,2026-08-08,user_confirmed_rate,surcharge_on_projected_income_tax_not_filing_value
+de_invstg_old_act_and_old_shares,InvStG in der bis 31.12.2017 geltenden Fassung und § 56 InvStG (fiktive Veräußerung der Altanteile zum 31.12.2017) – nicht abgebildet,reference_only,2016-01-01,2026-10-28,old_investment_tax_act_not_modeled,fund_events_before_2018_and_old_shares_not_computed

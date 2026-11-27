@@ -1,0 +1,35 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "500",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-03-17",
+   "source_row_ordinal": 1,
+   "text": "Deposit"
+  },
+  {
+   "amount_decimal": "400",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-03-18",
+   "source_row_ordinal": 2,
+   "text": "Buy Btc"
+  },
+  {
+   "amount_decimal": "100",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-03-31",
+   "source_row_ordinal": 4,
+   "text": "Withdraw"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": null,
+  "opening_balance_decimal": null,
+  "period_from": "2027-03-17",
+  "period_to": "2027-03-31"
+ }
+}

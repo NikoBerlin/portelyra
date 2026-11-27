@@ -1,0 +1,9 @@
+operation,component,canonical_schema201_read,canonical_schema201_write,asset_activity_write,provider,network,browser_path_or_context
+read_active,data_app,yes,no,no,no,no,no
+preview,data_app,yes,no,no,no,no,no
+preview_native_fifo,data_app,yes,no,no,no,no,no
+apply_native_fresh,data_app,yes,no,yes,no,no,no
+apply_generic_derivative_native,data_app,yes,no,yes,no,no,no
+apply_fresh,data_app,yes,no,yes,no,no,no
+recover_completed_generation,data_app,yes,no,no,no,no,no
+read_completed,cockpit_tax_analysis,no,no,no,no,no,no

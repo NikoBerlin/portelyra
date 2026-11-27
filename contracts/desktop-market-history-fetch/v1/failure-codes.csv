@@ -1,0 +1,14 @@
+code,blocking,public_message
+desktop_market_history_fetch_context_invalid,1,Der lokale Markthistorienkontext ist ungültig.
+desktop_market_history_fetch_input_invalid,1,Mapping oder Zeitraum ist ungültig.
+desktop_market_history_fetch_preview_invalid,1,Die Abrufvorschau ist nicht mehr gültig.
+desktop_market_history_fetch_confirmation_required,1,Der angezeigte Abruf wurde nicht bestätigt.
+desktop_market_history_fetch_attempt_consumed,1,Dieser Abrufversuch wurde bereits verbraucht.
+desktop_market_history_fetch_store_invalid,1,Der Markthistorienbestand ist nicht verfügbar.
+desktop_market_history_fetch_transport_failed,1,Ein einzelner Providerabruf ist fehlgeschlagen.
+desktop_market_history_fetch_response_invalid,1,Eine Providerantwort ist nicht verwertbar.
+desktop_market_history_fetch_write_failed,1,Die Markthistorie wurde nicht vollständig erweitert.
+desktop_market_history_fetch_result_invalid,1,Das gespeicherte Abrufergebnis ist ungültig.
+desktop_market_history_fetch_credential_unavailable,1,Für den Kursanbieter dieser Zuordnung ist kein bereiter Zugang eingetragen.
+desktop_market_history_fetch_cost_limit,1,Die Obergrenze an Abrufen dieses Kursanbieters ist erreicht oder er hat wegen zu vieler Abrufe abgewiesen.
+desktop_market_history_fetch_scheduled_disabled,1,Dieser Kursanbieter ist im täglichen Zeitlauf nicht freigegeben.

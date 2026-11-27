@@ -1,0 +1,9 @@
+capability,status
+create_only_terminal_recovery,explicit_confirmation_only
+private_source_read,forbidden
+automatic_retry,forbidden
+mapping_overlay,forbidden
+candidate_generation,forbidden
+canonical_write,forbidden
+provider_access,forbidden
+network_access,forbidden

@@ -1,0 +1,1 @@
+movement_sequence,event_ref,movement_type,origin_lot_ref,lot_segment_ref,source_account_ref,destination_account_ref,asset_ref,currency,quantity_decimal,fifo_cost_decimal,acquisition_event_ref,acquisition_effective_at_utc,acquisition_local_date

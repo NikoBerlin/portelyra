@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "statement-reader-plugin/v1/cash-result.schema.json",
+  "title": "Ergebnis eines Lesers im Bereich cash",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidates",
+    "diagnostics",
+    "summary"
+  ],
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_row_ordinal",
+          "local_date",
+          "kind",
+          "amount_decimal",
+          "balance_after_decimal",
+          "text"
+        ],
+        "properties": {
+          "source_row_ordinal": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "local_date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "kind": {
+            "enum": [
+              "interest",
+              "deposit",
+              "withdrawal"
+            ]
+          },
+          "amount_decimal": {
+            "type": "string",
+            "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+            "not": {
+              "pattern": "^0(?:\\.0+)?$"
+            }
+          },
+          "balance_after_decimal": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "value_date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "gross_income_decimal": {
+            "type": "string",
+            "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+          }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_row_ordinal",
+          "reason_code"
+        ],
+        "properties": {
+          "source_row_ordinal": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reason_code": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{2,79}$"
+          },
+          "gross_income_decimal": {
+            "type": "string",
+            "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+          },
+          "as_of_date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "opening_balance_decimal",
+        "closing_balance_decimal",
+        "period_from",
+        "period_to"
+      ],
+      "properties": {
+        "opening_balance_decimal": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closing_balance_decimal": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "period_from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "period_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closing_as_of_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "balance_proof": {
+      "type": "boolean"
+    },
+    "balance_anchor_only": {
+      "type": "boolean"
+    }
+  }
+}

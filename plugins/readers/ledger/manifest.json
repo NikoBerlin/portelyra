@@ -1,0 +1,105 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "ledger",
+  "plugin_version": "1.1.0",
+  "publisher": "Portelyra",
+  "institution": "Ledger",
+  "label": "Ledger Live",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "521d6ab6569e196d1cff34544ac6a1f83e97ec47cf85d41f53bf102ec3d3c780",
+  "modules": [
+    {
+      "path": "reader_crypto.py",
+      "sha256": "5e012a668a331eacc5423da6dc538061baf5a92a9fefd09e2d74fd41dc3fed86"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "d0d0b0f7597c23c495ec83bfcb383b0bd2c3128d12703d1dc270ecde0cf382d4"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "ledger_live_crypto_v1",
+      "domain": "crypto",
+      "label": "Ledger Live (Export der Vorgänge)",
+      "document_kind": "Export der Vorgänge (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "operation date",
+            "currency ticker",
+            "operation type",
+            "operation amount",
+            "operation hash"
+          ]
+        ]
+      },
+      "tested_formats": "Export aus Ledger Live mit Operation Date, Currency Ticker, Operation Type, Operation Amount, Operation Hash.",
+      "known_limits": [
+        "Nur Ein- und Ausgänge; Transfers paart der Kern mit der Gegenseite."
+      ],
+      "generator": true,
+      "source": {
+        "key": "ledger_live",
+        "label": "Ledger",
+        "format_label": "Ledger Live",
+        "institution_names": [
+          "Ledger"
+        ],
+        "wallets": {},
+        "default_wallet": {
+          "label_prefix": "",
+          "account_name": {}
+        },
+        "pairing": "none",
+        "internal_transfers": false,
+        "unpaired_reason_by_ticker": {
+          "SOL": "ledger_solana"
+        },
+        "reason_texts": {
+          "ledger_solana": "Ledger Live führt bei Solana die Stake-Konten mit – Bewegung vermutlich innerhalb des Wallets; nur von Hand buchen, wenn ein Gegenkonto feststeht"
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    }
+  ],
+  "intake": {
+    "key": "ledger",
+    "label": "Ledger",
+    "folders": [
+      "ledger",
+      "ledgerlive"
+    ],
+    "downloads": [
+      "Operationen aus Ledger Live als CSV (gesamte Historie)"
+    ],
+    "period": "since_start",
+    "covers": "alle Konten von Ledger Live in einem Export",
+    "readers": [
+      [
+        "crypto",
+        "ledger_live_crypto_v1"
+      ]
+    ],
+    "account_words": [
+      "ledger"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "crypto",
+      "reader_id": "ledger_live_crypto_v1",
+      "input": "fixtures/crypto_ledger_live_crypto_v1.csv",
+      "expected": "fixtures/crypto_ledger_live_crypto_v1.expected.json"
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:desktop-product-asset-activity:v1:native-preview",
+  "title": "Desktop Native Asset Activity v1 Preview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "native_asset_activity_preview_version",
+    "status",
+    "schema_version",
+    "command_ref",
+    "event_type",
+    "event_time_evidence",
+    "local_date",
+    "local_time",
+    "time_zone",
+    "effective_at_utc",
+    "inventory_effect_code",
+    "fifo_effect_code",
+    "portfolio_quantity_change_decimal",
+    "fifo_basis_created_decimal",
+    "net_trade_proceeds_decimal",
+    "gross_income_decimal",
+    "distribution_value_decimal",
+    "cash_posting_count",
+    "provider_price_use_count",
+    "tax_classification_inference_count",
+    "existing_asset_activity_event_count",
+    "cost_average",
+    "event_result",
+    "semantic_contracts",
+    "authority_contract",
+    "confirmation_required",
+    "one_attempt_only",
+    "canonical_write",
+    "schema201_canonical_write",
+    "automatic_cash_posting_created",
+    "provider_access",
+    "network_access",
+    "private_data_access",
+    "path_exposed",
+    "internal_id_exposed",
+    "preview_fingerprint",
+    "command_fingerprint",
+    "canonical_fingerprint",
+    "prior_activity_set_fingerprint",
+    "active_generation_ref",
+    "product_preview_fingerprint"
+  ],
+  "properties": {
+    "native_asset_activity_preview_version": {
+      "const": 1
+    },
+    "status": {
+      "const": "ready_for_confirmation"
+    },
+    "schema_version": {
+      "const": 401
+    },
+    "command_ref": {
+      "type": "string",
+      "pattern": "^nac_[a-f0-9]{32}$"
+    },
+    "event_type": {
+      "enum": [
+        "buy",
+        "sell",
+        "dividend",
+        "stock_dividend",
+        "reward",
+        "deposit",
+        "withdrawal",
+        "transfer"
+      ]
+    },
+    "event_time_evidence": {
+      "enum": [
+        "exact",
+        "date_only"
+      ]
+    },
+    "local_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "local_time": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"
+    },
+    "time_zone": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "effective_at_utc": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/utc"
+        }
+      ]
+    },
+    "inventory_effect_code": {
+      "enum": [
+        "increase",
+        "decrease",
+        "preserve",
+        "none"
+      ]
+    },
+    "fifo_effect_code": {
+      "enum": [
+        "create_lot",
+        "consume_fifo",
+        "none",
+        "create_lot_then_consume_fee",
+        "create_carried_lot",
+        "consume_fifo_and_emit_receipt",
+        "carry_lots_then_consume_fee"
+      ]
+    },
+    "portfolio_quantity_change_decimal": {
+      "$ref": "#/$defs/decimal"
+    },
+    "fifo_basis_created_decimal": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/decimal"
+        }
+      ]
+    },
+    "net_trade_proceeds_decimal": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/decimal"
+        }
+      ]
+    },
+    "gross_income_decimal": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/decimal"
+        }
+      ]
+    },
+    "distribution_value_decimal": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/decimal"
+        }
+      ]
+    },
+    "cash_posting_count": {
+      "const": 0
+    },
+    "provider_price_use_count": {
+      "const": 0
+    },
+    "tax_classification_inference_count": {
+      "const": 0
+    },
+    "existing_asset_activity_event_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cost_average": {
+      "$ref": "#/$defs/cost_average"
+    },
+    "semantic_contracts": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "const": "portfolio_ledger_v1_transaction_fact"
+        },
+        {
+          "const": "asset_activity_v1"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "authority_contract": {
+      "const": "schema201_derived_base_plus_asset_activity_v1"
+    },
+    "confirmation_required": {
+      "const": true
+    },
+    "one_attempt_only": {
+      "const": true
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "schema201_canonical_write": {
+      "const": false
+    },
+    "automatic_cash_posting_created": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "private_data_access": {
+      "const": false
+    },
+    "path_exposed": {
+      "const": false
+    },
+    "internal_id_exposed": {
+      "const": false
+    },
+    "preview_fingerprint": {
+      "$ref": "#/$defs/fingerprint"
+    },
+    "command_fingerprint": {
+      "$ref": "#/$defs/fingerprint"
+    },
+    "canonical_fingerprint": {
+      "$ref": "#/$defs/fingerprint"
+    },
+    "prior_activity_set_fingerprint": {
+      "$ref": "#/$defs/fingerprint"
+    },
+    "active_generation_ref": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^gen_[a-f0-9]{32}$"
+        }
+      ]
+    },
+    "product_preview_fingerprint": {
+      "$ref": "#/$defs/fingerprint"
+    },
+    "event_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_sequence",
+        "effective_at_utc",
+        "local_date",
+        "event_time_evidence",
+        "event_type",
+        "currency",
+        "projection_status",
+        "asset_fee_quantity_decimal",
+        "fee_decimal",
+        "amount_decimal",
+        "asset_type",
+        "holding_effect",
+        "quantity_decimal",
+        "basis_added_decimal",
+        "basis_consumed_decimal",
+        "gross_proceeds_decimal",
+        "realized_gross_gain_decimal",
+        "gross_income_decimal",
+        "distribution_value_decimal",
+        "cash_balance_delta_decimal",
+        "coupled_transaction_fact",
+        "automatic_cash_posting_created",
+        "semantic_contract"
+      ],
+      "properties": {
+        "event_sequence": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "effective_at_utc": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/utc"
+            }
+          ]
+        },
+        "local_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "event_time_evidence": {
+          "enum": [
+            "exact",
+            "date_only"
+          ]
+        },
+        "event_type": {
+          "enum": [
+            "buy",
+            "sell",
+            "dividend",
+            "stock_dividend",
+            "reward",
+            "deposit",
+            "withdrawal",
+            "transfer"
+          ]
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "holding_effect": {
+          "enum": [
+            "no_holding_change",
+            "acquired",
+            "consumed",
+            "transferred"
+          ]
+        },
+        "quantity_decimal": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/decimal"}
+          ]
+        },
+        "basis_added_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "basis_consumed_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "gross_proceeds_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "realized_gross_gain_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "gross_income_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "distribution_value_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "cash_balance_delta_decimal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "coupled_transaction_fact": {
+          "const": "0"
+        },
+        "automatic_cash_posting_created": {
+          "const": "0"
+        },
+        "semantic_contract": {
+          "const": "asset_activity_v1"
+        },
+        "asset_type": {
+          "enum": [
+            "equity",
+            "etf",
+            "fund",
+            "bond",
+            "derivative",
+            "crypto",
+            "commodity",
+            "fx",
+            "index",
+            "other"
+          ]
+        },
+        "amount_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "fee_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "asset_fee_quantity_decimal": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/decimal"
+            }
+          ]
+        },
+        "projection_status": {
+          "const": "completed"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_time_evidence": {
+            "const": "exact"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "local_time",
+          "effective_at_utc"
+        ],
+        "properties": {
+          "local_time": {
+            "type": "string"
+          },
+          "effective_at_utc": {
+            "$ref": "#/$defs/utc"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_time_evidence": {
+            "const": "date_only"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "local_time": {
+            "type": "null"
+          },
+          "effective_at_utc": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+      "not": {
+        "const": "-0"
+      },
+      "maxLength": 80
+    },
+    "cost_average": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cost_average_status",
+        "remaining_quantity_decimal",
+        "remaining_fifo_basis_decimal",
+        "cost_average_decimal",
+        "cost_average_numerator_integer",
+        "cost_average_denominator_integer",
+        "cost_average_fingerprint"
+      ],
+      "properties": {
+        "cost_average_status": {
+          "enum": [
+            "empty_position",
+            "basis_missing",
+            "exact_decimal",
+            "exact_ratio"
+          ]
+        },
+        "remaining_quantity_decimal": {
+          "type": "string",
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+        },
+        "remaining_fifo_basis_decimal": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+        },
+        "cost_average_decimal": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+        },
+        "cost_average_numerator_integer": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]+$"
+        },
+        "cost_average_denominator_integer": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "cost_average_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

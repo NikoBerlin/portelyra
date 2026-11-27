@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_binding_sha256",
+    "mapping_failure_fingerprint",
+    "private_source_read",
+    "profile_failure_fingerprint",
+    "recovery_attempt_fingerprint",
+    "recovery_receipt_fingerprint",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "context_binding_sha256": {
+      "type": "string"
+    },
+    "mapping_failure_fingerprint": {
+      "type": "string"
+    },
+    "private_source_read": {
+      "type": "boolean"
+    },
+    "profile_failure_fingerprint": {
+      "type": "string"
+    },
+    "recovery_attempt_fingerprint": {
+      "type": "string"
+    },
+    "recovery_receipt_fingerprint": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    }
+  }
+}

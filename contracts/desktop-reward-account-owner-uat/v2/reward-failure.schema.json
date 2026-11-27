@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attempt_fingerprint",
+    "automatic_retry",
+    "failure_code",
+    "failure_fingerprint",
+    "private_values_published",
+    "source_path_retained",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "attempt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "failure_code": {
+      "enum": [
+        "reward_account_owner_uat_authorization_invalid",
+        "reward_account_owner_uat_boundary_failed",
+        "reward_account_owner_uat_cancelled",
+        "reward_account_owner_uat_evidence_invalid",
+        "reward_account_owner_uat_evidence_recovery_required",
+        "reward_account_owner_uat_profiler_failed",
+        "reward_account_owner_uat_review_invalid"
+      ]
+    },
+    "failure_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "private_values_published": {
+      "const": false
+    },
+    "source_path_retained": {
+      "const": false
+    },
+    "status": {
+      "const": "terminal_failure_new_authorization_required"
+    },
+    "version": {
+      "const": 2
+    }
+  }
+}

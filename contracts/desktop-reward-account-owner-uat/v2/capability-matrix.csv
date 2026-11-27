@@ -1,0 +1,12 @@
+capability,status
+private_source_read,one_authorized_read
+target_catalog_read,immutable_query_only
+source_account_selection,owner_local
+reward_preview,hash_sealed_disabled
+candidate_generation,forbidden
+canonical_write,forbidden
+cash_write,forbidden
+tax_write,forbidden
+provider_access,forbidden
+network_access,forbidden
+automatic_retry,forbidden

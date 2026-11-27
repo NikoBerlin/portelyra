@@ -1,0 +1,27 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object","additionalProperties":false,
+  "required":["version","status","as_of_date","currency","position_count","held_noncash_position_count","unavailable_position_count","known_market_value_eur","total_market_value_eur","positions","selected_assets","source_fingerprint","receipt_fingerprint","freshness_scope","silent_drop_count","cash_included","tax_included","net_liquidation_included","portfolio_completion"],
+  "properties":{
+    "version":{"const":1},"status":{"enum":["complete","incomplete"]},"as_of_date":{"type":"string","format":"date"},"currency":{"const":"EUR"},
+    "valuation_policy":{"$ref":"#/$defs/policy"},"valuation_status":{"enum":["complete","substituted","incomplete"]},"substituted_position_count":{"type":"integer","minimum":0},
+    "position_count":{"type":"integer","minimum":0,"maximum":10000},"held_noncash_position_count":{"type":"integer","minimum":0},"unavailable_position_count":{"type":"integer","minimum":0},
+    "known_market_value_eur":{"$ref":"#/$defs/ratio"},"total_market_value_eur":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/ratio"}]},
+    "positions":{"type":"array","maxItems":10000,"items":{"$ref":"#/$defs/position"}},
+    "selected_assets":{"type":"array","maxItems":10000,"items":{"type":"object","additionalProperties":false,"required":["ordinal","asset_label","disposition"],"properties":{"ordinal":{"type":"integer","minimum":1},"asset_label":{"type":"string"},"disposition":{"enum":["represented_in_fifo","no_portfolio_position"]}}}},
+    "source_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"},"receipt_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "freshness_scope":{"const":"checked_at_publication_not_live"},"silent_drop_count":{"const":0},"cash_included":{"const":false},"tax_included":{"const":false},"net_liquidation_included":{"const":false},"portfolio_completion":{"const":false}
+  },
+  "dependentRequired":{"valuation_policy":["valuation_status","substituted_position_count"],"valuation_status":["valuation_policy","substituted_position_count"],"substituted_position_count":["valuation_policy","valuation_status"]},
+  "$defs":{
+    "policy":{"type":"object","additionalProperties":false,"required":["mode","max_age_days","age_unit","carry_across_blocked"],"properties":{"mode":{"enum":["strict","last_valid"]},"max_age_days":{"type":["integer","null"],"minimum":1,"maximum":366},"age_unit":{"const":"calendar_days"},"carry_across_blocked":{"type":"boolean"}},"allOf":[{"if":{"properties":{"mode":{"const":"strict"}}},"then":{"properties":{"max_age_days":{"type":"null"}}},"else":{"properties":{"max_age_days":{"type":"integer"}}}}]},
+    "ratio":{"type":"object","additionalProperties":false,"required":["numerator","denominator","decimal"],"properties":{"numerator":{"type":"string","pattern":"^-?(0|[1-9][0-9]*)$","maxLength":1000},"denominator":{"type":"string","pattern":"^[1-9][0-9]*$","maxLength":1000},"decimal":{"type":["string","null"],"pattern":"^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"}}},
+    "nullable_ratio":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/ratio"}]},
+    "nullable_date":{"type":["string","null"],"format":"date"},"basis":{"type":["string","null"]},"age":{"type":["integer","null"],"minimum":0,"maximum":366},
+    "position":{"type":"object","additionalProperties":false,"required":["ordinal","account_ordinal","basis_currency","asset_label","asset_type","status","quantity","unit_value_eur","market_value_eur","price_basis","price_source_date","price_age_days","fx_basis","fx_source_date","fx_age_days"],"properties":{
+      "ordinal":{"type":"integer","minimum":1},"account_ordinal":{"type":"integer","minimum":1},"basis_currency":{"type":"string","pattern":"^[A-Z]{3}$"},"asset_label":{"type":"string"},"asset_type":{"type":"string"},"status":{"type":"string","pattern":"^[a-z_]+$"},
+      "substitution_used":{"type":"boolean"},"quantity":{"$ref":"#/$defs/ratio"},"unit_value_eur":{"$ref":"#/$defs/nullable_ratio"},"market_value_eur":{"$ref":"#/$defs/nullable_ratio"},
+      "price_basis":{"$ref":"#/$defs/basis"},"price_source_date":{"$ref":"#/$defs/nullable_date"},"price_age_days":{"$ref":"#/$defs/age"},"fx_basis":{"$ref":"#/$defs/basis"},"fx_source_date":{"$ref":"#/$defs/nullable_date"},"fx_age_days":{"$ref":"#/$defs/age"}
+    }}
+  }
+}

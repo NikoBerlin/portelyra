@@ -1,0 +1,12 @@
+code,meaning
+reward_valuation_request_invalid,Request or candidate is invalid.
+reward_valuation_asset_evidence_invalid,Native Asset evidence is invalid or mismatched.
+reward_valuation_fx_evidence_invalid,FX evidence is missing invalid or mismatched.
+reward_valuation_intraday_unavailable,No eligible observation exists at or before the event.
+reward_valuation_daily_fallback_confirmation_required,Daily Close fallback was not explicitly confirmed.
+reward_valuation_currency_route_unsupported,Neither the explicit direct nor inverse route matches.
+reward_valuation_nonterminating_exact_result,Exact decimal representation is not possible without rounding.
+desktop_reward_daily_close_input_invalid,Selected Draft is not eligible for persisted valuation.
+desktop_reward_daily_close_asset_history_missing,Published native Daily Close is missing.
+desktop_reward_daily_close_fx_history_missing,Published same-day FX observation is missing.
+desktop_reward_daily_close_ambiguous_listing,No deterministic current Listing can be selected.

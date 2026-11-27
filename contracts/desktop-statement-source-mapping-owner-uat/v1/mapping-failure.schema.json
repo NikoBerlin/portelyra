@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attempt_fingerprint",
+    "failure_code",
+    "private_values_published",
+    "source_path_retained",
+    "status",
+    "version",
+    "failure_fingerprint",
+    "activation_authorized",
+    "automatic_retry",
+    "candidate_generation_authorized",
+    "canonical_write",
+    "cash_write",
+    "network_access",
+    "profile_revision_created",
+    "provider_access",
+    "route_rules_active",
+    "tax_write"
+  ],
+  "properties": {
+    "attempt_fingerprint": {
+      "type": "string"
+    },
+    "failure_code": {
+      "type": "string"
+    },
+    "private_values_published": {
+      "type": "boolean"
+    },
+    "source_path_retained": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "failure_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "activation_authorized": {
+      "const": false
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "candidate_generation_authorized": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "cash_write": {
+      "const": false
+    },
+    "network_access": {
+      "const": false
+    },
+    "profile_revision_created": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "route_rules_active": {
+      "const": false
+    },
+    "tax_write": {
+      "const": false
+    }
+  }
+}

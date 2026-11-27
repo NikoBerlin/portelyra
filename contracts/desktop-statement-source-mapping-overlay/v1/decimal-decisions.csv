@@ -1,0 +1,5 @@
+decimal_format,status
+decimal_comma,explicit_owner_decision
+decimal_dot,explicit_owner_decision
+integer_with_confirmed_decimal_comma,explicit_owner_decision
+integer_with_confirmed_decimal_dot,explicit_owner_decision

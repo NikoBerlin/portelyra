@@ -1,0 +1,7 @@
+disposition,status
+cash_domain_deferred,closed_row
+diagnostic,closed_row
+manual_account_transfer_deferred,closed_row
+nonreward_trade_deferred,closed_row
+other_source_account_deferred,closed_row
+other_source_asset_deferred,closed_row

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/cash-candidate-public.schema.json",
+  "title": "Portfolio CSV Cash candidate public handoff v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["candidate_ref","action_type","status","confirmation_required","cash_fact_write","path_exposed","internal_id_exposed","fingerprint_exposed"],
+  "properties": {
+    "candidate_ref": {"type": "string", "pattern": "^portfolio_cash_candidate_[a-f0-9]{24}$"},
+    "action_type": {"enum": ["declare_coverage","record_cash_event","record_interest_income","record_reconciliation"]},
+    "status": {"const": "ready_for_cash_review"},
+    "confirmation_required": {"const": true},
+    "cash_fact_write": {"const": false},
+    "path_exposed": {"const": false},
+    "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

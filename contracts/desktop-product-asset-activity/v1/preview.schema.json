@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:desktop-product-asset-activity:v1:preview",
+  "title": "Desktop Product Asset Activity v1 Preview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_asset_activity_preview_version", "status", "schema_version",
+    "plan_fingerprint", "event_count", "source_row_count",
+    "existing_asset_activity_event_count", "semantic_contracts",
+    "authority_contract", "active_generation_ref", "canonical_write",
+    "provider_access", "network_access", "private_data_access",
+    "product_preview_fingerprint"
+  ],
+  "properties": {
+    "product_asset_activity_preview_version": {"const": 1},
+    "status": {"enum": ["ready_for_confirmation", "already_committed"]},
+    "schema_version": {"const": 401},
+    "preview_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "canonical_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "prior_activity_set_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "event_count": {"type": "integer", "minimum": 1},
+    "source_row_count": {"type": "integer", "minimum": 1},
+    "projected_transaction_count": {"type": "integer", "minimum": 0},
+    "existing_asset_activity_event_count": {"type": "integer", "minimum": 0},
+    "cash_posting_count": {"const": 0},
+    "provider_price_use_count": {"const": 0},
+    "tax_classification_inference_count": {"const": 0},
+    "semantic_contracts": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "portfolio_ledger_v1_transaction_fact"},
+        {"const": "asset_activity_v1"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "authority_contract": {"const": "schema201_derived_base_plus_asset_activity_v1"},
+    "active_generation_ref": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "string", "pattern": "^gen_[a-f0-9]{32}$"}
+      ]
+    },
+    "canonical_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "private_data_access": {"const": false},
+    "product_preview_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "ready_for_confirmation"}}},
+      "then": {
+        "required": [
+          "preview_fingerprint", "canonical_fingerprint",
+          "prior_activity_set_fingerprint", "projected_transaction_count",
+          "cash_posting_count", "provider_price_use_count",
+          "tax_classification_inference_count"
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "already_committed"}}},
+      "then": {
+        "properties": {
+          "active_generation_ref": {"type": "string", "pattern": "^gen_[a-f0-9]{32}$"}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

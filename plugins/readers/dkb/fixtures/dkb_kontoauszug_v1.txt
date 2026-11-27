@@ -1,0 +1,11 @@
+Deutsche Kreditbank, Taubenstr. 7-9, 00000 Berlin
+
+DKB-Cash
+
+Kontoauszug Nummer 006 / 2027 vom 01.07.2027 bis 31.07.2027
+Kontonummer 0000000000 / IBAN DE00 0000 0000 0000 0000 00
+ Bu.Tag         Wert          Wir haben für Sie gebucht                                   Belastung in EUR   Gutschrift in EUR
+
+ 05.07.        05.07.        Zahlungseingang                                                                             100,00
+ALTER KONTOSTAND                                    69,07 S EUR
+NEUER KONTOSTAND                                    30,93 H EUR

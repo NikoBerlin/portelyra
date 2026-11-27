@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-recovery-public-preview.schema.json",
+  "title": "Portfolio CSV domain handoff recovery public preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_recovery_public_preview_version","status","recovery_ref","domain","staged_import_handle","effect_state","recovery_reason","confirmation_required","automatic_retry","canonical_write","asset_activity_fact_write","cash_fact_write","provider_access","network_access","path_exposed","context_exposed","internal_id_exposed","fingerprint_exposed"],
+  "properties": {
+    "portfolio_csv_handoff_recovery_public_preview_version": {"const": 1},
+    "status": {"const": "ready_for_recovery_confirmation"},
+    "recovery_ref": {"type": "string", "pattern": "^portfolio_handoff_recovery_[a-f0-9]{32}$"},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+    "effect_state": {"enum": ["absent","partial","complete"]},
+    "recovery_reason": {"const": "confirmation_consumed_receipt_absent"},
+    "confirmation_required": {"const": true},
+    "automatic_retry": {"const": false},
+    "canonical_write": {"type": "boolean"},
+    "asset_activity_fact_write": {"const": false},
+    "cash_fact_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

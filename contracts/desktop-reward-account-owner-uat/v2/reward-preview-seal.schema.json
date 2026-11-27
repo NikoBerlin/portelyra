@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attempt_fingerprint",
+    "candidate_generation_authorized",
+    "preview_fingerprint",
+    "private_values_published",
+    "reward_tuple_sha256",
+    "row_count",
+    "seal_fingerprint",
+    "selected_source_account_sha256",
+    "selected_source_asset_sha256",
+    "silent_drop_count",
+    "source_balance_disposition",
+    "source_path_retained",
+    "status",
+    "target_account_option_sha256",
+    "target_asset_option_sha256",
+    "terminal_disposition_counts",
+    "time_zone_sha256",
+    "valuation_mode",
+    "version"
+  ],
+  "properties": {
+    "attempt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "candidate_generation_authorized": {
+      "const": false
+    },
+    "preview_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "private_values_published": {
+      "const": false
+    },
+    "reward_tuple_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "row_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "seal_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "selected_source_account_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "selected_source_asset_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "silent_drop_count": {
+      "const": 0
+    },
+    "source_balance_disposition": {
+      "const": "source_balance_not_used_portelyra_recalculates"
+    },
+    "source_path_retained": {
+      "const": false
+    },
+    "status": {
+      "const": "reward_preview_sealed_disabled"
+    },
+    "target_account_option_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "target_asset_option_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "terminal_disposition_counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "time_zone_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "valuation_mode": {
+      "enum": [
+        "basis_missing",
+        "manual_fiat_total",
+        "manual_unit_price",
+        "provider_price_planned"
+      ]
+    },
+    "version": {
+      "const": 2
+    }
+  }
+}

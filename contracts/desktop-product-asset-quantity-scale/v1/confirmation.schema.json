@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-quantity-scale/v1/confirmation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["asset_quantity_scale_confirmation_version", "challenge_ref", "context_fingerprint", "plan_fingerprint", "issued_at_utc", "confirmed_at_utc", "expires_at_utc", "confirmation_fingerprint"],
+  "properties": {
+    "asset_quantity_scale_confirmation_version": {"const": 1},
+    "challenge_ref": {"type": "string", "pattern": "^aqs_[a-f0-9]{16,64}$"},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "issued_at_utc": {"type": "string", "format": "date-time"},
+    "confirmed_at_utc": {"type": "string", "format": "date-time"},
+    "expires_at_utc": {"type": "string", "format": "date-time"},
+    "confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

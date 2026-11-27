@@ -1,0 +1,73 @@
+{
+ "contract_version": 1,
+ "version": "0.3.5",
+ "inputs_sha256": "b302336de728856b981978bfa5d8ad1092e53e0cb50c9927eda74e81edc6ec34",
+ "width": 1440,
+ "height": 960,
+ "images": [
+  {
+   "file": "data-manuell.png",
+   "app": "data",
+   "tabs": [
+    "1. Transaktionen",
+    "Manuell"
+   ],
+   "help": false,
+   "sha256": "eb0b2c9ccc5d3772e95ec4f43a0065920b1ac8cb7a01833175b80b0c7d7f9df8"
+  },
+  {
+   "file": "data-import.png",
+   "app": "data",
+   "tabs": [
+    "1. Transaktionen",
+    "Import"
+   ],
+   "help": false,
+   "sha256": "bf41b57aa9fb184ffa4f5e0f6bbb13fd0c67b899a838d7019540494a6dadfe0a"
+  },
+  {
+   "file": "hilfe.png",
+   "app": "data",
+   "tabs": [
+    "1. Transaktionen",
+    "Import"
+   ],
+   "help": true,
+   "sha256": "98ba6e959c2fb3c31ae601bead61107a87415cd896d07a3095d1640fa96151d8"
+  },
+  {
+   "file": "cockpit-staende.png",
+   "app": "cockpit",
+   "tabs": [
+    "1. Stände"
+   ],
+   "help": false,
+   "sha256": "cec90e7399d2f1f3d098fa5d98c9d9e3671cf91ae09b9847fef1a40fad141c11"
+  },
+  {
+   "file": "steuer.png",
+   "app": "tax",
+   "tabs": [],
+   "help": false,
+   "sha256": "dfe9143333041dc9b5fd276da44ec016d31c08e3fa2bbd9e01613c5ffe9bb236"
+  },
+  {
+   "file": "analyse-verlauf.png",
+   "app": "analysis",
+   "tabs": [
+    "Verlauf"
+   ],
+   "help": false,
+   "sha256": "bc658910d1ebaab3fb94fb051d442b1a1e0c3790ed439b2050a7aea7dbf9e98a"
+  },
+  {
+   "file": "analyse-rendite.png",
+   "app": "analysis",
+   "tabs": [
+    "Rendite"
+   ],
+   "help": false,
+   "sha256": "77c510eea6fb1ea7da2899fab99c7bd314d3806bc054fe5fb2328c23b24e09f1"
+  }
+ ]
+}

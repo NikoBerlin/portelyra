@@ -1,0 +1,263 @@
+{
+  "catalog_projection": {
+    "account_mapping": {
+      "mapping_status": "matched_existing",
+      "source_account_scope": "kraken_account_scope",
+      "target_label": "Invented Exchange Account",
+      "target_option_key": "account_option_01"
+    },
+    "asset_mappings": [
+      {
+        "mapping_status": "matched_existing",
+        "source_asset_key": "SYNCOIN",
+        "target_label": "Invented Reward Token",
+        "target_option_key": "asset_option_01"
+      },
+      {
+        "mapping_status": "separate_catalog_handoff_required",
+        "source_asset_key": "SYNNEW",
+        "target_label": null,
+        "target_option_key": null
+      },
+      {
+        "mapping_status": "route_deferred",
+        "source_asset_key": "SYNTRADE",
+        "target_label": null,
+        "target_option_key": null
+      },
+      {
+        "mapping_status": "cash_domain_deferred",
+        "source_asset_key": "ZEUR",
+        "target_label": null,
+        "target_option_key": null
+      },
+      {
+        "mapping_status": "diagnostic_only",
+        "source_asset_key": "SYNODD",
+        "target_label": null,
+        "target_option_key": null
+      }
+    ],
+    "portfolio_selection": {
+      "mapping_status": "selected_existing",
+      "target_label": "Invented Portfolio",
+      "target_option_key": "portfolio_option_01"
+    }
+  },
+  "existing_events": [
+    {
+      "existing_event_key": "existing_event_01",
+      "facts": {
+        "account_target_key": "account_option_01",
+        "asset_fee_quantity_decimal": "0.00000000",
+        "asset_target_key": "asset_option_01",
+        "event_time_utc": "2031-01-01T08:00:00Z",
+        "event_type": "reward",
+        "quantity_decimal": "1.25000000"
+      },
+      "source_identity_binding": "kraken_ledger_csv_source_v1:r1:syn-ledger-001"
+    },
+    {
+      "existing_event_key": "existing_event_02",
+      "facts": {
+        "account_target_key": "account_option_01",
+        "asset_fee_quantity_decimal": "0.00000000",
+        "asset_target_key": "asset_option_01",
+        "event_time_utc": "2031-01-02T08:00:00Z",
+        "event_type": "reward",
+        "quantity_decimal": "1.50000000"
+      },
+      "source_identity_binding": "kraken_ledger_csv_source_v1:r1:syn-ledger-002"
+    },
+    {
+      "existing_event_key": "existing_event_03",
+      "facts": {
+        "account_target_key": "account_option_01",
+        "asset_fee_quantity_decimal": "0.00000000",
+        "asset_target_key": "asset_option_01",
+        "event_time_utc": "2031-01-04T08:00:00Z",
+        "event_type": "reward",
+        "quantity_decimal": "0.75000000"
+      },
+      "source_identity_binding": null
+    },
+    {
+      "existing_event_key": "existing_event_04",
+      "facts": {
+        "account_target_key": "account_option_01",
+        "asset_fee_quantity_decimal": "0.00000000",
+        "asset_target_key": "asset_option_01",
+        "event_time_utc": "2031-01-05T08:00:00Z",
+        "event_type": "reward",
+        "quantity_decimal": "0.50000000"
+      },
+      "source_identity_binding": null
+    },
+    {
+      "existing_event_key": "existing_event_05",
+      "facts": {
+        "account_target_key": "account_option_01",
+        "asset_fee_quantity_decimal": "0.00000000",
+        "asset_target_key": "asset_option_01",
+        "event_time_utc": "2031-01-05T08:00:00Z",
+        "event_type": "reward",
+        "quantity_decimal": "0.50000000"
+      },
+      "source_identity_binding": null
+    }
+  ],
+  "manual_enrichments": {
+    "manual_fiat_total": {
+      "amount_input_mode": "quantity_gross_amount",
+      "exact_local_date": "2031-01-03",
+      "exact_local_time": "08:00:00",
+      "exact_local_zone": "UTC",
+      "gross_income_decimal": "15.4250000000",
+      "observed_at_utc": "2031-01-03T08:00:00Z",
+      "price_currency": "EUR",
+      "target_txid": "syn-ledger-003"
+    },
+    "manual_unit_price": {
+      "amount_input_mode": "quantity_unit_price",
+      "exact_local_date": "2031-01-03",
+      "exact_local_time": "08:00:00",
+      "exact_local_zone": "UTC",
+      "observed_at_utc": "2031-01-03T08:00:00Z",
+      "price_currency": "EUR",
+      "target_txid": "syn-ledger-003",
+      "unit_price_decimal": "12.3400"
+    }
+  },
+  "source_profile": {
+    "column_mappings": [
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "source_row_id",
+        "source_column": "txid"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "source_group_id",
+        "source_column": "refid"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "event_time_utc_text",
+        "source_column": "time"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "source_type",
+        "source_column": "type"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "source_subtype",
+        "source_column": "subtype"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "asset_class",
+        "source_column": "aclass"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "source_asset_key",
+        "source_column": "asset"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "signed_quantity_decimal",
+        "source_column": "amount"
+      },
+      {
+        "disposition": "mapped",
+        "required": true,
+        "role": "asset_fee_quantity_decimal",
+        "source_column": "fee"
+      },
+      {
+        "disposition": "retained_not_imported",
+        "required": true,
+        "role": "balance_reconciliation_evidence",
+        "source_column": "balance"
+      }
+    ],
+    "export_profile": "ledger_csv",
+    "format_version": "synthetic_contract_v1",
+    "header_columns": [
+      "txid",
+      "refid",
+      "time",
+      "type",
+      "subtype",
+      "aclass",
+      "asset",
+      "amount",
+      "fee",
+      "balance"
+    ],
+    "identity_policy": {
+      "date_only_matching_allowed": false,
+      "duplicate_txid_disposition": "diagnostic",
+      "missing_txid_disposition": "diagnostic",
+      "source_group_identity_components": [
+        "source_profile_id",
+        "source_profile_revision",
+        "refid",
+        "sorted_member_txids"
+      ],
+      "source_ordinal_role": "closed_row_ledger_only",
+      "source_row_identity_components": [
+        "source_profile_id",
+        "source_profile_revision",
+        "txid"
+      ]
+    },
+    "institution": "kraken",
+    "locale": "en",
+    "medium": "csv",
+    "route_rules": [
+      {
+        "adapter_id": "noncash_reward_activity_v1",
+        "domain": "asset_activity",
+        "route": "reward",
+        "route_status": "synthetic_pilot_active_adapter_disabled",
+        "source_asset_class": "currency",
+        "source_subtype": "reward",
+        "source_type": "earn"
+      },
+      {
+        "adapter_id": "noncash_trade_activity_v1",
+        "domain": "asset_activity",
+        "route": "trade",
+        "route_status": "deferred_not_in_reward_pilot",
+        "source_asset_class": "currency",
+        "source_subtype": "spot",
+        "source_type": "trade"
+      },
+      {
+        "adapter_id": null,
+        "domain": "cash",
+        "route": "cash",
+        "route_status": "cash_domain_deferred_to_issue_184",
+        "source_asset_class": "currency",
+        "source_subtype": "fiat",
+        "source_type": "deposit"
+      }
+    ],
+    "source_profile_id": "kraken_ledger_csv_source_v1",
+    "source_profile_revision": "r1",
+    "source_profile_status": "synthetic_pending_private_owner_uat",
+    "time_zone": "UTC"
+  },
+  "synthetic_statement_import_workspace_input_version": 1
+}

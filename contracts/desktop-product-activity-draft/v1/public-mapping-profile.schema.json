@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/public-mapping-profile.schema.json",
+  "title": "Browser-safe Activity mapping profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_mapping_profile_public_version", "status", "profile_label", "is_standard", "revision", "portfolio_mapping_count", "account_mapping_count", "asset_mapping_count", "updated_at_utc", "context_bound", "canonical_write", "path_exposed", "browser_internal_id_exposed", "fingerprint_exposed"],
+  "properties": {
+    "activity_mapping_profile_public_version": {"const": 1},
+    "status": {"const": "available"},
+    "profile_label": {"type": "string", "minLength": 1, "maxLength": 100},
+    "is_standard": {"type": "boolean"},
+    "revision": {"type": "integer", "minimum": 1},
+    "portfolio_mapping_count": {"type": "integer", "minimum": 0},
+    "account_mapping_count": {"type": "integer", "minimum": 0},
+    "asset_mapping_count": {"type": "integer", "minimum": 0},
+    "updated_at_utc": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "context_bound": {"const": true},
+    "canonical_write": {"const": false},
+    "path_exposed": {"const": false},
+    "browser_internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

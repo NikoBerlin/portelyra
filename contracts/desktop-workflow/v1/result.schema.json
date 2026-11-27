@@ -1,0 +1,5 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","additionalProperties":false,
+  "required":["status","run_label","failure_code","replayed","safe_output"],
+  "properties":{"status":{"enum":["completed","blocked"]},"run_label":{"type":"string","maxLength":40},"failure_code":{"type":["string","null"],"pattern":"^[a-z][a-z0-9_]{2,80}$"},"replayed":{"type":"boolean"},"safe_output":{"const":true}}
+}

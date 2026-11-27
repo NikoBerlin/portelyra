@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/mixed-source-retirement-writer-barrier.schema.json",
+  "title": "Permanent mixed-source retirement writer barrier v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_writer_barrier_version", "minimum_writer_capability", "legacy_writer_blocked", "barrier_fingerprint"],
+  "properties": {
+    "activity_draft_writer_barrier_version": {"const": 2},
+    "minimum_writer_capability": {"const": "mixed_source_retirement_preserve_committed_v1"},
+    "legacy_writer_blocked": {"const": true},
+    "barrier_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

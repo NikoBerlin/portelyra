@@ -1,0 +1,30 @@
+code,boundary,meaning,browser_safe,blocking
+desktop_run_center_state_invalid,Data_Run_Center,Run Center state is malformed,yes,yes
+desktop_run_center_context_invalid,Data_Run_Center,Product Runtime Context is invalid,yes,yes
+desktop_run_center_catalog_unavailable,Data_Run_Center,Canonical selection cannot be read,yes,yes
+desktop_run_center_input_invalid,Data_Run_Center,Plan business input is invalid,yes,yes
+desktop_run_center_preview_invalid,Data_Run_Center,Preview is missing or altered,yes,yes
+desktop_run_center_confirmation_invalid,Data_Run_Center,Confirmation is malformed or unbound,yes,yes
+desktop_run_center_confirmation_expired,Data_Run_Center,Confirmation time or binding is invalid,yes,yes
+desktop_run_center_confirmation_consumed,Data_Run_Center,Confirmation was already consumed,yes,yes
+desktop_run_center_catalog_changed,Data_Run_Center,Canonical selection changed after Preview,yes,yes
+desktop_run_center_market_valuation_changed,Data_Run_Center,Completed valuation receipt or bound sources changed,yes,yes
+desktop_run_center_job_conflict,Data_Run_Center,Owner-only Job target conflicts,yes,yes
+desktop_run_center_no_resumable_job,Data_Run_Center,No confirmed Job can resume,yes,yes
+desktop_run_center_worker_unavailable,Data_Run_Center,Fixed Worker boundary is unavailable,yes,yes
+desktop_run_center_last_run_unreadable,Data_Run_Center,Last confirmed Job cannot be read for reuse,yes,yes
+desktop_run_center_boundary_failed,Data_Run_Center,Unexpected Run Center failure,yes,yes
+desktop_workflow_job_invalid,Workflow_Worker,Sealed Job shape or fingerprint is invalid,yes,yes
+desktop_workflow_job_permission_invalid,Workflow_Worker,Job is not owner-only,yes,yes
+desktop_workflow_context_mismatch,Workflow_Worker,Job path and Context do not bind,yes,yes
+desktop_workflow_storage_invalid,Workflow_Worker,Owner-only storage boundary is invalid,yes,yes
+desktop_workflow_full_rebuild_required,Workflow_Worker,Incremental was requested before Full,yes,yes
+desktop_workflow_fifo_blocked,Workflow_Worker,FIFO stage blocked,yes,yes
+desktop_workflow_tax_blocked,Workflow_Worker,Tax stage failed closed,yes,yes
+desktop_workflow_grouping_blocked,Workflow_Worker,Grouping stage failed closed,yes,yes
+desktop_workflow_market_blocked,Workflow_Worker,Manual Market stage failed closed,yes,yes
+desktop_workflow_fx_blocked,Workflow_Worker,Explicit FX stage failed closed,yes,yes
+desktop_workflow_valuation_blocked,Workflow_Worker,Valuation stage failed closed,yes,yes
+desktop_workflow_analysis_blocked,Workflow_Worker,Analysis stage failed closed,yes,yes
+desktop_workflow_publication_blocked,Workflow_Worker,Composite publication failed closed,yes,yes
+desktop_workflow_boundary_failed,Workflow_Worker,Unexpected Worker boundary failure,yes,yes

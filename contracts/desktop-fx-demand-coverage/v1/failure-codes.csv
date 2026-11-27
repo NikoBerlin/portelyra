@@ -1,0 +1,6 @@
+failure_code,meaning
+desktop_fx_demand_coverage_context_invalid,The verified Desktop context is invalid.
+desktop_fx_demand_coverage_input_invalid,The demand or requested range is invalid.
+desktop_fx_demand_coverage_store_invalid,The existing schema-2600 store or pair catalog is invalid.
+data_fx_demand_coverage_service_invalid,The Data service cannot bind its local runtime.
+data_fx_demand_coverage_boundary_failed,The isolated reader boundary failed safely.

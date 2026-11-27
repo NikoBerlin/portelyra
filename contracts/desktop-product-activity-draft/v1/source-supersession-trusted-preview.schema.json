@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/source-supersession-trusted-preview.schema.json",
+  "title": "Owner-only exact-source ActivityDraft supersession preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_source_supersession_preview_version", "context_fingerprint", "source_fingerprint", "replacement_source_fingerprint", "expected_draft_count", "selected_drafts", "draft_set_fingerprint", "state_counts", "replacement_bound_draft_count", "prior_generation_ref", "prior_generation_fingerprint", "previewed_at_utc", "boundaries", "plan_fingerprint"],
+  "properties": {
+    "activity_draft_source_supersession_preview_version": {"const": 1},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "replacement_source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "expected_draft_count": {"type": "integer", "minimum": 1},
+    "selected_drafts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["draft_ref", "draft_fingerprint", "draft_state", "source_row_ordinal", "binding_fingerprint"],
+        "properties": {
+          "draft_ref": {"type": "string", "pattern": "^adt_[a-f0-9]{32}$"},
+          "draft_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "draft_state": {"enum": ["editing", "validated_blocked", "validated_ready"]},
+          "source_row_ordinal": {"type": "integer", "minimum": 1},
+          "binding_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "draft_set_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "state_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["editing", "validated_blocked", "validated_ready"],
+      "properties": {
+        "editing": {"type": "integer", "minimum": 0},
+        "validated_blocked": {"type": "integer", "minimum": 0},
+        "validated_ready": {"type": "integer", "minimum": 0}
+      }
+    },
+    "replacement_bound_draft_count": {"const": 0},
+    "prior_generation_ref": {"type": ["string", "null"], "pattern": "^adg_[a-f0-9]{32}$"},
+    "prior_generation_fingerprint": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "previewed_at_utc": {"type": "string", "format": "date-time"},
+    "boundaries": {"$ref": "source-supersession-boundaries.schema.json"},
+    "plan_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

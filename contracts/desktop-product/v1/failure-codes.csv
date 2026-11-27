@@ -1,0 +1,48 @@
+code,boundary,blocking,public_message
+desktop_product_platform_unsupported,preflight,yes,The supported local Linux platform is required
+desktop_product_dependency_missing,preflight,yes,A required local runtime dependency is unavailable
+desktop_product_cli_input_invalid,launcher,yes,The launcher command is invalid
+desktop_product_project_invalid,preflight,yes,The tracked product source boundary is invalid
+desktop_product_home_invalid,filesystem,yes,The local product home is invalid
+desktop_product_home_inside_project,filesystem,yes,The product home must remain outside the repository
+desktop_product_symlink_rejected,filesystem,yes,A symbolic link was rejected
+desktop_product_permissions_invalid,filesystem,yes,Owner-only permissions are required
+desktop_product_install_confirmation_required,installation,yes,Explicit local installation confirmation is required
+desktop_product_install_failed,installation,yes,The local package installation failed
+desktop_product_install_conflict,installation,yes,An existing local package installation conflicts
+desktop_product_session_conflict,session,yes,Another Desktop session or operation is active
+desktop_product_locked,session,yes,The password-protected data space is locked; unlock it first
+desktop_product_protection_invalid,session,yes,The password protection state is unreadable
+desktop_product_upgrade_confirmation_required,upgrade,yes,Explicit local Upgrade confirmation is required
+desktop_product_upgrade_unavailable,upgrade,yes,The local Upgrade is unavailable
+desktop_product_upgrade_recovery_required,upgrade,yes,The exact interrupted Upgrade or Rollback must be recovered
+desktop_product_update_busy,upgrade,yes,Portelyra is working (a booking or import); the Update did not stop it
+desktop_product_update_stop_failed,upgrade,yes,The running Portelyra did not stop in time; nothing was changed
+desktop_product_update_preflight_failed,upgrade,yes,The updated release does not pass Preflight; use rollback
+desktop_product_rollback_confirmation_required,rollback,yes,Explicit local Rollback confirmation is required
+desktop_product_rollback_incompatible,rollback,yes,Rollback would activate a release that cannot enforce the active Product writer barrier
+desktop_product_rollback_unavailable,rollback,yes,The local Rollback is unavailable
+desktop_product_release_version_invalid,release,yes,The Product release version is invalid
+desktop_product_registry_confirmation_required,registry,yes,Explicit local Registry confirmation is required
+desktop_product_registry_invalid,registry,yes,The local Runtime Registry is invalid
+desktop_product_registry_conflict,registry,yes,The local Runtime Registry conflicts
+desktop_product_not_initialized,registry,yes,The local Runtime Registry is not initialized
+desktop_product_context_invalid,runtime,yes,The local Runtime Context is invalid
+desktop_product_data_space_confirmation_required,workspace,yes,Explicit empty Data-Space confirmation is required
+desktop_product_workspace_invalid,workspace,yes,The local Data workspace is invalid
+desktop_product_boundary_failed,boundary,yes,The Desktop product boundary failed safely
+desktop_onboarding_context_invalid,onboarding,yes,The onboarding Context is invalid
+desktop_onboarding_input_invalid,onboarding,yes,The onboarding input is invalid
+desktop_onboarding_repository_uninitialized,onboarding,yes,The canonical Data Space is not initialized
+desktop_onboarding_repository_not_empty,onboarding,yes,First-user onboarding requires an empty canonical Data Space
+desktop_onboarding_plan_conflict,onboarding,yes,The persisted onboarding plan conflicts
+desktop_onboarding_preview_required,onboarding,yes,A current onboarding Preview is required
+desktop_onboarding_confirmation_required,onboarding,yes,Explicit onboarding confirmation is required
+desktop_onboarding_confirmation_invalid,onboarding,yes,The onboarding Confirmation is invalid
+desktop_onboarding_confirmation_expired,onboarding,yes,The onboarding Confirmation expired
+desktop_onboarding_confirmation_consumed,onboarding,yes,The onboarding Confirmation was already consumed
+desktop_onboarding_restart_unavailable,onboarding,yes,No resumable onboarding plan is available
+desktop_onboarding_storage_invalid,onboarding,yes,The onboarding storage boundary is invalid
+desktop_onboarding_command_failed,onboarding,yes,An onboarding Command failed safely
+desktop_onboarding_simulated_interruption,test_only,yes,The synthetic interruption stopped execution
+desktop_onboarding_boundary_failed,boundary,yes,The onboarding boundary failed safely

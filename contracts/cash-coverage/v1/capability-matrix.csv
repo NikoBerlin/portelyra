@@ -1,0 +1,30 @@
+capability,enabled,reason
+cash_not_tracked,1,Asset FIFO and Tax use case remains valid without Cash balance claim
+cash_income_only,1,Interest GuV may exist without Cash movement
+cash_partial,1,Sporadic movements provide explicit partial orientation
+cash_complete_reconciled,1,Opening and independent as-of balance prove period completeness
+missing_cash_as_zero,0,Unavailable coverage is never represented as zero
+one_sided_cash_boundary_movements,1,No invented external Account
+internal_same_cash_asset_transfer,1,Account distribution changes while Portfolio Cash remains unchanged
+interest_guv_without_cash_effect,1,Income event is orthogonal to Cash movement
+explicit_income_cash_link,1,Optional reconciliation link prevents double counting
+cash_event_guv_inference,0,Deposit Withdrawal Transfer and Opening do not create GuV
+coverage_inference_from_rows,0,Owner declares effective-dated coverage
+household_accounting,0,No salary consumption category or budgeting claim
+full_double_entry,0,No revenue expense or external counteraccounts
+negative_cash_balance,1,Factual signed balance remains valid
+canonical_write,0,Schema 201 and schema 401 remain unchanged
+persistent_cash_coverage_authority,1,Owner-confirmed append-only schema 2901 sidecar
+schema2900_historical_signature,1,Frozen schema and facts are never reinterpreted under user_version 2900
+schema2900_to_2901_create_only_migration,1,Source is read-only and target is newly created after separate confirmation
+exact_local_zone_cash_time,1,Fresh Cash events bind local date time IANA zone and UTC
+utc_only_legacy_time,1,Migrated events do not invent local time or zone
+immutable_cash_correction,1,Correct Supersede and Void append lineage while predecessors remain physical facts
+atomic_compound_revision,1,Multiple predecessor and replacement facts commit together
+manual_reviewed_shared_handoff,1,Manual and reviewed importer candidates share preview confirmation and apply
+command_recovery,1,Ambiguous consumed attempts require reconciliation and separate one-use recovery authority
+blind_write_retry,0,Unknown write effects are reconciled before any continuation
+one_use_confirmation,1,Confirmation is consumed before one domain-write attempt
+label_only_completed_read_model,1,Cash Income receipt and active-history views omit paths Context IDs and fingerprints
+private_data_access,0,Invented fixture only
+provider_network_access,0,No Provider or networking

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "automatic_retry",
+    "owner_evidence_created",
+    "private_source_read",
+    "source_path_exposed",
+    "statement_source_mapping_recovery_public_result_version",
+    "status"
+  ],
+  "properties": {
+    "automatic_retry": {
+      "type": "boolean"
+    },
+    "owner_evidence_created": {
+      "type": "boolean"
+    },
+    "private_source_read": {
+      "type": "boolean"
+    },
+    "source_path_exposed": {
+      "type": "boolean"
+    },
+    "statement_source_mapping_recovery_public_result_version": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

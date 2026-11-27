@@ -1,0 +1,51 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "137",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-02-01",
+   "source_row_ordinal": 1,
+   "text": "Lastschrift VERSICHERUNG INVENTED"
+  },
+  {
+   "amount_decimal": "45",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-02-01",
+   "source_row_ordinal": 2,
+   "text": "Lastschrift Bargeldauszahlung VISA Card INVENTED"
+  },
+  {
+   "amount_decimal": "120",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-02-09",
+   "source_row_ordinal": 3,
+   "text": "Gutschrift Invented Sender"
+  },
+  {
+   "amount_decimal": "2140.35",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-02-24",
+   "source_row_ordinal": 4,
+   "text": "Gehalt/Rente Invented Employer"
+  },
+  {
+   "amount_decimal": "31.17",
+   "balance_after_decimal": null,
+   "kind": "interest",
+   "local_date": "2027-02-28",
+   "source_row_ordinal": 5,
+   "text": "Zinsertrag"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": "3109.52",
+  "opening_balance_decimal": "1000",
+  "period_from": "2027-02-01",
+  "period_to": "2027-02-28"
+ }
+}

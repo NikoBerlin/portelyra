@@ -1,0 +1,11 @@
+{
+ "op": "parse_response",
+ "operation": "search",
+ "params": {
+  "query": "Invented",
+  "limit": 10
+ },
+ "status": 200,
+ "content_type": "application/json",
+ "body_text": "{\"quotes\": [{\"symbol\": \"INVENTEDCO.XY\", \"longname\": \"Invented Company AG\", \"exchDisp\": \"XETRA\", \"quoteType\": \"EQUITY\", \"currency\": \"EUR\", \"isin\": \"XA00INVENT09\"}, {\"symbol\": \"INVENTEDCO.XY\", \"longname\": \"Invented Company AG\", \"exchDisp\": \"XETRA\", \"quoteType\": \"EQUITY\"}, {\"symbol\": \"INVETF\", \"shortname\": \"Invented World ETF\", \"fullExchangeName\": \"London\", \"quoteType\": \"ETF\", \"currency\": \"usd\"}, {\"symbol\": \"  \", \"longname\": \"leer\"}, {\"symbol\": \"INVCOIN-EUR\", \"quoteType\": \"CRYPTOCURRENCY\", \"exchange\": \"CCC\"}]}"
+}

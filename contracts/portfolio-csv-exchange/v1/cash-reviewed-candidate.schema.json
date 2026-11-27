@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/cash-reviewed-candidate.schema.json",
+  "title": "Portfolio CSV to Cash Coverage reviewed candidate v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reviewed_cash_coverage_candidate_version","source_candidate_fingerprint","mapped_command"],
+  "properties": {
+    "reviewed_cash_coverage_candidate_version": {"const": 1},
+    "source_candidate_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "mapped_command": {"type": "object", "required": ["action_type"], "properties": {"action_type": {"enum": ["declare_coverage","record_cash_event","record_interest_income","record_reconciliation"]}}}
+  }
+}

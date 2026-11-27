@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-confirmation.schema.json",
+  "title": "Cash Coverage Store Migration Confirmation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_confirmation_version","authorization_scope","confirmation_ref","migration_plan_fingerprint","context_fingerprint","issued_at_utc","expires_at_utc","confirmed","source_mutation_authorized","target_overwrite_authorized","confirmation_fingerprint"],
+  "properties": {
+    "cash_coverage_store_migration_confirmation_version": {"const": 1},
+    "authorization_scope": {"const": "cash_coverage_store_migration_once"},
+    "confirmation_ref": {"type": "string", "pattern": "^ccmc_[a-f0-9]{32}$"},
+    "migration_plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "issued_at_utc": {"$ref": "#/$defs/utc"},
+    "expires_at_utc": {"$ref": "#/$defs/utc"},
+    "confirmed": {"const": true},
+    "source_mutation_authorized": {"const": false},
+    "target_overwrite_authorized": {"const": false},
+    "confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "utc": {"type": "string", "format": "date-time", "pattern": "Z$"}
+  }
+}

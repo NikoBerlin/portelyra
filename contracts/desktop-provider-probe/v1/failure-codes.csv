@@ -1,0 +1,14 @@
+code,blocking,public_message
+desktop_provider_probe_boundary_failed,1,Der Provider-Test ist sicher fehlgeschlagen.
+desktop_provider_probe_confirmation_required,1,Der einzelne Testabruf wurde nicht bestätigt.
+desktop_provider_probe_context_invalid,1,Der lokale Provider-Testkontext ist ungültig.
+desktop_provider_probe_input_invalid,1,Die Testangaben sind ungültig.
+desktop_provider_probe_preview_invalid,1,Die Testvorschau ist nicht mehr gültig.
+desktop_provider_probe_attempt_consumed,1,Dieser einzelne Testversuch wurde bereits verbraucht.
+desktop_provider_probe_store_invalid,1,Die lokale Testevidenz kann nicht sicher verwendet werden.
+desktop_provider_probe_transport_failed,1,Der einzelne Testabruf ist fehlgeschlagen.
+desktop_provider_probe_response_invalid,1,Die Testantwort ist nicht verwertbar.
+desktop_provider_probe_result_invalid,1,Das gespeicherte Testergebnis ist ungültig.
+desktop_provider_probe_credential_unavailable,1,Für diesen Kursanbieter ist kein bereiter Zugang eingetragen.
+desktop_provider_probe_cost_limit,1,Die Obergrenze an Abrufen dieses Kursanbieters ist erreicht oder er hat wegen zu vieler Abrufe abgewiesen.
+desktop_provider_probe_scheduled_disabled,1,Dieser Kursanbieter ist im täglichen Zeitlauf nicht freigegeben.

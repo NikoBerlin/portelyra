@@ -1,0 +1,5 @@
+code,blocking,public_message
+desktop_market_history_plan_context_invalid,1,Der lokale Markthistorienkontext ist ungültig.
+desktop_market_history_plan_input_invalid,1,Zeitraum oder Planmodus ist ungültig.
+desktop_market_history_plan_store_invalid,1,Der lokale Markthistorienbestand ist nicht verfügbar.
+desktop_market_history_plan_read_failed,1,Die Markthistorie konnte nicht sicher gelesen werden.

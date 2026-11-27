@@ -1,0 +1,10 @@
+{
+ "outcome": "ok",
+ "quote": {
+  "kind": "meta_quote",
+  "decimal": "4.567",
+  "observed_at_utc": "2027-03-29T06:00:00Z",
+  "currency": "EUR",
+  "as_of_date": "2027-03-29"
+ }
+}

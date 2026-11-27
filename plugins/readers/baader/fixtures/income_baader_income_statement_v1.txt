@@ -1,0 +1,79 @@
+Erträgnisaufstellung
+anbei erhalten Sie die Erträgnisaufstellung für den Zeitraum vom 01.01.2027 bis 31.12.2027 für Ihre Konten
+Summennachweis der Kapitalerträge für den Zeitraum vom 01.01.2027 bis 31.12.2027
+Positive laufende Erträge im Sinne des § 20 Abs. 1 EStG                                        EUR                  14,50
+Höhe der Kapitalerträge nach Verlustverrechnung                                        (Zeile 7 Anlage KAP) EUR                  184,84
+Einzelnachweis der Kapitalerträge für den Zeitraum vom 01.01.2027 bis 31.12.2027
+Zinserträge aus Kontoguthaben
+2222222222                                        Zinszahlung Kontokorrent- / Sparkonten                                        Transaktion:
+                                                                                                                        WWUM 00000000001
+                                                                                                                        Depotnummer:
+                                                                                                                        1111111-001
+Valuta/steuerl. Zufluss: 31.03.2027 / 31.03.2027
+
+Zinserträge aus Kontoguthaben                                        EUR                  4,00
+Höhe der Kapitalerträge nach Verlustverrechnung                                        (Zeile 7 Anlage KAP) EUR                  4,00
+25,00% Kapitalertragsteuer                                        (Zeile 37 Anlage KAP) EUR                  1,00
+5,50% Solidaritätszuschlag                                        (Zeile 38 Anlage KAP) EUR                  0,05
+
+
+Summe                                        Zinserträge aus Kontoguthaben
+Positive laufende Erträge im Sinne des § 20 Abs. 1 EStG                                        EUR                  4,00
+
+Laufende Erträge aus Aktien und aktienähnlichen Wertpapieren Ausland
+Erfundene Dividenden Inc.                                        Dividendenzahlung                                        Transaktion:
+                                                                                                                        WWUM 00000000001
+                                                                                                                        Depotnummer:
+                                                                                                                        1111111-001
+ISIN: US0000000001/EUR                                        Nennwert/Stück                                        STK                    10
+Valuta/steuerl. Zufluss: 15.04.2027 / 15.04.2027
+
+Ausländische Dividenden und andere laufende Erträge aus Aktien                                        EUR                  10,50
+Höhe der Kapitalerträge nach Verlustverrechnung                                        (Zeile 7 Anlage KAP) EUR                  10,50
+
+
+Veräußerungen im Sinne des § 20 Abs. 2 EStG
+Erfundene Aktie AG                                        Veräußerung                                        Transaktion:
+                                                                                                                        WWUM 00000000001
+                                                                                                                        Depotnummer:
+                                                                                                                        1111111-001
+ISIN: DE0000000002/EUR                                        Nennwert/Stück                                        STK                    10
+Valuta/steuerl. Zufluss: 02.05.2027 / 02.05.2027
+
+Gewinn / Verlust aus Aktienveräußerungen                                        EUR                  120,34
+Höhe der Kapitalerträge nach Verlustverrechnung                                        (Zeile 7 Anlage KAP) EUR                  120,34
+
+
+Erfundene Verlust AG                                        Veräußerung                                        Transaktion:
+                                                                                                                        WWUM 00000000001
+                                                                                                                        Depotnummer:
+                                                                                                                        1111111-001
+ISIN: DE0000000003/EUR                                        Nennwert/Stück                                        STK                    10
+Valuta/steuerl. Zufluss: 03.05.2027 / 03.05.2027
+
+Gewinn / Verlust aus Aktienveräußerungen                                        EUR                  20,00 -
+Höhe der Kapitalerträge nach Verlustverrechnung                                        (Zeile 7 Anlage KAP) EUR                  20,00 -
+
+
+Erfundener Welt-Fonds                                        Veräußerung                                        Transaktion:
+                                                                                                                        WWUM 00000000001
+                                                                                                                        Depotnummer:
+                                                                                                                        1111111-001
+ISIN: IE0000000004/EUR                                        Nennwert/Stück                                        STK                    10
+Valuta/steuerl. Zufluss: 04.05.2027 / 04.05.2027
+
+Veräußerung von Investmentfonds: Gewinn / Verlust seit Kauf bzw. letzter fiktiven Veräußerung                                        EUR                  100,00
+Abzüglich / zuzüglich Teilfreistellung 30%                                        EUR                  30,00 -
+Höhe der Kapitalerträge nach Verlustverrechnung                                        (Zeile 7 Anlage KAP) EUR                  70,00
+
+
+Kreditzinsen und Kreditprovisionen
+2222222222                                        Sollzinsen / Verwahrentgelt                                        Transaktion:
+                                                                                                                        WWUM 00000000001
+                                                                                                                        Depotnummer:
+                                                                                                                        1111111-001
+Valuta/steuerl. Zufluss: 30.06.2027 / 30.06.2027
+
+Sollzinsen, Verwahrentgelt                                        EUR                  0,12 -
+
+

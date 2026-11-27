@@ -1,0 +1,51 @@
+code,boundary,blocking,public_message
+desktop_release_acceptance_artifact_missing,acceptance,yes,A completed Desktop Workflow publication is required
+desktop_release_acceptance_failed,acceptance,yes,The local acceptance check failed safely
+desktop_release_backup_conflict,backup,yes,The Backup target conflicts
+desktop_release_backup_integrity_invalid,backup_integrity,yes,The Backup integrity check failed
+desktop_release_backup_source_changed,backup,yes,The source changed during Backup
+desktop_release_backup_target_unprotected,backup,yes,With password protection a backup must be created inside the unlocked encrypted backup folder
+desktop_release_locked,boundary,yes,Portelyra is locked; unlock it first
+desktop_release_boundary_failed,boundary,yes,The Desktop Release boundary failed safely
+desktop_release_confirmation_required,confirmation,yes,Explicit operation confirmation is required
+desktop_release_context_mismatch,isolation,yes,The bound Product Context does not match
+desktop_release_input_invalid,input,yes,The Desktop Release input is invalid
+desktop_release_manifest_invalid,manifest,yes,The manifest is invalid
+desktop_release_permissions_invalid,filesystem,yes,Owner-only permissions are required
+desktop_release_release_conflict,release,yes,The Release target conflicts
+desktop_release_release_integrity_invalid,release,yes,The Release source or archive is invalid
+desktop_release_restore_conflict,restore,yes,The Restore target conflicts
+desktop_release_restore_context_mismatch,isolation,yes,A Cross-Data-Space Restore was rejected
+desktop_release_restore_target_not_empty,restore,yes,Restore requires a separate absent or explicitly empty target
+desktop_release_restore_newer_version,restore,yes,The backup was written by a newer product version and is not restored by this installation.
+desktop_release_root_invalid,filesystem,yes,The operation root is invalid
+desktop_release_session_invalid,session,yes,The exclusive owner session is unavailable
+desktop_release_source_unreadable,backup,yes,An entry of the data space cannot be read; the result names it relative to the data space
+desktop_release_source_unsettled,backup,yes,The source contains an unsettled operation
+desktop_release_sqlite_integrity_invalid,integrity,yes,A SQLite integrity check failed
+desktop_release_symlink_rejected,filesystem,yes,A symbolic link was rejected
+desktop_release_transitive_source_closure_invalid,release,yes,The Release snapshot has an incomplete local source closure
+desktop_release_worker_unavailable,boundary,yes,The fixed Desktop Release worker is unavailable
+desktop_release_write_failed,filesystem,yes,The operation write failed safely
+synthetic_desktop_release_failpoint,test_only,yes,The invented failpoint interrupted the operation
+desktop_product_session_conflict,session,yes,Another Desktop session or operation is active
+desktop_product_upgrade_confirmation_required,upgrade,yes,Explicit Upgrade confirmation is required
+desktop_product_upgrade_unavailable,upgrade,yes,Upgrade is unavailable
+desktop_product_upgrade_recovery_required,upgrade,yes,The exact interrupted Upgrade or Rollback must be recovered
+desktop_product_rollback_confirmation_required,rollback,yes,Explicit Rollback confirmation is required
+desktop_product_rollback_incompatible,rollback,yes,Rollback would activate a release that cannot enforce the active Product writer barrier
+desktop_product_rollback_unavailable,rollback,yes,Rollback is unavailable
+desktop_product_release_version_invalid,release,yes,The Product version is invalid
+desktop_release_signature_missing,release_signature,yes,The Release archive carries no Portelyra signature although the installed trust list requires one
+desktop_release_signature_untrusted,release_signature,yes,The Release archive is signed by a key outside the installed trust list
+desktop_release_signature_invalid,release_signature,yes,The Release signature does not match the Release manifest
+desktop_release_signature_tool_missing,release_signature,yes,ssh-keygen is required to check the Release signature
+desktop_release_signing_not_set_up,release_signing,yes,The signing key is not set up
+desktop_release_signing_copy_unconfirmed,release_signing,yes,The signing key backup copy is not confirmed
+desktop_release_signing_key_untrusted,release_signing,yes,The signing key is not in the project trust list
+desktop_release_signing_key_not_loaded,release_signing,yes,The signing key is not loaded in the signing agent
+desktop_release_signing_declined,release_signing,yes,The signature was declined in the confirmation window or not confirmed in time
+desktop_release_signing_failed,release_signing,yes,Signing the Release manifest failed
+desktop_release_update_conflict,update,yes,The update staging directory conflicts or could not be written
+desktop_release_update_entry_untrusted,update,yes,An update from an archive must be started from the installed Portelyra
+desktop_release_signing_required_for_public_release,release_signing,yes,A public release (version without -rc) must be signed; set up the signing key first

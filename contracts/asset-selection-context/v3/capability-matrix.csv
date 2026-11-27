@@ -1,0 +1,22 @@
+capability,supported,notes
+from_inclusive,yes,ISO local_date lower bound
+to_inclusive,yes,ISO local_date upper bound
+open_interval_bound,yes,Either bound may be absent
+activity_in_interval,yes,Schema401 local_date
+holding_in_interval,yes,Fresh FIFO-v2 event quantities only
+activity_or_holding,yes,Explicit relation
+activity_and_holding,yes,Independent per-Asset predicates may be evidenced by different Portfolio worlds
+portfolio_world_evidence,yes,Per-Portfolio interval states remain separate
+holding_any_time,yes,Positive at any interval state
+holding_at_start,yes,Positive opening state
+holding_at_end,yes,Positive closing state
+holding_throughout,yes,Positive opening and every in-window state
+predecessor_as_activity,no,Predecessor only supplies opening context
+stale_activity_filter,yes,Activity dates remain authoritative
+stale_holding_filter,no,Unavailable and no rebuild
+all_v2_set_algebra,yes,All manual filter union intersection exclusions
+account_and_domain_facets,yes,Frozen v2 semantics
+single_activity_command_target,yes,Independent from presentation scope
+calculation_or_rebuild,no,Display interaction only
+provider_or_network,no,Display interaction only
+canonical_or_product_write,no,Display interaction only

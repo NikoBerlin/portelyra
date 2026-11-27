@@ -1,0 +1,48 @@
+{
+ "candidates": [
+  {
+   "address": "",
+   "at_utc": "2027-06-01T10:20:00Z",
+   "eur": null,
+   "eur_fee": null,
+   "fee_quantity": null,
+   "file_name": "crypto_kraken_crypto_v1.csv",
+   "group": "FTGAAAA-AAAAA-AAAAA1",
+   "hash": "",
+   "kind": "move",
+   "profile": "crypto_row",
+   "quantity": "0.4999123456",
+   "quote": "",
+   "row_key": "7e855a5f6de44be19a0c1e45255b22592b0de5e70a6afe4640d39c9e8256b5f1",
+   "row_no": 1,
+   "source": "kraken",
+   "ticker": "ETH",
+   "transaction_id": "LGAAAA-AAAAA-AAAAA1",
+   "wallet": "spot / main",
+   "zone": "UTC"
+  },
+  {
+   "address": "",
+   "at_utc": "2027-06-06T09:00:00Z",
+   "eur": null,
+   "eur_fee": null,
+   "fee_quantity": null,
+   "file_name": "crypto_kraken_crypto_v1.csv",
+   "group": "FWGAAAA-AAAAA-AAAAA1",
+   "hash": "",
+   "kind": "move",
+   "profile": "crypto_row",
+   "quantity": "-1",
+   "quote": "",
+   "row_key": "5660861db0cd767f7faf409efb1777442a5e4aa21f22d1bc04fbe0a1fc1eed44",
+   "row_no": 2,
+   "source": "kraken",
+   "ticker": "SOL",
+   "transaction_id": "LGAAAA-AAAAA-AAAAA2",
+   "wallet": "spot / main",
+   "zone": "UTC"
+  }
+ ],
+ "row_reasons": {},
+ "status": "multi"
+}

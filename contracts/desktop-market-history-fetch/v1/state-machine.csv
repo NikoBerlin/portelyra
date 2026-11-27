@@ -1,0 +1,7 @@
+state,event,next_state,provider_access,market_history_write,automatic_retry
+history_partial,preview_incremental,pending_confirmation,no,no,no
+pending_confirmation,confirm,attempt_consumed,yes,yes,no
+attempt_consumed,all_ranges_committed,completed,yes,yes,no
+attempt_consumed,later_range_failure,recovery_required,partial_possible,partial_possible,no
+completed,exact_replay,completed,no,no,no
+recovery_required,retry,blocked,no,no,no

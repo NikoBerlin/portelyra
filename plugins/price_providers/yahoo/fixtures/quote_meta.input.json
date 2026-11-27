@@ -1,0 +1,11 @@
+{
+ "op": "parse_response",
+ "operation": "quote",
+ "params": {
+  "provider_symbol": "QUIETCO.XY",
+  "end_date": "2027-03-31"
+ },
+ "status": 200,
+ "content_type": "application/json",
+ "body_text": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"EUR\",\"symbol\":\"QUIETCO.XY\",\"exchangeName\":\"STU\",\"regularMarketPrice\":4.567,\"regularMarketTime\":1806300000},\"indicators\":{\"quote\":[{\"open\":[],\"high\":[],\"low\":[],\"close\":[],\"volume\":[]}],\"adjclose\":[{\"adjclose\":[]}]},\"timestamp\":[]}],\"error\":null}}"
+}

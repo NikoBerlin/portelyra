@@ -1,0 +1,10 @@
+{
+ "outcome": "ok",
+ "quote": {
+  "kind": "live_session",
+  "decimal": "12.21",
+  "observed_at_utc": "2027-04-01T07:30:00Z",
+  "currency": "EUR",
+  "as_of_date": "2027-04-01"
+ }
+}

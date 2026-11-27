@@ -1,0 +1,21 @@
+{
+ "balance_anchor_only": true,
+ "balance_proof": false,
+ "candidates": [
+  {
+   "amount_decimal": "2253.02",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-03-01",
+   "source_row_ordinal": 1,
+   "text": "Invented Owner Umbuchung"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": "750",
+  "opening_balance_decimal": "3003.02",
+  "period_from": "2027-01-01",
+  "period_to": "2027-09-19"
+ }
+}

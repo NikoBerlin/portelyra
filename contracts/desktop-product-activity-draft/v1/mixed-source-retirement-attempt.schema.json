@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/mixed-source-retirement-attempt.schema.json",
+  "title": "Owner-only mixed-source ActivityDraft retirement Attempt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_source_supersession_attempt_version", "attempt_status", "challenge_ref", "context_fingerprint", "plan_fingerprint", "confirmation_fingerprint", "confirmation", "trusted_preview", "committed_at_utc", "attempt_fingerprint"],
+  "properties": {
+    "activity_draft_source_supersession_attempt_version": {"const": 2},
+    "attempt_status": {"const": "consumed_before_supersession_generation_write"},
+    "challenge_ref": {"type": "string", "pattern": "^ads_[a-f0-9]{16,64}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "plan_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "confirmation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "confirmation": {"$ref": "mixed-source-retirement-confirmation.schema.json"},
+    "trusted_preview": {"$ref": "mixed-source-retirement-trusted-preview.schema.json"},
+    "committed_at_utc": {"type": "string", "format": "date-time"},
+    "attempt_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

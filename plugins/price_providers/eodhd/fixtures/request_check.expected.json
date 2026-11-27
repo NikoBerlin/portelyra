@@ -1,0 +1,4 @@
+{
+ "host": "eodhd.com",
+ "target": "/api/search/AAPL?limit=1&fmt=json"
+}

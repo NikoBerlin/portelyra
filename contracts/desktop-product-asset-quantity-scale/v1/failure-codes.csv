@@ -1,0 +1,17 @@
+failure_code,phase,retry_policy,meaning
+asset_quantity_scale_attempt_conflict,attempt,explicit_review,Attempt bytes or lineage conflict.
+asset_quantity_scale_boundary_failed,boundary,none,Unexpected safe boundary failure.
+asset_quantity_scale_catalog_conflict,catalog,explicit_review,Catalog does not equal the exact old or expected revised Asset state.
+asset_quantity_scale_confirmation_expired,confirmation,new_preview,Confirmation expired before Attempt consumption.
+asset_quantity_scale_confirmation_invalid,confirmation,new_preview,Confirmation does not bind Context and Preview.
+asset_quantity_scale_context_invalid,context,none,Runtime Context is invalid or unauthorized.
+asset_quantity_scale_fifo_invalid,preview,correct_input,Prospective or final exact FIFO rebuild failed.
+asset_quantity_scale_generation_conflict,generation,explicit_review,Active generation does not match the bound predecessor or completed successor.
+asset_quantity_scale_input_invalid,input,correct_input,Asset or Decimal input is malformed or unsupported.
+asset_quantity_scale_no_increase,input,continue_activity,Required scale already fits the current Asset scale.
+asset_quantity_scale_preview_stale,preview,new_preview,Canonical Asset or active generation changed after Preview.
+asset_quantity_scale_publication_failed,publication,explicit_resume,Completed generation could not be verified after activation.
+asset_quantity_scale_receipt_invalid,recovery,explicit_review,Receipt or manifest integrity is invalid.
+asset_quantity_scale_required_exceeds_limit,input,correct_input,Exact required quantity scale exceeds 24.
+asset_quantity_scale_storage_invalid,storage,explicit_review,Owner-only storage capability is invalid.
+synthetic_asset_quantity_scale_failpoint,test,explicit_resume,Invented interruption used only by focused tests.

@@ -1,0 +1,9 @@
+ID,Typ,Ausführung,eingehender Betrag,eingehendes Asset,ausgehender Betrag,ausgehendes Asset,Transaktionsentgelt,Entgeltwährung,Sender,Empfänger
+h1,deposit,2027-12-22 11:41:00 +0000 UTC,1500.00,EUR,,,,,,
+h2,buy,2027-12-30 14:22:37 +0000 UTC,70.5,XRP,105.76,EUR,0.38,EUR,,
+h3,buy,2027-12-30 14:23:05 +0000 UTC,49.5,XRP,74.64,EUR,0.25,EUR,,
+h4,withdrawal,2027-12-30 20:59:00 +0000 UTC,,,10,XRP,0.20,EUR,addr,addr
+h5,sell,2027-12-31 09:05:00 +0000 UTC,34.00,EUR,20,XRP,0.12,EUR,,
+h6,sell,2027-12-31 09:10:00 +0000 UTC,51.03,EUR,30,XRP,0.18,EUR,,
+h7,sell,2027-12-31 09:20:00 +0000 UTC,51.30,EUR,30,XRP,0.18,EUR,,
+h8,sell,2027-12-31 23:30:00 +0000 UTC,17.00,EUR,10,XRP,0.06,EUR,,

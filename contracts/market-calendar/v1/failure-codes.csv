@@ -1,0 +1,21 @@
+failure_code,meaning
+market_calendar_profile_invalid,Calendar profile identity rules validity or fingerprint are invalid.
+market_calendar_input_invalid,Requested dates or source statuses are invalid.
+market_calendar_conflict,Observed evidence conflicts with a reviewed calendar and requires review.
+market_calendar_registry_context_invalid,Registry reader or writer context is invalid.
+market_calendar_registry_store_invalid,Owner-local registry or permissions are invalid.
+market_calendar_registry_candidate_invalid,Profile-binding candidate changed or is invalid.
+market_calendar_registry_confirmation_required,Explicit binding confirmation is absent.
+market_calendar_registry_revision_conflict,An immutable profile revision conflicts.
+desktop_market_calendar_gap_context_invalid,Desktop gap reader context is invalid.
+desktop_market_calendar_gap_input_invalid,Desktop gap reader scope or range is invalid.
+desktop_market_calendar_gap_store_invalid,Native FX or calendar store cannot be read safely.
+data_market_calendar_gap_boundary_failed,Desktop gap service failed closed.
+market_calendar_correction_context_invalid,Calendar correction writer context is invalid.
+market_calendar_correction_input_invalid,Correction scope or date is invalid.
+market_calendar_correction_profile_missing,No current reviewed calendar profile is bound.
+market_calendar_correction_not_applicable,The current day is not a calendar-correctable source gap.
+market_calendar_correction_preview_invalid,Correction preview changed.
+market_calendar_correction_confirmation_required,Explicit correction confirmation is absent.
+market_calendar_correction_stale,Profile binding or source revision changed.
+market_calendar_correction_write_failed,Owning append-only history writer rejected the correction.

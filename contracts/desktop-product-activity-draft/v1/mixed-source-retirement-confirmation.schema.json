@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/mixed-source-retirement-confirmation.schema.json",
+  "title": "Trusted mixed-source ActivityDraft retirement confirmation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_source_supersession_confirmation_version", "challenge_ref", "context_fingerprint", "plan_fingerprint", "draft_set_fingerprint", "source_fingerprint", "replacement_source_fingerprint", "draft_count", "issued_at_utc", "confirmed_at_utc", "expires_at_utc", "confirmation_fingerprint"],
+  "properties": {
+    "activity_draft_source_supersession_confirmation_version": {"const": 2},
+    "challenge_ref": {"type": "string", "pattern": "^ads_[a-f0-9]{16,64}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "plan_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "draft_set_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "replacement_source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "draft_count": {"type": "integer", "minimum": 2},
+    "issued_at_utc": {"type": "string", "format": "date-time"},
+    "confirmed_at_utc": {"type": "string", "format": "date-time"},
+    "expires_at_utc": {"type": "string", "format": "date-time"},
+    "confirmation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/mapping-profile.schema.json",
+  "title": "Owner-local Activity mapping profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_mapping_profile_version", "profile_ref", "context_fingerprint", "profile_label", "is_standard", "revision", "default_portfolio_id", "default_account_id", "portfolio_mappings", "account_mappings", "asset_mappings", "created_at_utc", "updated_at_utc", "profile_fingerprint"],
+  "properties": {
+    "activity_mapping_profile_version": {"const": 1},
+    "profile_ref": {"type": "string", "pattern": "^amp_[a-f0-9]{32}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "profile_label": {"type": "string", "minLength": 1, "maxLength": 100, "pattern": "^[^@/\\\\]+$"},
+    "is_standard": {"type": "boolean"},
+    "revision": {"type": "integer", "minimum": 1},
+    "default_portfolio_id": {"type": "string", "pattern": "^ptf_[a-f0-9]{16,64}$"},
+    "default_account_id": {"type": "string", "pattern": "^acc_[a-f0-9]{16,64}$"},
+    "portfolio_mappings": {"$ref": "#/$defs/portfolioMappings"},
+    "account_mappings": {"$ref": "#/$defs/accountMappings"},
+    "asset_mappings": {"$ref": "#/$defs/assetMappings"},
+    "created_at_utc": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "updated_at_utc": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "profile_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "$defs": {
+    "portfolioMappings": {"$ref": "#/$defs/mappingArray", "items": {"$ref": "#/$defs/portfolioMapping"}},
+    "accountMappings": {"$ref": "#/$defs/mappingArray", "items": {"$ref": "#/$defs/accountMapping"}},
+    "assetMappings": {"$ref": "#/$defs/mappingArray", "items": {"$ref": "#/$defs/assetMapping"}},
+    "mappingArray": {"type": "array"},
+    "portfolioMapping": {
+      "type": "object", "additionalProperties": false, "required": ["source_key", "target_id"],
+      "properties": {"source_key": {"$ref": "#/$defs/sourceKey"}, "target_id": {"type": "string", "pattern": "^ptf_[a-f0-9]{16,64}$"}}
+    },
+    "accountMapping": {
+      "type": "object", "additionalProperties": false, "required": ["source_key", "target_id"],
+      "properties": {"source_key": {"$ref": "#/$defs/sourceKey"}, "target_id": {"type": "string", "pattern": "^acc_[a-f0-9]{16,64}$"}}
+    },
+    "assetMapping": {
+      "type": "object", "additionalProperties": false, "required": ["source_key", "target_id"],
+      "properties": {"source_key": {"$ref": "#/$defs/sourceKey"}, "target_id": {"type": "string", "pattern": "^ast_[a-f0-9]{16,64}$"}}
+    },
+    "sourceKey": {"type": "string", "minLength": 1, "maxLength": 200}
+  }
+}

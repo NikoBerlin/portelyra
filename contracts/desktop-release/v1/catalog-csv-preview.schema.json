@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://portelyra.invalid/contracts/desktop-release/v1/catalog-csv-preview.schema.json",
+  "type":"object","additionalProperties":false,
+  "required":["contract_version","status","preview_ref","counts","rows","confirmation_required","canonical_write","context_exposed","internal_ids_exposed","paths_exposed"],
+  "properties":{
+    "contract_version":{"const":1},"status":{"enum":["pending_confirmation","ready_to_resume","ready_to_finalize"]},
+    "preview_ref":{"type":"string","pattern":"^dcip_[a-f0-9]{32}$"},
+    "counts":{"type":"object","additionalProperties":false,"required":["row_count","completed_row_count","pending_row_count"],"properties":{"row_count":{"type":"integer","minimum":1},"completed_row_count":{"type":"integer","minimum":0},"pending_row_count":{"type":"integer","minimum":0}}},
+    "rows":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["row_ordinal","entity_type","display_name","status"],"properties":{"row_ordinal":{"type":"integer","minimum":1},"entity_type":{"enum":["portfolio","account","asset"]},"display_name":{"type":"string","minLength":1,"maxLength":120},"status":{"enum":["pending","completed"]}}}},
+    "confirmation_required":{"const":true},"canonical_write":{"const":false},"context_exposed":{"const":false},"internal_ids_exposed":{"const":false},"paths_exposed":{"const":false}
+  }
+}

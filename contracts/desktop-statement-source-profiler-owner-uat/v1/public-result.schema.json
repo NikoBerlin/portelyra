@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "automatic_retry",
+    "candidate_handoff_available",
+    "canonical_write",
+    "cash_write",
+    "network_access",
+    "owner_evidence_created",
+    "private_source_read",
+    "private_values_published",
+    "profile_revision_created",
+    "provider_access",
+    "route_rules_created",
+    "source_path_exposed",
+    "structural_ready",
+    "tax_write",
+    "time_zone_inferred",
+    "source_read_attempt_count",
+    "statement_source_profiler_owner_uat_public_result_version",
+    "status"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "type": "boolean"
+    },
+    "automatic_retry": {
+      "type": "boolean"
+    },
+    "candidate_handoff_available": {
+      "type": "boolean"
+    },
+    "canonical_write": {
+      "type": "boolean"
+    },
+    "cash_write": {
+      "type": "boolean"
+    },
+    "network_access": {
+      "type": "boolean"
+    },
+    "owner_evidence_created": {
+      "type": "boolean"
+    },
+    "private_source_read": {
+      "type": "boolean"
+    },
+    "private_values_published": {
+      "type": "boolean"
+    },
+    "profile_revision_created": {
+      "type": "boolean"
+    },
+    "provider_access": {
+      "type": "boolean"
+    },
+    "route_rules_created": {
+      "type": "boolean"
+    },
+    "source_path_exposed": {
+      "type": "boolean"
+    },
+    "structural_ready": {
+      "type": "boolean"
+    },
+    "tax_write": {
+      "type": "boolean"
+    },
+    "time_zone_inferred": {
+      "type": "boolean"
+    },
+    "source_read_attempt_count": {
+      "const": 1
+    },
+    "statement_source_profiler_owner_uat_public_result_version": {
+      "const": 1
+    },
+    "status": {
+      "enum": [
+        "owner_profile_observed_disabled",
+        "owner_profile_rejected_disabled"
+      ]
+    }
+  }
+}

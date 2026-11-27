@@ -1,0 +1,14 @@
+code,blocking,description
+desktop_derivative_capability_context_invalid,1,Owner-bound Desktop Product Context is invalid.
+desktop_derivative_capability_source_invalid,1,Canonical source or protected migration source is invalid.
+desktop_derivative_capability_preview_required,1,Exact fresh Preview and Confirmation binding is required.
+desktop_derivative_capability_confirmation_required,1,Explicit capability Confirmation is required.
+desktop_derivative_capability_confirmation_consumed,1,The one-use Confirmation or persistent Attempt was already consumed.
+desktop_derivative_capability_confirmation_expired,1,The Confirmation is outside its bound validity window.
+desktop_derivative_capability_source_changed,1,Canonical source changed after Preview.
+desktop_derivative_capability_lock_unavailable,1,Canonical writer lock is unavailable.
+desktop_derivative_capability_migration_failed,1,Schema migration failed without a committed target transition.
+desktop_derivative_capability_recovery_required,1,A consumed or partially published capability operation requires explicit recovery.
+desktop_derivative_capability_storage_invalid,1,Owner-only Attempt or Receipt storage is invalid.
+synthetic_desktop_derivative_capability_failpoint,1,Synthetic post-consumption failpoint fired.
+desktop_derivative_capability_boundary_failed,1,An unclassified implementation failure was redacted.

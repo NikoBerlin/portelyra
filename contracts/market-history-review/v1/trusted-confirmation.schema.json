@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/market-history-review/v1/trusted-confirmation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "market_history_review_confirmation_version", "review_ref", "staged_candidate_fingerprint",
+    "public_review_fingerprint", "publication_authorized", "provider_refetch_authorized",
+    "automatic_retry", "confirmation_fingerprint"
+  ],
+  "properties": {
+    "market_history_review_confirmation_version": {"const": 1},
+    "review_ref": {"type": "string", "pattern": "^mhr_[a-f0-9]{32}$"},
+    "staged_candidate_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "public_review_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "publication_authorized": {"const": true},
+    "provider_refetch_authorized": {"const": false},
+    "automatic_retry": {"const": false},
+    "confirmation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

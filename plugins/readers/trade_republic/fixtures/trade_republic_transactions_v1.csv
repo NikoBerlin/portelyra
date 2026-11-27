@@ -1,0 +1,8 @@
+datetime,date,category,type,name,amount,fee,tax,currency,description,transaction_id
+"2027-06-08T07:10:00.000000Z","2027-06-08","CASH","CUSTOMER_INBOUND","","250.000000","","","EUR","Umbuchung","id-1"
+"2027-06-12T09:30:00.000000Z","2027-06-12","TRADING","BUY","INVENTED CORP","-100.000000","-1.00","","EUR","Buy trade US0000000000 INVENTED CORP","id-2"
+"2027-07-01T03:05:00.000000Z","2027-07-01","CASH","INTEREST_PAYMENT","","0.200000","","","EUR","Interest payment Booking","id-3"
+"2027-08-01T03:05:00.000000Z","2027-08-01","CASH","INTEREST_PAYMENT","","0.040000","","-0.04","EUR","Interest payment Booking","id-4"
+"2027-08-05T11:00:00.000000Z","2027-08-05","TRADING","SELL","INVENTED CORP","120.000000","-1.00","-5.27","EUR","Sell trade US0000000000 INVENTED CORP","id-5"
+"2027-08-09T23:18:00.000000Z","2027-08-09","CASH","TAX_OPTIMIZATION","","0.000000","","12.84","EUR","Tax Optimisation","id-6"
+"2027-08-11T20:34:00.000000Z","2027-08-11","CASH","FREE_RECEIPT","","","","","","FREE_RECEIPT US0000000000","id-7"

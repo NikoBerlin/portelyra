@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/desktop-product/v1/runtime-registry.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "runtime_mode",
+    "registry_revision",
+    "tenant_id",
+    "user_id",
+    "active_data_space_id",
+    "data_spaces",
+    "created_at_utc"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": 1
+    },
+    "runtime_mode": {
+      "const": "desktop_product"
+    },
+    "registry_revision": {
+      "const": 1
+    },
+    "tenant_id": {
+      "type": "string",
+      "pattern": "^ten_[a-f0-9]{32}$"
+    },
+    "user_id": {
+      "type": "string",
+      "pattern": "^usr_[a-f0-9]{32}$"
+    },
+    "active_data_space_id": {
+      "type": "string",
+      "pattern": "^sbx_[a-f0-9]{32}$"
+    },
+    "data_spaces": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "data_space_id",
+          "display_label",
+          "status",
+          "created_at_utc"
+        ],
+        "properties": {
+          "data_space_id": {
+            "type": "string",
+            "pattern": "^sbx_[a-f0-9]{32}$"
+          },
+          "display_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[^@/\\\\]+$"
+          },
+          "status": {
+            "const": "active"
+          },
+          "created_at_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          }
+        }
+      }
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    }
+  }
+}

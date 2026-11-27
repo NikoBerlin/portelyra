@@ -1,0 +1,8 @@
+state,event,next_state,product_write,provider_access,calculation
+unavailable,load_compatible_catalog,all_visible,no,no,no
+all_visible,select_manual_assets,selected_visible,no,no,no
+selected_visible,change_manual_assets,selected_visible,no,no,no
+selected_visible,show_all,all_visible,no,no,no
+all_visible,show_selected,selected_visible,no,no,no
+any,asset_center_handoff,selected_visible,no,no,no
+any,refresh_read_model,unchanged,no,no,no

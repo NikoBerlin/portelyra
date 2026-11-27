@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/source-supersession-preview.schema.json",
+  "title": "Browser-safe exact-source ActivityDraft supersession preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_source_supersession_public_preview_version", "status", "draft_count", "state_counts", "replacement_bound_draft_count", "exact_source_scope", "original_draft_files_rewritten", "legacy_writer_barrier_required", "schema201_canonical_write", "schema401_activity_write", "cash_posting_count", "provider_access", "network_access", "automatic_retry", "path_exposed", "browser_internal_id_exposed", "fingerprint_exposed"],
+  "properties": {
+    "activity_draft_source_supersession_public_preview_version": {"const": 1},
+    "status": {"const": "ready"},
+    "draft_count": {"type": "integer", "minimum": 1},
+    "state_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["editing", "validated_blocked", "validated_ready"],
+      "properties": {
+        "editing": {"type": "integer", "minimum": 0},
+        "validated_blocked": {"type": "integer", "minimum": 0},
+        "validated_ready": {"type": "integer", "minimum": 0}
+      }
+    },
+    "replacement_bound_draft_count": {"const": 0},
+    "exact_source_scope": {"const": true},
+    "original_draft_files_rewritten": {"const": false},
+    "legacy_writer_barrier_required": {"const": true},
+    "schema201_canonical_write": {"const": false},
+    "schema401_activity_write": {"const": false},
+    "cash_posting_count": {"const": 0},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "automatic_retry": {"const": false},
+    "path_exposed": {"const": false},
+    "browser_internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

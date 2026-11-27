@@ -1,0 +1,16 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","additionalProperties":false,
+ "required":["asset_activity_correction_receipt_version","action_type","context_fingerprint","plan_fingerprint","confirmation_fingerprint","prior_generation_ref","generation_ref","predecessor_event_ref","predecessor_effect_fingerprint","replacement_event_ref","replacement_event_count","total_asset_activity_event_count","activity_set_fingerprint","fifo_world_result_fingerprints","committed_at_utc","predecessor_preserved","schema201_canonical_write","cash_posting_count","provider_access","network_access","receipt_fingerprint","batch_predecessors"],
+ "properties":{
+  "asset_activity_correction_receipt_version":{"const":2},"action_type":{"const":"void"},
+  "context_fingerprint":{"$ref":"#/$defs/hash"},"plan_fingerprint":{"$ref":"#/$defs/hash"},"confirmation_fingerprint":{"$ref":"#/$defs/hash"},
+  "prior_generation_ref":{"$ref":"#/$defs/generation"},"generation_ref":{"$ref":"#/$defs/generation"},
+  "predecessor_event_ref":{"$ref":"#/$defs/event"},"predecessor_effect_fingerprint":{"$ref":"#/$defs/hash"},
+  "batch_predecessors":{"type":"array","minItems":2,"maxItems":1000,"uniqueItems":true,"items":{"type":"object","additionalProperties":false,"required":["event_ref","effect_fingerprint"],"properties":{"event_ref":{"$ref":"#/$defs/event"},"effect_fingerprint":{"$ref":"#/$defs/hash"}}}},
+  "replacement_event_ref":{"type":"null"},"replacement_event_count":{"const":0},"total_asset_activity_event_count":{"type":"integer","minimum":0},
+  "activity_set_fingerprint":{"$ref":"#/$defs/hash"},"fifo_world_result_fingerprints":{"type":"object","propertyNames":{"pattern":"^[a-f0-9]{64}$"},"additionalProperties":{"$ref":"#/$defs/hash"}},
+  "committed_at_utc":{"type":"string","format":"date-time"},"predecessor_preserved":{"const":true},"schema201_canonical_write":{"const":false},"cash_posting_count":{"const":0},"provider_access":{"const":false},"network_access":{"const":false},"receipt_fingerprint":{"$ref":"#/$defs/hash"}
+ },
+ "$defs":{"hash":{"type":"string","pattern":"^[a-f0-9]{64}$"},"generation":{"type":"string","pattern":"^gen_[a-f0-9]{32}$"},"event":{"type":"string","pattern":"^evt_[a-z0-9_]{4,60}$"}}
+}

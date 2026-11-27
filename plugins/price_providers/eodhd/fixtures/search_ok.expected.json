@@ -1,0 +1,35 @@
+{
+ "outcome": "ok",
+ "candidates": [
+  {
+   "symbol": "INVCO.XETRA",
+   "display_name": "Invented Company AG",
+   "exchange": "XETRA",
+   "quote_type": "equity",
+   "quote_currency": "EUR",
+   "isin": "XA00INVENT09"
+  },
+  {
+   "symbol": "INVCO.F",
+   "display_name": "Invented Company AG",
+   "exchange": "F",
+   "quote_type": "equity",
+   "quote_currency": "EUR",
+   "isin": "XA00INVENT09"
+  },
+  {
+   "symbol": "INVW.EUFUND",
+   "display_name": "Invented World Fund Acc",
+   "exchange": "EUFUND",
+   "quote_type": "fund",
+   "quote_currency": "EUR"
+  },
+  {
+   "symbol": "INVETF.XETRA",
+   "display_name": "Invented World UCITS ETF",
+   "exchange": "XETRA",
+   "quote_type": "etf",
+   "quote_currency": "EUR"
+  }
+ ]
+}

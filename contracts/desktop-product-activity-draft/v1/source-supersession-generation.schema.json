@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/source-supersession-generation.schema.json",
+  "title": "Immutable exact-source ActivityDraft supersession generation with mixed-source retirement",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_supersession_generation_version", "generation_ref", "predecessor_generation_ref", "context_fingerprint", "created_at_utc", "commands", "tombstones", "boundaries", "generation_fingerprint"],
+  "properties": {
+    "activity_draft_supersession_generation_version": {"const": 1},
+    "generation_ref": {"type": "string", "pattern": "^adg_[a-f0-9]{32}$"},
+    "predecessor_generation_ref": {"type": ["string", "null"], "pattern": "^adg_[a-f0-9]{32}$"},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "commands": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/command"}},
+    "tombstones": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/tombstone"}},
+    "boundaries": {"$ref": "source-supersession-boundaries.schema.json"},
+    "generation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "$defs": {
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["activity_draft_source_supersession_command_version", "context_fingerprint", "source_fingerprint", "replacement_source_fingerprint", "draft_count", "draft_set_fingerprint", "plan_fingerprint", "confirmation_fingerprint", "confirmed_at_utc", "superseded_at_utc", "command_fingerprint"],
+      "properties": {
+        "activity_draft_source_supersession_command_version": {"enum": [1, 2]},
+        "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "replacement_source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "draft_count": {"type": "integer", "minimum": 1},
+        "draft_set_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "plan_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "confirmation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "confirmed_at_utc": {"type": "string", "format": "date-time"},
+        "superseded_at_utc": {"type": "string", "format": "date-time"},
+        "command_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "tombstone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["activity_draft_tombstone_version", "draft_ref", "draft_fingerprint", "source_fingerprint", "replacement_source_fingerprint", "supersession_command_fingerprint", "superseded_at_utc"],
+      "properties": {
+        "activity_draft_tombstone_version": {"const": 1},
+        "draft_ref": {"type": "string", "pattern": "^adt_[a-f0-9]{32}$"},
+        "draft_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "replacement_source_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "supersession_command_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "superseded_at_utc": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

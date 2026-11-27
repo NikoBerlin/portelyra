@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-quantity-scale/v1/public-preview.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["asset_quantity_scale_public_preview_version", "status", "asset_label", "current_quantity_scale", "required_quantity_scale", "proposed_quantity_scale", "scale_revision_required", "warning_required", "rounding_performed", "affected_fifo_world_count", "confirmation_required", "catalog_write", "activity_fact_write", "fifo_rebuild_required", "provider_access", "network_access", "path_exposed", "internal_id_exposed"],
+  "properties": {
+    "asset_quantity_scale_public_preview_version": {"const": 1},
+    "status": {"enum": ["within_current_scale", "ready_for_confirmation"]},
+    "asset_label": {"type": "string", "minLength": 1, "maxLength": 160},
+    "current_quantity_scale": {"type": "integer", "minimum": 0, "maximum": 24},
+    "required_quantity_scale": {"type": ["integer", "null"], "minimum": 0, "maximum": 24},
+    "proposed_quantity_scale": {"type": "integer", "minimum": 0, "maximum": 24},
+    "scale_revision_required": {"type": "boolean"},
+    "warning_required": {"type": "boolean"},
+    "warning_code": {"const": "activity_quantity_scale_revision_required"},
+    "warning_text": {"type": "string", "minLength": 1, "maxLength": 500},
+    "rounding_performed": {"const": false},
+    "affected_fifo_world_count": {"type": "integer", "minimum": 0},
+    "confirmation_required": {"type": "boolean"},
+    "catalog_write": {"type": "boolean"},
+    "activity_fact_write": {"const": false},
+    "fifo_rebuild_required": {"type": "boolean"},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "path_exposed": {"const": false},
+    "internal_id_exposed": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "ready_for_confirmation"}}},
+      "then": {"required": ["warning_code", "warning_text"], "properties": {"scale_revision_required": {"const": true}, "warning_required": {"const": true}, "confirmation_required": {"const": true}, "catalog_write": {"const": true}}},
+      "else": {"properties": {"scale_revision_required": {"const": false}, "warning_required": {"const": false}, "confirmation_required": {"const": false}, "catalog_write": {"const": false}, "fifo_rebuild_required": {"const": false}}}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+capability,plan,fetch_worker,staged_review,market_writer,display,notes
+provider_access,no,one_confirmed_attempt,no,no,no,Separate fetch confirmation
+staging_write,no,owner_only,no,no,no,Exact Candidate only
+read_current_market,query_only,query_only,server_bound,query_only,no,No browser SQL
+read_current_provider_mapping,query_only,query_only,no,no,no,Immutable canonical SQLite handle
+render_visual_preview,no,no,yes,no,yes,Worker coordinates and exact table
+publish_market_history,no,no,no,sole_writer,no,Second exact-Candidate confirmation
+provider_refetch_on_publish,no,no,no,no,no,Never
+impute_non_trading_source_bar,no,no,no,no,no,Source OHLCV remains null
+project_effective_non_trading_close,no,no,yes,yes,read_only,Derived provenance-bearing value only
+reject_candidate,no,no,terminal,no,display_only,No schema-2300 write
+recover_uncertain_effect,no,one_confirmed_local_reconciliation,reconcile_review,reconcile_receipt,display_only,No blind retry
+write_activity_reward_tax_fx,no,no,no,no,no,Forbidden
+start_worker_from_display,no,no,no,no,no,Forbidden

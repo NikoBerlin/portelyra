@@ -1,0 +1,48 @@
+{
+ "candidates": [
+  {
+   "address": "bc1qinvented0000000000000000000000000000",
+   "at_utc": "2027-04-01T08:00:00Z",
+   "eur": null,
+   "eur_fee": null,
+   "fee_quantity": "0.00002",
+   "file_name": "crypto_bitbox_crypto_v1.csv",
+   "group": "",
+   "hash": "aaaaaaaa1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f",
+   "kind": "move",
+   "profile": "crypto_row",
+   "quantity": "-0.01",
+   "quote": "",
+   "row_key": "2f272600a273b16e9fb7a3b8c8831de59ceb6fc22a05b8449045b9123b3b3908",
+   "row_no": 1,
+   "source": "bitbox",
+   "ticker": "BTC",
+   "transaction_id": "",
+   "wallet": "crypto_bitbox_crypto_v1",
+   "zone": "UTC"
+  },
+  {
+   "address": "",
+   "at_utc": "2027-04-20T08:00:00Z",
+   "eur": null,
+   "eur_fee": null,
+   "fee_quantity": null,
+   "file_name": "crypto_bitbox_crypto_v1.csv",
+   "group": "",
+   "hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "kind": "move",
+   "profile": "crypto_row",
+   "quantity": "0.0005",
+   "quote": "",
+   "row_key": "ee6b44bdf002424f42a8b366ea9fb6853ad5bb2dc06686147a7e3ed1d5c95fd9",
+   "row_no": 2,
+   "source": "bitbox",
+   "ticker": "BTC",
+   "transaction_id": "",
+   "wallet": "crypto_bitbox_crypto_v1",
+   "zone": "UTC"
+  }
+ ],
+ "row_reasons": {},
+ "status": "multi"
+}

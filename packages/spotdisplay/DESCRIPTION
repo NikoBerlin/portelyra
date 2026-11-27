@@ -1,0 +1,10 @@
+Package: spotdisplay
+Type: Package
+Title: Portelyra Read-Only Desktop Display Boundary
+Version: 0.3.5
+Authors@R: person("Portelyra", "Maintainers", email = "maintainer@portelyra.invalid", role = c("aut", "cre"))
+Description: Capability-separated readers for verified completed Desktop Product artifacts.
+License: AGPL (>= 3)
+Encoding: UTF-8
+Depends: R (>= 4.2.0)
+Imports: digest, jsonlite

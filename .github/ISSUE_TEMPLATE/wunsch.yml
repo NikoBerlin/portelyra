@@ -1,0 +1,20 @@
+name: Wunsch
+description: Eine Idee oder fehlende Funktion.
+labels: ["wunsch"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bitte **keine privaten Daten anhängen**. Beispiele gern mit erfundenen Zahlen.
+  - type: textarea
+    id: anliegen
+    attributes:
+      label: Worum geht es?
+      description: Was möchten Sie erreichen, und woran hindert Portelyra Sie heute?
+    validations:
+      required: true
+  - type: textarea
+    id: vorschlag
+    attributes:
+      label: Vorschlag
+      description: Wie könnte es aussehen? Gern mit einem erfundenen Beispiel.

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "attempt_fingerprint",
+    "automatic_retry",
+    "canonical_write",
+    "cash_write",
+    "failure_code",
+    "failure_fingerprint",
+    "network_access",
+    "private_values_published",
+    "profile_revision_created",
+    "provider_access",
+    "route_rules_created",
+    "source_path_retained",
+    "source_read_attempted",
+    "source_read_completed",
+    "status",
+    "tax_write",
+    "time_zone_inferred",
+    "version"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "const": false
+    },
+    "attempt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "cash_write": {
+      "const": false
+    },
+    "failure_code": {
+      "type": "string"
+    },
+    "failure_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "network_access": {
+      "const": false
+    },
+    "private_values_published": {
+      "const": false
+    },
+    "profile_revision_created": {
+      "const": false
+    },
+    "provider_access": {
+      "const": false
+    },
+    "route_rules_created": {
+      "const": false
+    },
+    "source_path_retained": {
+      "const": false
+    },
+    "source_read_attempted": {
+      "type": "boolean"
+    },
+    "source_read_completed": {
+      "type": "boolean"
+    },
+    "status": {
+      "const": "terminal_failure_new_authorization_required"
+    },
+    "tax_write": {
+      "const": false
+    },
+    "time_zone_inferred": {
+      "const": false
+    },
+    "version": {
+      "const": 1
+    }
+  }
+}

@@ -1,0 +1,5 @@
+coverage_mode,cash_events_allowed,income_events_allowed,balance_claim,completeness_claim,reconciliation_required,missing_cash_interpretation
+not_tracked,no,no,none,none,no,unavailable_not_zero
+income_only,no,yes,none,income_only,no,unavailable_not_zero
+partial,yes,yes,delta_or_indicative,explicitly_partial,no,never_complete
+complete_reconciled,yes,yes,exact_as_of,explicitly_complete_for_period,yes,independent_observed_balance_required

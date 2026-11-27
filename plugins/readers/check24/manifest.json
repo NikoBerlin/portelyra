@@ -1,0 +1,82 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "check24",
+  "plugin_version": "1.1.0",
+  "publisher": "Portelyra",
+  "institution": "CHECK24",
+  "label": "CHECK24 Geldanlagecenter",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "6e1e02d84a993c20eb46a25f08b2bacb34bd58016bdef707887df6fdf6090586",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "1b344387dcdd62e8b03c749f9e99056b540b1869b5419ebaa374e12aceab691b"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "9bfc213a3f59f3d48d1995a57b838399ba7b9cd84c3f64d7b462b32fe74d5f7a"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "check24_geldanlage_v1",
+      "domain": "cash",
+      "label": "CHECK24 Geldanlagecenter, Tagesgeld (PDF-Druck oder Text)",
+      "document_kind": "Buchungsliste Tagesgeld (Browserdruck als PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "€"
+          ]
+        ]
+      },
+      "tested_formats": "Buchungsliste des Geldanlagecenters, im Browser als PDF gedruckt.",
+      "known_limits": [
+        "Kein Saldo im Ausdruck; ohne Saldoabgleich bleibt die Abdeckung unvollständig.",
+        "Steuern stehen als eigene Abbuchungen."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    }
+  ],
+  "intake": {
+    "key": "check24",
+    "label": "CHECK24 Geldanlage",
+    "folders": [
+      "check24",
+      "check24geldanlage"
+    ],
+    "downloads": [
+      "Tagesgeld-Umsätze als PDF-Druck (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "Tagesgeld",
+    "readers": [
+      [
+        "cash",
+        "check24_geldanlage_v1"
+      ]
+    ],
+    "account_words": [
+      "check24"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "check24_geldanlage_v1",
+      "input": "fixtures/check24_geldanlage_v1.txt",
+      "expected": "fixtures/check24_geldanlage_v1.expected.json"
+    }
+  ]
+}

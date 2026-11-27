@@ -1,0 +1,8 @@
+Baader Bank AG Weihenstephaner Straße 4 85716 Unterschleißheim                                   Smartbroker AG
+                                                                                                 Vorgangs-Nr.: 000
+
+                                   Perioden-Kontoauszug: USD-Konto
+Periodenauszugs-Nr. 7
+Buchungstag   Vorgang                                Valuta          Betrag in USD
+
+Kontostand in USD am 31.07.2027                                                             0,00

@@ -1,0 +1,25 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "EUR=X",
+  "provider_currency": "EUR",
+  "exchange": "CCY",
+  "timezone_name": "Europe/London",
+  "split_review_required": false,
+  "days": [
+   {
+    "trading_date": "2027-03-29",
+    "open_decimal": "0.91",
+    "high_decimal": "0.915",
+    "low_decimal": "0.909",
+    "close_decimal": "0.9123",
+    "adjusted_close_decimal": "0.9123",
+    "volume_decimal": "0",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-03-29T09:00:00Z"
+   }
+  ],
+  "live_session": null
+ }
+}

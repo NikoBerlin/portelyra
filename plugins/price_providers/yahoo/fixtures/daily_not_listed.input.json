@@ -1,0 +1,12 @@
+{
+ "op": "parse_response",
+ "operation": "daily_history",
+ "params": {
+  "provider_symbol": "INVENTEDCO.XY",
+  "start_date": "2027-03-29",
+  "end_date": "2027-03-31"
+ },
+ "status": 400,
+ "content_type": "application/json",
+ "body_text": "{\"chart\": {\"result\": null, \"error\": {\"code\": \"Bad Request\", \"description\": \"Data doesn't exist for startDate = 1, endDate = 2\"}}}"
+}

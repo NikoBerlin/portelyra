@@ -1,0 +1,10 @@
+Baader Bank AG Weihenstephaner Straße 4 85716 Unterschleißheim                                   Smartbroker AG
+                                                                                                 Vorgangs-Nr.: 900000011
+Dividendenabrechnung
+Ex-Tag: 20.05.2027
+Nominale                                   ISIN: US0378331005     WKN: 000000                                Ausschüttung
+STK 5                                      Invented Equity Fund                                         USD 0,82 p.STK
+Zahltag:                                   01.06.2027
+Umrechnungskurs:                           EUR/USD 1,1000000
+Bruttobetrag                                                                                                 USD                                 4,10
+Zu Gunsten Konto 9999000005                                                 Valuta: 01.06.2027               USD                                 3,48

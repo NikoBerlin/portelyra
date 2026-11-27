@@ -1,0 +1,32 @@
+code,meaning
+portfolio_csv_context_invalid,Trusted Runtime context or Data-Space binding is invalid
+portfolio_csv_source_invalid,Source path type ownership mode or symlink policy is invalid
+portfolio_csv_schema_unsupported,Canonical or Activity schema is unsupported or inconsistent
+portfolio_csv_source_changed,A preview-bound source changed before execution
+portfolio_csv_output_conflict,Create-only output already exists with different evidence
+portfolio_csv_bundle_invalid,Manifest layout hash serialization or references are invalid
+portfolio_csv_redundancy_invalid,Asset or Account projection differs from canonical portfolio rows
+portfolio_csv_decimal_invalid,Localized exact Decimal cannot roundtrip bijectively
+portfolio_csv_confirmation_required,The exact preview has not been confirmed
+portfolio_csv_confirmation_consumed,A consumed attempt has no reusable completion receipt
+portfolio_csv_write_failed,Owner-only create-only publication failed
+portfolio_csv_boundary_failed,Unexpected exchange boundary failure was redacted
+portfolio_csv_handoff_boundary_failed,Strict JSON process boundary rejected malformed oversized duplicate nonfinite or field-inexact input
+portfolio_csv_handoff_context_invalid,Trusted owner Runtime or Data-Space context is invalid
+portfolio_csv_handoff_staged_import_invalid,Staged import receipt bundle bytes ownership mode or fingerprint binding is invalid
+portfolio_csv_handoff_domain_invalid,Selected source records cannot form the requested closed domain plan
+portfolio_csv_handoff_dependency_missing,A required prior Catalog receipt current target mapping or linked Cash event is absent
+portfolio_csv_handoff_plan_stale,The target or staged source changed after the domain preview
+portfolio_csv_handoff_confirmation_invalid,Domain confirmation shape fingerprint scope or binding is invalid
+portfolio_csv_handoff_confirmation_expired,Domain confirmation is outside its exact validity interval
+portfolio_csv_handoff_confirmation_consumed,Domain confirmation attempt was consumed without a normal completion receipt
+portfolio_csv_handoff_effect_conflict,Intended domain effect conflicts with current facts receipt or partial canonical state
+portfolio_csv_handoff_lock_unavailable,The sole domain writer lock is not available
+portfolio_csv_handoff_write_failed,Atomic canonical candidate or owner-local evidence write failed
+portfolio_csv_handoff_recovery_missing,No unique uncompleted handoff attempt matches the opaque recovery reference
+portfolio_csv_handoff_recovery_invalid,Recovery attempt evidence shape owner mode or fingerprint is invalid
+portfolio_csv_handoff_recovery_stale,Source or effectless target state changed after the original attempt
+portfolio_csv_handoff_recovery_confirmation_invalid,Separate recovery confirmation shape scope fingerprint or validity is invalid
+portfolio_csv_handoff_recovery_confirmation_consumed,Recovery confirmation was already consumed for a different exact attempt
+portfolio_csv_handoff_cash_candidate_invalid,Cash candidate bundle store provenance or opaque selection is invalid
+synthetic_portfolio_csv_handoff_failpoint,Synthetic tests stopped after a declared handoff boundary without authorizing retry

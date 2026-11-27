@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/staged-imports-read-model.schema.json",
+  "title": "Portfolio CSV staged imports public read model v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_staged_imports_version","status","imports","path_exposed","context_exposed","fingerprint_exposed"],
+  "properties": {
+    "portfolio_csv_staged_imports_version": {"const": 1},
+    "status": {"enum": ["absent","available"]},
+    "imports": {"type": "array", "items": {"$ref": "#/$defs/import"}},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  },
+  "$defs": {
+    "state": {"enum": ["pending","recovery_required","completed"]},
+    "import": {
+      "type": "object", "additionalProperties": false,
+      "required": ["staged_import_handle","record_count","cash_coverage_status","handoffs"],
+      "properties": {
+        "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+        "record_count": {"type": "integer", "minimum": 0},
+        "cash_coverage_status": {"enum": ["absent_explicit","complete_current"]},
+        "handoffs": {
+          "type": "object", "additionalProperties": false,
+          "required": ["catalog","coupled_transaction","asset_activity","cash_coverage"],
+          "properties": {"catalog":{"$ref":"#/$defs/state"},"coupled_transaction":{"$ref":"#/$defs/state"},"asset_activity":{"$ref":"#/$defs/state"},"cash_coverage":{"$ref":"#/$defs/state"}}
+        }
+      }
+    }
+  }
+}

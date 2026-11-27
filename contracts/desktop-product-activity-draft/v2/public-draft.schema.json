@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v2/public-draft.schema.json",
+  "title": "Browser-safe ActivityDraft projection v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["selected_event_count", "activity_draft_public_version", "status", "origin_type", "action_type", "revision", "validation_status", "missing_fields", "issue_codes", "event_summary", "source_row_ordinal", "source_row_key", "unclassified_fee_summary", "valuation_summary", "can_resolve_unclassified_fee", "can_confirm", "can_resume", "canonical_write", "schema201_canonical_write", "cash_posting_count", "provider_access", "network_access", "path_exposed", "browser_internal_id_exposed", "fingerprint_exposed"],
+  "properties": {
+    "activity_draft_public_version": {"const": 2},
+    "selected_event_count": {"type": "integer", "minimum": 2, "maximum": 1000},
+    "status": {"enum": ["editing", "validated_ready", "validated_blocked", "applying", "committed", "superseded"]},
+    "origin_type": {"const": "correction"},
+    "action_type": {"const": "void"},
+    "revision": {"type": "integer", "minimum": 1},
+    "validation_status": {"enum": ["not_validated", "needs_input", "ready", "blocked"]},
+    "missing_fields": {"type": "array", "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,79}$"}, "uniqueItems": true},
+    "issue_codes": {"type": "array", "items": {"enum": ["activity_draft_fields_missing", "activity_draft_domain_invalid"]}, "uniqueItems": true},
+    "event_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_type", "event_time_evidence", "local_date", "local_time", "time_zone", "original_acquired_time_evidence", "original_acquired_local_date", "original_acquired_local_time", "original_acquired_time_zone", "amount_input_mode", "basis_evidence_mode", "quantity_decimal", "eligible_quantity_decimal", "unit_price_decimal", "gross_amount_decimal", "monetary_fee_decimal", "asset_fee_quantity_decimal", "provided_basis_decimal", "movement_context_code"],
+      "properties": {
+        "event_type": {"type": ["string", "null"]},
+        "event_time_evidence": {"type": ["string", "null"]},
+        "local_date": {"type": ["string", "null"]},
+        "local_time": {"type": ["string", "null"]},
+        "time_zone": {"type": ["string", "null"]},
+        "original_acquired_time_evidence": {"type": ["string", "null"]},
+        "original_acquired_local_date": {"type": ["string", "null"]},
+        "original_acquired_local_time": {"type": ["string", "null"]},
+        "original_acquired_time_zone": {"type": ["string", "null"]},
+        "amount_input_mode": {"type": ["string", "null"]},
+        "basis_evidence_mode": {"type": ["string", "null"]},
+        "quantity_decimal": {"type": ["string", "null"]},
+        "eligible_quantity_decimal": {"type": ["string", "null"]},
+        "unit_price_decimal": {"type": ["string", "null"]},
+        "gross_amount_decimal": {"type": ["string", "null"]},
+        "monetary_fee_decimal": {"type": ["string", "null"]},
+        "asset_fee_quantity_decimal": {"type": ["string", "null"]},
+        "provided_basis_decimal": {"type": ["string", "null"]},
+        "movement_context_code": {"type": ["string", "null"]}
+      }
+    },
+    "source_row_ordinal": {"type": ["integer", "null"], "minimum": 1},
+    "source_row_key": {"type": ["string", "null"], "maxLength": 200},
+    "unclassified_fee_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "decimal"],
+      "properties": {
+        "status": {"enum": ["not_present", "unresolved", "monetary_fee", "asset_fee_quantity", "zero_no_fee"]},
+        "decimal": {"type": ["string", "null"]}
+      }
+    },
+    "valuation_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "lifecycle", "source_value_mode", "price_currency"],
+      "properties": {
+        "origin": {"enum": ["not_recorded", "source_provided", "source_missing", "not_applicable"]},
+        "lifecycle": {"enum": ["not_recorded", "source_provided", "valuation_pending", "owner_manual_complete", "market_evidence_complete", "not_applicable"]},
+        "source_value_mode": {"enum": ["unit_price", "fiat_total", "none"]},
+        "price_currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"}
+      }
+    },
+    "can_resolve_unclassified_fee": {"type": "boolean"},
+    "can_confirm": {"type": "boolean"},
+    "can_resume": {"type": "boolean"},
+    "canonical_write": {"const": false},
+    "schema201_canonical_write": {"const": false},
+    "cash_posting_count": {"const": 0},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "path_exposed": {"const": false},
+    "browser_internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

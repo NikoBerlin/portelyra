@@ -1,0 +1,9 @@
+capability,owner,display_reader,provider,network
+exact_quantity_scale_assessment,true,false,false,false
+public_warning_preview,true,true,false,false
+durable_attempt_before_catalog,true,false,false,false
+sole_catalog_rescale_writer,true,false,false,false
+immutable_generation_republication,true,false,false,false
+affected_fifo_world_rebuild,true,false,false,false
+scale_decrease,false,false,false,false
+activity_fact_write,false,false,false,false

@@ -1,0 +1,187 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "scalable_capital",
+  "plugin_version": "1.2.1",
+  "publisher": "Portelyra",
+  "institution": "Scalable Capital",
+  "label": "Scalable Capital",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "231b2d1058cc117684207b5870f5fbaeab8b7604e93076ad0852c6e8d2e7101c",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "5fa5f690b39aa67ac96a7aec94d11dcddc327566262370b5c2530b87ed9cdf7c"
+    },
+    {
+      "path": "reader_securities.py",
+      "sha256": "dd66c247c5df9a9438efaf371297aa4dbc0d7bea8a02ff8d0014f31cede11be7"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "f4b0457232387b56be0c5454e48a90d909a88b0dfeb4df4939150485efd1ae72"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "scalable_tagesgeld_v1",
+      "domain": "cash",
+      "label": "Scalable Capital Tagesgeld (PDF oder Text)",
+      "document_kind": "Monatsauszug Tagesgeld (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "kontostand am"
+          ]
+        ]
+      },
+      "tested_formats": "Monatliche Kontoauszüge als PDF mit Zeitraum und den Zeilen „Kontostand am“.",
+      "known_limits": [
+        "Ein Dokument ohne „Kontostand am“ (etwa eine Dividendenabrechnung) wird abgewiesen.",
+        "Bis September 2026 nannte „Kontostand am <Beginn>“ den Stand nach dem ersten Tag; der erste Tag wird nur abgezogen, wenn der Auszug sonst nicht aufgeht.",
+        "Ein Monat ohne Bewegung wird nur mit dem Satz „Keine Kontobewegungen“ und gleichem Anfangs- und Endstand angenommen."
+      ],
+      "generator": true
+    },
+    {
+      "reader_id": "scalable_broker_v1",
+      "domain": "cash",
+      "label": "Scalable Capital Verrechnungskonto (PDF oder Text)",
+      "document_kind": "Monatsauszug Verrechnungskonto (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "kontostand am"
+          ]
+        ]
+      },
+      "tested_formats": "Monatliche Kontoauszüge des Verrechnungskontos als PDF, gleiche Vorlage wie das Tagesgeld.",
+      "known_limits": [
+        "Wertpapierabrechnungen, Gebühren und Ausschüttungen wirken nur auf den Saldo; als eigener Ertrag gelten nur Zinsen.",
+        "Ein Dokument ohne „Kontostand am“ wird abgewiesen."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "scalable_capital_v1",
+      "domain": "securities",
+      "label": "Scalable Capital (auch Baader-Abrechnungen für Scalable)",
+      "document_kind": "Wertpapierabrechnungen, Dividenden, Vorabpauschalen (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt",
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "baader bank"
+          ],
+          [
+            "scalable capital"
+          ],
+          [
+            "baaderbank.de"
+          ]
+        ]
+      },
+      "tested_formats": "PDF-Belege der Scalable Capital GmbH, der Scalable Capital Bank GmbH und der Baader Bank für Scalable: Wertpapierabrechnung Kauf und Verkauf, Dividende, Vorabpauschale je Fonds (Betrag vor Teilfreistellung; vorn und hinten gleich, gegen „Zu versteuern“ geprüft).",
+      "known_limits": [
+        "Depotüberträge und Einlieferungen, Steuerunterlagen, Depotauszüge und Informationen."
+      ],
+      "generator": true,
+      "profiles": {
+        "baader_scalable": {
+          "label": "Baader Bank für Scalable",
+          "institution_names": [
+            "Baader"
+          ],
+          "account_hint": "Scalable"
+        },
+        "scalable_capital": {
+          "label": "Scalable Capital",
+          "institution_names": [
+            "Scalable Capital"
+          ],
+          "depot_family": "scalable"
+        },
+        "scalable_bank": {
+          "label": "Scalable Capital Bank",
+          "institution_names": [
+            "Scalable Capital"
+          ],
+          "depot_family": "scalable"
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-15",
+        "checked_on": "2026-10-15"
+      }
+    }
+  ],
+  "intake": {
+    "key": "scalable",
+    "label": "Scalable Capital",
+    "folders": [
+      "scalable",
+      "scalablecapital"
+    ],
+    "downloads": [
+      "Wertpapierabrechnungen (Kauf, Verkauf) und Dividenden als PDF aus dem Postfach",
+      "Monatliche Kontoauszüge des Verrechnungskontos und des Tagesgelds als PDF"
+    ],
+    "period": "per_document",
+    "covers": "Depot, Verrechnungskonto und Tagesgeld",
+    "readers": [
+      [
+        "securities",
+        "scalable_capital_v1"
+      ],
+      [
+        "cash",
+        "scalable_broker_v1"
+      ],
+      [
+        "cash",
+        "scalable_tagesgeld_v1"
+      ]
+    ],
+    "account_words": [
+      "scalable"
+    ],
+    "tax_all_accounts": false
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "scalable_tagesgeld_v1",
+      "input": "fixtures/scalable_tagesgeld_v1.txt",
+      "expected": "fixtures/scalable_tagesgeld_v1.expected.json"
+    },
+    {
+      "domain": "cash",
+      "reader_id": "scalable_broker_v1",
+      "input": "fixtures/scalable_broker_v1.txt",
+      "expected": "fixtures/scalable_broker_v1.expected.json"
+    },
+    {
+      "domain": "securities",
+      "reader_id": "scalable_capital_v1",
+      "input": "fixtures/securities_scalable_capital_v1.txt",
+      "expected": "fixtures/securities_scalable_capital_v1.expected.json"
+    }
+  ]
+}

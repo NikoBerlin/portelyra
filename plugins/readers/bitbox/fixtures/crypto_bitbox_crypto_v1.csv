@@ -1,0 +1,3 @@
+Time,Type,Amount,Unit,Fee,Fee Unit,Address,Transaction ID,Historical value,Historical value currency,Note
+2027-04-01T08:00:00Z,sent,1000000,satoshi,2000,satoshi,bc1qinvented0000000000000000000000000000,aaaaaaaa1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f,500,EUR,
+2027-04-20T08:00:00Z,received,50000,satoshi,,,bc1qinventedown000000000000000000000000,cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc,25,EUR,

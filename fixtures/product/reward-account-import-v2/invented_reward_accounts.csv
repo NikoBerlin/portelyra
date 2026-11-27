@@ -1,0 +1,5 @@
+txid,refid,time,type,subtype,aclass,asset,amount,fee,balance,wallet
+syn_tx_01,syn_ref_01,2031-01-01 08:00:00,earn,reward,currency,SYN,1.25,0.05,5.00,staking_a
+syn_tx_02,syn_ref_02,2031-01-02 08:00:00,earn,reward,currency,SYN,2.00,0.00,7.00,staking_a
+syn_tx_03,syn_ref_03,2031-01-03 08:00:00,earn,reward,currency,SYN,3.00,0.10,10.00,staking_b
+syn_tx_04,syn_ref_04,2031-01-04 08:00:00,trade,spot,currency,SYN,1.00,0.01,11.00,spot

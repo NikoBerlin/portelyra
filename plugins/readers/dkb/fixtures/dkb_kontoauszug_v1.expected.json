@@ -1,0 +1,20 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "100",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-07-05",
+   "source_row_ordinal": 1,
+   "text": "Zahlungseingang"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_as_of_date": "2027-07-31",
+  "closing_balance_decimal": "30.93",
+  "opening_balance_decimal": "-69.07",
+  "period_from": "2027-07-01",
+  "period_to": "2027-07-31"
+ }
+}

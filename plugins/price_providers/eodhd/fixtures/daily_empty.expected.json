@@ -1,0 +1,15 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "INVCO.F",
+  "provider_currency": "EUR",
+  "exchange": "F",
+  "timezone_name": "Europe/Berlin",
+  "instrument_name": "",
+  "instrument_type": "",
+  "split_review_required": false,
+  "days": [],
+  "live_session": null,
+  "first_trade_date": null
+ }
+}

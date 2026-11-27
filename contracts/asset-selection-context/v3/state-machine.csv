@@ -1,0 +1,12 @@
+state,event,next_state,product_write,provider_access,calculation
+unavailable,load_v5_catalog_and_view,all_visible,no,no,no
+all_visible,choose_manual,manual_visible,no,no,no
+any_visible,apply_account_or_domain_filter,filter_visible_or_unavailable,no,no,no
+any_visible,enable_activity_interval,interval_visible_or_empty,no,no,no
+any_visible,enable_holding_interval_on_fresh_fifo,interval_visible_or_empty,no,no,no
+any_visible,enable_holding_interval_on_stale_fifo,unavailable,no,no,no
+any_visible,choose_union,union_visible_or_unavailable,no,no,no
+any_visible,choose_intersection,intersection_visible_or_unavailable,no,no,no
+any_visible,change_exclusions,reprojected,no,no,no
+any_visible,request_unsupported_cash,unavailable,no,no,no
+any,asset_center_handoff,manual_visible_interval_reset,no,no,no

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/market-history-review/v1/rejection-result.schema.json",
+  "title": "Desktop staged Market History rejection result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "market_history_review_rejection_result_version", "status", "review_ref",
+    "provider_access", "network_access", "market_history_write", "canonical_write",
+    "automatic_retry", "candidate_fingerprint_exposed", "context_exposed",
+    "paths_exposed", "internal_id_exposed"
+  ],
+  "properties": {
+    "market_history_review_rejection_result_version": {"const": 1},
+    "status": {"const": "rejected"},
+    "review_ref": {"type": "string", "pattern": "^mhr_[a-f0-9]{32}$"},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "market_history_write": {"const": false},
+    "canonical_write": {"const": false},
+    "automatic_retry": {"const": false},
+    "candidate_fingerprint_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "paths_exposed": {"const": false},
+    "internal_id_exposed": {"const": false}
+  }
+}

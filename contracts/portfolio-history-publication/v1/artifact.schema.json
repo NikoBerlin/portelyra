@@ -1,0 +1,2173 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "portfolio_history_v1",
+ "title": "Veroeffentlichte Tageshistorie (#473), Kern mit Verweisen auf die Teildateien (#503)",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "portfolio_history_version",
+  "portfolio_history_id",
+  "status",
+  "tenant_id",
+  "user_id",
+  "data_space_id",
+  "currency",
+  "first_day",
+  "last_day",
+  "day_count",
+  "portfolio",
+  "investment",
+  "assets",
+  "classes",
+  "net",
+  "benchmarks",
+  "groups",
+  "partitions",
+  "content_fingerprint",
+  "completed_at_utc",
+  "provider_access",
+  "network_access",
+  "canonical_write",
+  "artifact_fingerprint"
+ ],
+ "properties": {
+  "portfolio_history_version": {
+   "const": 1
+  },
+  "portfolio_history_id": {
+   "type": "string",
+   "pattern": "^phi_[a-f0-9]{32}$"
+  },
+  "status": {
+   "const": "completed"
+  },
+  "tenant_id": {
+   "type": "string",
+   "minLength": 3,
+   "maxLength": 80
+  },
+  "user_id": {
+   "type": "string",
+   "minLength": 3,
+   "maxLength": 80
+  },
+  "data_space_id": {
+   "type": "string",
+   "minLength": 8,
+   "maxLength": 64
+  },
+  "currency": {
+   "const": "EUR"
+  },
+  "first_day": {
+   "$ref": "#/$defs/day"
+  },
+  "last_day": {
+   "$ref": "#/$defs/day"
+  },
+  "day_count": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 40000
+  },
+  "portfolio": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "day",
+    "net_worth",
+    "market_value",
+    "cost_basis",
+    "unrealised",
+    "cash",
+    "cash_derived",
+    "complete",
+    "net_flow",
+    "flow_complete",
+    "contributed",
+    "flow_parts",
+    "in_transit",
+    "composition"
+   ],
+   "properties": {
+    "day": {
+     "$ref": "#/$defs/days"
+    },
+    "net_worth": {
+     "$ref": "#/$defs/amounts"
+    },
+    "market_value": {
+     "$ref": "#/$defs/amounts"
+    },
+    "cost_basis": {
+     "$ref": "#/$defs/amounts"
+    },
+    "unrealised": {
+     "$ref": "#/$defs/amounts"
+    },
+    "cash": {
+     "$ref": "#/$defs/amounts"
+    },
+    "cash_derived": {
+     "$ref": "#/$defs/amounts"
+    },
+    "complete": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "boolean"
+     }
+    },
+    "net_flow": {
+     "$ref": "#/$defs/amounts"
+    },
+    "flow_complete": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "boolean"
+     }
+    },
+    "contributed": {
+     "$ref": "#/$defs/amounts"
+    },
+    "flow_parts": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "cash_change",
+      "trades",
+      "income",
+      "deliveries"
+     ],
+     "properties": {
+      "cash_change": {
+       "$ref": "#/$defs/amounts"
+      },
+      "trades": {
+       "$ref": "#/$defs/amounts"
+      },
+      "income": {
+       "$ref": "#/$defs/amounts"
+      },
+      "deliveries": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    },
+    "in_transit": {
+     "$ref": "#/$defs/amounts"
+    },
+    "composition": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "classes",
+      "values"
+     ],
+     "properties": {
+      "classes": {
+       "type": "array",
+       "maxItems": 8,
+       "uniqueItems": true,
+       "items": {
+        "enum": [
+         "cash",
+         "transit",
+         "fund",
+         "equity",
+         "crypto",
+         "fx",
+         "derivative",
+         "other"
+        ]
+       }
+      },
+      "values": {
+       "type": "object",
+       "propertyNames": {
+        "enum": [
+         "cash",
+         "transit",
+         "fund",
+         "equity",
+         "crypto",
+         "fx",
+         "derivative",
+         "other"
+        ]
+       },
+       "additionalProperties": {
+        "$ref": "#/$defs/amounts"
+       }
+      }
+     }
+    }
+   }
+  },
+  "investment": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "value",
+    "net_flow",
+    "flow_parts",
+    "flow_complete",
+    "contributed",
+    "twr_index",
+    "periods",
+    "year_spans",
+    "intervals",
+    "cash_accounts",
+    "accounts_flows",
+    "in_transit",
+    "outside_count",
+    "unset_count",
+    "assets_only",
+    "net_cost_pooled"
+   ],
+   "properties": {
+    "value": {
+     "$ref": "#/$defs/amounts"
+    },
+    "net_flow": {
+     "$ref": "#/$defs/amounts"
+    },
+    "flow_parts": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "cash_change",
+      "trades",
+      "income",
+      "deliveries"
+     ],
+     "properties": {
+      "cash_change": {
+       "$ref": "#/$defs/amounts"
+      },
+      "trades": {
+       "$ref": "#/$defs/amounts"
+      },
+      "income": {
+       "$ref": "#/$defs/amounts"
+      },
+      "deliveries": {
+       "$ref": "#/$defs/amounts"
+      }
+     }
+    },
+    "flow_complete": {
+     "type": "array",
+     "maxItems": 40000,
+     "items": {
+      "type": "boolean"
+     }
+    },
+    "contributed": {
+     "$ref": "#/$defs/amounts"
+    },
+    "twr_index": {
+     "$ref": "#/$defs/amounts"
+    },
+    "periods": {
+     "$ref": "#/$defs/period_rows"
+    },
+    "year_spans": {
+     "$ref": "#/$defs/period_rows"
+    },
+    "intervals": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "day",
+      "week",
+      "month",
+      "quarter"
+     ],
+     "properties": {
+      "day": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "rows",
+        "summaries"
+       ],
+       "properties": {
+        "rows": {
+         "type": "array",
+         "maxItems": 40000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "key",
+           "start_day",
+           "end_day",
+           "gain",
+           "realized",
+           "unrealised_change",
+           "income",
+           "net_flow",
+           "twr",
+           "mwr"
+          ],
+          "properties": {
+           "key": {
+            "type": "string",
+            "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?|-W[0-9]{2}|-Q[1-4])$"
+           },
+           "start_day": {
+            "$ref": "#/$defs/day"
+           },
+           "end_day": {
+            "$ref": "#/$defs/day"
+           },
+           "gain": {
+            "$ref": "#/$defs/amount"
+           },
+           "realized": {
+            "$ref": "#/$defs/amount"
+           },
+           "unrealised_change": {
+            "$ref": "#/$defs/amount"
+           },
+           "income": {
+            "$ref": "#/$defs/amount"
+           },
+           "net_flow": {
+            "$ref": "#/$defs/amount"
+           },
+           "twr": {
+            "$ref": "#/$defs/amount"
+           },
+           "mwr": {
+            "$ref": "#/$defs/amount"
+           }
+          }
+         }
+        },
+        "summaries": {
+         "type": "array",
+         "maxItems": 5000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "window",
+           "count",
+           "metrics"
+          ],
+          "properties": {
+           "window": {
+            "type": "string",
+            "maxLength": 20
+           },
+           "count": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "metrics": {
+            "type": "object",
+            "propertyNames": {
+             "enum": [
+              "gain",
+              "realized",
+              "unrealised_change",
+              "income",
+              "net_flow",
+              "twr",
+              "mwr"
+             ]
+            },
+            "additionalProperties": {
+             "type": "object",
+             "additionalProperties": false,
+             "required": [
+              "mean",
+              "median",
+              "best",
+              "worst",
+              "positive_share",
+              "count"
+             ],
+             "properties": {
+              "mean": {
+               "$ref": "#/$defs/amount"
+              },
+              "median": {
+               "$ref": "#/$defs/amount"
+              },
+              "best": {
+               "$ref": "#/$defs/amount"
+              },
+              "worst": {
+               "$ref": "#/$defs/amount"
+              },
+              "positive_share": {
+               "$ref": "#/$defs/amount"
+              },
+              "count": {
+               "type": "integer",
+               "minimum": 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "week": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "rows",
+        "summaries"
+       ],
+       "properties": {
+        "rows": {
+         "type": "array",
+         "maxItems": 40000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "key",
+           "start_day",
+           "end_day",
+           "gain",
+           "realized",
+           "unrealised_change",
+           "income",
+           "net_flow",
+           "twr",
+           "mwr"
+          ],
+          "properties": {
+           "key": {
+            "type": "string",
+            "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?|-W[0-9]{2}|-Q[1-4])$"
+           },
+           "start_day": {
+            "$ref": "#/$defs/day"
+           },
+           "end_day": {
+            "$ref": "#/$defs/day"
+           },
+           "gain": {
+            "$ref": "#/$defs/amount"
+           },
+           "realized": {
+            "$ref": "#/$defs/amount"
+           },
+           "unrealised_change": {
+            "$ref": "#/$defs/amount"
+           },
+           "income": {
+            "$ref": "#/$defs/amount"
+           },
+           "net_flow": {
+            "$ref": "#/$defs/amount"
+           },
+           "twr": {
+            "$ref": "#/$defs/amount"
+           },
+           "mwr": {
+            "$ref": "#/$defs/amount"
+           }
+          }
+         }
+        },
+        "summaries": {
+         "type": "array",
+         "maxItems": 5000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "window",
+           "count",
+           "metrics"
+          ],
+          "properties": {
+           "window": {
+            "type": "string",
+            "maxLength": 20
+           },
+           "count": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "metrics": {
+            "type": "object",
+            "propertyNames": {
+             "enum": [
+              "gain",
+              "realized",
+              "unrealised_change",
+              "income",
+              "net_flow",
+              "twr",
+              "mwr"
+             ]
+            },
+            "additionalProperties": {
+             "type": "object",
+             "additionalProperties": false,
+             "required": [
+              "mean",
+              "median",
+              "best",
+              "worst",
+              "positive_share",
+              "count"
+             ],
+             "properties": {
+              "mean": {
+               "$ref": "#/$defs/amount"
+              },
+              "median": {
+               "$ref": "#/$defs/amount"
+              },
+              "best": {
+               "$ref": "#/$defs/amount"
+              },
+              "worst": {
+               "$ref": "#/$defs/amount"
+              },
+              "positive_share": {
+               "$ref": "#/$defs/amount"
+              },
+              "count": {
+               "type": "integer",
+               "minimum": 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "month": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "rows",
+        "summaries"
+       ],
+       "properties": {
+        "rows": {
+         "type": "array",
+         "maxItems": 40000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "key",
+           "start_day",
+           "end_day",
+           "gain",
+           "realized",
+           "unrealised_change",
+           "income",
+           "net_flow",
+           "twr",
+           "mwr"
+          ],
+          "properties": {
+           "key": {
+            "type": "string",
+            "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?|-W[0-9]{2}|-Q[1-4])$"
+           },
+           "start_day": {
+            "$ref": "#/$defs/day"
+           },
+           "end_day": {
+            "$ref": "#/$defs/day"
+           },
+           "gain": {
+            "$ref": "#/$defs/amount"
+           },
+           "realized": {
+            "$ref": "#/$defs/amount"
+           },
+           "unrealised_change": {
+            "$ref": "#/$defs/amount"
+           },
+           "income": {
+            "$ref": "#/$defs/amount"
+           },
+           "net_flow": {
+            "$ref": "#/$defs/amount"
+           },
+           "twr": {
+            "$ref": "#/$defs/amount"
+           },
+           "mwr": {
+            "$ref": "#/$defs/amount"
+           }
+          }
+         }
+        },
+        "summaries": {
+         "type": "array",
+         "maxItems": 5000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "window",
+           "count",
+           "metrics"
+          ],
+          "properties": {
+           "window": {
+            "type": "string",
+            "maxLength": 20
+           },
+           "count": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "metrics": {
+            "type": "object",
+            "propertyNames": {
+             "enum": [
+              "gain",
+              "realized",
+              "unrealised_change",
+              "income",
+              "net_flow",
+              "twr",
+              "mwr"
+             ]
+            },
+            "additionalProperties": {
+             "type": "object",
+             "additionalProperties": false,
+             "required": [
+              "mean",
+              "median",
+              "best",
+              "worst",
+              "positive_share",
+              "count"
+             ],
+             "properties": {
+              "mean": {
+               "$ref": "#/$defs/amount"
+              },
+              "median": {
+               "$ref": "#/$defs/amount"
+              },
+              "best": {
+               "$ref": "#/$defs/amount"
+              },
+              "worst": {
+               "$ref": "#/$defs/amount"
+              },
+              "positive_share": {
+               "$ref": "#/$defs/amount"
+              },
+              "count": {
+               "type": "integer",
+               "minimum": 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "quarter": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "rows",
+        "summaries"
+       ],
+       "properties": {
+        "rows": {
+         "type": "array",
+         "maxItems": 40000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "key",
+           "start_day",
+           "end_day",
+           "gain",
+           "realized",
+           "unrealised_change",
+           "income",
+           "net_flow",
+           "twr",
+           "mwr"
+          ],
+          "properties": {
+           "key": {
+            "type": "string",
+            "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?|-W[0-9]{2}|-Q[1-4])$"
+           },
+           "start_day": {
+            "$ref": "#/$defs/day"
+           },
+           "end_day": {
+            "$ref": "#/$defs/day"
+           },
+           "gain": {
+            "$ref": "#/$defs/amount"
+           },
+           "realized": {
+            "$ref": "#/$defs/amount"
+           },
+           "unrealised_change": {
+            "$ref": "#/$defs/amount"
+           },
+           "income": {
+            "$ref": "#/$defs/amount"
+           },
+           "net_flow": {
+            "$ref": "#/$defs/amount"
+           },
+           "twr": {
+            "$ref": "#/$defs/amount"
+           },
+           "mwr": {
+            "$ref": "#/$defs/amount"
+           }
+          }
+         }
+        },
+        "summaries": {
+         "type": "array",
+         "maxItems": 5000,
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "window",
+           "count",
+           "metrics"
+          ],
+          "properties": {
+           "window": {
+            "type": "string",
+            "maxLength": 20
+           },
+           "count": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "metrics": {
+            "type": "object",
+            "propertyNames": {
+             "enum": [
+              "gain",
+              "realized",
+              "unrealised_change",
+              "income",
+              "net_flow",
+              "twr",
+              "mwr"
+             ]
+            },
+            "additionalProperties": {
+             "type": "object",
+             "additionalProperties": false,
+             "required": [
+              "mean",
+              "median",
+              "best",
+              "worst",
+              "positive_share",
+              "count"
+             ],
+             "properties": {
+              "mean": {
+               "$ref": "#/$defs/amount"
+              },
+              "median": {
+               "$ref": "#/$defs/amount"
+              },
+              "best": {
+               "$ref": "#/$defs/amount"
+              },
+              "worst": {
+               "$ref": "#/$defs/amount"
+              },
+              "positive_share": {
+               "$ref": "#/$defs/amount"
+              },
+              "count": {
+               "type": "integer",
+               "minimum": 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "cash_accounts": {
+     "type": "array",
+     "maxItems": 2000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "label",
+       "institution",
+       "in_investment",
+       "scope_set",
+       "years"
+      ],
+      "properties": {
+       "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240
+       },
+       "institution": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240
+       },
+       "in_investment": {
+        "type": "boolean"
+       },
+       "scope_set": {
+        "type": "boolean"
+       },
+       "years": {
+        "type": "array",
+        "maxItems": 200,
+        "items": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+          "year",
+          "interest",
+          "average_balance",
+          "counted_days",
+          "yield_annualised"
+         ],
+         "properties": {
+          "year": {
+           "type": "integer",
+           "minimum": 1900,
+           "maximum": 2999
+          },
+          "interest": {
+           "$ref": "#/$defs/amount"
+          },
+          "average_balance": {
+           "$ref": "#/$defs/amount"
+          },
+          "counted_days": {
+           "type": "integer",
+           "minimum": 0
+          },
+          "yield_annualised": {
+           "$ref": "#/$defs/amount"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "accounts_flows": {
+     "type": "array",
+     "maxItems": 2000,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "account",
+       "institution",
+       "in_investment",
+       "without_cash_account",
+       "inflow",
+       "outflow",
+       "transfer_in",
+       "transfer_out",
+       "months"
+      ],
+      "properties": {
+       "account": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+       },
+       "institution": {
+        "type": [
+         "string",
+         "null"
+        ],
+        "maxLength": 240
+       },
+       "in_investment": {
+        "type": [
+         "boolean",
+         "null"
+        ]
+       },
+       "without_cash_account": {
+        "type": "boolean"
+       },
+       "inflow": {
+        "$ref": "#/$defs/amount"
+       },
+       "outflow": {
+        "$ref": "#/$defs/amount"
+       },
+       "transfer_in": {
+        "$ref": "#/$defs/amount"
+       },
+       "transfer_out": {
+        "$ref": "#/$defs/amount"
+       },
+       "months": {
+        "type": "array",
+        "maxItems": 2400,
+        "items": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+          "month",
+          "inflow",
+          "outflow",
+          "transfer_in",
+          "transfer_out",
+          "valuta_count"
+         ],
+         "properties": {
+          "month": {
+           "type": "string",
+           "pattern": "^[0-9]{4}-[0-9]{2}$"
+          },
+          "inflow": {
+           "$ref": "#/$defs/amount"
+          },
+          "outflow": {
+           "$ref": "#/$defs/amount"
+          },
+          "transfer_in": {
+           "$ref": "#/$defs/amount"
+          },
+          "transfer_out": {
+           "$ref": "#/$defs/amount"
+          },
+          "valuta_count": {
+           "type": "integer",
+           "minimum": 0
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "in_transit": {
+     "$ref": "#/$defs/amounts"
+    },
+    "outside_count": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "unset_count": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "net_cost": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/amounts"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "valuation_flow": {
+     "$ref": "#/$defs/amounts"
+    },
+    "assets_only": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "twr_index",
+      "periods",
+      "year_spans"
+     ],
+     "properties": {
+      "twr_index": {
+       "$ref": "#/$defs/amounts"
+      },
+      "periods": {
+       "$ref": "#/$defs/period_rows"
+      },
+      "year_spans": {
+       "$ref": "#/$defs/period_rows"
+      }
+     }
+    },
+    "net_cost_pooled": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/amounts"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   }
+  },
+  "assets": {
+   "type": "array",
+   "maxItems": 5000,
+   "items": {
+    "$ref": "#/$defs/asset"
+   }
+  },
+  "classes": {
+   "type": "array",
+   "maxItems": 20,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "class",
+     "periods",
+     "part"
+    ],
+    "properties": {
+     "class": {
+      "enum": [
+       "cash",
+       "transit",
+       "fund",
+       "equity",
+       "crypto",
+       "fx",
+       "derivative",
+       "other"
+      ]
+     },
+     "periods": {
+      "$ref": "#/$defs/period_rows"
+     },
+     "part": {
+      "$ref": "#/$defs/sha"
+     }
+    }
+   }
+  },
+  "content_fingerprint": {
+   "$ref": "#/$defs/sha"
+  },
+  "completed_at_utc": {
+   "type": "string",
+   "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+  },
+  "provider_access": {
+   "const": false
+  },
+  "network_access": {
+   "const": false
+  },
+  "canonical_write": {
+   "const": false
+  },
+  "artifact_fingerprint": {
+   "$ref": "#/$defs/sha"
+  },
+  "net": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "status",
+    "available"
+   ],
+   "properties": {
+    "status": {
+     "type": "string",
+     "pattern": "^[a-z][a-z0-9_]{0,79}$"
+    },
+    "reason": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[a-z][a-z0-9_]{0,79}$"
+    },
+    "available": {
+     "type": "boolean"
+    },
+    "module": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "plugin_id"
+     ],
+     "properties": {
+      "plugin_id": {
+       "type": "string",
+       "pattern": "^[a-z][a-z0-9_]{0,79}$"
+      },
+      "plugin_version": {
+       "type": "string",
+       "maxLength": 40
+      },
+      "rules_fingerprint": {
+       "$ref": "#/$defs/sha"
+      }
+     }
+    },
+    "checked_day": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/day"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "checked_positions": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "mismatches": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "years": {
+     "type": "array",
+     "maxItems": 200,
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "tax_year",
+       "status"
+      ],
+      "properties": {
+       "tax_year": {
+        "type": "integer",
+        "minimum": 1900,
+        "maximum": 2200
+       },
+       "status": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{0,79}$"
+       }
+      }
+     }
+    },
+    "fee_rate_portfolio": {
+     "$ref": "#/$defs/amount"
+    },
+    "realized": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "inputs",
+      "events",
+      "interest",
+      "years"
+     ],
+     "properties": {
+      "inputs": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/sha"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "events": {
+       "type": "object",
+       "maxProperties": 200000,
+       "propertyNames": {
+        "pattern": "^ntx_[0-9a-f]{32}$"
+       },
+       "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "kind",
+         "type",
+         "day",
+         "tax",
+         "reason",
+         "asset"
+        ],
+        "properties": {
+         "kind": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,79}$"
+         },
+         "type": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,79}$"
+         },
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "tax": {
+          "$ref": "#/$defs/amount"
+         },
+         "reason": {
+          "type": [
+           "string",
+           "null"
+          ],
+          "pattern": "^[a-z][a-z0-9_]{0,79}$"
+         },
+         "asset": {
+          "type": "string",
+          "pattern": "^ntx_[0-9a-f]{32}$"
+         },
+         "tax_pooled": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      "interest": {
+       "type": "array",
+       "maxItems": 200000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "account",
+         "day",
+         "tax"
+        ],
+        "properties": {
+         "account": {
+          "type": "string",
+          "maxLength": 240
+         },
+         "day": {
+          "$ref": "#/$defs/day"
+         },
+         "tax": {
+          "$ref": "#/$defs/amount"
+         }
+        }
+       }
+      },
+      "years": {
+       "type": "object",
+       "maxProperties": 200,
+       "propertyNames": {
+        "pattern": "^[0-9]{4}$"
+       },
+       "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{0,79}$"
+       }
+      }
+     }
+    },
+    "warning_years": {
+     "type": "array",
+     "maxItems": 200,
+     "items": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2200
+     }
+    },
+    "pool": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "status",
+      "available"
+     ],
+     "properties": {
+      "status": {
+       "type": [
+        "string",
+        "null"
+       ],
+       "pattern": "^[a-z][a-z0-9_]{0,79}$"
+      },
+      "reason": {
+       "type": [
+        "string",
+        "null"
+       ],
+       "pattern": "^[a-z][a-z0-9_]{0,79}$"
+      },
+      "available": {
+       "type": "boolean"
+      },
+      "checked_day": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/day"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "blocked_days": {
+       "type": [
+        "integer",
+        "null"
+       ],
+       "minimum": 0
+      },
+      "approximated_days": {
+       "type": [
+        "integer",
+        "null"
+       ],
+       "minimum": 0
+      },
+      "inputs": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/sha"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "version": {
+       "type": [
+        "string",
+        "null"
+       ],
+       "maxLength": 80
+      },
+      "last_year": {
+       "type": [
+        "integer",
+        "null"
+       ],
+       "minimum": 1900,
+       "maximum": 2200
+      },
+      "years": {
+       "type": "object",
+       "maxProperties": 200,
+       "propertyNames": {
+        "pattern": "^[0-9]{4}$"
+       },
+       "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "status"
+        ],
+        "properties": {
+         "status": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,79}$"
+         },
+         "open_count": {
+          "type": "integer",
+          "minimum": 0
+         },
+         "tax": {
+          "$ref": "#/$defs/amount"
+         },
+         "parameters": {
+          "type": "array",
+          "maxItems": 5000,
+          "items": {
+           "type": "object"
+          }
+         },
+         "items": {
+          "type": "array",
+          "maxItems": 200000,
+          "items": {
+           "type": "object",
+           "additionalProperties": false,
+           "required": [
+            "ref",
+            "asset",
+            "kind",
+            "day",
+            "bucket",
+            "institution",
+            "taxable",
+            "account"
+           ],
+           "properties": {
+            "ref": {
+             "type": "string",
+             "pattern": "^ntx_[0-9a-f]{32}$"
+            },
+            "asset": {
+             "type": [
+              "string",
+              "null"
+             ],
+             "pattern": "^ntx_[0-9a-f]{32}$"
+            },
+            "kind": {
+             "enum": [
+              "disposal",
+              "income",
+              "interest"
+             ]
+            },
+            "day": {
+             "$ref": "#/$defs/day"
+            },
+            "bucket": {
+             "enum": [
+              "capital_equity",
+              "capital_general",
+              "private_disposal",
+              "other_income"
+             ]
+            },
+            "institution": {
+             "type": "string",
+             "maxLength": 240
+            },
+            "taxable": {
+             "$ref": "#/$defs/amount"
+            },
+            "account": {
+             "type": [
+              "string",
+              "null"
+             ],
+             "maxLength": 240
+            },
+            "tax": {
+             "$ref": "#/$defs/amount"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "not_assessed_years": {
+     "type": "array",
+     "maxItems": 200,
+     "items": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2200
+     }
+    }
+   }
+  },
+  "groups": {
+   "type": "array",
+   "maxItems": 500,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "ordinal",
+     "label",
+     "partition",
+     "member_labels",
+     "new_labels",
+     "missing_count",
+     "periods",
+     "part"
+    ],
+    "properties": {
+     "ordinal": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+     },
+     "partition": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "maxLength": 80
+     },
+     "member_labels": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": {
+       "type": "string",
+       "minLength": 1,
+       "maxLength": 240
+      }
+     },
+     "new_labels": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": {
+       "type": "string",
+       "minLength": 1,
+       "maxLength": 240
+      }
+     },
+     "missing_count": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "periods": {
+      "$ref": "#/$defs/period_rows"
+     },
+     "part": {
+      "$ref": "#/$defs/sha"
+     }
+    }
+   }
+  },
+  "partitions": {
+   "type": "array",
+   "maxItems": 100,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "label",
+     "groups",
+     "unassigned",
+     "uncovered_labels"
+    ],
+    "properties": {
+     "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+     },
+     "groups": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+       "type": "integer",
+       "minimum": 1
+      }
+     },
+     "unassigned": {
+      "$ref": "#/$defs/amounts"
+     },
+     "uncovered_labels": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": {
+       "type": "string",
+       "minLength": 1,
+       "maxLength": 240
+      }
+     }
+    }
+   }
+  },
+  "benchmarks": {
+   "type": "array",
+   "maxItems": 10,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "ordinal",
+     "label",
+     "components",
+     "basis",
+     "levels",
+     "first_day",
+     "missing_days"
+    ],
+    "properties": {
+     "ordinal": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+     },
+     "components": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "label",
+        "asset_type",
+        "weight_percent",
+        "basis"
+       ],
+       "properties": {
+        "label": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 240
+        },
+        "asset_type": {
+         "type": "string",
+         "maxLength": 40
+        },
+        "weight_percent": {
+         "type": "string",
+         "pattern": "^[0-9]{1,3}(\\.[0-9]{1,2})?$"
+        },
+        "basis": {
+         "enum": [
+          "total_return",
+          "price_only",
+          "no_prices"
+         ]
+        }
+       }
+      }
+     },
+     "basis": {
+      "enum": [
+       "total_return",
+       "mixed",
+       "price_only",
+       "unavailable"
+      ]
+     },
+     "levels": {
+      "$ref": "#/$defs/amounts"
+     },
+     "first_day": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/day"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "missing_days": {
+      "type": "integer",
+      "minimum": 0
+     }
+    }
+   }
+  },
+  "watched": {
+   "type": "array",
+   "maxItems": 5000,
+   "description": "Beobachtete, nie gehaltene Assets mit Kursreihe (#526); die Reihe steht in der Teildatei.",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "ordinal",
+     "asset_key",
+     "label",
+     "asset_type",
+     "valuation_method",
+     "part"
+    ],
+    "properties": {
+     "ordinal": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "asset_key": {
+      "type": "string",
+      "pattern": "^akey_[a-f0-9]{24}$"
+     },
+     "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+     },
+     "asset_type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+     },
+     "valuation_method": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "maxLength": 40
+     },
+     "part": {
+      "$ref": "#/$defs/sha"
+     }
+    }
+   }
+  }
+ },
+ "$defs": {
+  "day": {
+   "type": "string",
+   "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  },
+  "days": {
+   "type": "array",
+   "maxItems": 40000,
+   "items": {
+    "type": "string",
+    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+   }
+  },
+  "amount": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "pattern": "^-?[0-9]+(\\.[0-9]+)?(/[1-9][0-9]*)?$"
+  },
+  "amounts": {
+   "type": "array",
+   "maxItems": 40000,
+   "items": {
+    "type": [
+     "string",
+     "null"
+    ],
+    "pattern": "^-?[0-9]+(\\.[0-9]+)?(/[1-9][0-9]*)?$"
+   }
+  },
+  "sha": {
+   "type": "string",
+   "pattern": "^[a-f0-9]{64}$"
+  },
+  "asset": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "ordinal",
+    "label",
+    "asset_type",
+    "valuation_method",
+    "performance",
+    "last_value",
+    "part"
+   ],
+   "properties": {
+    "ordinal": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "asset_key": {
+     "type": "string",
+     "pattern": "^akey_[a-f0-9]{24}$"
+    },
+    "label": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 240
+    },
+    "asset_type": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 40
+    },
+    "valuation_method": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "maxLength": 40
+    },
+    "performance": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "periods"
+     ],
+     "properties": {
+      "periods": {
+       "$ref": "#/$defs/period_rows"
+      }
+     }
+    },
+    "projection": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "day",
+      "price",
+      "quantity",
+      "fee_rate",
+      "fee_source",
+      "tax",
+      "accounts"
+     ],
+     "properties": {
+      "day": {
+       "$ref": "#/$defs/day"
+      },
+      "price": {
+       "$ref": "#/$defs/amount"
+      },
+      "quantity": {
+       "$ref": "#/$defs/amount"
+      },
+      "fee_rate": {
+       "$ref": "#/$defs/amount"
+      },
+      "fee_source": {
+       "enum": [
+        "asset",
+        "portfolio",
+        "none"
+       ]
+      },
+      "tax": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "status"
+       ],
+       "properties": {
+        "status": {
+         "type": "string",
+         "pattern": "^[a-z][a-z0-9_]{0,79}$"
+        },
+        "classification": {
+         "type": "string",
+         "pattern": "^[a-z][a-z0-9_]{0,79}$"
+        },
+        "bucket": {
+         "type": "string",
+         "pattern": "^[a-z][a-z0-9_]{0,79}$"
+        },
+        "partial_exemption": {
+         "$ref": "#/$defs/amount"
+        },
+        "rate": {
+         "$ref": "#/$defs/amount"
+        },
+        "solidarity": {
+         "$ref": "#/$defs/amount"
+        },
+        "church": {
+         "$ref": "#/$defs/amount"
+        },
+        "holding_period": {
+         "type": "boolean"
+        },
+        "tax_year": {
+         "type": "integer",
+         "minimum": 2000,
+         "maximum": 2100
+        }
+       }
+      },
+      "accounts": {
+       "type": "array",
+       "maxItems": 1000,
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "account",
+         "method",
+         "quantity",
+         "lots"
+        ],
+        "properties": {
+         "account": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+         },
+         "method": {
+          "enum": [
+           "fifo",
+           "average"
+          ]
+         },
+         "quantity": {
+          "$ref": "#/$defs/amount"
+         },
+         "lots": {
+          "type": "array",
+          "maxItems": 40000,
+          "items": {
+           "type": "object",
+           "additionalProperties": false,
+           "required": [
+            "acquired",
+            "quantity",
+            "basis",
+            "free_from"
+           ],
+           "properties": {
+            "acquired": {
+             "anyOf": [
+              {
+               "$ref": "#/$defs/day"
+              },
+              {
+               "type": "null"
+              }
+             ]
+            },
+            "quantity": {
+             "$ref": "#/$defs/amount"
+            },
+            "basis": {
+             "$ref": "#/$defs/amount"
+            },
+            "free_from": {
+             "anyOf": [
+              {
+               "$ref": "#/$defs/day"
+              },
+              {
+               "type": "null"
+              }
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "held_accounts": {
+     "type": "array",
+     "maxItems": 1000,
+     "items": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+     }
+    },
+    "last_value": {
+     "$ref": "#/$defs/amount"
+    },
+    "last_quantity": {
+     "$ref": "#/$defs/amount"
+    },
+    "part": {
+     "$ref": "#/$defs/sha"
+    }
+   }
+  },
+  "period_row": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "period",
+    "label",
+    "start_day",
+    "end_day",
+    "day_span",
+    "held_days",
+    "start_value",
+    "end_value",
+    "net_flow",
+    "gain",
+    "twr",
+    "twr_annualised",
+    "mwr",
+    "mwr_annualised",
+    "complete",
+    "valuation_flow",
+    "bridge"
+   ],
+   "properties": {
+    "period": {
+     "type": "string",
+     "pattern": "^(all|[0-9]+y|[0-9]{4}|[0-9]{4}-[0-9]{4})$"
+    },
+    "label": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 60
+    },
+    "start_day": {
+     "$ref": "#/$defs/day"
+    },
+    "end_day": {
+     "$ref": "#/$defs/day"
+    },
+    "day_span": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "held_days": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "start_value": {
+     "$ref": "#/$defs/amount"
+    },
+    "end_value": {
+     "$ref": "#/$defs/amount"
+    },
+    "net_flow": {
+     "$ref": "#/$defs/amount"
+    },
+    "gain": {
+     "$ref": "#/$defs/amount"
+    },
+    "twr": {
+     "$ref": "#/$defs/amount"
+    },
+    "twr_annualised": {
+     "$ref": "#/$defs/amount"
+    },
+    "mwr": {
+     "$ref": "#/$defs/amount"
+    },
+    "mwr_annualised": {
+     "$ref": "#/$defs/amount"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "valuation_flow": {
+     "$ref": "#/$defs/amount"
+    },
+    "bridge": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "realized",
+      "unrealised_change",
+      "income",
+      "disposal_change",
+      "delivery_change",
+      "fee_basis",
+      "rest"
+     ],
+     "properties": {
+      "realized": {
+       "$ref": "#/$defs/amount"
+      },
+      "unrealised_change": {
+       "$ref": "#/$defs/amount"
+      },
+      "income": {
+       "$ref": "#/$defs/amount"
+      },
+      "disposal_change": {
+       "$ref": "#/$defs/amount"
+      },
+      "delivery_change": {
+       "$ref": "#/$defs/amount"
+      },
+      "fee_basis": {
+       "$ref": "#/$defs/amount"
+      },
+      "interest": {
+       "$ref": "#/$defs/amount"
+      },
+      "rest": {
+       "$ref": "#/$defs/amount"
+      },
+      "net": {
+       "$ref": "#/$defs/net_bridge"
+      },
+      "net_pooled": {
+       "$ref": "#/$defs/net_bridge"
+      }
+     }
+    },
+    "benchmarks": {
+     "type": "array",
+     "maxItems": 10,
+     "items": {
+      "$ref": "#/$defs/benchmark_row"
+     }
+    }
+   }
+  },
+  "period_rows": {
+   "type": "array",
+   "maxItems": 5000,
+   "items": {
+    "$ref": "#/$defs/period_row"
+   }
+  },
+  "net_bridge": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "tax_realized",
+    "tax_income",
+    "cost_change",
+    "gain",
+    "warning"
+   ],
+   "properties": {
+    "tax_realized": {
+     "$ref": "#/$defs/amount"
+    },
+    "tax_income": {
+     "$ref": "#/$defs/amount"
+    },
+    "cost_change": {
+     "$ref": "#/$defs/amount"
+    },
+    "gain": {
+     "$ref": "#/$defs/amount"
+    },
+    "warning": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[a-z][a-z0-9_]{0,79}$"
+    }
+   }
+  },
+  "benchmark_row": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "return",
+    "annualised",
+    "missing_days"
+   ],
+   "properties": {
+    "return": {
+     "$ref": "#/$defs/amount"
+    },
+    "annualised": {
+     "$ref": "#/$defs/amount"
+    },
+    "missing_days": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  }
+ }
+}

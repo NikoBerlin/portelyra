@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-receipt.schema.json",
+  "title": "Portfolio CSV separate domain handoff receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_receipt_version","status","domain","context_fingerprint","bundle_fingerprint","handoff_plan_fingerprint","confirmation_fingerprint","recovery_confirmation_fingerprint","attempt_fingerprint","committed_at_utc","created_count","reused_count","canonical_write","candidate_only","effect","other_domain_write","provider_access","network_access","receipt_fingerprint"],
+  "properties": {
+    "portfolio_csv_handoff_receipt_version": {"const": 1},
+    "status": {"enum": ["completed","recovered_completed"]},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "context_fingerprint": {"$ref": "#/$defs/sha256"},
+    "bundle_fingerprint": {"$ref": "#/$defs/sha256"},
+    "handoff_plan_fingerprint": {"$ref": "#/$defs/sha256"},
+    "confirmation_fingerprint": {"$ref": "#/$defs/sha256"},
+    "recovery_confirmation_fingerprint": {"oneOf": [{"type":"null"},{"$ref":"#/$defs/sha256"}]},
+    "attempt_fingerprint": {"$ref": "#/$defs/sha256"},
+    "committed_at_utc": {"$ref": "#/$defs/utc"},
+    "created_count": {"type": "integer", "minimum": 0},
+    "reused_count": {"type": "integer", "minimum": 0},
+    "canonical_write": {"type": "boolean"},
+    "candidate_only": {"type": "boolean"},
+    "effect": {"type": "object", "minProperties": 1},
+    "other_domain_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "receipt_fingerprint": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

@@ -1,0 +1,711 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "statement-reader-plugin/v1/securities-result.schema.json",
+  "title": "Ergebnis eines Lesers in den Bereichen securities und fx (Übertragungsform: Dezimalzahlen als {\"decimal_text\": ...})",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "kind",
+        "profile",
+        "local_date"
+      ],
+      "properties": {
+        "status": {
+          "const": "candidate"
+        },
+        "kind": {
+          "enum": [
+            "buy",
+            "sell",
+            "dividend",
+            "deposit",
+            "advance_lump_sum",
+            "stock_split"
+          ]
+        },
+        "profile": {
+          "type": "string"
+        },
+        "local_date": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "local_time": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$"
+            }
+          ]
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "unit_price": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "gross_amount": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "fee_amount": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "eligible_quantity": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "net_amount": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "taxes_amount": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "withholding_amount": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "bank_gain": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "credited_quantity": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "ratio_numerator": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "ratio_denominator": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "ex_date": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            }
+          ]
+        },
+        "valuta": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            }
+          ]
+        },
+        "record_date": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            }
+          ]
+        },
+        "isin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "security_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "order_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "depot_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_on_cash_statement": {
+          "type": "boolean"
+        },
+        "statement_checked": {
+          "const": false
+        },
+        "calculation_year": {
+          "type": "integer"
+        },
+        "export_position": {
+          "type": "integer"
+        },
+        "executed_at_utc": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason_code"
+      ],
+      "properties": {
+        "status": {
+          "const": "not_importable"
+        },
+        "reason_code": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "depot_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "candidates",
+        "row_reasons"
+      ],
+      "properties": {
+        "status": {
+          "const": "multi"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "kind",
+              "profile",
+              "local_date"
+            ],
+            "properties": {
+              "status": {
+                "const": "candidate"
+              },
+              "kind": {
+                "enum": [
+                  "buy",
+                  "sell",
+                  "dividend",
+                  "deposit",
+                  "advance_lump_sum",
+                  "stock_split"
+                ]
+              },
+              "profile": {
+                "type": "string"
+              },
+              "local_date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "local_time": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$"
+                  }
+                ]
+              },
+              "quantity": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "unit_price": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "gross_amount": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "fee_amount": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "eligible_quantity": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "net_amount": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "taxes_amount": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "withholding_amount": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "bank_gain": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "credited_quantity": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "ratio_numerator": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "ratio_denominator": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                  }
+                ]
+              },
+              "ex_date": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                  }
+                ]
+              },
+              "valuta": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                  }
+                ]
+              },
+              "record_date": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                  }
+                ]
+              },
+              "isin": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "security_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "order_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "depot_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "currency": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fee_on_cash_statement": {
+                "type": "boolean"
+              },
+              "statement_checked": {
+                "const": false
+              },
+              "calculation_year": {
+                "type": "integer"
+              },
+              "export_position": {
+                "type": "integer"
+              },
+              "executed_at_utc": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "row_reasons": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "currency",
+        "lines",
+        "start",
+        "end"
+      ],
+      "properties": {
+        "status": {
+          "const": "statement"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    }
+                  ]
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "decimal_text"
+                  ],
+                  "properties": {
+                    "decimal_text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "end": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    }
+                  ]
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "decimal_text"
+                  ],
+                  "properties": {
+                    "decimal_text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "booked",
+              "valuta",
+              "text",
+              "amount",
+              "kinds"
+            ],
+            "properties": {
+              "booked": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "valuta": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "text": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "decimal_text"
+                ],
+                "properties": {
+                  "decimal_text": {
+                    "type": "string"
+                  }
+                }
+              },
+              "kinds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "enum": [
+                    "buy",
+                    "sell",
+                    "dividend",
+                    "deposit",
+                    "advance_lump_sum",
+                    "stock_split"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

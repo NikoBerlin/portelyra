@@ -1,0 +1,15 @@
+normalized_header,role,status
+aclass,asset_class,explicit_alias
+amount,signed_quantity_decimal,explicit_alias
+asset,source_asset_key,explicit_alias
+asset_class,asset_class,explicit_alias
+balance,balance_reconciliation_evidence,explicit_alias
+fee,asset_fee_quantity_decimal,explicit_alias
+reference_id,source_group_id,explicit_alias
+refid,source_group_id,explicit_alias
+subtype,source_subtype,explicit_alias
+time,event_time_text,explicit_alias
+timestamp,event_time_text,explicit_alias
+transaction_id,source_row_id,explicit_alias
+txid,source_row_id,explicit_alias
+type,source_type,explicit_alias

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "attempt_fingerprint",
+    "automatic_retry",
+    "candidate_generation_authorized",
+    "canonical_write",
+    "cash_write",
+    "context_binding_sha256",
+    "network_access",
+    "private_values_published",
+    "profile_revision_created",
+    "profiler_receipt_fingerprint",
+    "provider_access",
+    "receipt_fingerprint",
+    "seal_fingerprint",
+    "source_path_retained",
+    "source_read_attempt_count",
+    "status",
+    "tax_write",
+    "version"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "const": false
+    },
+    "attempt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "automatic_retry": {
+      "const": false
+    },
+    "candidate_generation_authorized": {
+      "const": false
+    },
+    "canonical_write": {
+      "const": false
+    },
+    "cash_write": {
+      "const": false
+    },
+    "context_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "network_access": {
+      "const": false
+    },
+    "private_values_published": {
+      "const": false
+    },
+    "profile_revision_created": {
+      "const": false
+    },
+    "profiler_receipt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "provider_access": {
+      "const": false
+    },
+    "receipt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "seal_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_path_retained": {
+      "const": false
+    },
+    "source_read_attempt_count": {
+      "const": 1
+    },
+    "status": {
+      "const": "reward_account_owner_preview_sealed_disabled"
+    },
+    "tax_write": {
+      "const": false
+    },
+    "version": {
+      "const": 2
+    }
+  }
+}

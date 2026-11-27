@@ -1,0 +1,40 @@
+{
+ "outcome": "ok",
+ "result": {
+  "provider_symbol": "INVUS.US",
+  "provider_currency": "USD",
+  "exchange": "US",
+  "timezone_name": "America/New_York",
+  "instrument_name": "",
+  "instrument_type": "",
+  "split_review_required": false,
+  "days": [
+   {
+    "trading_date": "2027-01-05",
+    "open_decimal": "348",
+    "high_decimal": "351",
+    "low_decimal": "347.5",
+    "close_decimal": "350",
+    "adjusted_close_decimal": "349.12",
+    "volume_decimal": "42001337",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-01-05T17:00:00Z"
+   },
+   {
+    "trading_date": "2027-01-06",
+    "open_decimal": "350",
+    "high_decimal": "350",
+    "low_decimal": "344",
+    "close_decimal": "345.25",
+    "adjusted_close_decimal": "344.380000000000003",
+    "volume_decimal": "0",
+    "day_status": "observed",
+    "corporate_action_status": "none_reported",
+    "observed_at_utc": "2027-01-06T17:00:00Z"
+   }
+  ],
+  "live_session": null,
+  "first_trade_date": null
+ }
+}

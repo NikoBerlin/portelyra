@@ -1,0 +1,27 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "oneOf":[
+    {"type":"object","additionalProperties":false,"required":["version","status","reason"],"properties":{"version":{"const":1},"status":{"const":"unavailable"},"reason":{"const":"complete_noncash_history_required"}}},
+    {"type":"object","additionalProperties":false,
+      "required":["version","status","scope","coverage_from","cutoff_date","source_fingerprint","identity_fingerprint","revision_fingerprint","assets","accounts","events","custody_positions","cash_supported","provider_access","calculation_started"],
+      "properties":{
+        "version":{"const":1},"status":{"const":"complete"},"scope":{"const":"portfolio_noncash"},"coverage_from":{"const":"genesis"},
+        "cutoff_date":{"type":"string","format":"date"},"source_fingerprint":{"$ref":"#/$defs/hash"},"identity_fingerprint":{"$ref":"#/$defs/hash"},"revision_fingerprint":{"$ref":"#/$defs/hash"},
+        "cash_supported":{"const":false},"provider_access":{"const":false},"calculation_started":{"const":false},
+        "assets":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["asset_ordinal","asset_label","asset_type"],"properties":{"asset_ordinal":{"$ref":"#/$defs/ordinal"},"asset_label":{"type":"string","minLength":1},"asset_type":{"type":"string","minLength":1}}}},
+        "accounts":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["account_ordinal","account_label"],"properties":{"account_ordinal":{"$ref":"#/$defs/ordinal"},"account_label":{"type":"string","minLength":1}}}},
+        "events":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["event_ordinal","asset_ordinal","account_ordinals","local_date","event_type","quantity_before_decimal","quantity_after_decimal","custody_changes"],"properties":{
+          "event_ordinal":{"$ref":"#/$defs/ordinal"},"asset_ordinal":{"$ref":"#/$defs/ordinal"},"account_ordinals":{"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/ordinal"}},
+          "local_date":{"type":"string","format":"date"},"event_type":{"type":"string","minLength":1},"quantity_before_decimal":{"$ref":"#/$defs/quantity"},"quantity_after_decimal":{"$ref":"#/$defs/quantity"},
+          "custody_changes":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/custody"}}
+        }}},
+        "custody_positions":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["asset_ordinal","account_ordinal","quantity_decimal"],"properties":{"asset_ordinal":{"$ref":"#/$defs/ordinal"},"account_ordinal":{"$ref":"#/$defs/ordinal"},"quantity_decimal":{"$ref":"#/$defs/quantity"}}}}
+      }
+    }
+  ],
+  "$defs":{
+    "hash":{"type":"string","pattern":"^[a-f0-9]{64}$"},"ordinal":{"type":"integer","minimum":1},
+    "quantity":{"type":"string","pattern":"^(0|[1-9][0-9]*)(\\.[0-9]+)?$","maxLength":1000},
+    "custody":{"type":"object","additionalProperties":false,"required":["account_ordinal","quantity_decimal"],"properties":{"account_ordinal":{"$ref":"#/$defs/ordinal"},"quantity_decimal":{"$ref":"#/$defs/quantity"}}}
+  }
+}

@@ -1,0 +1,4 @@
+Transactions,,,,,,,,,
+ID,Timestamp,Transaction Type,Asset,Quantity Transacted,Price Currency,Price at Transaction,Total (inclusive of fees and/or spread),Fees and/or Spread,Notes
+C1,2026-02-01 11:12:13 UTC,Staking Income,ADA,0.5,,€0.35,€0.175,€0.01,x
+C2,2026-02-02 11:12:13 UTC,Buy,ADA,2,,€0.4,€0.8,€0.02,x

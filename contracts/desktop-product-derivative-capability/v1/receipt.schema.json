@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:portelyra:desktop-product-derivative-capability:v1:receipt",
+  "type":"object","additionalProperties":false,
+  "required":["contract_version","status","source_schema_version","target_schema_version","preview_fingerprint","confirmation_fingerprint","source_fingerprint","source_data_fingerprint","migration_source_fingerprint","target_fingerprint","counts","committed_at_utc","generic_derivative_catalog_enabled","generic_derivative_activity_enabled_by_release_patch","derivative_coupled_transaction_enabled","lifecycle_metadata_inferred","automatic_cash_posting_enabled","provider_access","network_access","receipt_fingerprint"],
+  "properties":{
+    "contract_version":{"const":1},"status":{"const":"enabled"},"source_schema_version":{"const":201},"target_schema_version":{"const":202},
+    "preview_fingerprint":{"$ref":"#/$defs/fp"},"confirmation_fingerprint":{"$ref":"#/$defs/fp"},"source_fingerprint":{"$ref":"#/$defs/fp"},"source_data_fingerprint":{"$ref":"#/$defs/fp"},"migration_source_fingerprint":{"$ref":"#/$defs/fp"},"target_fingerprint":{"$ref":"#/$defs/fp"},"receipt_fingerprint":{"$ref":"#/$defs/fp"},
+    "counts":{"type":"object","additionalProperties":false,"required":["portfolio_count","account_count","asset_count","transaction_count","posting_count","audit_count"],"properties":{"portfolio_count":{"type":"integer","minimum":0},"account_count":{"type":"integer","minimum":0},"asset_count":{"type":"integer","minimum":0},"transaction_count":{"type":"integer","minimum":0},"posting_count":{"type":"integer","minimum":0},"audit_count":{"type":"integer","minimum":0}}},
+    "committed_at_utc":{"$ref":"#/$defs/utc"},"generic_derivative_catalog_enabled":{"const":true},"generic_derivative_activity_enabled_by_release_patch":{"const":true},"derivative_coupled_transaction_enabled":{"const":false},"lifecycle_metadata_inferred":{"const":false},"automatic_cash_posting_enabled":{"const":false},"provider_access":{"const":false},"network_access":{"const":false}
+  },
+  "$defs":{"fp":{"type":"string","pattern":"^[a-f0-9]{64}$"},"utc":{"type":"string","pattern":"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}}
+}

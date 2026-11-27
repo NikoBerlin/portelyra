@@ -1,0 +1,8 @@
+state,event,next_state
+idle,select_metadata,selected_unread
+selected_unread,authorize_once,authorization_consumed
+authorization_consumed,read_once,private_review
+private_review,observe,owner_profile_observed_disabled
+private_review,reject,owner_profile_rejected_disabled
+authorization_consumed,failure,terminal_failure_new_authorization_required
+private_review,failure,terminal_failure_new_authorization_required

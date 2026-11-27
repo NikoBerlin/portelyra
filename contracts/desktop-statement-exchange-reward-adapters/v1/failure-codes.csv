@@ -1,0 +1,7 @@
+failure_code,meaning
+statement_exchange_adapter_header_invalid,Required exact source roles are absent
+statement_exchange_adapter_overlay_invalid,Owner BSDEX format overlay is incomplete or invalid
+statement_exchange_adapter_period_invalid,Selected inclusive Reward period is absent or invalid
+statement_exchange_adapter_profile_invalid,Adapter profile is unknown or unavailable
+statement_exchange_adapter_source_invalid,CSV bytes or row shape are invalid
+statement_exchange_adapter_timezone_invalid,Confirmed IANA timezone is invalid

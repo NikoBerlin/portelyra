@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/market-history-review/v1/trusted-review.schema.json",
+  "title": "Portelyra Market History Trusted Review Binding v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "market_history_trusted_review_version", "review_ref", "staged_candidate_fingerprint",
+    "public_review_fingerprint", "trusted_review_fingerprint"
+  ],
+  "properties": {
+    "market_history_trusted_review_version": {"const": 1},
+    "review_ref": {"type": "string", "pattern": "^mhr_[a-f0-9]{32}$"},
+    "staged_candidate_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "public_review_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "trusted_review_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

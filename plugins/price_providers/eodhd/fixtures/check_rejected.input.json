@@ -1,0 +1,8 @@
+{
+ "op": "parse_response",
+ "operation": "credential_check",
+ "params": {},
+ "status": 401,
+ "content_type": "text/plain",
+ "body_text": "Unauthenticated"
+}

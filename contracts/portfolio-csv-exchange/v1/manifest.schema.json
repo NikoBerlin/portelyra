@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:portfolio-csv-exchange:v1:manifest",
+  "title": "Portfolio CSV Exchange v1 Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "format", "encoding", "line_ending", "delimiter", "decimal_mark", "quote_mode", "source_context_fingerprint", "canonical_schema_version", "activity_schema_version", "cash_coverage_schema_version", "evidence_cutoff_at_utc", "canonical_record_count", "asset_projection_count", "account_projection_count", "domain_fingerprint", "activity_set_fingerprint", "dimensions", "files", "bundle_fingerprint"],
+  "properties": {
+    "contract_version": {"const": 1},
+    "format": {"const": "portelyra_redundant_portfolio_csv_v1"},
+    "encoding": {"const": "UTF-8"},
+    "line_ending": {"const": "LF"},
+    "delimiter": {"const": ","},
+    "decimal_mark": {"const": ","},
+    "quote_mode": {"const": "RFC4180_ALL"},
+    "source_context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "canonical_schema_version": {"enum": [201, 202]},
+    "activity_schema_version": {"enum": [0, 401]},
+    "cash_coverage_schema_version": {"enum": [0, 2901]},
+    "evidence_cutoff_at_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "canonical_record_count": {"type": "integer", "minimum": 1},
+    "asset_projection_count": {"type": "integer", "minimum": 0},
+    "account_projection_count": {"type": "integer", "minimum": 0},
+    "domain_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "activity_set_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "dimensions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["catalog", "provider_mapping", "coupled_transaction", "asset_activity", "cash_coverage", "tax_policy", "market_history", "audit_history"],
+      "properties": {
+        "catalog": {"const": "complete_current"},
+        "provider_mapping": {"const": "complete_current"},
+        "coupled_transaction": {"const": "complete_current"},
+        "asset_activity": {"const": "complete_current"},
+        "cash_coverage": {"enum": ["absent_explicit", "complete_current"]},
+        "tax_policy": {"const": "not_included"},
+        "market_history": {"const": "not_included"},
+        "audit_history": {"const": "not_included"}
+      }
+    },
+    "files": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["relative_path", "row_count", "sha256", "scope_role", "scope_ref"],
+        "properties": {
+          "relative_path": {"type": "string", "pattern": "^(portfolio[.]csv|assets/[a-z]{2,4}x_[a-f0-9]{24}[.]csv|accounts/[a-z]{2,4}x_[a-f0-9]{24}[.]csv)$"},
+          "row_count": {"type": "integer", "minimum": 1},
+          "sha256": {"$ref": "#/$defs/fingerprint"},
+          "scope_role": {"enum": ["portfolio", "asset", "account"]},
+          "scope_ref": {"type": "string", "minLength": 3, "maxLength": 64}
+        }
+      }
+    },
+    "bundle_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

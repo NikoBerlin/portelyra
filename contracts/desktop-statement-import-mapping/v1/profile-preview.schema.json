@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-statement-import-mapping/v1/profile-preview.schema.json",
+  "title": "Statement mapping profile change preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "changes", "changed_mapping_count", "stale_target_count", "applicable", "canonical_write", "provider_access", "network_access"],
+  "properties": {
+    "status": {"const": "statement_mapping_profile_preview"},
+    "changes": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["source_asset_key", "source_account_key", "event_type", "change_state", "target_status"], "properties": {
+      "source_asset_key": {"type": "string"},
+      "source_account_key": {"type": "string"},
+      "event_type": {"type": "string"},
+      "change_state": {"enum": ["unchanged", "added", "removed", "changed"]},
+      "target_status": {"enum": ["available", "stale", "not_applicable"]}
+    }}},
+    "changed_mapping_count": {"type": "integer", "minimum": 0},
+    "stale_target_count": {"type": "integer", "minimum": 0},
+    "applicable": {"type": "boolean"},
+    "canonical_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false}
+  }
+}

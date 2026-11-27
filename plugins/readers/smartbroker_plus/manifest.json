@@ -1,0 +1,174 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "smartbroker_plus",
+  "plugin_version": "1.2.0",
+  "publisher": "Portelyra",
+  "institution": "Smartbroker+",
+  "label": "Smartbroker+ (Baader Bank)",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "17dfd0998bb853aa1e2a8819beef5daf0f73a13597aaa6e9f357f1f5a01ea71c",
+  "modules": [
+    {
+      "path": "reader_securities.py",
+      "sha256": "5be1ffee026b075b7eecdd44fa2d86f6b094cbdf6d185fac22c90638ceb7bc03"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "641ec8ca93d12bec3d7434629cfdcb95cdb7ba8c075f0c968e9ac391c9610342"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "smartbroker_plus_v1",
+      "domain": "securities",
+      "label": "Smartbroker+ (CSV-Export und Dividendenabrechnungen)",
+      "document_kind": "Transaktionsexport (CSV) und Dividendenabrechnungen (PDF)",
+      "extensions": [
+        ".pdf",
+        ".txt",
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "depotnummer",
+            "transaktionstyp",
+            "isin",
+            "name 1",
+            "stücke",
+            "ausführungszeitpunkt",
+            "ausführungskurs",
+            "handelswährung",
+            "kontowährung",
+            "anlagebetrag in kontowährung",
+            "gebühren in kontowährung",
+            "steuern in kontowährung",
+            "gesamtbetrag in kontowährung",
+            "status der transaktion"
+          ],
+          [
+            "smartbroker"
+          ]
+        ]
+      },
+      "tested_formats": "CSV-Export der Transaktionen aus SMARTBROKER+ (nur Zeilen mit Status CONFIRMED; Zeiten lokal) und Dividendenabrechnungen der Baader Bank für Smartbroker als PDF (Brutto in Fremdwährung über den Umrechnungskurs des Belegs, Datum = Zahltag).",
+      "known_limits": [
+        "Vorläufige (PRECONFIRMED) und stornierte Orders, Devisengeschäfte (folgen mit #449), Steuerunterlagen."
+      ],
+      "generator": true,
+      "profiles": {
+        "smartbroker": {
+          "label": "Smartbroker+ (Baader Bank)",
+          "institution_names": [
+            "Baader",
+            "Smartbroker",
+            "Smartbroker+"
+          ],
+          "account_hint": "Smartbroker"
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-15",
+        "checked_on": "2026-10-15"
+      }
+    },
+    {
+      "reader_id": "smartbroker_plus_fx_v1",
+      "domain": "fx",
+      "label": "Smartbroker+ Devisenkonten (USD, CHF …)",
+      "document_kind": "Devisenbelege, Perioden-Kontoauszüge der Fremdwährungskonten, Dividenden in Fremdwährung (PDF oder Text)",
+      "extensions": [
+        ".pdf",
+        ".txt",
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "perioden-kontoauszug:",
+            "-konto"
+          ],
+          [
+            "devisengeschäft"
+          ],
+          [
+            "devisengeschaft"
+          ],
+          [
+            "zu gunsten konto",
+            "umrechnungskurs: eur/"
+          ]
+        ]
+      },
+      "tested_formats": "Perioden-Kontoauszüge der Fremdwährungskonten (Saldo-Anker), Devisenbelege der Baader Bank für Smartbroker (Kauf und Verkauf der Währung; Kurs = EUR-Gegenwert ÷ Fremdwährungsbetrag, Datum = Abschlussdatum) und Dividendenabrechnungen mit Gutschrift in Fremdwährung (Zugang aus Ertrag; EUR-Wert über den Umrechnungskurs des Belegs, Datum = Valuta).",
+      "known_limits": [
+        "Gutschriften auf dem EUR-Verrechnungskonto (liest der Wertpapier-Leser), Wertpapierabrechnungen, Steuerunterlagen; die Dividende selbst bucht der Wertpapier-Leser."
+      ],
+      "generator": true,
+      "profiles": {
+        "smartbroker_fx": {
+          "label": "Smartbroker+ Devisenkonto",
+          "institution_names": [
+            "Baader",
+            "Smartbroker",
+            "Smartbroker+"
+          ]
+        }
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    }
+  ],
+  "intake": {
+    "key": "smartbroker",
+    "label": "Smartbroker+",
+    "folders": [
+      "smartbroker",
+      "smartbrokerplus",
+      "smartbroker+"
+    ],
+    "downloads": [
+      "CSV-Export der Transaktionen (vom Kontobeginn bis heute)",
+      "Dividendenabrechnungen und Devisenbelege der Baader Bank als PDF",
+      "Perioden-Kontoauszüge aller Konten als PDF (Verrechnung, Tagesgeld, Fremdwährungskonten), auch ohne Bewegung"
+    ],
+    "period": "since_start",
+    "covers": "Depot, Verrechnungskonto, Tagesgeld und die Fremdwährungskonten (USD, CHF …)",
+    "readers": [
+      [
+        "securities",
+        "smartbroker_plus_v1"
+      ],
+      [
+        "fx",
+        "smartbroker_plus_fx_v1"
+      ],
+      [
+        "cash",
+        "baader_perioden_v1"
+      ]
+    ],
+    "account_words": [
+      "smartbroker"
+    ],
+    "tax_all_accounts": false
+  },
+  "fixtures": [
+    {
+      "domain": "securities",
+      "reader_id": "smartbroker_plus_v1",
+      "input": "fixtures/securities_smartbroker_plus_v1.txt",
+      "expected": "fixtures/securities_smartbroker_plus_v1.expected.json"
+    },
+    {
+      "domain": "fx",
+      "reader_id": "smartbroker_plus_fx_v1",
+      "input": "fixtures/fx_smartbroker_plus_fx_v1.txt",
+      "expected": "fixtures/fx_smartbroker_plus_fx_v1.expected.json"
+    }
+  ]
+}

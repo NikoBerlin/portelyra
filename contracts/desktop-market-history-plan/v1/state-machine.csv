@@ -1,0 +1,7 @@
+state,event,next_state,provider_access,market_history_write
+history_available,plan_incremental,planned_missing,no,no
+history_available,plan_source_gaps,planned_gaps,no,no
+history_available,plan_full_refresh,planned_full,no,no
+planned_missing,confirm_execution,external_worker_required,separate,separate
+planned_gaps,confirm_execution,external_worker_required,separate,separate
+planned_full,confirm_execution,external_worker_required,separate,separate

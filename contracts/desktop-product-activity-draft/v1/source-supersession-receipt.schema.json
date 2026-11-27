@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/source-supersession-receipt.schema.json",
+  "title": "Browser-safe exact-source ActivityDraft supersession receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_source_supersession_receipt_version", "status", "superseded_draft_count", "active_superseded_draft_count", "supersession_generation_updated", "original_draft_files_rewritten", "legacy_writer_blocked", "schema201_canonical_write", "schema401_activity_write", "cash_posting_count", "provider_access", "network_access", "automatic_retry", "path_exposed", "browser_internal_id_exposed", "fingerprint_exposed"],
+  "properties": {
+    "activity_draft_source_supersession_receipt_version": {"const": 1},
+    "status": {"enum": ["superseded", "recovered_superseded", "already_superseded"]},
+    "superseded_draft_count": {"type": "integer", "minimum": 1},
+    "active_superseded_draft_count": {"type": "integer", "minimum": 1},
+    "supersession_generation_updated": {"type": "boolean"},
+    "original_draft_files_rewritten": {"const": false},
+    "legacy_writer_blocked": {"const": true},
+    "schema201_canonical_write": {"const": false},
+    "schema401_activity_write": {"const": false},
+    "cash_posting_count": {"const": 0},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "automatic_retry": {"const": false},
+    "path_exposed": {"const": false},
+    "browser_internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

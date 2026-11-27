@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.invalid/contracts/desktop-product/v1/onboarding-preview.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "status", "counts", "summary", "steps", "context_authority", "canonical_write", "provider_access"],
+  "properties": {
+    "contract_version": {"const": 1},
+    "status": {"enum": ["ready_for_confirmation", "ready_to_resume", "ready_to_finalize"]},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step_count", "completed_step_count", "pending_step_count"],
+      "properties": {
+        "step_count": {"const": 8},
+        "completed_step_count": {"type": "integer", "minimum": 0, "maximum": 8},
+        "pending_step_count": {"type": "integer", "minimum": 0, "maximum": 8}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["portfolio_name", "base_currency", "cash_account_name", "securities_account_name", "investment_asset_name", "investment_asset_type", "deposit_amount_decimal", "buy_quantity_decimal", "buy_unit_price_decimal", "buy_settlement_mode", "buy_internal_gross_decimal", "buy_booked_gross_decimal", "buy_total_cash_amount_decimal", "buy_fee_decimal"],
+      "properties": {
+        "portfolio_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "base_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "cash_account_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "securities_account_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "investment_asset_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "investment_asset_type": {"enum": ["equity", "etf", "fund", "bond", "crypto", "commodity", "other"]},
+        "deposit_amount_decimal": {"type": "string"},
+        "buy_quantity_decimal": {"type": "string"},
+        "buy_unit_price_decimal": {"type": "string"},
+        "buy_settlement_mode": {"enum": ["derived_exact", "explicit_cash"]},
+        "buy_internal_gross_decimal": {"type": "string"},
+        "buy_booked_gross_decimal": {"type": "string"},
+        "buy_total_cash_amount_decimal": {"type": ["string", "null"]},
+        "buy_fee_decimal": {"type": ["string", "null"]}
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["step_no", "area", "label", "status"],
+        "properties": {
+          "step_no": {"type": "integer", "minimum": 1, "maximum": 8},
+          "area": {"enum": ["portfolio", "account", "asset", "transaction"]},
+          "label": {"type": "string", "minLength": 1, "maxLength": 120},
+          "status": {"enum": ["pending", "completed"]}
+        }
+      }
+    },
+    "context_authority": {"const": false},
+    "canonical_write": {"const": false},
+    "provider_access": {"const": false}
+  }
+}

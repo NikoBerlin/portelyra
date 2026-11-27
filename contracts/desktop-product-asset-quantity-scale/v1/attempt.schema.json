@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-asset-quantity-scale/v1/attempt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["asset_quantity_scale_attempt_version", "attempt_status", "context_fingerprint", "challenge_ref", "plan_fingerprint", "confirmation_fingerprint", "trusted_preview", "catalog_command", "catalog_command_id", "attempted_at_utc", "attempt_fingerprint"],
+  "properties": {
+    "asset_quantity_scale_attempt_version": {"const": 1},
+    "attempt_status": {"const": "consumed_before_catalog_write"},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "challenge_ref": {"type": "string", "pattern": "^aqs_[a-f0-9]{16,64}$"},
+    "plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "trusted_preview": {"type": "object"},
+    "catalog_command": {"$ref": "#/$defs/catalogCommand"},
+    "catalog_command_id": {"type": "string", "pattern": "^cmd_catalog_[a-f0-9]{52}$"},
+    "attempted_at_utc": {"type": "string", "format": "date-time"},
+    "attempt_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "catalogCommand": {
+      "type": "object", "additionalProperties": false,
+      "required": ["command_token", "asset_id", "expected_revision", "quantity_scale", "committed_at_utc"],
+      "properties": {
+        "command_token": {"type": "string", "pattern": "^tok_scale_[a-f0-9]{40}$"},
+        "asset_id": {"type": "string", "pattern": "^ast_[a-z0-9_]{4,60}$"},
+        "expected_revision": {"type": "integer", "minimum": 1},
+        "quantity_scale": {"type": "integer", "minimum": 0, "maximum": 24},
+        "committed_at_utc": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

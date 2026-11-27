@@ -1,0 +1,68 @@
+{
+ "time_zone": "UTC",
+ "fee_role": "monetary",
+ "rows": [
+  {
+   "cells": [
+    "C1",
+    "2026-02-01 11:12:13 UTC",
+    "Staking Income",
+    "ADA",
+    "0.5",
+    "",
+    "€0.35",
+    "€0.175",
+    "€0.01",
+    "x"
+   ],
+   "row_id": "C1",
+   "signature": [
+    "2026-02-01 11:12:13 utc",
+    "staking income",
+    "",
+    "ada",
+    "0.5",
+    "0.01",
+    ""
+   ],
+   "kind": "reward",
+   "asset": "ADA",
+   "quantity": "0.5",
+   "local_date": "2026-02-01",
+   "local_time": "11:12:13",
+   "fee": "0.01",
+   "account": "Coinbase",
+   "valuation": {
+    "source_value_mode": "fiat_total",
+    "price_currency": "EUR",
+    "source_unit_price_decimal": null,
+    "source_fiat_total_decimal": "0.175"
+   }
+  },
+  {
+   "cells": [
+    "C2",
+    "2026-02-02 11:12:13 UTC",
+    "Buy",
+    "ADA",
+    "2",
+    "",
+    "€0.4",
+    "€0.8",
+    "€0.02",
+    "x"
+   ],
+   "row_id": "C2",
+   "signature": [
+    "2026-02-02 11:12:13 utc",
+    "buy",
+    "",
+    "ada",
+    "2",
+    "0.02",
+    ""
+   ],
+   "kind": "other"
+  }
+ ]
+}

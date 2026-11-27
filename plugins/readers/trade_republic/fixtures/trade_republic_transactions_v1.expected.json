@@ -1,0 +1,57 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "250",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-06-08",
+   "source_row_ordinal": 1,
+   "text": "CUSTOMER_INBOUND Umbuchung"
+  },
+  {
+   "amount_decimal": "101",
+   "balance_after_decimal": null,
+   "kind": "withdrawal",
+   "local_date": "2027-06-12",
+   "source_row_ordinal": 2,
+   "text": "BUY Buy trade US0000000000 INVENTED CORP"
+  },
+  {
+   "amount_decimal": "0.2",
+   "balance_after_decimal": null,
+   "kind": "interest",
+   "local_date": "2027-07-01",
+   "source_row_ordinal": 3,
+   "text": "INTEREST_PAYMENT Interest payment Booking"
+  },
+  {
+   "amount_decimal": "113.73",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-08-05",
+   "source_row_ordinal": 5,
+   "text": "SELL Sell trade US0000000000 INVENTED CORP"
+  },
+  {
+   "amount_decimal": "12.84",
+   "balance_after_decimal": null,
+   "kind": "deposit",
+   "local_date": "2027-08-09",
+   "source_row_ordinal": 6,
+   "text": "TAX_OPTIMIZATION Tax Optimisation"
+  }
+ ],
+ "diagnostics": [
+  {
+   "gross_income_decimal": "0.04",
+   "reason_code": "interest_fully_taxed",
+   "source_row_ordinal": 4
+  }
+ ],
+ "summary": {
+  "closing_balance_decimal": null,
+  "opening_balance_decimal": null,
+  "period_from": "2027-06-08",
+  "period_to": "2027-08-09"
+ }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-public-preview.schema.json",
+  "title": "Portfolio CSV separate domain handoff public preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_public_preview_version","status","domain","handoff_ref","staged_import_handle","source_record_count","create_count","reuse_count","effect_type","confirmation_required","one_attempt_only","automatic_retry","canonical_write","asset_activity_fact_write","cash_fact_write","provider_access","network_access","path_exposed","context_exposed","internal_id_exposed","fingerprint_exposed"],
+  "properties": {
+    "portfolio_csv_handoff_public_preview_version": {"const": 1},
+    "status": {"const": "ready_for_confirmation"},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "handoff_ref": {"type": "string", "pattern": "^portfolio_handoff_[a-f0-9]{32}$"},
+    "staged_import_handle": {"type": "string", "pattern": "^imp_[a-f0-9]{24}$"},
+    "source_record_count": {"type": "integer", "minimum": 0},
+    "create_count": {"type": "integer", "minimum": 0},
+    "reuse_count": {"type": "integer", "minimum": 0},
+    "effect_type": {"enum": ["canonical_catalog_rows","canonical_transaction_rows","persistent_activity_drafts","reviewed_cash_candidates"]},
+    "confirmation_required": {"const": true},
+    "one_attempt_only": {"const": true},
+    "automatic_retry": {"const": false},
+    "canonical_write": {"type": "boolean"},
+    "asset_activity_fact_write": {"const": false},
+    "cash_fact_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

@@ -1,0 +1,529 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Portfolio-Snapshot v5",
+  "description": "Unveraenderliches Stichtagsbild mit Frische je Ebene. Der Wert eines Tages stammt aus dem Bewertungsstand; fehlende Werte erscheinen als Fehlendes, nie als null.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_fingerprint",
+    "as_of_date",
+    "base_currency",
+    "cash",
+    "completed_at_utc",
+    "counts",
+    "data_space_id",
+    "excluded_positions",
+    "freshness",
+    "market_value_complete",
+    "portfolio_id",
+    "portfolio_label",
+    "portfolio_snapshot_version",
+    "positions",
+    "snapshot_id",
+    "snapshot_status",
+    "status",
+    "tenant_id",
+    "totals",
+    "unrealised_before_fees_and_tax",
+    "user_id",
+    "worker_id"
+  ],
+  "properties": {
+    "portfolio_snapshot_version": {
+      "const": 5
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^psn_[a-z0-9_]{4,72}$"
+    },
+    "status": {
+      "const": "completed"
+    },
+    "snapshot_status": {
+      "enum": [
+        "complete",
+        "partial"
+      ]
+    },
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "user_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_space_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "as_of_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "completed_at_utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "freshness": {
+      "type": "object",
+      "required": [
+        "overall_status",
+        "levels"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "overall_status": {
+          "enum": [
+            "not_requested",
+            "source_gap",
+            "stale_market",
+            "stale_fifo",
+            "valuation_pending",
+            "complete"
+          ]
+        },
+        "levels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "level_code",
+              "status",
+              "reason_code"
+            ],
+            "properties": {
+              "level_code": {
+                "type": "string",
+                "minLength": 3
+              },
+              "status": {
+                "enum": [
+                  "not_requested",
+                  "source_gap",
+                  "stale_market",
+                  "stale_fifo",
+                  "valuation_pending",
+                  "complete"
+                ]
+              },
+              "reason_code": {
+                "type": "string",
+                "minLength": 3
+              },
+              "detail": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "quantity_decimal",
+          "unit_value_decimal",
+          "market_value_decimal"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "minLength": 3
+          },
+          "asset_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "asset_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "provider_symbol": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "native_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quantity_decimal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit_value_decimal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "market_value_decimal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cost_basis_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "unrealised_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "price_basis": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "price_source_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "substitution_used": {
+            "type": "boolean"
+          },
+          "valuation_status": {
+            "enum": [
+              "complete",
+              "substituted",
+              "incomplete"
+            ]
+          }
+        }
+      }
+    },
+    "excluded_positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "reason",
+          "owner_excluded"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "minLength": 3
+          },
+          "asset_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 3
+          },
+          "owner_excluded": {
+            "type": "boolean"
+          },
+          "derived_value_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cost_basis_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "unrealised_decimal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "required": [
+        "cash_balance_decimal",
+        "cash_derived_balance_decimal",
+        "cost_basis_decimal",
+        "market_value_decimal",
+        "net_worth_decimal",
+        "trade_derived_value_decimal",
+        "unrealised_decimal"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "market_value_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cost_basis_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unrealised_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trade_derived_value_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cash_balance_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cash_derived_balance_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "net_worth_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cash_provisional_balance_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "net_worth_provisional_decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "counts": {
+      "type": "object"
+    },
+    "market_value_complete": {
+      "type": "boolean"
+    },
+    "unrealised_before_fees_and_tax": {
+      "const": true
+    },
+    "worker_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "artifact_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "cash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "accounts",
+        "counted_account_count",
+        "derived_account_count",
+        "uncounted_account_count",
+        "oldest_balance_date",
+        "newest_balance_date",
+        "dated_before_as_of"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "available",
+            "absent"
+          ]
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "account_label",
+              "cash_asset_label",
+              "currency",
+              "balance_decimal",
+              "balance_date",
+              "balance_status",
+              "derived_from_date",
+              "in_total",
+              "balance_target_decimal"
+            ],
+            "properties": {
+              "account_label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "cash_asset_label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "balance_decimal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "balance_date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "balance_status": {
+                "enum": [
+                  "reconciled_at_as_of",
+                  "reconciled_before_as_of",
+                  "derived_at_as_of",
+                  "derived_before_as_of",
+                  "movements_only",
+                  "movements_sum_negative",
+                  "not_covered_yet",
+                  "periods_ambiguous",
+                  "currency_without_rate"
+                ]
+              },
+              "derived_from_date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "in_total": {
+                "type": "boolean"
+              },
+              "balance_target_decimal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "account_state": {
+                "enum": [
+                  "active",
+                  "resting",
+                  "closed"
+                ]
+              },
+              "provisional_balance_decimal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "provisional_settlement_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "provisional_movement_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "provisional_unestimated_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "counted_account_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "derived_account_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "uncounted_account_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "oldest_balance_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "newest_balance_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dated_before_as_of": {
+          "type": "boolean"
+        },
+        "provisional_status": {
+          "enum": [
+            "none",
+            "available",
+            "unavailable"
+          ]
+        },
+        "provisional_account_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provisional_settlement_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provisional_movement_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provisional_unestimated_account_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

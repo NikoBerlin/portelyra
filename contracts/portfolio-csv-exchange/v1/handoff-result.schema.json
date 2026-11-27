@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/portfolio-csv-exchange/v1/handoff-result.schema.json",
+  "title": "Portfolio CSV separate domain handoff result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["portfolio_csv_handoff_result_version","status","domain","receipt_ref","source_record_count","created_count","reused_count","canonical_write","asset_activity_fact_write","cash_fact_write","candidate_only","provider_access","network_access","automatic_retry","path_exposed","context_exposed","internal_id_exposed","fingerprint_exposed"],
+  "properties": {
+    "portfolio_csv_handoff_result_version": {"const": 1},
+    "status": {"enum": ["completed","recovered_completed","already_completed"]},
+    "domain": {"enum": ["catalog","coupled_transaction","asset_activity","cash_coverage"]},
+    "receipt_ref": {"type": "string", "pattern": "^portfolio_handoff_receipt_[a-f0-9]{24}$"},
+    "source_record_count": {"type": "integer", "minimum": 0},
+    "created_count": {"type": "integer", "minimum": 0},
+    "reused_count": {"type": "integer", "minimum": 0},
+    "canonical_write": {"type": "boolean"},
+    "asset_activity_fact_write": {"const": false},
+    "cash_fact_write": {"const": false},
+    "candidate_only": {"type": "boolean"},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "automatic_retry": {"const": false},
+    "path_exposed": {"const": false},
+    "context_exposed": {"const": false},
+    "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

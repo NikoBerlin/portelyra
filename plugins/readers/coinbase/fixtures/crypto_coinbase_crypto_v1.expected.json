@@ -1,0 +1,27 @@
+{
+ "candidates": [
+  {
+   "address": "",
+   "at_utc": "2027-05-20T10:00:00Z",
+   "eur": "300",
+   "eur_fee": "6",
+   "fee_quantity": null,
+   "file_name": "crypto_coinbase_crypto_v1.csv",
+   "group": "",
+   "hash": "",
+   "kind": "trade",
+   "profile": "crypto_row",
+   "quantity": "-0.1",
+   "quote": "",
+   "row_key": "d6978d21b01b612a15606e6905ad8f55f33ac0ccffad60584167865d464f30dd",
+   "row_no": 1,
+   "source": "coinbase",
+   "ticker": "ETH",
+   "transaction_id": "CBSELL0000000000000001",
+   "wallet": "main",
+   "zone": "UTC"
+  }
+ ],
+ "row_reasons": {},
+ "status": "multi"
+}

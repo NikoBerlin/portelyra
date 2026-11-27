@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "automatic_retry_authorized",
+    "candidate_generation_authorized",
+    "canonical_write_authorized",
+    "cash_write_authorized",
+    "network_access_authorized",
+    "profile_revision_created",
+    "provider_access_authorized",
+    "tax_write_authorized",
+    "alias_registry_sha256",
+    "column_bindings",
+    "decimal_bindings",
+    "delimiter",
+    "encoding",
+    "exact_local_zone",
+    "header_vector_sha256",
+    "overlay_fingerprint",
+    "route_bindings",
+    "row_count",
+    "silent_drop_count",
+    "statement_source_mapping_overlay_version",
+    "status",
+    "time_format"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "const": false
+    },
+    "automatic_retry_authorized": {
+      "const": false
+    },
+    "candidate_generation_authorized": {
+      "const": false
+    },
+    "canonical_write_authorized": {
+      "const": false
+    },
+    "cash_write_authorized": {
+      "const": false
+    },
+    "network_access_authorized": {
+      "const": false
+    },
+    "profile_revision_created": {
+      "const": false
+    },
+    "provider_access_authorized": {
+      "const": false
+    },
+    "tax_write_authorized": {
+      "const": false
+    },
+    "alias_registry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "column_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "column_ordinal",
+          "disposition",
+          "header_token_sha256",
+          "role"
+        ],
+        "properties": {
+          "column_ordinal": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "disposition": {
+            "enum": [
+              "explicit_alias_match",
+              "explicit_nonsemantic_evidence",
+              "owner_role_mapping"
+            ]
+          },
+          "header_token_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "decimal_bindings": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "enum": [
+          "decimal_comma",
+          "decimal_dot",
+          "integer_with_confirmed_decimal_comma",
+          "integer_with_confirmed_decimal_dot"
+        ]
+      }
+    },
+    "delimiter": {
+      "enum": [
+        "comma",
+        "semicolon",
+        "tab"
+      ]
+    },
+    "encoding": {
+      "enum": [
+        "utf8",
+        "utf8_bom"
+      ]
+    },
+    "exact_local_zone": {
+      "type": "string"
+    },
+    "header_vector_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "overlay_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "route_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "route",
+          "row_count",
+          "tuple_sha256"
+        ],
+        "properties": {
+          "route": {
+            "enum": [
+              "cash_domain_deferred",
+              "diagnostic",
+              "movement_candidate_disabled",
+              "reward_candidate_disabled",
+              "trade_candidate_disabled"
+            ]
+          },
+          "row_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "tuple_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "row_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "silent_drop_count": {
+      "const": 0
+    },
+    "statement_source_mapping_overlay_version": {
+      "const": 1
+    },
+    "status": {
+      "const": "owner_mapping_overlay_disabled"
+    },
+    "time_format": {
+      "type": "string"
+    }
+  }
+}

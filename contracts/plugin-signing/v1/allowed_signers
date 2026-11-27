@@ -1,0 +1,8 @@
+# Vertrauensliste der Portelyra-Signatur (#486).
+# Format: OpenSSH allowed_signers, eine Zeile je Schluessel:
+#   portelyra namespaces="portelyra-plugin,portelyra-release" ssh-ed25519 AAAA...
+# Hauptschluessel und Ersatzschluessel stehen hier, sobald sie eingerichtet sind (dev/signing_setup.py). Ohne Eintrag laesst sich
+# kein signaturpflichtiges Plugin (Steuermodule) installieren und Releases bleiben unsigniert - das ist gewollt. Ein Update prueft
+# immer gegen diese Liste des INSTALLIERTEN Release.
+portelyra namespaces="portelyra-plugin,portelyra-release" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPHyU6IthxObEmPuS1IQrbEFOP7w4FU4hC8+IJW2OVo0 haupt-2026-11-17
+portelyra namespaces="portelyra-plugin,portelyra-release" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEcSDTXuSnyfzNC5f6UEna6QLFP4t6dlYYAqFrelYzfN ersatz-2026-11-17

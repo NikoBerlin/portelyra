@@ -1,0 +1,90 @@
+{
+  "api_version": "price_provider_v1",
+  "api_minor": 0,
+  "plugin_id": "yahoo",
+  "plugin_version": "1.0.0",
+  "provider_id": "yahoo",
+  "label": "Yahoo Finance",
+  "publisher": "Portelyra",
+  "entry_point": "provider.py",
+  "entry_point_sha256": "9f2e471ecd071bac8a3fc6ca697055fc44beb006a464f3f305324c128777e74c",
+  "modules": [
+    {
+      "path": "provider_generator.py",
+      "sha256": "50a9499a5558f9ab2b3e04526cd63531aa565870000e54da53525ae69eb1059e"
+    }
+  ],
+  "operations": [
+    "daily_history",
+    "fx_daily_history",
+    "quote",
+    "search",
+    "fx_symbol"
+  ],
+  "hosts": [
+    "query1.finance.yahoo.com"
+  ],
+  "cost": "free",
+  "credentials": [],
+  "terms_url": "https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html",
+  "history_max_days": 3650,
+  "generator": true,
+  "fixtures": [
+    {
+      "input": "fixtures/daily_ok.input.json",
+      "expected": "fixtures/daily_ok.expected.json"
+    },
+    {
+      "input": "fixtures/daily_without_bars.input.json",
+      "expected": "fixtures/daily_without_bars.expected.json"
+    },
+    {
+      "input": "fixtures/daily_rejected_429.input.json",
+      "expected": "fixtures/daily_rejected_429.expected.json"
+    },
+    {
+      "input": "fixtures/daily_rejected_in_body.input.json",
+      "expected": "fixtures/daily_rejected_in_body.expected.json"
+    },
+    {
+      "input": "fixtures/daily_not_listed.input.json",
+      "expected": "fixtures/daily_not_listed.expected.json"
+    },
+    {
+      "input": "fixtures/daily_server_error.input.json",
+      "expected": "fixtures/daily_server_error.expected.json"
+    },
+    {
+      "input": "fixtures/fx_ok_alias.input.json",
+      "expected": "fixtures/fx_ok_alias.expected.json"
+    },
+    {
+      "input": "fixtures/fx_identity.input.json",
+      "expected": "fixtures/fx_identity.expected.json"
+    },
+    {
+      "input": "fixtures/fx_json.input.json",
+      "expected": "fixtures/fx_json.expected.json"
+    },
+    {
+      "input": "fixtures/quote_live.input.json",
+      "expected": "fixtures/quote_live.expected.json"
+    },
+    {
+      "input": "fixtures/quote_meta.input.json",
+      "expected": "fixtures/quote_meta.expected.json"
+    },
+    {
+      "input": "fixtures/search_ok.input.json",
+      "expected": "fixtures/search_ok.expected.json"
+    },
+    {
+      "input": "fixtures/request_daily.input.json",
+      "expected": "fixtures/request_daily.expected.json"
+    },
+    {
+      "input": "fixtures/fx_symbol.input.json",
+      "expected": "fixtures/fx_symbol.expected.json"
+    }
+  ]
+}

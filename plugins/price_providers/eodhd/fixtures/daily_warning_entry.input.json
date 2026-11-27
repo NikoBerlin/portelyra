@@ -1,0 +1,12 @@
+{
+ "op": "parse_response",
+ "operation": "daily_history",
+ "params": {
+  "provider_symbol": "INVCO.XETRA",
+  "start_date": "2027-03-29",
+  "end_date": "2027-04-01"
+ },
+ "status": 200,
+ "content_type": "application/json",
+ "body_text": "[{\"date\":\"2027-03-30\",\"open\":10.36,\"high\":10.4,\"low\":10.11,\"close\":10.2,\"adjusted_close\":9.85,\"volume\":9875},{\"warning\":\"Invented notice: data limited for this invented plan\"}]"
+}

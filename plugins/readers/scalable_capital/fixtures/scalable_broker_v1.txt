@@ -1,0 +1,22 @@
+Scalable Capital Bank GmbH
+
+Kontoauszug
+Zeitraum 01.09.2026 - 30.09.2026
+
+Auszug Nr.                               7
+Verrechnungskonto                        DE00 0000 (TESTDEFFXXX)
+Kontostand am 01.09.2026            501,10 EUR
+Kontostand am 30.09.2026            521,10 EUR
+
+Buchung            Wertstellung          Beschreibung                       Betrag
+
+01.09.2026        01.09.2026            Erhaltene Zinsen            +1,10 EUR
+
+15.09.2026        15.09.2026            Überweisung            +20,00 EUR
+
+Kontoauszug
+Zeitraum 01.09.2026 - 30.09.2026
+
+Verteilung Ihrer Einlagen
+JPM EUR Liquidity LVNAV Select (dist.)        521,10 EUR
+                              Kontostand        521,10 EUR

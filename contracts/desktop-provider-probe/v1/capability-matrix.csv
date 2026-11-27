@@ -1,0 +1,12 @@
+capability,supported,notes
+probe_preview,yes,No provider or filesystem access
+one_attempt_yahoo_daily_probe,yes,Maximum 32 calendar days
+persist_normalized_probe,yes,No raw response
+exact_completed_replay,yes,No second provider request
+automatic_retry,no,New preview required
+mapping_verification,no,Separate command after promotion
+daily_history_write,no,Separate promotion
+valuation_authority,no,Probe is staging evidence
+fx_tax_activity_write,no,None
+fmp,no,Permanently excluded
+twelve_data,no,Not supported by this probe

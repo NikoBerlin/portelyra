@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/receipt.schema.json",
+  "title": "Browser-safe ActivityDraft receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_receipt_version", "status", "origin_type", "action_type", "draft_status", "activity_generation_updated", "schema201_canonical_write", "cash_posting_count", "provider_access", "network_access", "path_exposed", "browser_internal_id_exposed", "fingerprint_exposed"],
+  "properties": {
+    "activity_draft_receipt_version": {"const": 1},
+    "status": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,79}$"},
+    "origin_type": {"enum": ["manual_form", "tolerant_csv", "correction"]},
+    "action_type": {"enum": ["create", "correct", "void"]},
+    "draft_status": {"const": "committed"},
+    "activity_generation_updated": {"type": "boolean"},
+    "schema201_canonical_write": {"const": false},
+    "cash_posting_count": {"const": 0},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "path_exposed": {"const": false},
+    "browser_internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  }
+}

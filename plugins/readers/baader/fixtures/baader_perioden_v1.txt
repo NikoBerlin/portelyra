@@ -1,0 +1,10 @@
+Baader Bank AG
+
+Perioden-Kontoauszug: EUR-Konto
+Periodenauszugs-Nr. 000042
+
+Buchungstag              Erläuterungen                    Valuta           Belastung        Gutschrift
+Kontostand in EUR am 30.06.2027                                        500,00
+06.07.2027               Kauf                   06.07.2027            100,00 -
+Vorgangs-Nr.: D15142251
+Kontostand in EUR am 31.07.2027                                        400,00

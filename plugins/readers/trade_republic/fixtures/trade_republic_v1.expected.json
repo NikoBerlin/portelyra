@@ -1,0 +1,51 @@
+{
+ "candidates": [
+  {
+   "amount_decimal": "100",
+   "balance_after_decimal": "100",
+   "kind": "deposit",
+   "local_date": "2027-06-08",
+   "source_row_ordinal": 1,
+   "text": "Überweisung Einzahlung akzeptiert"
+  },
+  {
+   "amount_decimal": "110",
+   "balance_after_decimal": "-10",
+   "kind": "withdrawal",
+   "local_date": "2027-06-12",
+   "source_row_ordinal": 2,
+   "text": "Handel"
+  },
+  {
+   "amount_decimal": "1000",
+   "balance_after_decimal": "990",
+   "kind": "deposit",
+   "local_date": "2027-06-15",
+   "source_row_ordinal": 3,
+   "text": "Überweisung Einzahlung akzeptiert"
+  },
+  {
+   "amount_decimal": "0.15",
+   "balance_after_decimal": "990.15",
+   "kind": "interest",
+   "local_date": "2027-07-01",
+   "source_row_ordinal": 4,
+   "text": "Zinsen Your interest payment"
+  },
+  {
+   "amount_decimal": "950",
+   "balance_after_decimal": "40.15",
+   "kind": "withdrawal",
+   "local_date": "2027-07-04",
+   "source_row_ordinal": 5,
+   "text": "Kartentransaktion"
+  }
+ ],
+ "diagnostics": [],
+ "summary": {
+  "closing_balance_decimal": "40.15",
+  "opening_balance_decimal": "0",
+  "period_from": "2027-06-08",
+  "period_to": "2027-07-04"
+ }
+}

@@ -1,0 +1,209 @@
+{
+  "api_version": "statement_reader_v1",
+  "api_minor": 5,
+  "plugin_id": "coinbase",
+  "plugin_version": "1.3.1",
+  "publisher": "Portelyra",
+  "institution": "Coinbase",
+  "label": "Coinbase",
+  "entry_point": "reader.py",
+  "entry_point_sha256": "9e3bf13402f81a8ba8ed8d75ac40920b77c0d3a9783e95cb13bc87ce400390c5",
+  "modules": [
+    {
+      "path": "reader_cash.py",
+      "sha256": "abb8e212bdab979928858d1a4d6a80bd12dd5b3028ebdf1adca3eea356028545"
+    },
+    {
+      "path": "reader_crypto.py",
+      "sha256": "58c2753228585da63e1feec4e80121f6a8fb296fa20c25733b090bfe06ac72dd"
+    },
+    {
+      "path": "reader_generator.py",
+      "sha256": "5666bc8f2bc5910f1a11fd5885a62b188001e3638cca70d01f97b5a623fd1823"
+    },
+    {
+      "path": "reader_reward.py",
+      "sha256": "60b5bd10af008cb4159ddbdab81e31062951292b04d8a8d23f27b2e8b82ce588"
+    }
+  ],
+  "handbook": "README.md",
+  "readers": [
+    {
+      "reader_id": "coinbase_eur_v1",
+      "domain": "cash",
+      "label": "Coinbase Transaktionen, nur EUR-Wallet (CSV)",
+      "document_kind": "Transaktionsbericht (CSV), nur EUR-Wallet",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "transaction type"
+          ]
+        ]
+      },
+      "tested_formats": "Transaktionsbericht mit Kopfzeile „Transaction Type“; Verkäufe gegen Euro und Käufe aus dem EUR-Wallet.",
+      "known_limits": [
+        "Käufe per Karte berühren das EUR-Wallet nicht und werden übergangen.",
+        "EURC ist ein Stablecoin und kein Euro-Guthaben."
+      ],
+      "generator": true,
+      "format_checked": {
+        "through": "2026-10-24",
+        "checked_on": "2026-10-24"
+      }
+    },
+    {
+      "reader_id": "coinbase_crypto_v1",
+      "domain": "crypto",
+      "label": "Coinbase (Transaktionsbericht, Krypto)",
+      "document_kind": "Transaktionsbericht (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "id",
+            "timestamp",
+            "transaction type",
+            "asset",
+            "quantity transacted"
+          ]
+        ]
+      },
+      "tested_formats": "Transaktionsbericht mit ID, Timestamp, Transaction Type, Asset, Quantity Transacted; Käufe und Verkäufe mit dem Betrag „Total“.",
+      "known_limits": [
+        "Staking-Erträge liest der Reward-Import.",
+        "EURC ist ein Stablecoin und kein Euro-Guthaben."
+      ],
+      "generator": true,
+      "source": {
+        "key": "coinbase",
+        "label": "Coinbase",
+        "format_label": "Coinbase (Transaktionsbericht)",
+        "institution_names": [
+          "Coinbase"
+        ],
+        "wallets": {
+          "main": {
+            "label": "Konto",
+            "account_name": {
+              "none": [
+                "staking"
+              ]
+            }
+          },
+          "staking": {
+            "label": "Staking",
+            "account_name": {
+              "any": [
+                "staking"
+              ]
+            }
+          }
+        },
+        "default_wallet": {
+          "label_prefix": "",
+          "account_name": {
+            "none": [
+              "staking"
+            ]
+          }
+        },
+        "pairing": "time",
+        "pair_window_minutes": 5,
+        "pair_related_wallet": "staking",
+        "internal_transfers": true
+      },
+      "format_checked": {
+        "through": "2026-10-16",
+        "checked_on": "2026-10-16"
+      }
+    },
+    {
+      "reader_id": "coinbase_transactions_csv_v1",
+      "domain": "reward",
+      "label": "Coinbase (Transaktionsbericht, Rewards)",
+      "document_kind": "Transaktionsbericht (CSV)",
+      "extensions": [
+        ".csv"
+      ],
+      "detection": {
+        "match_any": [
+          [
+            "price",
+            "asset"
+          ],
+          [
+            "price",
+            "currency"
+          ]
+        ]
+      },
+      "tested_formats": "Transaktionsbericht mit ID, Timestamp, Transaction Type, Asset, Quantity Transacted, Price Currency, Price at Transaction, Total, Fees; Kopfzeile in den ersten zwölf Zeilen. Gelesen werden die Arten „Staking Income“, „Rewards Income“, „Coinbase Earn“, „Learning Reward“, „Incentives Rewards Payout“ und „Retail Simple Price Improvement“.",
+      "known_limits": [
+        "Bewertung mit dem Gesamtbetrag, sonst mit dem Stückpreis des Berichts.",
+        "Liest nur Rewards; Käufe, Verkäufe und Transfers liest der Krypto-Leser.",
+        "Die Zeiten des Berichts stehen in UTC."
+      ],
+      "generator": true,
+      "row_ids": true,
+      "format_checked": {
+        "through": "2026-10-23",
+        "checked_on": "2026-10-23"
+      }
+    }
+  ],
+  "intake": {
+    "key": "coinbase",
+    "label": "Coinbase",
+    "folders": [
+      "coinbase"
+    ],
+    "downloads": [
+      "Transaktionsbericht als CSV (vom Kontobeginn bis heute)"
+    ],
+    "period": "since_start",
+    "covers": "alle Coins, Staking und die EUR-Wallet in einem Bericht",
+    "readers": [
+      [
+        "crypto",
+        "coinbase_crypto_v1"
+      ],
+      [
+        "reward",
+        "coinbase_transactions_csv_v1"
+      ],
+      [
+        "cash",
+        "coinbase_eur_v1"
+      ]
+    ],
+    "account_words": [
+      "coinbase"
+    ],
+    "tax_all_accounts": true
+  },
+  "fixtures": [
+    {
+      "domain": "cash",
+      "reader_id": "coinbase_eur_v1",
+      "input": "fixtures/coinbase_eur_v1.csv",
+      "expected": "fixtures/coinbase_eur_v1.expected.json"
+    },
+    {
+      "domain": "crypto",
+      "reader_id": "coinbase_crypto_v1",
+      "input": "fixtures/crypto_coinbase_crypto_v1.csv",
+      "expected": "fixtures/crypto_coinbase_crypto_v1.expected.json"
+    },
+    {
+      "domain": "reward",
+      "reader_id": "coinbase_transactions_csv_v1",
+      "input": "fixtures/reward_coinbase_transactions_csv_v1.csv",
+      "expected": "fixtures/reward_coinbase_transactions_csv_v1.expected.json"
+    }
+  ]
+}

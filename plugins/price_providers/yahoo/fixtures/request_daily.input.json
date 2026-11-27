@@ -1,0 +1,10 @@
+{
+ "op": "build_request",
+ "operation": "daily_history",
+ "params": {
+  "provider_symbol": "INVENTEDCO.XY",
+  "start_date": "2027-03-29",
+  "end_date": "2027-03-31",
+  "request_start_date": "2027-03-27"
+ }
+}

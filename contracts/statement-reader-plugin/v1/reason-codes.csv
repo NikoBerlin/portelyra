@@ -1,0 +1,55 @@
+code,text
+custody_change,"Bestandsveränderung (Übertrag, Ein-/Auslieferung, Spin-off, Split) – bitte manuell buchen"
+advance_lump_sum,Vorabpauschale – dieser Leser übernimmt sie nicht; bitte in Daten → „4. Steuer“ je Fonds und Konto eintragen
+advance_lump_sum_inconsistent,Vorabpauschale: Gesamtbetrag passt nicht zu Stück × Wert je Stück – bitte Beleg prüfen
+tax_document,Steuerunterlage oder Steuerneuberechnung – gehört in die Steuerangaben
+accumulating_income,Ertrag ohne Auszahlung (thesaurierend) – gehört in die Steuerangaben
+not_eur,Kurs oder Kurswert nicht in EUR – bitte manuell buchen
+information,Depotauszug oder Information – kein Buchungsbeleg
+overview,Sammelübersicht mehrerer Vorgänge – bitte die Einzelbelege verwenden
+unknown_document,Belegart nicht erkannt
+reader_inactive,"Leser in diesem Portfolio nicht aktiv – im Reiter „Leser“ unter „Aktivierung je Portfolio“ aktivieren"
+incomplete,Pflichtangaben fehlen im Beleg
+unreadable,Kein lesbarer Text in der Datei
+too_large,Datei größer als 20 MB – kein Einzelbeleg
+unsupported_type,Dateityp wird nicht gelesen – nur PDF-Belege (oder deren Text als .txt) und CSV-Exporte
+wrong_institution,Beleg eines anderen Instituts
+duplicate,Dieselbe Abrechnung liegt doppelt vor
+order_cancelled,Order storniert oder nicht ausgeführt
+preconfirmed,"Vorläufig bestätigt – wird gebucht, sobald der Export sie als CONFIRMED führt"
+fx_trade,Devisengeschäft – liest der Devisen-Leser des Instituts (Buchungsart Devisen)
+fx_statement,"Fremdwährungs-Kontoauszug – Saldo-Anker: prüft, dass jede Kontobewegung belegt ist"
+fx_eur_credit,Gutschrift auf dem EUR-Verrechnungskonto – liest der Wertpapier-Leser
+fx_not_fx,Kein Devisenbeleg – Wertpapierbelege liest der Wertpapier-Leser
+fx_balance_mismatch,Kontoauszug geht nicht auf (Anfangssaldo + Bewegungen ≠ Endsaldo) – bitte Auszug prüfen
+fx_line_without_document,Auszugszeile ohne Beleg (Devisenbeleg oder Dividendenabrechnung fehlt) – bitte Beleg ergänzen
+fx_balance_gap,Saldenkette unterbrochen – zwischen diesem und dem vorigen Kontoauszug fehlt einer
+dividend_reversed,Dividende mit Rückbuchung am selben Tag – hebt sich auf
+ipo,Zeichnung (IPO) – bitte als Kauf zum Zuteilungstag buchen
+cash_movement,Kontobewegung – gehört zum Cash-Auszug
+export_without_bookings,Export ohne buchbare Zeile – Gründe je Zeile in der Liste
+execution_evidence,"Ausführungsnachweis (etwa eine Transaktionshistorie) – bucht selbst nichts, belegt den genauen Euro-Betrag jeder Order"
+crypto_reward,Reward – bucht der Reward-Import („Börsenauszüge importieren“)
+crypto_fiat,EUR-Ein- oder Auszahlung – gehört zum Cash-Konto
+crypto_cancelled,Auftrag storniert oder nicht ausgeführt
+crypto_order_open,"Auftrag noch offen – wird gelesen, sobald die Börse ihn als geschlossen führt"
+crypto_order_partly_open,"Order teilweise ausgeführt und noch offen – wird mit allen Ausführungen gebucht, sobald sie abgeschlossen ist (ausgeführt oder storniert)"
+crypto_fee_row,Netzwerkgebühr – am zugehörigen Transfer verrechnet
+crypto_registration,Kontoeröffnung ohne Bestand
+crypto_pending,noch nicht abgeschlossen
+crypto_unsupported,Vorgangsart wird nicht gelesen
+crypto_zero_amount,Menge 0 ohne Gebühr – keine Bewegung (z. B. Token-Vorgang)
+crypto_swap_counter_leg,Gegenseite eines Tauschs – der Vorgang steht in der Datei des gekauften Coins
+crypto_unreadable_row,"Zeile unvollständig oder unlesbar (Zeit, Coin, Menge oder ein Betrag)"
+generic_no_table,Keine Tabelle erkannt – der generische Leser liest CSV-Exporte mit Kopfzeile
+generic_unmapped,"Zuordnung unvollständig: Datum, Vorgang oder Menge fehlen – bitte die Zuordnung ergänzen"
+generic_unknown_action,Vorgang nicht zugeordnet – bitte die Bezeichnung einer Buchungsart zuordnen
+generic_incomplete,Pflichtangaben der Zeile fehlen oder sind nicht lesbar
+generic_date_unreadable,Datum nicht lesbar
+generic_not_eur,Betrag nicht in EUR – bitte manuell buchen
+generic_no_isin,Keine ISIN – ein Wertpapier lässt sich ohne ISIN nicht sicher zuordnen
+generic_cash_movement,"Geldbewegung (Ein-/Auszahlung, Zinsen, Gebühr) – gehört zum Cash-Auszug"
+generic_delivery,Ein- oder Auslieferung – bitte manuell buchen
+generic_reward,Reward oder Staking – liest der Reward-Import
+generic_ignored,laut Zuordnung nicht zu buchen
+generic_not_executed,"laut Status nicht ausgeführt (storniert, vorläufig oder abgelehnt)"

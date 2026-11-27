@@ -1,0 +1,10 @@
+state,event,next_state,canonical_write,provider_access,automatic_retry
+absent,create,unverified,yes,no,no
+unverified,revise,unverified,yes,no,no
+unverified,verify,verified,yes,no,no
+verified,revise,unverified,yes,no,no
+verified,verify,verified,yes,no,no
+verified,disable,disabled,yes,no,no
+unverified,disable,disabled,yes,no,no
+disabled,revise,unverified,yes,no,no
+disabled,disable,disabled,yes,no,no

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/desktop-product-activity-draft/v1/source-supersession-active.schema.json",
+  "title": "Active exact-source ActivityDraft supersession pointer v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["activity_draft_supersession_active_version", "context_fingerprint", "generation_ref", "generation_fingerprint", "activated_at_utc", "pointer_fingerprint"],
+  "properties": {
+    "activity_draft_supersession_active_version": {"const": 1},
+    "context_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "generation_ref": {"type": "string", "pattern": "^adg_[a-f0-9]{32}$"},
+    "generation_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "activated_at_utc": {"type": "string", "format": "date-time"},
+    "pointer_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

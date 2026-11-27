@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portelyra:cash-coverage:v1:read-model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "desktop_cash_coverage_read_model_version", "status", "schema_version", "period_count",
+    "cash_event_count", "income_event_count", "reconciliation_count", "revision_count",
+    "receipt_count", "cash_coverage_state", "periods", "cash_history", "income_history",
+    "receipt_history", "coverage_inferred", "canonical_write", "asset_activity_write",
+    "provider_access", "network_access", "path_exposed", "context_exposed",
+    "internal_id_exposed", "fingerprint_exposed"
+  ],
+  "properties": {
+    "desktop_cash_coverage_read_model_version": {"const": 2},
+    "status": {"enum": ["absent", "available"]},
+    "schema_version": {"type": ["integer", "null"], "enum": [2901, null]},
+    "period_count": {"type": "integer", "minimum": 0}, "cash_event_count": {"type": "integer", "minimum": 0},
+    "income_event_count": {"type": "integer", "minimum": 0}, "reconciliation_count": {"type": "integer", "minimum": 0},
+    "revision_count": {"type": "integer", "minimum": 0}, "receipt_count": {"type": "integer", "minimum": 0},
+    "cash_coverage_state": {"const": "separate_not_read"},
+    "periods": {"type": "array", "items": {"$ref": "#/$defs/period"}},
+    "cash_history": {"type": "array", "items": {"$ref": "#/$defs/cash"}},
+    "income_history": {"type": "array", "items": {"$ref": "#/$defs/income"}},
+    "receipt_history": {"type": "array", "items": {"$ref": "#/$defs/receipt"}},
+    "coverage_inferred": {"const": false}, "canonical_write": {"const": false},
+    "asset_activity_write": {"const": false}, "provider_access": {"const": false},
+    "network_access": {"const": false}, "path_exposed": {"const": false},
+    "context_exposed": {"const": false}, "internal_id_exposed": {"const": false},
+    "fingerprint_exposed": {"const": false}
+  },
+  "$defs": {
+    "label": {"type": "string", "minLength": 1, "maxLength": 160},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "date": {"type": "string", "format": "date"},
+    "nullable_date": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+    "utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "decimal": {"type": "string", "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"},
+    "nullable_decimal": {"oneOf": [{"$ref": "#/$defs/decimal"}, {"type": "null"}]},
+    "period": {
+      "type": "object", "additionalProperties": false,
+      "required": ["account_label", "cash_asset_label", "currency", "effective_from", "effective_to", "coverage_mode", "balance_status", "as_of_date", "opening_balance_decimal", "cash_movement_delta_decimal", "computed_balance_decimal", "observed_balance_decimal", "cash_event_count", "income_event_count", "gross_interest_income_decimal", "income_cash_balance_effect_created", "completeness_inferred"],
+      "properties": {
+        "account_label": {"$ref": "#/$defs/label"}, "cash_asset_label": {"$ref": "#/$defs/label"}, "currency": {"$ref": "#/$defs/currency"},
+        "effective_from": {"$ref": "#/$defs/date"}, "effective_to": {"$ref": "#/$defs/nullable_date"},
+        "coverage_mode": {"enum": ["not_tracked", "income_only", "partial", "complete_reconciled"]},
+        "balance_status": {"enum": ["not_tracked", "partial_delta_only", "indicative_balance", "complete_reconciled"]},
+        "as_of_date": {"$ref": "#/$defs/nullable_date"}, "opening_balance_decimal": {"$ref": "#/$defs/nullable_decimal"},
+        "cash_movement_delta_decimal": {"$ref": "#/$defs/decimal"}, "computed_balance_decimal": {"$ref": "#/$defs/nullable_decimal"},
+        "observed_balance_decimal": {"$ref": "#/$defs/nullable_decimal"}, "cash_event_count": {"type": "integer", "minimum": 0},
+        "income_event_count": {"type": "integer", "minimum": 0}, "gross_interest_income_decimal": {"$ref": "#/$defs/decimal"},
+        "income_cash_balance_effect_created": {"const": false}, "completeness_inferred": {"const": false}
+      }
+    },
+    "cash": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cash_event_ref", "event_type", "account_label", "related_account_label", "cash_asset_label", "currency", "event_time_evidence", "local_date", "local_time", "time_zone", "effective_at_utc", "amount_decimal", "flow_classification"],
+      "properties": {
+        "cash_event_ref": {"type": "string", "pattern": "^cash_event_[0-9]{4}$"},
+        "event_type": {"enum": ["opening_balance", "deposit", "withdrawal", "transfer"]},
+        "account_label": {"$ref": "#/$defs/label"}, "related_account_label": {"oneOf": [{"$ref": "#/$defs/label"}, {"type": "null"}]},
+        "cash_asset_label": {"$ref": "#/$defs/label"}, "currency": {"$ref": "#/$defs/currency"},
+        "event_time_evidence": {"enum": ["exact_local_zone", "utc_only_legacy"]}, "local_date": {"$ref": "#/$defs/date"},
+        "local_time": {"type": ["string", "null"], "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"},
+        "time_zone": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9._+/-]{1,80}$"},
+        "effective_at_utc": {"$ref": "#/$defs/utc"}, "amount_decimal": {"$ref": "#/$defs/decimal"}, "flow_classification": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"event_time_evidence": {"const": "exact_local_zone"}}}, "then": {"properties": {"local_time": {"type": "string"}, "time_zone": {"type": "string"}}}},
+        {"if": {"properties": {"event_time_evidence": {"const": "utc_only_legacy"}}}, "then": {"properties": {"local_time": {"type": "null"}, "time_zone": {"type": "null"}}}}
+      ]
+    },
+    "income": {
+      "type": "object", "additionalProperties": false,
+      "required": ["income_type", "account_label", "cash_asset_label", "currency", "local_date", "gross_income_decimal", "linked_cash_event", "cash_balance_effect_created"],
+      "properties": {
+        "income_type": {"const": "interest"}, "account_label": {"$ref": "#/$defs/label"}, "cash_asset_label": {"$ref": "#/$defs/label"},
+        "currency": {"$ref": "#/$defs/currency"}, "local_date": {"$ref": "#/$defs/date"}, "gross_income_decimal": {"$ref": "#/$defs/decimal"},
+        "linked_cash_event": {"type": "boolean"}, "cash_balance_effect_created": {"const": false}
+      }
+    },
+    "receipt": {
+      "type": "object", "additionalProperties": false,
+      "required": ["receipt_ref", "action_type", "operation_type", "input_mode", "committed_at_utc", "predecessor_preserved"],
+      "properties": {
+        "receipt_ref": {"type": "string", "pattern": "^cash_receipt_[a-f0-9]{24}$"},
+        "action_type": {"enum": ["declare_coverage", "record_cash_event", "record_interest_income", "record_reconciliation", "correct", "supersede", "void"]},
+        "operation_type": {"enum": ["create", "correct", "supersede", "void"]},
+        "input_mode": {"enum": ["manual_entry", "reviewed_import", "migrated_schema2900"]},
+        "committed_at_utc": {"$ref": "#/$defs/utc"}, "predecessor_preserved": {"const": true}
+      }
+    }
+  }
+}

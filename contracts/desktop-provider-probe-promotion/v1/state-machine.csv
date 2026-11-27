@@ -1,0 +1,7 @@
+state,event,next_state,market_history_write,provider_mapping_write,provider_access,automatic_retry
+probe_completed,preview,pending_confirmation,no,no,no,no
+pending_confirmation,confirm,promotion_consumed,yes,no,no,no
+promotion_consumed,history_committed,completed,yes,no,no,no
+promotion_consumed,failure,recovery_required,partial_possible,no,no,no
+completed,exact_result_read,completed,no,no,no,no
+completed,verify_mapping,mapping_step_required,no,separate,no,no

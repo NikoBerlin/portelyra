@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_authorized",
+    "alias_registry_sha256",
+    "attempt_fingerprint",
+    "attempt_status",
+    "automatic_retry_authorized",
+    "canonical_write_authorized",
+    "confirmed_at_utc",
+    "context_binding_sha256",
+    "expires_at_utc",
+    "issued_at_utc",
+    "one_use_authorization_sha256",
+    "private_values_local_only_acknowledged",
+    "profiler_binding_sha256",
+    "provider_access_authorized",
+    "selection_binding_sha256",
+    "source_path_retained",
+    "source_read_once_authorized",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "activation_authorized": {
+      "const": false
+    },
+    "alias_registry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "attempt_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "attempt_status": {
+      "const": "authorization_consumed_before_source_read"
+    },
+    "automatic_retry_authorized": {
+      "const": false
+    },
+    "canonical_write_authorized": {
+      "const": false
+    },
+    "confirmed_at_utc": {
+      "type": "string"
+    },
+    "context_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "expires_at_utc": {
+      "type": "string"
+    },
+    "issued_at_utc": {
+      "type": "string"
+    },
+    "one_use_authorization_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "private_values_local_only_acknowledged": {
+      "const": true
+    },
+    "profiler_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "provider_access_authorized": {
+      "const": false
+    },
+    "selection_binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_path_retained": {
+      "const": false
+    },
+    "source_read_once_authorized": {
+      "const": true
+    },
+    "status": {
+      "const": "authorization_consumed_before_source_read"
+    },
+    "version": {
+      "const": 1
+    }
+  }
+}

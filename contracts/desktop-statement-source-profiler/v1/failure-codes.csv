@@ -1,0 +1,7 @@
+failure_code,meaning
+desktop_statement_source_profiler_alias_registry_invalid,The immutable explicit header-role alias registry is invalid or stale.
+desktop_statement_source_profiler_boundary_failed,An unexpected internal boundary condition prevented a safe result.
+desktop_statement_source_profiler_csv_ambiguous,More than one allowed delimiter remains equally plausible.
+desktop_statement_source_profiler_csv_invalid,The bytes do not form a consistent supported multi-column CSV.
+desktop_statement_source_profiler_input_invalid,Input bytes or the explicit institution hint violate the boundary.
+desktop_statement_source_profiler_utf8_invalid,The source is not strict UTF-8 or UTF-8-BOM.

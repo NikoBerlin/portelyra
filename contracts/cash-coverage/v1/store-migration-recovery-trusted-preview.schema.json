@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/cash-coverage/v1/store-migration-recovery-trusted-preview.schema.json",
+  "title": "Cash Coverage Store Migration Recovery Trusted Preview v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cash_coverage_store_migration_recovery_preview_version","status","recovery_ref","source_schema_version","target_schema_version","context_fingerprint","canonical_fingerprint","source_store_fingerprint","migration_plan_fingerprint","original_confirmation_fingerprint","original_attempted_at_utc","recovery_reason","confirmation_required","automatic_retry","target_create_only","recovery_plan_fingerprint"],
+  "properties": {
+    "cash_coverage_store_migration_recovery_preview_version": {"const": 1},
+    "status": {"const": "ready_for_migration_recovery_confirmation"},
+    "recovery_ref": {"type": "string", "pattern": "^ccmrec_[a-f0-9]{32}$"},
+    "source_schema_version": {"const": 2900},
+    "target_schema_version": {"const": 2901},
+    "context_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "canonical_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "source_store_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "migration_plan_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "original_confirmation_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "original_attempted_at_utc": {"$ref": "#/$defs/utc"},
+    "recovery_reason": {"const": "confirmation_consumed_target_absent"},
+    "confirmation_required": {"const": true},
+    "automatic_retry": {"const": false},
+    "target_create_only": {"const": true},
+    "recovery_plan_fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "utc": {"type": "string", "format": "date-time", "pattern": "Z$"}}
+}

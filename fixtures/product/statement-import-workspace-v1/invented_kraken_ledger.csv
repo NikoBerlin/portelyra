@@ -1,0 +1,10 @@
+txid,refid,time,type,subtype,aclass,asset,amount,fee,balance
+syn-ledger-001,syn-ref-001,2031-01-01 08:00:00,earn,reward,currency,SYNCOIN,1.25000000,0.00000000,101.25000000
+syn-ledger-002,syn-ref-002,2031-01-02 08:00:00,earn,reward,currency,SYNCOIN,2.00000000,0.00000000,103.25000000
+syn-ledger-003,syn-ref-003,2031-01-03 08:00:00,earn,reward,currency,SYNCOIN,1.25000000,0.00000000,104.50000000
+syn-ledger-004,syn-ref-004,2031-01-04 08:00:00,earn,reward,currency,SYNCOIN,0.75000000,0.00000000,105.25000000
+syn-ledger-005,syn-ref-005,2031-01-05 08:00:00,earn,reward,currency,SYNCOIN,0.50000000,0.00000000,105.75000000
+syn-ledger-006,syn-ref-006,2031-01-06 08:00:00,earn,reward,currency,SYNNEW,3.00000000,0.00000000,3.00000000
+syn-ledger-007,syn-ref-007,2031-01-07 08:00:00,trade,spot,currency,SYNTRADE,-0.10000000,0.00100000,4.90000000
+syn-ledger-008,syn-ref-008,2031-01-08 08:00:00,deposit,fiat,currency,ZEUR,100.00000000,0.00000000,100.00000000
+syn-ledger-009,syn-ref-009,2031-01-09 08:00:00,mystery,odd,currency,SYNODD,4.00000000,0.00000000,4.00000000

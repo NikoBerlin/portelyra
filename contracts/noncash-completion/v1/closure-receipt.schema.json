@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://portelyra.local/contracts/noncash-completion/v1/closure-receipt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "noncash_closure_receipt_version", "status", "scope_kind", "closure_created_at_utc",
+    "legacy_source_freeze_fingerprint", "legacy_delta_fingerprint", "terminal_disposition_policy_fingerprint",
+    "terminal_disposition_fingerprint", "canonical_activity_fingerprint", "fifo_full_rebuild_fingerprint", "lineage_disposition_counts",
+    "legacy_source_read_only", "source_bytes_unchanged", "cash_included", "canonical_write",
+    "provider_access", "network_access", "tax_projection_started", "complete_portfolio_claim_authorized",
+    "receipt_fingerprint"
+  ],
+  "properties": {
+    "noncash_closure_receipt_version": {"const": 1},
+    "status": {"const": "completed_noncash_scope"},
+    "scope_kind": {"const": "noncash"},
+    "closure_created_at_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "legacy_source_freeze_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "legacy_delta_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "terminal_disposition_policy_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "terminal_disposition_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "canonical_activity_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "fifo_full_rebuild_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "lineage_disposition_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_lineages", "canonical_lineages", "terminally_excluded_lineages", "unresolved_lineages"],
+      "properties": {
+        "all_lineages": {"type": "integer", "minimum": 1},
+        "canonical_lineages": {"type": "integer", "minimum": 0},
+        "terminally_excluded_lineages": {"type": "integer", "minimum": 0},
+        "unresolved_lineages": {"const": 0}
+      }
+    },
+    "legacy_source_read_only": {"const": true},
+    "source_bytes_unchanged": {"const": true},
+    "cash_included": {"const": false},
+    "canonical_write": {"const": false},
+    "provider_access": {"const": false},
+    "network_access": {"const": false},
+    "tax_projection_started": {"const": false},
+    "complete_portfolio_claim_authorized": {"const": false},
+    "receipt_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

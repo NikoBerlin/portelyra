@@ -1,0 +1,27 @@
+{
+  "contract_version": "portelyra_demo_catalog_v1",
+  "note": "Demo-Portfolio (#487): echte, bekannte Assets; Konten, Mengen und Betraege sind erfunden. Keine Person, keine echten Konten.",
+  "portfolio": {"token": "tok_demo_portfolio", "display_name": "Demo-Portfolio", "base_currency": "EUR", "preset": "overview"},
+  "accounts": [
+    {"token": "tok_demo_depot", "display_name": "Demo-Depot", "account_type": "securities", "institution_label": "Demo-Bank"},
+    {"token": "tok_demo_exchange", "display_name": "Demo-Börse", "account_type": "crypto_wallet", "institution_label": "Demo-Börse"},
+    {"token": "tok_demo_wallet", "display_name": "Demo-Wallet", "account_type": "crypto_wallet", "institution_label": "Hardware-Wallet"}
+  ],
+  "assets": [
+    {"token": "tok_demo_msci_world", "display_name": "iShares Core MSCI World UCITS ETF", "asset_type": "etf", "price_currency": "EUR",
+     "quantity_scale": 6, "isin": "IE00B4L5Y983", "provider_symbol": "EUNL.DE", "provider_currency": "EUR"},
+    {"token": "tok_demo_allianz", "display_name": "Allianz", "asset_type": "equity", "price_currency": "EUR",
+     "quantity_scale": 4, "isin": "DE0008404005", "provider_symbol": "ALV.DE", "provider_currency": "EUR"},
+    {"token": "tok_demo_apple", "display_name": "Apple", "asset_type": "equity", "price_currency": "EUR",
+     "quantity_scale": 4, "isin": "US0378331005", "provider_symbol": "AAPL", "provider_currency": "USD"},
+    {"token": "tok_demo_telekom", "display_name": "Deutsche Telekom", "asset_type": "equity", "price_currency": "EUR",
+     "quantity_scale": 4, "isin": "DE0005557508", "provider_symbol": "DTE.DE", "provider_currency": "EUR"},
+    {"token": "tok_demo_bitcoin", "display_name": "Bitcoin", "asset_type": "crypto", "price_currency": "EUR",
+     "quantity_scale": 8, "isin": null, "provider_symbol": "BTC-EUR", "provider_currency": "EUR"},
+    {"token": "tok_demo_ether", "display_name": "Ethereum", "asset_type": "crypto", "price_currency": "EUR",
+     "quantity_scale": 8, "isin": null, "provider_symbol": "ETH-EUR", "provider_currency": "EUR"}
+  ],
+  "cash": {"note": "Cash des Demo-Portfolios (#487, rc.415): ein Tagesgeldkonto, gebucht ueber Cash von Hand (apps/demo/content/cash.csv). Erfunden.",
+    "account": {"token": "tok_demo_tagesgeld", "display_name": "Demo-Tagesgeld", "account_type": "bank", "institution_label": "Demo-Bank"},
+    "asset": {"token": "tok_demo_eur", "display_name": "Euro", "asset_type": "cash", "price_currency": "EUR", "quantity_scale": 2, "valuation_method": "unit_value"}}
+}
